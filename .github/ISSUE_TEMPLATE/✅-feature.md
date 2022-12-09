@@ -2,7 +2,7 @@
 name: "✅ FEATURE"
 about: Suggest an idea for this project
 title: "[FEAT]"
-labels: FEAT
+labels: BUG, FEAT
 assignees: ''
 
 ---

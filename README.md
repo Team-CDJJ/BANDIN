@@ -25,9 +25,11 @@
 ---
 
 ## 2. 팀원 / 역할 분담
-[❓❓]
-|이 안에 각자 계정 프사랑 링크|연결해서 사각형으로 넣고 싶은데|방법을 모르겠습니다ㅜ,ㅜ|혹시 방법 아시는 분?| 
-|-|-|-|-|
+
+| ![프로필1] | ![프로필2] | ![프로필3] | ![프로필4] |
+| :--------: | :--------: | :------: | :-----: |
+| [김대운] | [서윤정] | [이혜진] | [최영준] |
+
 
 </br>
 
@@ -66,3 +68,12 @@
 - 컴포넌트 함수 선언 시 화살표 함수 사용
 - 파스칼 케이스
 ```
+<!-- Stack Icon Refernces -->
+[프로필1]: https://avatars.githubusercontent.com/u/107315656?v=4
+[프로필2]: https://avatars.githubusercontent.com/u/100075245?v=4
+[프로필3]: https://avatars.githubusercontent.com/u/104756433?v=4
+[프로필4]: https://avatars.githubusercontent.com/u/112460280?v=4
+[김대운]: https://github.com/Ocknyer
+[서윤정]: https://github.com/annasyun
+[이혜진]: https://github.com/hyelight
+[최영준]: https://github.com/youngjun0427

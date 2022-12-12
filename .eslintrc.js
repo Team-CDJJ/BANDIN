@@ -40,6 +40,7 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        jsxSingleQuote: true,
         singleQuote: true,
         endOfLine: 'auto',
         trailingComma: 'all',

@@ -49,9 +49,15 @@ const GlobalStyled = createGlobalStyle`
 
     ${reset}
 
+    /* body {
+        width: 390px;
+        height: 844px;
+    } */
+
     * {
         font-family: "Spoqa Han Sans Neo", sans-serif;
         font-weight: 400;
+        box-sizing: border-box;
     }
 
     .ir {
@@ -61,6 +67,11 @@ const GlobalStyled = createGlobalStyle`
         height: 1px;
         margin: -1px;
         clip-path: inset(0 0 0 0);
+    }
+
+    input {
+        padding: 0;
+        margin: 0;
     }
 `;
 

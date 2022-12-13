@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+// import Splash from '../Splash/Splash';
 
 const Home = () => {
   return (

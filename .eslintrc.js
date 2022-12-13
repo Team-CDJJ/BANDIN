@@ -47,6 +47,7 @@ module.exports = {
       },
     ],
     'no-console': 'off',
+    'no-unused-vars': 'off',
     'jsx-a11y/label-has-associated-control': [
       2,
       {

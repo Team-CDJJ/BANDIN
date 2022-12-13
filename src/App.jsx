@@ -1,5 +1,19 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import Home from './pages/Home/Home';
+import EmailLogin from './pages/EmailLogin/EmailLogin';
+import SignUp from './pages/SignUp/SignUp';
+import Login from './pages/Login/Login';
+
 const App = () => {
-  return <div className="App">앱 오류 안난당</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/emaillogin' element={<EmailLogin />} />
+        <Route path='/signup' element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

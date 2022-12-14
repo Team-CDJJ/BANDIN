@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'react/self-closing-comp': 'off',
     'react/jsx-boolean-value': 0,
     'react/prop-types': 'off',
     'react/jsx-uses-react': 'off',
@@ -37,6 +38,8 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'object-shorthand': 'off',
+    'prefer-destructuring': 'off',
     'prettier/prettier': [
       'error',
       {
@@ -47,7 +50,8 @@ module.exports = {
       },
     ],
     'no-console': 'off',
-    'no-unused-vars': 'off',
+    'no-param-reassign': 'off',
+    'no-unused-vars': 'warn',
     'jsx-a11y/label-has-associated-control': [
       2,
       {

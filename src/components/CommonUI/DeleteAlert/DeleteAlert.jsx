@@ -1,14 +1,14 @@
-import {} from './styled';
+import { AlertWrapper, AlertTxt, BtnsWrapper, ModalBtn } from './styled';
 
 const DeleteAlert = () => {
   return (
-    <div>
-        <strong>게시글을 삭제할까요?</strong>
-      <div>
-        <button>취소</button>
-        <button>삭제</button>
-      </div>
-    </div>
+    <AlertWrapper>
+      <AlertTxt>상품을 삭제할까요?</AlertTxt>
+      <BtnsWrapper>
+        <ModalBtn type='button'>취소</ModalBtn>
+        <ModalBtn type='button'>삭제</ModalBtn>
+      </BtnsWrapper>
+    </AlertWrapper>
   );
 };
 

@@ -5,7 +5,8 @@ import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 // import Home from './pages/Home/Home';
 import Following from './pages/Following/Following';
-
+import DeleteAlert from './components/CommonUI/DeleteAlert/DeleteAlert';
+import UserItem from './components/CommonUI/UserItem/UserItem';
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
         <Route path='/emaillogin' element={<EmailLogin />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/following' element={<Following />} />
+        <Route path='/deletealert' element={<DeleteAlert />} />
+        <Route path='/useritem' element={<UserItem />} />
       </Routes>
     </BrowserRouter>
   );

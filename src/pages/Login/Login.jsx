@@ -5,12 +5,12 @@ import {
   LoginBtnContainer,
   LinkWrapper,
 } from './styled';
+import Splash from '../Splash/Splash';
 
 import logoWhite from '../../assets/logo-white.png';
 import facebookLogo from '../../assets/facebook.png';
 import googleLogo from '../../assets/google.png';
 import kakaoLogo from '../../assets/kakao.png';
-import Splash from '../Splash/Splash';
 
 const Login = () => {
   return (

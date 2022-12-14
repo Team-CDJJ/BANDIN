@@ -37,6 +37,8 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'object-shorthand': 'off',
+    'prefer-destructuring': 'off',
     'prettier/prettier': [
       'error',
       {
@@ -47,7 +49,8 @@ module.exports = {
       },
     ],
     'no-console': 'off',
-    'no-unused-vars': 'off',
+    'no-param-reassign': 'off',
+    'no-unused-vars': 'warn',
     'jsx-a11y/label-has-associated-control': [
       2,
       {

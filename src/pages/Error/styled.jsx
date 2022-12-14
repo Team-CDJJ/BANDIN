@@ -38,6 +38,8 @@ export const PrevButton = styled.button`
       height: 44px;
       background-color: ${theme.colors.mainColor};
       color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
       padding: 13px 25px;
       border: none;
       border-radius: 44px;

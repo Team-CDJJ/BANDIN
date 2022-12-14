@@ -49,6 +49,7 @@ module.exports = {
         trailingComma: 'all',
       },
     ],
+    'no-alert': 'off',
     'no-console': 'off',
     'no-param-reassign': 'off',
     'no-unused-vars': 'warn',

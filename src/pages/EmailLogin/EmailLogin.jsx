@@ -29,7 +29,7 @@ const Login = () => {
     })
       .then((data) => {
         if (data.status === 422) {
-          alert(`${data.message}`);
+          alert(data.message);
           console.log(data);
         } else {
           console.log(data);

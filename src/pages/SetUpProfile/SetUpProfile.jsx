@@ -129,7 +129,13 @@ const SetUpProfile = () => {
           required
           placeholder='가장 선호하는 장르는 무엇인가요?'
         />
-        <Button type='submit'>지금 바로 밴딘 시작하기!</Button>
+        <Button
+          type='submit'
+          size='lg'
+          state='active'
+          txtcolor='#fff'
+          tit='지금 바로 밴딘 시작하기!'
+        ></Button>
       </form>
     </SetUpProfileWrapper>
   );

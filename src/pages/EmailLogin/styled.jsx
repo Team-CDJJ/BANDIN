@@ -20,6 +20,7 @@ export const LoginWrapper = styled.div`
         color: ${theme.colors.grey76};
         text-align: center;
         text-decoration: none;
+        margin-top: 20px;
       `;
     }}
   }

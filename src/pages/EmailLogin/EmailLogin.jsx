@@ -62,11 +62,13 @@ const Login = () => {
           onChange={handleData}
         />
         <Button
-          disabled={email.length === 0 || password.length === 0}
-          type='submit'
-        >
-          로그인
-        </Button>
+          size='lg'
+          state={
+            email.length === 0 || password.length === 0 ? 'disabled' : 'active'
+          }
+          txtcolor='#fff'
+          tit='로그인'
+        ></Button>
       </form>
       <Link to='/signup' className='sign-up-email'>
         이메일로 회원가입

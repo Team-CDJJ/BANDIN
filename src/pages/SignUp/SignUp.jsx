@@ -19,6 +19,7 @@ const SignUp = () => {
   };
 
   const handleNextPage = () => {
+    console.log('click');
     navigate('/setupprofile', {
       state: {
         email: email,
@@ -50,12 +51,14 @@ const SignUp = () => {
           onChange={handleData}
         />
         <Button
-          type='submit'
-          disabled={email.length === 0 || password.length === 0}
+          size='lg'
+          state={
+            email.length === 0 || password.length === 0 ? 'disabled' : 'active'
+          }
+          txtcolor='#fff'
+          tit='다음'
           onClick={handleNextPage}
-        >
-          다음
-        </Button>
+        ></Button>
       </form>
     </SignUpWrapper>
   );

@@ -29,6 +29,7 @@ const App = () => {
         <Route path='/topchatnav' element={<TopChatNav />} />
         <Route path='/tabmenu' element={<TabMenu />} />
         <Route path='/comment' element={<Comment />} />
+        {/* <Route path='/comment' element={<Comment />} /> */}
       </Routes>
     </BrowserRouter>
   );

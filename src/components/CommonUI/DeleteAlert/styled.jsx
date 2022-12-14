@@ -1,7 +1,49 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const AlertWrapper = styled.div`
-
+export const AlertWrapper = styled.div`
+  ${({ theme }) => {
+    return css`
+      width: 252px;
+      height: 110px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    `;
+  }}
 `;
 
-export default AlertWrapper;
+export const AlertTxt = styled.strong`
+  ${({ theme }) => {
+    return css`
+      font-size: ${theme.fontSizes.lg};
+      font-weight: 500;
+    `;
+  }}
+`;
+
+export const BtnsWrapper = styled.div`
+  display: flex;
+  height: 46px;
+  width: 100%;
+  margin-top: 22px;
+`;
+
+export const ModalBtn = styled.button`
+  ${({ theme }) => {
+    return css`
+      width: 100%;
+      background-color: transparent;
+      font-size: ${theme.fontSizes.md};
+      font-weight: 400;
+      border: none;
+      border-top: 1px solid ${theme.colors.greyDB};
+      &:last-child {
+        color: ${theme.colors.mainColor};
+        border-left: 1px solid ${theme.colors.greyDB};
+        font-weight: 500;
+      }
+    `;
+  }}
+`;

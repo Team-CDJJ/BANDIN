@@ -33,7 +33,7 @@ const Following = () => {
           <p>정성을 다해 농사짓는 한라봉</p>
         </div>
         {/* following은 기본이 팔로잉 */}
-        <button>팔로잉</button>
+        <button type='button'>팔로잉</button>
       </main>
       <footer>
         <div>

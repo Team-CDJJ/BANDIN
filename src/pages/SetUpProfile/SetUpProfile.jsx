@@ -12,9 +12,10 @@ import {
 } from './styled';
 import postSignUp from '../../api/login/postSignUP';
 import InputBox from '../../components/atoms/InputBox/Input';
+import ProfileImgInput from '../../components/modules/ProfileImgInput';
 
 const SetUpProfile = () => {
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(noneProfileImage);
   const [userName, setUserName] = useState('');
   const [accountName, setAccountName] = useState('');
   const [intro, setIntro] = useState('');
@@ -71,7 +72,7 @@ const SetUpProfile = () => {
         나중에 언제든지 변경할 수 있습니다.
       </SetUpProfileSubTitle>
       <form onSubmit={handleSubmit}>
-        <ImgWrapper>
+        {/* <ImgWrapper>
           <img src={noneProfileImage} alt='' />
           <ImgUploadBtn />
           <label htmlFor='profileImage' className='ir'></label>
@@ -82,14 +83,15 @@ const SetUpProfile = () => {
             name='image'
             accept='image/*'
           />
-        </ImgWrapper>
-        <InputBox
+        </ImgWrapper> */}
+        <ProfileImgInput />
+        {/* <InputBox
           type='file'
           id='profileImage'
           name='image'
           accept='image/*'
           onChange={handleGetImg}
-        />
+        /> */}
         <InputBox
           label='사용자 이름'
           type='userName'

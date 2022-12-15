@@ -16,9 +16,16 @@ const colors = {
   errorRed: '#EB5757',
 };
 
+const borderRadius = {
+  lv1: '5px',
+  lv2: '10px',
+  circle: '50%',
+};
+
 const lightTheme = {
   fontSizes,
   colors,
+  borderRadius,
 };
 
 export default lightTheme;

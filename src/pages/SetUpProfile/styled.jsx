@@ -6,9 +6,9 @@ export const SetUpProfileWrapper = styled.div`
       display: flex;
       flex-direction: column;
       padding: 54px 34px;
-      input {
-        &:nth-child(15) {
-          margin-bottom: 30px;
+      button {
+        &:last-child {
+          margin-top: 11px;
         }
       }
     `;
@@ -27,6 +27,14 @@ export const ImgWrapper = styled.div`
       }
     `;
   }}
+`;
+
+export const ImgUploadBtn = styled.button`
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background: url('../../assets/upload-img.png') no-repeat center;
 `;
 
 export const SetUpProfileTitle = styled.h1`

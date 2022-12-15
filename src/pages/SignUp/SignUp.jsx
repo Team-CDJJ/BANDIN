@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/atoms/Button/Button';
-import Input from '../../components/atoms/Input/Input';
-import InputLabel from '../../components/atoms/InputLabel/InputLabel';
+import InputBox from '../../components/atoms/InputBox/Input';
 import { SignUpWrapper, SignUpTitle } from './styled';
 
 const SignUp = () => {
@@ -32,8 +31,8 @@ const SignUp = () => {
     <SignUpWrapper>
       <SignUpTitle>이메일로 회원가입</SignUpTitle>
       <form>
-        <InputLabel htmlFor='email'>이메일</InputLabel>
-        <Input
+        <InputBox
+          label='이메일'
           type='email'
           id='email'
           required
@@ -41,8 +40,8 @@ const SignUp = () => {
           value={email}
           onChange={handleData}
         />
-        <InputLabel htmlFor='password'>비밀번호</InputLabel>
-        <Input
+        <InputBox
+          label='비밀번호'
           type='password'
           id='password'
           required

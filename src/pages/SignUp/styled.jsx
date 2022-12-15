@@ -7,8 +7,8 @@ export const SignUpWrapper = styled.div`
   margin: 0 auto;
   padding: 54px 34px;
 
-  input {
-    &:nth-child(4) {
+  div {
+    &:nth-child(2) {
       margin-bottom: 30px;
     }
   }

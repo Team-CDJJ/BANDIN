@@ -3,9 +3,8 @@ import { useState } from 'react';
 
 import { LoginWrapper, LoginTitle } from './styled';
 import Button from '../../components/atoms/Button/Button';
-import Input from '../../components/atoms/Input/Input';
-import InputLabel from '../../components/atoms/InputLabel/InputLabel';
 import postUserLogin from '../../api/login/postUserLogin';
+import InputBox from '../../components/atoms/InputBox/Input';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -45,16 +44,16 @@ const Login = () => {
     <LoginWrapper>
       <LoginTitle>로그인</LoginTitle>
       <form onSubmit={handleSubmit}>
-        <InputLabel htmlFor='emailId'>이메일</InputLabel>
-        <Input
+        <InputBox
+          label='이메일'
           type='email'
           id='emailId'
           required
           value={email}
           onChange={handleData}
         />
-        <InputLabel htmlFor='password'>패스워드</InputLabel>
-        <Input
+        <InputBox
+          label='비밀번호'
           type='password'
           id='password'
           required

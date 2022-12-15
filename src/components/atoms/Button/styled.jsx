@@ -12,7 +12,7 @@ export const Btn = styled.button`
           case 'md':
             return '120px';
           case 'lg':
-            return '322px';
+            return '100%';
           default:
             return '120px';
         }

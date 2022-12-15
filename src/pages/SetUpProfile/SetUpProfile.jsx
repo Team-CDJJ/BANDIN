@@ -3,15 +3,15 @@ import { useLocation } from 'react-router-dom';
 
 import noneProfileImage from '../../assets/profile.png';
 import Button from '../../components/atoms/Button/Button';
-import Input from '../../components/atoms/Input/Input';
-import InputLabel from '../../components/atoms/InputLabel/InputLabel';
 import {
   SetUpProfileWrapper,
   SetUpProfileTitle,
   SetUpProfileSubTitle,
   ImgWrapper,
+  ImgUploadBtn,
 } from './styled';
 import postSignUp from '../../api/login/postSignUP';
+import InputBox from '../../components/atoms/InputBox/Input';
 
 const SetUpProfile = () => {
   const [image, setImage] = useState('');
@@ -73,60 +73,65 @@ const SetUpProfile = () => {
       <form onSubmit={handleSubmit}>
         <ImgWrapper>
           <img src={noneProfileImage} alt='' />
+          <ImgUploadBtn />
+          <label htmlFor='profileImage' className='ir'></label>
+          <input
+            type='file'
+            id='profileImage'
+            onChange={handleGetImg}
+            name='image'
+            accept='image/*'
+          />
         </ImgWrapper>
-        <Input
+        <InputBox
           type='file'
           id='profileImage'
           name='image'
           accept='image/*'
           onChange={handleGetImg}
         />
-        <InputLabel htmlFor='userName'>사용자 이름</InputLabel>
-        <Input
+        <InputBox
+          label='사용자 이름'
           type='userName'
           id='userName'
-          required
           placeholder='2~10자 이내여야 합니다.'
           value={userName}
           onChange={handleData}
+          required
         />
-        <InputLabel htmlFor='accountName'>계정 ID</InputLabel>
-        <Input
+        <InputBox
+          label='계정 ID'
           type='accountName'
           id='accountName'
-          required
           placeholder='영문, 숫자, 특수문자(.), (_)만 사용 가능합니다.'
           value={accountName}
           onChange={handleData}
+          required
         />
-        <InputLabel htmlFor='intro'>소개</InputLabel>
-        <Input
+        <InputBox
+          label='자기소개'
           type='intro'
           id='intro'
-          required
           placeholder='한 줄로 나를 표현해 보세요!'
           value={intro}
           onChange={handleData}
         />
-        <InputLabel htmlFor='position'>포지션</InputLabel>
-        <Input
+        <InputBox
+          label='포지션'
           type='position'
           id='position'
-          required
           placeholder='가장 선호하는 악기 포지션은 어디인가요?'
         />
-        <InputLabel htmlFor='year'>경력</InputLabel>
-        <Input
+        <InputBox
+          label='경력'
           type='year'
           id='year'
-          required
           placeholder='악기를 연주하신 기간은 얼마나 되셨나요?'
         />
-        <InputLabel htmlFor='genre'>장르</InputLabel>
-        <Input
+        <InputBox
+          label='장르'
           type='genre'
           id='genre'
-          required
           placeholder='가장 선호하는 장르는 무엇인가요?'
         />
         <Button

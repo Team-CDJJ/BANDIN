@@ -52,9 +52,8 @@ const SignUp = () => {
         <Button
           size='lg'
           state={
-            email.length === 0 || password.length === 0 ? 'disabled' : 'active'
+            email.length === 0 || password.length === 0 ? 'disabled' : null
           }
-          txtcolor='#fff'
           tit='다음'
           onClick={handleNextPage}
         ></Button>

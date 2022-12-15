@@ -1,14 +1,8 @@
 import { Btn } from './styled';
 
-const Button = ({ type, size, state, txtcolor, tit, onClick }) => {
+const Button = ({ type, size, state, tit, onClick }) => {
   return (
-    <Btn
-      type={type}
-      size={size}
-      state={state}
-      txtcolor={txtcolor}
-      onClick={onClick}
-    >
+    <Btn type={type} size={size} state={state} onClick={onClick}>
       {tit}
     </Btn>
   );

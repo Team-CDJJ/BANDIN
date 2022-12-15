@@ -61,11 +61,11 @@ const Login = () => {
           onChange={handleData}
         />
         <Button
+          type='submit'
           size='lg'
           state={
-            email.length === 0 || password.length === 0 ? 'disabled' : 'active'
+            email.length === 0 || password.length === 0 ? 'disabled' : null
           }
-          txtcolor='#fff'
           tit='로그인'
         ></Button>
       </form>

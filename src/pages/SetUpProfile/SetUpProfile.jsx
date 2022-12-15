@@ -137,8 +137,11 @@ const SetUpProfile = () => {
         <Button
           type='submit'
           size='lg'
-          state='active'
-          txtcolor='#fff'
+          state={
+            userName.length === 0 || accountName.length === 0
+              ? 'disabled'
+              : null
+          }
           tit='지금 바로 밴딘 시작하기!'
         ></Button>
       </form>

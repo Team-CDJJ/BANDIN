@@ -25,7 +25,7 @@ export const Btn = styled.button`
           case 'sm':
             return '32px';
           case 'md':
-            return '340px';
+            return '34px';
           case 'lg':
             return '44px';
           default:
@@ -33,8 +33,19 @@ export const Btn = styled.button`
         }
       }};
 
-      border: ${({ txtcolor }) =>
-        txtcolor === '#000' ? '1px solid theme.colors.greyDB' : 'none'};
+      border: ${({ state }) => {
+        switch (state) {
+          case 'disabeld':
+            return 'none';
+          case 'active':
+            return '1px solid';
+          default:
+            return 'none';
+        }
+      }};
+
+      border-color: ${({ state }) =>
+        state === 'disabled' ? 'none' : theme.colors.greyDB};
 
       border-radius: ${({ size }) => {
         switch (size) {
@@ -51,23 +62,24 @@ export const Btn = styled.button`
         }
       }};
 
-      font-weight: ${({ size }) => (size === 'xs' ? '400' : '500')};
-      font-size: ${({ size }) =>
-        size === 'xs' ? 'theme.fontSizes.sm' : 'theme.fontSizes.md'};
-      line-height: ${({ size }) => (size === 'xs' ? '15px' : '18px')};
-
       background-color: ${({ state }) => {
         switch (state) {
           case 'active':
-            return theme.colors.mainColor;
+            return '#fff';
           case 'disabled':
             return theme.colors.mainDisabled;
           default:
-            return '#fff';
+            return theme.colors.mainColor;
         }
       }};
 
-      color: ${({ txtcolor }) => (txtcolor === '#000' ? 'grey76' : '#fff')};
+      font-weight: ${({ size }) => (size === 'xs' ? '400' : '500')};
+      font-size: ${({ size }) =>
+        size === 'xs' ? theme.fontSizes.sm : theme.fontSizes.md};
+      line-height: ${({ size }) => (size === 'xs' ? '15px' : '18px')};
+
+      color: ${({ state }) =>
+        state === 'active' ? theme.colors.grey76 : '#fff'};
     `;
   }}
 `;

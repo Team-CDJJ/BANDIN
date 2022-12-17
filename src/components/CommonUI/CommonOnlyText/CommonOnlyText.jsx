@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   CommonPostWrap,
   CommonPostSection,
@@ -14,9 +13,9 @@ import {
   ChatCount,
   PostUploadTime,
 } from './styled';
-import Profile from '../../../assets/profile.png';
+import Profile from '../../../assets/post.png';
 
-const CommonPost = () => {
+const CommonOnlyPost = () => {
   return (
     <CommonPostWrap>
       <img src={Profile} alt='프로필 이미지' className='img-profile' />
@@ -43,4 +42,4 @@ const CommonPost = () => {
   );
 };
 
-export default CommonPost;
+export default CommonOnlyPost;

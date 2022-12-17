@@ -5,12 +5,14 @@ import EmailLogin from './pages/EmailLogin/EmailLogin';
 import SignUp from './pages/SignUp/SignUp';
 import Login from './pages/Login/Login';
 import SetUpProfile from './pages/SetUpProfile/SetUpProfile';
+import Home from './pages/Home/Home';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         {/* <Route path='/' element={<Home />} /> */}
+        <Route path='/home' element={<Home />} />
         <Route path='/' element={<Login />} />
         <Route path='/emaillogin' element={<EmailLogin />} />
         <Route path='/signup' element={<SignUp />} />

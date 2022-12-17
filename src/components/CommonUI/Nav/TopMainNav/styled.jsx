@@ -9,6 +9,7 @@ export const TopMainNavSection = styled.section`
       top: 0;
       margin-top: 24px;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
+      /* background: #fff; */
     `;
   }}
 `;

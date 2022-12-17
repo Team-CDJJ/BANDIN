@@ -1,4 +1,4 @@
-import { Box, Input, InputLabel } from './styled';
+import { Box, ErrorP, Input, InputLabel } from './styled';
 
 const InputBox = ({
   label,
@@ -9,6 +9,7 @@ const InputBox = ({
   placeholder,
   onChange,
   required,
+  errorMsg,
 }) => {
   return (
     <Box>
@@ -22,6 +23,7 @@ const InputBox = ({
         onChange={onChange}
         required={required}
       />
+      <ErrorP>{errorMsg}</ErrorP>
     </Box>
   );
 };

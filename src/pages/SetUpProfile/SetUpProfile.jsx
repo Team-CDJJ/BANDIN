@@ -7,8 +7,6 @@ import {
   SetUpProfileWrapper,
   SetUpProfileTitle,
   SetUpProfileSubTitle,
-  ImgWrapper,
-  ImgUploadBtn,
 } from './styled';
 import postSignUp from '../../api/login/postSignUP';
 import InputBox from '../../components/atoms/InputBox/Input';
@@ -72,26 +70,7 @@ const SetUpProfile = () => {
         나중에 언제든지 변경할 수 있습니다.
       </SetUpProfileSubTitle>
       <form onSubmit={handleSubmit}>
-        {/* <ImgWrapper>
-          <img src={noneProfileImage} alt='' />
-          <ImgUploadBtn />
-          <label htmlFor='profileImage' className='ir'></label>
-          <input
-            type='file'
-            id='profileImage'
-            onChange={handleGetImg}
-            name='image'
-            accept='image/*'
-          />
-        </ImgWrapper> */}
         <ProfileImgInput />
-        {/* <InputBox
-          type='file'
-          id='profileImage'
-          name='image'
-          accept='image/*'
-          onChange={handleGetImg}
-        /> */}
         <InputBox
           label='사용자 이름'
           type='userName'

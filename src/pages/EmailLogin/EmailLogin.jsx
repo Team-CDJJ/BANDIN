@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import { LoginWrapper, LoginTitle } from './styled';
@@ -9,6 +9,23 @@ import InputBox from '../../components/atoms/InputBox/Input';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [pwError, setPwError] = useState('');
+  const navigate = useNavigate();
+
+  const emailReg =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+  // const validCheck = useCallback((input, regex) => {
+  //   let isValid = false;
+  //   if (input === '') {
+  //     isValid = false;
+  //   } else if (regex.test(input)) {
+  //     isValid = true;
+  //   } else {
+  //     isValid = false;
+  //   }
+  // }, []);
 
   const handleData = (event) => {
     if (event.target.type === 'email') {
@@ -27,12 +44,18 @@ const Login = () => {
       },
     })
       .then((data) => {
-        if (data.status === 422) {
-          alert(data.message);
-          console.log(data);
+        if (emailReg.test(email)) {
+          setEmailError('올바른 이메일 형식이 아닙니다.');
+        } else if (data.status === 422) {
+          const msg = data.message;
+          setPwError(msg);
+          // console.log(msg);
         } else {
-          console.log(data);
+          // console.log(data);
           localStorage.setItem('token', data.user.token);
+          const userData = data.user;
+          navigate('/');
+          console.log(userData);
         }
       })
       .catch((error) => {
@@ -51,6 +74,7 @@ const Login = () => {
           required
           value={email}
           onChange={handleData}
+          errorMsg={emailError}
         />
         <InputBox
           label='비밀번호'
@@ -59,6 +83,7 @@ const Login = () => {
           required
           value={password}
           onChange={handleData}
+          errorMsg={pwError}
         />
         <Button
           type='submit'

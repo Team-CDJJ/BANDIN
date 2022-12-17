@@ -10,7 +10,7 @@ import profileImg from '../../assets/profile.png';
 import Button from '../../components/atoms/Button/Button';
 
 const Home = () => {
-  const [post, setPost] = useState(false);
+  const [post, setPost] = useState(true);
   return (
     <>
       <TopMainNav />
@@ -28,7 +28,7 @@ const Home = () => {
           {/* <Link to='/login'>로그인</Link> */}
         </EmptyHomeWrap>
       )}
-      <TapNav />;
+      <TapNav />
     </>
   );
 };

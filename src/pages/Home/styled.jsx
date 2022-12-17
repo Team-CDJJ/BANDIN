@@ -16,7 +16,7 @@ export const HomeWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 88px 16px 0;
+  margin: 64px 16px 90px 16px;
   gap: 10px;
 `;
 

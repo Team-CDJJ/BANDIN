@@ -32,3 +32,9 @@ export const Input = styled.input`
     `;
   }}
 `;
+
+export const ErrorP = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  color: ${({ theme }) => theme.colors.errorRed};
+  margin-top: 6px;
+`;

@@ -7,6 +7,7 @@ import { SignUpWrapper, SignUpTitle } from './styled';
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const [emailError, setEmailError] = useState(false);
   const navigate = useNavigate();
 
   const handleData = (event) => {
@@ -21,8 +22,8 @@ const SignUp = () => {
     console.log('click');
     navigate('/setupprofile', {
       state: {
-        email: email,
-        password: password,
+        email,
+        password,
       },
     });
   };

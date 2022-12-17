@@ -30,7 +30,3 @@ export const FeedTxt = styled.span`
     `;
   }}
 `;
-
-// export const Button = styled.button`
-//   width: 120px;
-// `;

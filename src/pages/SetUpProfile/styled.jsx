@@ -15,28 +15,6 @@ export const SetUpProfileWrapper = styled.div`
   }}
 `;
 
-export const ImgWrapper = styled.div`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      justify-content: center;
-      margin-bottom: 34px;
-      > img {
-        width: 110px;
-        height: 110px;
-      }
-    `;
-  }}
-`;
-
-export const ImgUploadBtn = styled.button`
-  position: relative;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
-  background: url('../../assets/upload-img.png') no-repeat center;
-`;
-
 export const SetUpProfileTitle = styled.h1`
   ${({ theme }) => {
     return css`

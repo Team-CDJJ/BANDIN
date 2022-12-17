@@ -26,8 +26,10 @@ export const TopMainNavInner = styled.div`
 export const TopMainNavSpan = styled.span`
   ${({ theme }) => {
     return css`
-      font-weight: 500;
-      font-size: ${theme.fontSizes.xl};
+      > img {
+        width: 21px;
+        height: 28px;
+      }
     `;
   }}
 `;

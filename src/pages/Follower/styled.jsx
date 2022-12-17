@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-export const FollowingTopSpan = styled.span`
+export const FollowerTopSpan = styled.span`
   ${({ theme }) => {
     return css`
       position: fixed;
-      top: 42px;
+      top: 40px;
       left: 48px;
       font-size: ${theme.fontSizes.md};
       font-weight: 500;
@@ -12,19 +12,19 @@ export const FollowingTopSpan = styled.span`
   }}
 `;
 
-export const FollowingMain = styled.main`
+export const FollowerMain = styled.main`
   padding: 0 16px 24px;
   margin-top: 104px;
 `;
 
-export const FollowingMainUl = styled.ul`
+export const FollowerMainUl = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
 `;
 
-export const FollowingBtn = styled.button`
+export const FollowerBtn = styled.button`
   ${({ theme }) => {
     return css`
       display: inline-block;

@@ -9,6 +9,7 @@ import Follower from './pages/Follower/Follower';
 import Following from './pages/Following/Following';
 import NotFound from './pages/404/404';
 import UserSearch from './pages/Search/Search';
+import ChatList from './pages/ChatList/ChatList';
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
+        {/* <Route path='/' element={<Home />} /> */}
+        <Route path='/chatlist' element={<ChatList />} />
         <Route path='/emaillogin' element={<EmailLogin />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/setupprofile' element={<SetUpProfile />} />

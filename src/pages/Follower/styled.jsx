@@ -4,7 +4,7 @@ export const FollowerTopSpan = styled.span`
   ${({ theme }) => {
     return css`
       position: fixed;
-      top: 40px;
+      top: 18px;
       left: 48px;
       font-size: ${theme.fontSizes.md};
       font-weight: 500;
@@ -13,8 +13,8 @@ export const FollowerTopSpan = styled.span`
 `;
 
 export const FollowerMain = styled.main`
-  padding: 0 16px 24px;
-  margin-top: 104px;
+  padding: 0 16px;
+  margin-top: 72px;
 `;
 
 export const FollowerMainUl = styled.ul`

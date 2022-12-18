@@ -8,6 +8,7 @@ export const TabMenuSection = styled.section`
       bottom: 0;
       width: 100%;
       border-top: 0.5px solid ${theme.colors.greyDB};
+      background-color: #fff;
     `;
   }}
 `;
@@ -17,7 +18,6 @@ export const TabMenuInner = styled.ul`
     return css`
       display: flex;
       justify-content: space-between;
-      padding: 12px 30px 10px;
     `;
   }}
 `;
@@ -28,10 +28,11 @@ export const TabMenuEachInner = styled.li`
       > a {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        text-decoration: none;
         gap: 4px;
-        width: 60px;
+        width: 84px;
+        height: 60px;
       }
     `;
   }}

@@ -19,7 +19,9 @@ const TopMainNav = () => {
           <img src={logoSmall} alt='' />
         </TopMainNavSpan>
         <MainSearchBtn>
-          <img src={commentProfile} alt='' />
+          <Link to='/search'>
+            <img src={commentProfile} alt='' />
+          </Link>
         </MainSearchBtn>
       </TopMainNavInner>
     </TopMainNavSection>

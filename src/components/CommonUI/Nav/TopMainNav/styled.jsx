@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 export const TopMainNavSection = styled.section`
   ${({ theme }) => {
     return css`
-      padding: 10px 16px 10px;
+      padding: 10px 16px;
       width: 100%;
+      height: 48px;
       position: fixed;
       top: 0;
-      margin-top: 24px;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
-      /* background: #fff; */
+      background: #fff;
     `;
   }}
 `;
@@ -29,7 +29,6 @@ export const TopMainNavSpan = styled.span`
     return css`
       > img {
         width: 21px;
-        height: 28px;
       }
     `;
   }}

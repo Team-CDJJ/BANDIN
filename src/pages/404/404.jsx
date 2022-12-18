@@ -7,7 +7,7 @@ import {
   Error404Img,
 } from './styled';
 
-const Error = () => {
+const NotFound = () => {
   return (
     <ErrorSection>
       <ErrorTitle>
@@ -20,4 +20,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default NotFound;

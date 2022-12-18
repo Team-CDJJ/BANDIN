@@ -10,7 +10,6 @@ export const TopSearchNavSection = styled.section`
       align-items: center;
       position: fixed;
       top: 0;
-      margin-top: 24px;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
     `;
   }}

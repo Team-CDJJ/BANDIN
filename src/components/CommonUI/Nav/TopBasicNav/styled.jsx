@@ -7,7 +7,6 @@ export const TopBasicNavSection = styled.section`
       padding: 13px 12px 13px 16px;
       position: fixed;
       top: 0;
-      margin-top: 24px;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
     `;
   }}

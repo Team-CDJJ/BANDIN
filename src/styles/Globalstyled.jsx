@@ -8,6 +8,8 @@ const GlobalStyled = createGlobalStyle`
         font-family: "Spoqa Han Sans Neo", sans-serif;
         font-weight: 400;
         box-sizing: border-box;
+        padding: 0;
+        margin: 0;
     }
 
     html, body {
@@ -27,11 +29,6 @@ const GlobalStyled = createGlobalStyle`
 
     a {
         text-decoration: none;
-    }
-
-    input {
-        padding: 0;
-        margin: 0;
     }
 `;
 

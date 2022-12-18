@@ -14,36 +14,24 @@ export const TabMenuSection = styled.section`
 `;
 
 export const TabMenuInner = styled.ul`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      justify-content: space-between;
-    `;
-  }}
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const TabMenuEachInner = styled.li`
-  ${({ theme }) => {
-    return css`
-      > a {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 4px;
-        width: 84px;
-        height: 60px;
-      }
-    `;
-  }}
+  > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 84px;
+    height: 60px;
+  }
 `;
 
 export const EachTabImg = styled.img`
-  ${({ theme }) => {
-    return css`
-      width: 24px;
-    `;
-  }}
+  width: 24px;
 `;
 
 export const EachTabSpan = styled.span`

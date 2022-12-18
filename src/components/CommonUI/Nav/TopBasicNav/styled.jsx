@@ -4,28 +4,23 @@ export const TopBasicNavSection = styled.section`
   ${({ theme }) => {
     return css`
       width: 100vw;
-      padding: 13px 12px 13px 16px;
+      padding: 12px 12px 12px 16px;
+      height: 48px;
       position: fixed;
       top: 0;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
+      background-color: #fff;
     `;
   }}
 `;
 
 export const InnerBasicNav = styled.div`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    `;
-  }}
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const TopBasicNavBtn = styled.div`
-  ${({ theme }) => {
-    return css`
-      cursor: pointer;
-    `;
-  }}
+  cursor: pointer;
+  background-color: #fff;
 `;

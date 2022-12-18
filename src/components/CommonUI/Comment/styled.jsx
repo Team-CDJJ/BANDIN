@@ -5,30 +5,27 @@ export const CommentSection = styled.section`
     return css`
       width: 100vw;
       padding: 13px 16px 12px;
-      /* 상단바가 아니므로 margin-top 적용 X */
+      height: 61px;
       position: fixed;
       bottom: 0;
       border-top: 0.5px solid ${theme.colors.greyDB};
+      background-color: #fff;
     `;
   }}
 `;
 
 export const CommentInner = styled.div`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      > a {
-        cursor: pointer;
-      }
-      > a > img {
-        width: 36px;
-        height: 36px;
-      }
-    `;
-  }}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  > a {
+    cursor: pointer;
+  }
+  > a > img {
+    width: 36px;
+    height: 36px;
+  }
 `;
 
 export const CommentInput = styled.input`
@@ -49,14 +46,10 @@ export const CommentInput = styled.input`
 `;
 
 export const CommentBtn = styled.button`
-  ${({ theme }) => {
-    return css`
-      font-size: 14px;
-      font-weight: 500;
-      background-color: transparent;
-      color: #c4c4c4;
-      border: none;
-      cursor: pointer;
-    `;
-  }}
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  color: #c4c4c4;
+  border: none;
+  cursor: pointer;
 `;

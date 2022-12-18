@@ -4,25 +4,22 @@ export const TopChatNavSection = styled.section`
   ${({ theme }) => {
     return css`
       width: 100vw;
-      padding: 13px 12px 13px 16px;
+      padding: 12px 12px 12px 16px;
+      height: 48px;
       position: fixed;
       top: 0;
-      margin-top: 24px;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
+      background-color: #fff;
     `;
   }}
 `;
 
 export const InnerChatNav = styled.div`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      position: relative;
-    `;
-  }}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
 `;
 
 export const TopChatNavSpan = styled.span`
@@ -31,16 +28,13 @@ export const TopChatNavSpan = styled.span`
       position: absolute;
       margin-left: 32px;
       font-weight: 500;
+      font-size: ${theme.fontSizes.md};
     `;
   }}
 `;
 
 export const TopChatNavBtn = styled.button`
-  ${({ theme }) => {
-    return css`
-      cursor: pointer;
-      background: transparent;
-      border: none;
-    `;
-  }}
+  cursor: pointer;
+  background: #fff;
+  border: none;
 `;

@@ -17,11 +17,11 @@ const TopChatNav = () => {
       <InnerChatNav>
         {/* 경로 수정 필요 */}
         <Link to='/'>
-          <img src={arrowLeft} alt='' />
+          <img src={arrowLeft} alt='뒤로 가기' />
         </Link>
         <TopChatNavSpan>애월읍 위니브 감귤농장</TopChatNavSpan>
         <TopChatNavBtn>
-          <img src={moreVertical} alt='' />
+          <img src={moreVertical} alt='더보기' />
         </TopChatNavBtn>
       </InnerChatNav>
     </TopChatNavSection>

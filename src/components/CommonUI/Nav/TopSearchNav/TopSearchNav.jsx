@@ -15,7 +15,7 @@ const TopSearchNav = () => {
       <TopSearchInnerWrapper>
         {/* 경로 수정 필요 */}
         <Link to='/'>
-          <img src={arrowLeft} alt='' />
+          <img src={arrowLeft} alt='뒤로 가기' />
         </Link>
         <TopSearchNavInput type='text' placeholder='계정 검색' />
       </TopSearchInnerWrapper>

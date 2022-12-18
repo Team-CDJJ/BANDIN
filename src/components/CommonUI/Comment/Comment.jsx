@@ -16,7 +16,7 @@ const Comment = () => {
       <CommentInner>
         {/* 경로 수정 필요 */}
         <Link to='/'>
-          <img src={commentProfile} alt='' />
+          <img src={commentProfile} alt='댓글 입력할 사람의 프로필' />
         </Link>
         <CommentInput type='text' placeholder='댓글 입력하기...' />
         <CommentBtn>게시</CommentBtn>

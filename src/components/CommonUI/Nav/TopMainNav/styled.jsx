@@ -4,8 +4,8 @@ export const TopMainNavSection = styled.section`
   ${({ theme }) => {
     return css`
       padding: 10px 16px;
-      width: 100%;
       height: 48px;
+      width: 100%;
       position: fixed;
       top: 0;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
@@ -15,31 +15,19 @@ export const TopMainNavSection = styled.section`
 `;
 
 export const TopMainNavInner = styled.div`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    `;
-  }}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const TopMainNavSpan = styled.span`
-  ${({ theme }) => {
-    return css`
-      > img {
-        width: 21px;
-      }
-    `;
-  }}
+  > img {
+    width: 21px;
+  }
 `;
 
 export const MainSearchBtn = styled.button`
-  ${({ theme }) => {
-    return css`
-      background: transparent;
-      cursor: pointer;
-      border: none;
-    `;
-  }}
+  background: transparent;
+  cursor: pointer;
+  border: none;
 `;

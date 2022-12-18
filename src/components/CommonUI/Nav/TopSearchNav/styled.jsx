@@ -5,27 +5,24 @@ export const TopSearchNavSection = styled.section`
     return css`
       width: 100vw;
       height: 48px;
-      padding: 13px 12px 13px 16px;
+      padding: 8px 16px;
       display: flex;
       align-items: center;
       position: fixed;
       top: 0;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
+      background-color: #fff;
     `;
   }}
 `;
 
 export const TopSearchInnerWrapper = styled.div`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      align-items: center;
-      width: 100%;
-      > a {
-        cursor: pointer;
-      }
-    `;
-  }}
+  display: flex;
+  align-items: center;
+  width: 100%;
+  > a {
+    cursor: pointer;
+  }
 `;
 
 export const TopSearchNavInput = styled.input`

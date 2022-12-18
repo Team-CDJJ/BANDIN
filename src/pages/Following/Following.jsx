@@ -34,7 +34,7 @@ const Following = () => {
           ></FollowingBtn>
         </FollowingMainUl>
       </FollowingMain>
-      <TabMenu followingUserTab='following' />
+      <TabMenu place='profile' />
     </>
   );
 };

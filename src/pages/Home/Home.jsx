@@ -11,7 +11,7 @@ import Button from '../../components/atoms/Button/Button';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 
 const Home = () => {
-  const [post, setPost] = useState(true);
+  const [post] = useState(true);
   return (
     <>
       <TopMainNav />

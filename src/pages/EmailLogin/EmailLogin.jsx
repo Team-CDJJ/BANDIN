@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { isLogin } from '../../atoms';
 
 import { LoginWrapper, LoginTitle } from './styled';
@@ -14,7 +14,7 @@ const Login = () => {
   const [emailError, setEmailError] = useState('');
   const [pwError, setPwError] = useState('');
   const navigate = useNavigate();
-  const isLoginState = useRecoilState(isLogin);
+  const isLoginState = useSetRecoilState(isLogin);
 
   const emailReg =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;

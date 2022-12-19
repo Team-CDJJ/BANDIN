@@ -13,6 +13,7 @@ import Following from './pages/Following/Following';
 import NotFound from './pages/404/404';
 import UserSearch from './pages/Search/Search';
 import ChatList from './pages/ChatList/ChatList';
+import ModifyProfile from './pages/ModifyProfile/ModifyProfile';
 import PrivateRotuer from './components/Router/PrivateRouter';
 import PrivateRotuerRev from './components/Router/PrivateRouterRev';
 
@@ -54,6 +55,7 @@ const App = () => {
       <Route path='/follower' element={<Follower />} />
       <Route path='/following' element={<Following />} />
       <Route path='/search' element={<UserSearch />} />
+      <Route path='/modifyprofile' element={<ModifyProfile />} />
       <Route path='/*' element={<NotFound />} />
     </Routes>
   );

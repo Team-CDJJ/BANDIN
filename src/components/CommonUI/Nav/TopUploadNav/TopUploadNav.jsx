@@ -7,6 +7,7 @@ import {
 } from './styled';
 
 import arrowLeft from '../../../../assets/icon-arrow-left.png';
+import Button from '../../../atoms/Button/Button';
 
 const TopUploadNav = () => {
   return (
@@ -17,7 +18,13 @@ const TopUploadNav = () => {
         <Link to='/'>
           <img src={arrowLeft} alt='뒤로 가기' />
         </Link>
-        <TopUploadBtn>저장</TopUploadBtn>
+        <Button
+          type='submit'
+          size='sm'
+          state='disabled'
+          disabled='disabled'
+          tit='저장'
+        ></Button>
       </TopUploadInnerWrapper>
     </TopUploadNavSection>
   );

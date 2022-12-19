@@ -13,8 +13,7 @@ const TopSearchNav = () => {
     <TopSearchNavSection>
       <h1 className='ir'>검색 상단바</h1>
       <TopSearchInnerWrapper>
-        {/* 경로 수정 필요 */}
-        <Link to='/'>
+        <Link to='/home'>
           <img src={arrowLeft} alt='뒤로 가기' />
         </Link>
         <TopSearchNavInput type='text' placeholder='계정 검색' />

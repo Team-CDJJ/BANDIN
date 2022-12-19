@@ -31,10 +31,10 @@ const DropDown = () => {
     },
   ];
   const [isShow, setIsShow] = useState(false);
-  const [currentValue, setCurrentValue] = useState(lists[0].value);
+  const [currentValue, setCurrentValue] = useState('밴드 매칭');
 
   const handleChangeItem = (e) => {
-    setCurrentValue(e.target.getAttribute('value'));
+    setCurrentValue(e.target.textContent);
   };
 
   return (
@@ -47,7 +47,8 @@ const DropDown = () => {
             value={item.value}
             onClick={handleChangeItem}
           >
-            <Link to={item.path}>{item.value}</Link>
+            <Link to={item.path} />
+            {item.value}
           </OptionLi>
         ))}
       </SelectUl>

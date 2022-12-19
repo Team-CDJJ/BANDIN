@@ -1,17 +1,17 @@
 import styled, { css } from 'styled-components';
 
-// TopContainer는 아마 수정해야 할 것 같음
-// 이 상태에서는 TopMainNav에서는 DropDown 안눌림
-export const TopContainer = styled.div`
-  position: absolute;
-`;
+// export const TopContainer = styled.div`
+//   position: absolute;
+// `;
 
 export const TopMainNavSection = styled.section`
   ${({ theme }) => {
     return css`
-      padding: 10px 16px;
-      height: 48px;
       width: 100%;
+      height: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: fixed;
       top: 0;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
@@ -20,20 +20,12 @@ export const TopMainNavSection = styled.section`
   }}
 `;
 
-export const TopMainNavInner = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const TopMainNavSpan = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 53px;
   > img {
     width: 21px;
   }
-`;
-
-export const MainSearchBtn = styled.button`
-  background: transparent;
-  cursor: pointer;
-  border: none;
 `;

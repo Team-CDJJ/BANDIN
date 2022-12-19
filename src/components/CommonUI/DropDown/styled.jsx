@@ -6,9 +6,8 @@ import UpArrow from '../../../assets/up-arrow.png';
 export const DropDownSection = styled.section`
   position: relative;
   width: 100%;
-  padding: 14px 0;
+  height: 48px;
   text-align: center;
-  background-color: #ffffff;
   cursor: pointer;
   &::before {
     content: '';
@@ -17,65 +16,49 @@ export const DropDownSection = styled.section`
     height: 21px;
     width: 20px;
     top: 19px;
-    right: 61px;
-    /* 가상 요소 선택자에 중첩으로 놓고 focus 효과 넣는 방법 모르겠음 */
-    /* &:focus {
-      &::after {
-        content: '';
-        position: absolute;
-        background: url(${UpArrow}) no-repeat;
-        height: 21px;
-        width: 20px;
-        top: 19px;
-        right: 61px;
-      }
-    } */
+    right: 11px;
   }
 `;
+
 export const CurrentTit = styled.h1`
   ${({ theme }) => {
     return css`
       font-size: ${theme.fontSizes.xl};
       font-weight: 500;
-      text-align: center;
-      padding: 1px 0;
+      line-height: 48px;
     `;
   }}
 `;
+
 export const SelectUl = styled.ul`
   ${({ theme }) => {
     return css`
-      position: absolute;
-      top: 48px;
       width: 100%;
-      height: 250px;
-      overflow: hidden;
       font-size: ${theme.fontSizes.xl};
-      border-top: 1px solid ${theme.colors.greyDB};
+      overflow: hidden;
+      position: absolute;
       max-height: ${(props) => (props.show ? 'none' : '0')};
+      /* display: ${(props) => (props.display ? 'block' : 'none')}; */
     `;
   }}
 `;
+
 export const OptionLi = styled.li`
   ${({ theme }) => {
     return css`
       width: 100%;
-      font-size: ${theme.fontSizes.xl};
-      font-weight: 500;
-      padding: 14px 0;
-      height: 48px;
-      border-bottom: 1px solid ${theme.colors.greyDB};
+      height: 44px;
+      line-height: 44px;
+      font-size: ${theme.fontSizes.md};
+      border: 1px solid ${theme.colors.greyDB};
+      margin-top: -1px;
       background-color: #fff;
-      transition: all 0.3s;
-      > a {
-        color: #000;
-      }
+      color: ${theme.colors.grey76};
       &:hover,
       :focus {
+        transition: all 0.3s;
         background-color: ${theme.colors.mainColor};
-        > a {
-          color: white;
-        }
+        color: white;
       }
     `;
   }}

@@ -1,5 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import {
+  accountNameValue,
+  introValue,
+  isLogin,
+  profileImgSrc,
+  userDataAtom,
+  userNameValue,
+} from '../../atoms';
 
 import { LoginWrapper, LoginTitle } from './styled';
 import Button from '../../components/atoms/Button/Button';
@@ -12,20 +21,12 @@ const Login = () => {
   const [emailError, setEmailError] = useState('');
   const [pwError, setPwError] = useState('');
   const navigate = useNavigate();
-
-  const emailReg =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-  // const validCheck = useCallback((input, regex) => {
-  //   let isValid = false;
-  //   if (input === '') {
-  //     isValid = false;
-  //   } else if (regex.test(input)) {
-  //     isValid = true;
-  //   } else {
-  //     isValid = false;
-  //   }
-  // }, []);
+  const setIsLoginState = useSetRecoilState(isLogin);
+  const setUserData = useSetRecoilState(userDataAtom);
+  const setUserName = useSetRecoilState(userNameValue);
+  const setAccountName = useSetRecoilState(accountNameValue);
+  const setIntro = useSetRecoilState(introValue);
+  const setProfileImage = useSetRecoilState(profileImgSrc);
 
   const handleData = (event) => {
     if (event.target.type === 'email') {
@@ -35,7 +36,7 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     postUserLogin({
       user: {
@@ -44,18 +45,24 @@ const Login = () => {
       },
     })
       .then((data) => {
-        if (emailReg.test(email)) {
+        const emailReg =
+          /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        console.log(data);
+        if (!emailReg.test(email)) {
           setEmailError('올바른 이메일 형식이 아닙니다.');
         } else if (data.status === 422) {
-          const msg = data.message;
-          setPwError(msg);
-          // console.log(msg);
+          setPwError(data.message);
         } else {
-          // console.log(data);
           localStorage.setItem('token', data.user.token);
           const userData = data.user;
-          navigate('/');
-          console.log(userData);
+          console.log(data);
+          setIsLoginState(true);
+          setUserData(userData);
+          setAccountName(userData.accountname);
+          setUserName(userData.username);
+          setIntro(userData.intro);
+          setProfileImage(userData.image);
+          navigate('/home');
         }
       })
       .catch((error) => {
@@ -71,26 +78,26 @@ const Login = () => {
           label='이메일'
           type='email'
           id='emailId'
-          required
           value={email}
           onChange={handleData}
           errorMsg={emailError}
+          required
         />
         <InputBox
           label='비밀번호'
           type='password'
           id='password'
-          required
+          min='6'
           value={password}
           onChange={handleData}
           errorMsg={pwError}
+          required
         />
         <Button
           type='submit'
           size='lg'
-          state={
-            email.length === 0 || password.length === 0 ? 'disabled' : null
-          }
+          state={email.length === 0 || password.length < 6 ? 'disabled' : null}
+          disabled={password.length < 6 ? 'disabled' : null}
           tit='로그인'
         ></Button>
       </form>

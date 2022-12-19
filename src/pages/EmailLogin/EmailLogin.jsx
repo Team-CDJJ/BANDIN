@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { isLogin } from '../../atoms';
 
 import { LoginWrapper, LoginTitle } from './styled';
 import Button from '../../components/atoms/Button/Button';
@@ -12,20 +14,10 @@ const Login = () => {
   const [emailError, setEmailError] = useState('');
   const [pwError, setPwError] = useState('');
   const navigate = useNavigate();
+  const isLoginState = useRecoilState(isLogin);
 
   const emailReg =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-  // const validCheck = useCallback((input, regex) => {
-  //   let isValid = false;
-  //   if (input === '') {
-  //     isValid = false;
-  //   } else if (regex.test(input)) {
-  //     isValid = true;
-  //   } else {
-  //     isValid = false;
-  //   }
-  // }, []);
 
   const handleData = (event) => {
     if (event.target.type === 'email') {
@@ -37,14 +29,14 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    postUserLogin({
+    await postUserLogin({
       user: {
         email,
         password,
       },
     })
       .then((data) => {
-        if (emailReg.test(email)) {
+        if (!emailReg.test(email)) {
           setEmailError('올바른 이메일 형식이 아닙니다.');
         } else if (data.status === 422) {
           const msg = data.message;
@@ -54,8 +46,9 @@ const Login = () => {
           // console.log(data);
           localStorage.setItem('token', data.user.token);
           const userData = data.user;
-          navigate('/');
           console.log(userData);
+          isLoginState(true);
+          navigate('/');
         }
       })
       .catch((error) => {

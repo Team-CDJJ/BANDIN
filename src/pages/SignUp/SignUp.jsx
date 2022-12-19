@@ -20,7 +20,7 @@ const SignUp = () => {
 
   const handleNextPage = () => {
     console.log('click');
-    navigate('/setupprofile', {
+    navigate('/signup/setupprofile', {
       state: {
         email,
         password,

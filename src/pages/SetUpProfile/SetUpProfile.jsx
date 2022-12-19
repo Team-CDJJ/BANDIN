@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import noneProfileImage from '../../assets/profile.png';
 import Button from '../../components/atoms/Button/Button';
@@ -17,15 +17,16 @@ const SetUpProfile = () => {
   const [userName, setUserName] = useState('');
   const [accountName, setAccountName] = useState('');
   const [intro, setIntro] = useState('');
+  const navigate = useNavigate();
 
   const location = useLocation();
   // console.log(location);
   const email = location.state.email;
   const password = location.state.password;
 
-  const handleGetImg = async (event) => {
-    console.log(event);
-  };
+  // const handleGetImg = async (event) => {
+  //   console.log(event);
+  // };
 
   const handleData = (event) => {
     if (event.target.id === 'userName') {
@@ -53,6 +54,7 @@ const SetUpProfile = () => {
     postSignUp(userData)
       .then((data) => {
         console.log(data);
+        navigate('/');
       })
       .catch((error) => {
         if (error.response.status === 422) {

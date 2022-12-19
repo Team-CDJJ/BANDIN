@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FollowerTopSpan, FollowerMain, FollowerMainUl } from './styled';
 import FollowerBtn from '../../components/atoms/Button/Button';

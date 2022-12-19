@@ -34,7 +34,7 @@ const Login = () => {
             페이스북 계정으로 로그인
           </BtnSocialLogin>
           <LinkWrapper>
-            <Link className='link-to' to='/emaillogin'>
+            <Link className='link-to' to='/login/emaillogin'>
               이메일로 로그인
             </Link>
             <Link className='link-to' to='/signup'>

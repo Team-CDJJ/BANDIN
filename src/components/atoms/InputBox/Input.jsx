@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Box, ErrorP, Input, InputLabel } from './styled';
 
 const InputBox = ({
@@ -9,8 +10,16 @@ const InputBox = ({
   placeholder,
   onChange,
   required,
+  isValid,
   errorMsg,
+  display,
 }) => {
+  const [inputValueState, setInputValueState] = useState('');
+
+  const putInputValue = (event) => {
+    setInputValueState(event.target.value);
+  };
+
   return (
     <Box>
       <InputLabel htmlFor={id}>{label}</InputLabel>
@@ -22,8 +31,13 @@ const InputBox = ({
         placeholder={placeholder}
         onChange={onChange}
         required={required}
+        onInput={putInputValue}
       />
-      <ErrorP>{errorMsg}</ErrorP>
+      {inputValueState.length !== 0 && (
+        <ErrorP className={isValid && 'green'} display={display}>
+          {errorMsg}
+        </ErrorP>
+      )}
     </Box>
   );
 };

@@ -54,7 +54,7 @@ const SetUpProfile = () => {
     postSignUp(userData)
       .then((data) => {
         console.log(data);
-        navigate('/');
+        navigate('/login/emaillogin');
       })
       .catch((error) => {
         if (error.response.status === 422) {

@@ -5,6 +5,9 @@ export const Box = styled.div`
   display: flex;
   margin-bottom: 19px;
   flex-direction: column;
+  .green {
+    color: #169426;
+  }
 `;
 
 export const InputLabel = styled.label`
@@ -36,5 +39,6 @@ export const Input = styled.input`
 export const ErrorP = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.sm};
   color: ${({ theme }) => theme.colors.errorRed};
+  line-height: 14px;
   margin-top: 6px;
 `;

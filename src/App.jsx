@@ -1,7 +1,7 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { useEffect, useState } from 'react';
-import { isLogin } from './atoms';
+import { Route, Routes } from 'react-router-dom';
+// import { useRecoilState } from 'recoil';
+// import { useEffect } from 'react';
+// import { isLogin } from './atoms';
 
 import Home from './pages/Home/Home';
 import EmailLogin from './pages/EmailLogin/EmailLogin';
@@ -13,48 +13,49 @@ import Following from './pages/Following/Following';
 import NotFound from './pages/404/404';
 import UserSearch from './pages/Search/Search';
 import ChatList from './pages/ChatList/ChatList';
+import PrivateRotuer from './components/Router/PrivateRouter';
+import PrivateRotuerRev from './components/Router/PrivateRouterRev';
 
 const App = () => {
-  const token = localStorage.getItem('token');
-  // const [isLoginState, setIsLoginState] = useState(false);
-  const [isLoginState, setIsLoginState] = useRecoilState(isLogin);
-  console.log(isLoginState);
-
-  useEffect(() => {
-    setIsLoginState(() => {
-      // eslint-disable-next-line no-unneeded-ternary
-      return token ? true : false;
-    });
-  }, []);
+  // const token = localStorage.getItem('token');
+  // const navigate = useNavigate();
+  // const [isLoginState, setIsLoginState] = useRecoilState(isLogin);
+  // console.log(isLoginState);
+  // console.log(token);
 
   // useEffect(() => {
-  //   if (token === null) {
-  //     setIsLoginState(false);
-  //   } else {
-  //     setIsLoginState(true);
-  //   }
-  // }, token);
+  //   setIsLoginState(() => {
+  //     return !!token;
+  //   });
+  // }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            isLoginState ? <Home /> : <Navigate replace={true} to='/login' />
-          }
-        />
-        <Route path='/login' element={<Login />} />
-        <Route path='/login/emaillogin' element={<EmailLogin />} />
-        <Route path='/chatlist' element={<ChatList />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/signup/setupprofile' element={<SetUpProfile />} />
-        <Route path='/follower' element={<Follower />} />
-        <Route path='/following' element={<Following />} />
-        <Route path='/search' element={<UserSearch />} />
-        <Route path='/*' element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route
+        path='/'
+        element={
+          <PrivateRotuer>
+            <Login />
+          </PrivateRotuer>
+        }
+      />
+      <Route
+        path='/home'
+        element={
+          <PrivateRotuerRev>
+            <Home />
+          </PrivateRotuerRev>
+        }
+      />
+      <Route path='/emaillogin' element={<EmailLogin />} />
+      <Route path='/chatlist' element={<ChatList />} />
+      <Route path='/signup' element={<SignUp />} />
+      <Route path='/signup/setupprofile' element={<SetUpProfile />} />
+      <Route path='/follower' element={<Follower />} />
+      <Route path='/following' element={<Following />} />
+      <Route path='/search' element={<UserSearch />} />
+      <Route path='/*' element={<NotFound />} />
+    </Routes>
   );
 };
 

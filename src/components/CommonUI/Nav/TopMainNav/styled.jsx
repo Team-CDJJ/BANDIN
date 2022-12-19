@@ -1,5 +1,11 @@
 import styled, { css } from 'styled-components';
 
+// TopContainer는 아마 수정해야 할 것 같음
+// 이 상태에서는 TopMainNav에서는 DropDown 안눌림
+export const TopContainer = styled.div`
+  position: absolute;
+`;
+
 export const TopMainNavSection = styled.section`
   ${({ theme }) => {
     return css`

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const ErrorSection = styled.section`
+export const NotFoundSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,18 +10,18 @@ export const ErrorSection = styled.section`
   transform: translate(-50%, -50%);
 `;
 
-export const Error404Img = styled.img`
+export const NotFoundImg = styled.img`
   width: 100%;
   height: 100%;
 `;
 
-export const ErrorTitle = styled.h2`
+export const NotFoundSectionTitle = styled.h1`
   width: 130px;
   height: 233px;
   margin-bottom: 27px;
 `;
 
-export const ErrorTxt = styled.p`
+export const NotFoundTxt = styled.p`
   ${({ theme }) => {
     return css`
       font-size: ${theme.fontSizes.md};
@@ -38,7 +38,7 @@ export const PrevButton = styled.button`
       height: 44px;
       background-color: ${theme.colors.mainColor};
       color: #ffffff;
-      font-size: 14px;
+      font-size: ${theme.fontSizes.md};
       font-weight: 500;
       padding: 13px 25px;
       border: none;

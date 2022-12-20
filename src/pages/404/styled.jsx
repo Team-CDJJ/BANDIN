@@ -30,20 +30,3 @@ export const NotFoundTxt = styled.p`
     `;
   }}
 `;
-
-export const PrevButton = styled.button`
-  ${({ theme }) => {
-    return css`
-      width: 120px;
-      height: 44px;
-      background-color: ${theme.colors.mainColor};
-      color: #ffffff;
-      font-size: ${theme.fontSizes.md};
-      font-weight: 500;
-      padding: 13px 25px;
-      border: none;
-      border-radius: 44px;
-      cursor: pointer;
-    `;
-  }}
-`;

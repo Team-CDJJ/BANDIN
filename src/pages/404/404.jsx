@@ -3,9 +3,9 @@ import {
   NotFoundSection,
   NotFoundSectionTitle,
   NotFoundTxt,
-  PrevButton,
   NotFoundImg,
 } from './styled';
+import Button from '../../components/atoms/Button/Button';
 import error404 from '../../assets/404.png';
 
 const NotFound = () => {
@@ -20,9 +20,12 @@ const NotFound = () => {
         <NotFoundImg src={error404} alt='404 에러 이미지' />
       </NotFoundSectionTitle>
       <NotFoundTxt>페이지를 찾을 수 없습니다. :(</NotFoundTxt>
-      <PrevButton type='button' onClick={handlePrevPage}>
-        이전 페이지
-      </PrevButton>
+      <Button
+        type='button'
+        size='md, lg'
+        tit='이전 페이지'
+        onClick={handlePrevPage}
+      ></Button>
     </NotFoundSection>
   );
 };

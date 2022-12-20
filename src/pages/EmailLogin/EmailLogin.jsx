@@ -16,8 +16,6 @@ import postUserLogin from '../../api/login/postUserLogin';
 import InputBox from '../../components/atoms/InputBox/Input';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [pwError, setPwError] = useState('');
   const navigate = useNavigate();
@@ -28,12 +26,15 @@ const Login = () => {
   const setIntro = useSetRecoilState(introValue);
   const setProfileImage = useSetRecoilState(profileImgSrc);
 
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = inputValue;
+
   const handleData = (event) => {
-    if (event.target.type === 'email') {
-      setEmail(event.target.value);
-    } else if (event.target.type === 'password') {
-      setPassword(event.target.value);
-    }
+    const { name, value } = event.target;
+    setInputValue({ ...inputValue, [name]: value });
   };
 
   const handleSubmit = (event) => {
@@ -62,6 +63,7 @@ const Login = () => {
           setUserName(userData.username);
           setIntro(userData.intro);
           setProfileImage(userData.image);
+          console.log(userData.image);
           navigate('/home');
         }
       })
@@ -77,8 +79,9 @@ const Login = () => {
         <InputBox
           label='이메일'
           type='email'
-          id='emailId'
-          value={email}
+          name='email'
+          // id='emailId'
+          // value={email}
           onChange={handleData}
           errorMsg={emailError}
           required
@@ -86,9 +89,10 @@ const Login = () => {
         <InputBox
           label='비밀번호'
           type='password'
-          id='password'
+          name='password'
+          // id='password'
           min='6'
-          value={password}
+          // value={password}
           onChange={handleData}
           errorMsg={pwError}
           required

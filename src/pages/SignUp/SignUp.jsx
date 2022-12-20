@@ -6,22 +6,25 @@ import InputBox from '../../components/atoms/InputBox/Input';
 import { SignUpWrapper, SignUpTitle } from './styled';
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [emailError, setEmailError] = useState('');
 
-  const [password, setPassword] = useState('');
+  // const [password, setPassword] = useState('');
   const [isPwValid, setIsPwValid] = useState(false);
   const [pwError, setPwError] = useState('');
 
   const navigate = useNavigate();
 
+  const [inputValue, setInputValue] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = inputValue;
+
   const handleData = (event) => {
-    if (event.target.type === 'email') {
-      setEmail(event.target.value);
-    } else if (event.target.type === 'password') {
-      setPassword(event.target.value);
-    }
+    const { name, value } = event.target;
+    setInputValue({ ...inputValue, [name]: value });
   };
 
   useEffect(() => {
@@ -31,7 +34,7 @@ const SignUp = () => {
           email,
         },
       });
-      console.log(data);
+      // console.log(data);
       const emailReg =
         /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
       const regResult = emailReg.test(email);
@@ -61,7 +64,6 @@ const SignUp = () => {
   });
 
   const handleNextPage = () => {
-    console.log('click');
     navigate('/signup/setupprofile', {
       state: {
         email,
@@ -77,9 +79,10 @@ const SignUp = () => {
         <InputBox
           label='이메일'
           type='email'
-          id='email'
+          name='email'
+          // id='email'
           placeholder='이메일 주소를 입력해 주세요.'
-          value={email}
+          // value={email}
           onChange={handleData}
           isValid={isEmailValid}
           errorMsg={emailError}
@@ -88,9 +91,10 @@ const SignUp = () => {
         <InputBox
           label='비밀번호'
           type='password'
-          id='password'
+          name='password'
+          // id='password'
           placeholder='비밀번호를 입력해 주세요.'
-          value={password}
+          // value={password}
           onChange={handleData}
           errorMsg={password && !isPwValid ? pwError : null}
           required

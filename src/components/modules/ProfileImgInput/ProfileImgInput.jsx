@@ -1,12 +1,11 @@
 import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
-
-// import noneProfileImg from '../../../assets/profile.png';
-import Img from '../../atoms/Img/img';
-import { ProfileImgInputWrapper, UploadBtn } from './styled';
-import postUploadImg from '../../../api/uploadImg/uploadImg';
 import { profileImgSrc } from '../../../atoms';
 import { apiUrl } from '../../../api/api';
+import Img from '../../atoms/Img/img';
+
+import { ProfileImgInputWrapper, UploadBtn } from './styled';
+import postUploadImg from '../../../api/uploadImg/uploadImg';
 
 const ProfileImgInput = () => {
   const [image, setImage] = useRecoilState(profileImgSrc);

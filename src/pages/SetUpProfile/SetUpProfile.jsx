@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { accountNameValid } from '../../api/login/accountValid';
-import { profileImgSrc } from '../../atoms';
+import {
+  genreValue,
+  positionValue,
+  profileImgSrc,
+  yearValue,
+} from '../../atoms';
 
 import Button from '../../components/atoms/Button/Button';
 import {
@@ -20,15 +25,21 @@ const SetUpProfile = () => {
     username: '',
     accountname: '',
     intro: '',
+    position: '',
+    year: '',
+    genre: '',
   });
-  const { username, accountname, intro } = inputValue;
+  const { username, accountname, intro, position, year, genre } = inputValue;
 
   const [usernameError, setUsernameError] = useState('');
   const [usernameValid, setUsernameValid] = useState(false);
   const [accountnameError, setAccountnameError] = useState('');
   const [accountnameValid, setAccountnameValid] = useState(false);
-  // const [image, setImage] = useState('');
+
   const image = useRecoilValue(profileImgSrc);
+  const setPosition = useSetRecoilState(positionValue);
+  const setYear = useSetRecoilState(yearValue);
+  const setGenre = useSetRecoilState(genreValue);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -52,6 +63,10 @@ const SetUpProfile = () => {
       setUsernameValid(true);
     }
   });
+
+  setPosition(position);
+  setYear(year);
+  setGenre(genre);
 
   useEffect(() => {
     const accountnameValidator = async () => {
@@ -98,6 +113,7 @@ const SetUpProfile = () => {
         username,
         password,
         accountname,
+        intro,
         image,
       },
     };
@@ -128,8 +144,10 @@ const SetUpProfile = () => {
           label='사용자 이름'
           type='username'
           id='username'
+          min='2'
+          max='10'
           placeholder='2~10자 이내여야 합니다.'
-          value={username}
+          // value={username}
           name='username'
           onChange={handleData}
           errorMsg={usernameError}
@@ -141,7 +159,7 @@ const SetUpProfile = () => {
           type='accountname'
           id='accountname'
           placeholder='영문, 숫자, 특수문자(.), (_)만 사용 가능합니다.'
-          value={accountname}
+          // value={accountname}
           name='accountname'
           onChange={handleData}
           errorMsg={accountnameError}
@@ -152,27 +170,30 @@ const SetUpProfile = () => {
           label='자기소개'
           type='intro'
           id='intro'
-          value={intro}
+          // value={intro}
           name='intro'
           placeholder='한 줄로 나를 표현해 보세요!'
           onChange={handleData}
         />
         <InputBox
           label='포지션'
-          type='position'
+          name='position'
           id='position'
+          onChange={handleData}
           placeholder='가장 선호하는 악기 포지션은 어디인가요?'
         />
         <InputBox
           label='경력'
-          type='year'
+          name='year'
           id='year'
+          onChange={handleData}
           placeholder='악기를 연주하신 기간은 얼마나 되셨나요?'
         />
         <InputBox
           label='장르'
-          type='genre'
+          name='genre'
           id='genre'
+          onChange={handleData}
           placeholder='가장 선호하는 장르는 무엇인가요?'
         />
         <Button

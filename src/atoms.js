@@ -19,6 +19,7 @@ export const introValue = atom({
 export const profileImgSrc = atom({
   key: 'profileImg',
   default: noneProfileImage,
+  effects_UNSTABLE: [persistAtom],
 });
 
 export const isLogin = atom({
@@ -29,6 +30,24 @@ export const isLogin = atom({
 
 export const userNameValue = atom({
   key: 'userName',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const positionValue = atom({
+  key: 'position',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const yearValue = atom({
+  key: 'year',
+  default: '',
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const genreValue = atom({
+  key: 'genre',
   default: '',
   effects_UNSTABLE: [persistAtom],
 });

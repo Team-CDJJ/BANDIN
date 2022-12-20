@@ -3,8 +3,10 @@ import { Box, ErrorP, Input, InputLabel } from './styled';
 
 const InputBox = ({
   label,
+  inputRef,
   type,
   id,
+  name,
   min,
   max,
   placeholder,
@@ -24,8 +26,10 @@ const InputBox = ({
     <Box>
       <InputLabel htmlFor={id}>{label}</InputLabel>
       <Input
+        ref={inputRef}
         id={id}
         type={type}
+        name={name}
         minLength={min}
         maxLength={max}
         placeholder={placeholder}

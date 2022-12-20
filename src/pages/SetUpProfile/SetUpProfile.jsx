@@ -1,60 +1,111 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { accountNameValid } from '../../api/login/accountValid';
+import { profileImgSrc } from '../../atoms';
 
-import noneProfileImage from '../../assets/profile.png';
 import Button from '../../components/atoms/Button/Button';
 import {
   SetUpProfileWrapper,
   SetUpProfileTitle,
   SetUpProfileSubTitle,
 } from './styled';
+
 import postSignUp from '../../api/login/postSignUP';
 import InputBox from '../../components/atoms/InputBox/Input';
-import ProfileImgInput from '../../components/modules/ProfileImgInput';
+import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 
 const SetUpProfile = () => {
-  const [image, setImage] = useState(noneProfileImage);
-  const [userName, setUserName] = useState('');
-  const [accountName, setAccountName] = useState('');
-  const [intro, setIntro] = useState('');
-  const navigate = useNavigate();
+  const [inputValue, setInputValue] = useState({
+    username: '',
+    accountname: '',
+    intro: '',
+  });
+  const { username, accountname, intro } = inputValue;
 
+  const [usernameError, setUsernameError] = useState('');
+  const [usernameValid, setUsernameValid] = useState(false);
+  const [accountnameError, setAccountnameError] = useState('');
+  const [accountnameValid, setAccountnameValid] = useState(false);
+  // const [image, setImage] = useState('');
+  const image = useRecoilValue(profileImgSrc);
+
+  const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location);
+
   const email = location.state.email;
   const password = location.state.password;
 
-  // const handleGetImg = async (event) => {
-  //   console.log(event);
-  // };
-
   const handleData = (event) => {
-    if (event.target.id === 'userName') {
-      setUserName(event.target.value);
-    } else if (event.target.id === 'accountName') {
-      setAccountName(event.target.value);
-    } else if (event.target.id === 'intro') {
-      setIntro(event.target.value);
-    }
+    const { name, value } = event.target;
+    setInputValue({ ...inputValue, [name]: value });
   };
+
+  useEffect(() => {
+    if (!username) {
+      setUsernameError('* 필수 입력 항목입니다.');
+      setUsernameValid(false);
+    } else if (username.length < 2 || username.length > 10) {
+      setUsernameError('* 2 ~ 10자 이내여야 합니다.');
+      setUsernameValid(false);
+    } else {
+      setUsernameValid(true);
+    }
+  });
+
+  useEffect(() => {
+    const accountnameValidator = async () => {
+      try {
+        accountNameValid({
+          user: {
+            accountname,
+          },
+        }).then((data) => {
+          // console.log(data);
+          const accountReg = /^[-._a-z0-9]+$/gi;
+
+          if (!accountReg.test(accountname)) {
+            setAccountnameError(
+              '* 영문, 숫자, 밑줄, 마침표만 사용할 수 있습니다.',
+            );
+            setAccountnameValid(false);
+          } else if (data.message === '이미 가입된 계정ID 입니다.') {
+            setAccountnameError(`* ${data.message}`);
+            setAccountnameValid(false);
+          } else if (data.message === '사용 가능한 계정ID 입니다.') {
+            setAccountnameError(`* ${data.message}`);
+            setAccountnameValid(true);
+          } else if (accountname.length === 0) {
+            setAccountnameError('* 계정ID는 필수 입력사항 입니다.');
+            setAccountnameValid(false);
+          } else {
+            setAccountnameValid(false);
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    accountnameValidator();
+  }, [accountname]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(email, userName, password, accountName, intro, image);
 
     const userData = {
       user: {
-        email: email,
-        username: userName,
-        password: password,
-        accountname: accountName,
+        email,
+        username,
+        password,
+        accountname,
+        image,
       },
     };
 
     postSignUp(userData)
       .then((data) => {
         console.log(data);
-        navigate('/login/emaillogin');
+        navigate('/emaillogin');
       })
       .catch((error) => {
         if (error.response.status === 422) {
@@ -75,28 +126,35 @@ const SetUpProfile = () => {
         <ProfileImgInput />
         <InputBox
           label='사용자 이름'
-          type='userName'
-          id='userName'
+          type='username'
+          id='username'
           placeholder='2~10자 이내여야 합니다.'
-          value={userName}
+          value={username}
+          name='username'
           onChange={handleData}
+          errorMsg={usernameError}
+          isValid={usernameValid}
           required
         />
         <InputBox
           label='계정 ID'
-          type='accountName'
-          id='accountName'
+          type='accountname'
+          id='accountname'
           placeholder='영문, 숫자, 특수문자(.), (_)만 사용 가능합니다.'
-          value={accountName}
+          value={accountname}
+          name='accountname'
           onChange={handleData}
+          errorMsg={accountnameError}
+          isValid={accountnameValid}
           required
         />
         <InputBox
           label='자기소개'
           type='intro'
           id='intro'
-          placeholder='한 줄로 나를 표현해 보세요!'
           value={intro}
+          name='intro'
+          placeholder='한 줄로 나를 표현해 보세요!'
           onChange={handleData}
         />
         <InputBox
@@ -121,10 +179,11 @@ const SetUpProfile = () => {
           type='submit'
           size='lg'
           state={
-            userName.length === 0 || accountName.length === 0
+            username.length === 0 || accountname.length === 0
               ? 'disabled'
               : null
           }
+          disabled={!usernameValid || !accountnameValid ? 'disabled' : null}
           tit='지금 바로 밴딘 시작하기!'
         ></Button>
       </form>

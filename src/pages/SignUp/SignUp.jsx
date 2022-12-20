@@ -98,7 +98,7 @@ const SignUp = () => {
         <Button
           size='lg'
           state={!isEmailValid || !isPwValid ? 'disabled' : null}
-          // disabled={({ state }) => (state === 'disabled' ? 'disabled' : null)}
+          disabled={!isEmailValid || !isPwValid ? 'disabled' : null}
           tit='다음'
           onClick={handleNextPage}
           needValid='false'

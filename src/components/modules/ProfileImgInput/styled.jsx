@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import uploadBtnImg from '../../assets/upload-img.png';
+import uploadBtnImg from '../../../assets/upload-img.png';
 
 export const ProfileImgInputWrapper = styled.div`
   text-align: center;

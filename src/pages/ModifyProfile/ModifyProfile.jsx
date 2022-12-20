@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ModifyProfileSection, ModifyProfileForm, TasteBox } from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
-import ProfileImgInput from '../../components/modules/ProfileImgInput';
+import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
 import noneProfileImage from '../../assets/profile.png';
 

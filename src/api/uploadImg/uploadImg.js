@@ -1,15 +1,15 @@
 import { imgInstance } from '../api';
 
-// const postUploadImg = async (formData) => {
-//   const res = await imgInstance.post('/user/uploadfile', formData);
-//   console.log(formData);
-//   return res.data;
-// };
-
+// eslint-disable-next-line consistent-return
 const postUploadImg = async (formData) => {
-  const res = await imgInstance.post('/user/uploadfile', formData);
-  console.log(formData);
-  return res.data.filename;
+  try {
+    const res = await imgInstance.post('/image/uploadfile', formData);
+    console.log(res);
+    return res.data.filename;
+  } catch (error) {
+    console.log(formData);
+    console.log(error);
+  }
 };
 
 export default postUploadImg;

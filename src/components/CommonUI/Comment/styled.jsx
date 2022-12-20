@@ -18,7 +18,6 @@ export const CommentInner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   > a {
     cursor: pointer;
   }
@@ -28,28 +27,43 @@ export const CommentInner = styled.div`
   }
 `;
 
+export const CommentForm = styled.form`
+  position: absolute;
+  margin-left: 54px;
+  width: 80%;
+`;
+
+// atoms
 export const CommentInput = styled.input`
   ${({ theme }) => {
     return css`
-      position: absolute;
-      margin-left: 54px;
       border: none;
+      width: 80%;
       padding: 5px;
-      width: 65%;
 
       &::placeholder {
         font-size: ${theme.fontSizes.md};
+        color: #c4c4c4;
         font-weight: 400;
       }
     `;
   }}
 `;
 
+// atoms
 export const CommentBtn = styled.button`
-  font-size: 14px;
-  font-weight: 500;
-  background: transparent;
-  color: #c4c4c4;
-  border: none;
-  cursor: pointer;
+  ${({ theme }) => {
+    return css`
+      font-size: ${theme.fontSizes.md};
+      font-weight: 500;
+      background: transparent;
+      border: none;
+      margin-left: 27px;
+      cursor: pointer;
+      color: ${theme.colors.mainColor};
+      &:disabled {
+        color: #c4c4c4;
+      }
+    `;
+  }}
 `;

@@ -21,22 +21,4 @@ export const TopUploadInnerWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  > a {
-    cursor: pointer;
-  }
-`;
-
-export const TopUploadBtn = styled.button`
-  ${({ theme }) => {
-    return css`
-      padding: 7px 32px;
-      background-color: ${theme.colors.mainDisabled};
-      color: #fff;
-      font-size: ${theme.fontSizes.md};
-      font-weight: 500;
-      border-radius: 32px;
-      border: none;
-      cursor: pointer;
-    `;
-  }}
 `;

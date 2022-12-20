@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import DownArrow from '../../../assets/down-arrow.png';
 import UpArrow from '../../../assets/up-arrow.png';
@@ -16,9 +16,8 @@ export const TopContainer = styled.div`
 export const DropDownSection = styled.section`
   position: relative;
   width: 284px;
-  padding: 13.5px 0;
+  height: 48px;
   text-align: center;
-  background-color: #fff;
   cursor: pointer;
 
   &::before {
@@ -28,7 +27,7 @@ export const DropDownSection = styled.section`
     height: 21px;
     width: 20px;
     top: 19px;
-    right: 30px;
+    right: 15px;
   }
 `;
 
@@ -37,8 +36,7 @@ export const CurrentTit = styled.h1`
     return css`
       font-size: ${theme.fontSizes.xl};
       font-weight: 500;
-      text-align: center;
-      padding: 1px 0;
+      line-height: 48px;
     `;
   }}
 `;
@@ -47,9 +45,7 @@ export const SelectUl = styled.ul`
   ${({ theme }) => {
     return css`
       position: absolute;
-      top: 48px;
       width: 100%;
-      height: 240px;
       overflow: hidden;
       font-size: ${theme.fontSizes.xl};
       max-height: ${(props) => (props.show ? 'none' : '0')};
@@ -62,16 +58,16 @@ export const OptionLi = styled.li`
   ${({ theme }) => {
     return css`
       width: 100%;
-      font-size: ${theme.fontSizes.xl};
-      font-weight: 500;
-      padding: 14px 0;
-      height: 48px;
-      border-bottom: 1px solid #dbdbdb;
+      font-size: ${theme.fontSizes.md};
+      height: 44px;
+      line-height: 44px;
+      border: 1px solid #dbdbdb;
+      margin-top: -1px;
       background-color: #fff;
-      transition: all 0.3s;
-      color: #767676;
+      color: ${theme.colors.grey76};
       &:hover,
       :focus {
+        transition: all 0.3s;
         background-color: ${theme.colors.mainColor};
         color: white;
       }

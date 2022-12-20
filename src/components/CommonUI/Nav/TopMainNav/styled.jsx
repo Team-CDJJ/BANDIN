@@ -1,17 +1,11 @@
 import styled, { css } from 'styled-components';
 
-// export const TopContainer = styled.div`
-//   position: absolute;
-// `;
-
 export const TopMainNavSection = styled.section`
   ${({ theme }) => {
     return css`
-      width: 100%;
+      padding: 10px 16px;
       height: 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      width: 100%;
       position: fixed;
       top: 0;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
@@ -20,12 +14,20 @@ export const TopMainNavSection = styled.section`
   }}
 `;
 
-export const TopMainNavSpan = styled.span`
+export const TopMainNavInner = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 53px;
+`;
+
+export const TopMainNavSpan = styled.span`
   > img {
     width: 21px;
   }
+`;
+
+export const MainSearchBtn = styled.button`
+  background: transparent;
+  cursor: pointer;
+  border: none;
 `;

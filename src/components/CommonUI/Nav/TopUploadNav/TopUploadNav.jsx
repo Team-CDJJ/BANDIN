@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import {
-  TopUploadNavSection,
-  TopUploadInnerWrapper,
-  TopUploadBtn,
-} from './styled';
+import { TopUploadNavSection, TopUploadInnerWrapper } from './styled';
 
 import arrowLeft from '../../../../assets/icon-arrow-left.png';
 import Button from '../../../atoms/Button/Button';

@@ -3,12 +3,23 @@ import styled, { css } from 'styled-components';
 import DownArrow from '../../../assets/down-arrow.png';
 import UpArrow from '../../../assets/up-arrow.png';
 
+export const TopContainer = styled.div`
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+`;
+
 export const DropDownSection = styled.section`
   position: relative;
-  width: 100%;
+  width: 284px;
   height: 48px;
   text-align: center;
   cursor: pointer;
+
   &::before {
     content: '';
     position: absolute;
@@ -16,7 +27,7 @@ export const DropDownSection = styled.section`
     height: 21px;
     width: 20px;
     top: 19px;
-    right: 11px;
+    right: 15px;
   }
 `;
 
@@ -33,10 +44,10 @@ export const CurrentTit = styled.h1`
 export const SelectUl = styled.ul`
   ${({ theme }) => {
     return css`
-      width: 100%;
-      font-size: ${theme.fontSizes.xl};
-      overflow: hidden;
       position: absolute;
+      width: 100%;
+      overflow: hidden;
+      font-size: ${theme.fontSizes.xl};
       max-height: ${(props) => (props.show ? 'none' : '0')};
       /* display: ${(props) => (props.display ? 'block' : 'none')}; */
     `;
@@ -47,10 +58,10 @@ export const OptionLi = styled.li`
   ${({ theme }) => {
     return css`
       width: 100%;
+      font-size: ${theme.fontSizes.md};
       height: 44px;
       line-height: 44px;
-      font-size: ${theme.fontSizes.md};
-      border: 1px solid ${theme.colors.greyDB};
+      border: 1px solid #dbdbdb;
       margin-top: -1px;
       background-color: #fff;
       color: ${theme.colors.grey76};

@@ -16,6 +16,7 @@ import ChatList from './pages/ChatList/ChatList';
 import ModifyProfile from './pages/ModifyProfile/ModifyProfile';
 import PrivateRotuer from './components/Router/PrivateRouter';
 import PrivateRotuerRev from './components/Router/PrivateRouterRev';
+import Splash from './pages/Splash/Splash';
 
 const App = () => {
   // const token = localStorage.getItem('token');
@@ -32,6 +33,7 @@ const App = () => {
 
   return (
     <Routes>
+      <Route path='/' element={<Splash />} />
       <Route
         path='/'
         element={

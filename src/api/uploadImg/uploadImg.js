@@ -4,10 +4,8 @@ import { imgInstance } from '../api';
 const postUploadImg = async (formData) => {
   try {
     const res = await imgInstance.post('/image/uploadfile', formData);
-    console.log(res);
     return res.data.filename;
   } catch (error) {
-    console.log(formData);
     console.log(error);
   }
 };

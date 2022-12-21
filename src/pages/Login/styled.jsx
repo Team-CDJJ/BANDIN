@@ -1,4 +1,24 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const showUp = keyframes`
+0% {
+  opacity: 0.7;
+  transform: translateY(284px);
+}
+100% {
+  opacity: 1;
+  transform: translateY(0);
+}
+`;
+
+const fadeInOut = keyframes`
+0% {
+  transform: translateY(170%);
+}
+100% {
+  transform: translateY(100%);
+}
+`;
 
 export const LoginPageWrapper = styled.div`
   ${({ theme }) => {
@@ -6,14 +26,13 @@ export const LoginPageWrapper = styled.div`
       width: 100vw;
       height: 100vh;
       background-color: ${theme.colors.mainColor};
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
 
       .logo-white {
+        display: block;
         width: 120px;
-        margin-bottom: 180px;
+        margin: 0 auto;
+        transform: translateY(100%);
+        animation: ${fadeInOut} 0.8s linear forwards;
       }
     `;
   }}
@@ -21,11 +40,14 @@ export const LoginPageWrapper = styled.div`
 
 export const LoginBtnContainer = styled.section`
   display: flex;
+  position: absolute;
+  bottom: 0;
   flex-direction: column;
   padding: 50px 34px;
   background-color: #fff;
   border-radius: 20px 20px 0 0;
   width: 100%;
+  animation: ${showUp} 0.8s linear forwards;
 `;
 
 export const BtnSocialLogin = styled.button`

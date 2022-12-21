@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { accountNameValid } from '../../api/login/accountValid';
-import {
-  genreValue,
-  positionValue,
-  profileImgSrc,
-  yearValue,
-} from '../../atoms';
+import { profileImgSrc } from '../../atoms';
 
 import Button from '../../components/atoms/Button/Button';
 import {
@@ -25,11 +20,8 @@ const SetUpProfile = () => {
     username: '',
     accountname: '',
     intro: '',
-    position: '',
-    year: '',
-    genre: '',
   });
-  const { username, accountname, intro, position, year, genre } = inputValue;
+  const { username, accountname, intro } = inputValue;
 
   const [usernameError, setUsernameError] = useState('');
   const [usernameValid, setUsernameValid] = useState(false);
@@ -37,9 +29,6 @@ const SetUpProfile = () => {
   const [accountnameValid, setAccountnameValid] = useState(false);
 
   const image = useRecoilValue(profileImgSrc);
-  const setPosition = useSetRecoilState(positionValue);
-  const setYear = useSetRecoilState(yearValue);
-  const setGenre = useSetRecoilState(genreValue);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -63,10 +52,6 @@ const SetUpProfile = () => {
       setUsernameValid(true);
     }
   });
-
-  setPosition(position);
-  setYear(year);
-  setGenre(genre);
 
   useEffect(() => {
     const accountnameValidator = async () => {
@@ -174,27 +159,6 @@ const SetUpProfile = () => {
           name='intro'
           placeholder='한 줄로 나를 표현해 보세요!'
           onChange={handleData}
-        />
-        <InputBox
-          label='포지션'
-          name='position'
-          id='position'
-          onChange={handleData}
-          placeholder='가장 선호하는 악기 포지션은 어디인가요?'
-        />
-        <InputBox
-          label='경력'
-          name='year'
-          id='year'
-          onChange={handleData}
-          placeholder='악기를 연주하신 기간은 얼마나 되셨나요?'
-        />
-        <InputBox
-          label='장르'
-          name='genre'
-          id='genre'
-          onChange={handleData}
-          placeholder='가장 선호하는 장르는 무엇인가요?'
         />
         <Button
           type='submit'

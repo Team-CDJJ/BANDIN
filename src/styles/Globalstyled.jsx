@@ -18,6 +18,11 @@ const GlobalStyled = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    body {
+        width: 100vw;
+        height: 100vh;
+    }
+
     .ir {
         position: absolute;
         overflow: hidden;

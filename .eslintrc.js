@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'import/no-cycle': 'off',
     'react/self-closing-comp': 'off',
     'react/jsx-boolean-value': 0,
     'react/prop-types': 'off',

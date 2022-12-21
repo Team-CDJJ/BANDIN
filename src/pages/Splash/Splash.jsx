@@ -20,9 +20,11 @@ const Splash = () => {
 
   const token = localStorage.getItem('token');
 
-  if (token) {
-    navigate('/home');
-  }
+  useEffect(() => {
+    if (token) {
+      navigate('/home');
+    }
+  }, []);
 
   return showUp ? (
     <SplashPage>

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const SearchSection = styled.section`
+export const SearchMain = styled.main`
   margin-top: 48px;
   padding: 20px 16px;
 `;
-export const UserLists = styled.ul`
+export const UserUl = styled.ul`
   li ~ li {
     margin-top: 16px;
   }

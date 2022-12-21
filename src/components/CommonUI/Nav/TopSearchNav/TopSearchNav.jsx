@@ -8,7 +8,7 @@ import {
 
 import arrowLeft from '../../../../assets/icon-arrow-left.png';
 
-const TopSearchNav = () => {
+const TopSearchNav = ({ onChangeGetInput }) => {
   return (
     <TopSearchNavSection>
       <h1 className='ir'>검색 상단바</h1>
@@ -16,7 +16,11 @@ const TopSearchNav = () => {
         <Link to='/home'>
           <img src={arrowLeft} alt='뒤로 가기' />
         </Link>
-        <TopSearchNavInput type='text' placeholder='계정 검색' />
+        <TopSearchNavInput
+          type='text'
+          placeholder='계정 검색'
+          onChange={onChangeGetInput}
+        />
       </TopSearchInnerWrapper>
     </TopSearchNavSection>
   );

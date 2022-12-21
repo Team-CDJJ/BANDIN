@@ -6,16 +6,15 @@ import {
   UserId,
   ProfileLink,
 } from './styled';
-import basicProfile from '../../../assets/profile.png';
 
-const UserItem = () => {
+const UserItem = ({ image, username, accountname, key, alt }) => {
   return (
-    <UserList>
+    <UserList key={key}>
       <ProfileLink href='#'>
-        <ProfileImg src={basicProfile} alt='기본 프로필 이미지' />
+        <ProfileImg src={image} alt={alt} />
         <UserInfo>
-          <UserName>애월읍 위니브 감귤농장</UserName>
-          <UserId>@ weniv_Mandarin</UserId>
+          <UserName>{username}</UserName>
+          <UserId>@ {accountname}</UserId>
         </UserInfo>
       </ProfileLink>
     </UserList>

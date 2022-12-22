@@ -7,9 +7,9 @@ import {
   ProfileLink,
 } from './styled';
 
-const UserItem = ({ image, username, accountname, key, alt }) => {
+const UserItem = ({ image, username, accountname, keyValue, alt }) => {
   return (
-    <UserList key={key}>
+    <UserList key={keyValue}>
       <ProfileLink href='#'>
         <ProfileImg src={image} alt={alt} />
         <UserInfo>

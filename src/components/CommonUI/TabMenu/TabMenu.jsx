@@ -51,7 +51,7 @@ const TabMenu = ({ place }) => {
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
-          <Link to={`/myprofile/${accountname}`}>
+          <Link to={`/profile/${accountname}`}>
             {place === 'profile' ? (
               <EachTabImg src={userTabFill} alt='프로필 탭메뉴' />
             ) : (

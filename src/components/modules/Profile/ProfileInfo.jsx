@@ -9,12 +9,17 @@ import {
   ProfileWrapper,
   TextWrapper,
 } from './styled';
-import getMyProfile from '../../../api/profile/getmyprofile';
 import Button from '../../atoms/Button/Button';
+// import getMyProfile from '../../../api/profile/getmyprofile';
+// import { accessInstance } from '../../../api/api';
+import getMyProfile from '../../../api/profile/getmyprofile';
 
 const ProfileInfo = () => {
   const path = useLocation().pathname;
-  const { id } = useParams();
+  const accountName = path.split('/')[2];
+  console.log(accountName);
+  // const { accountName } = useParams();
+  // console.log(accountName);
 
   const [userInfo, setUserInfo] = useState({});
   const [followerCount, setFollowerCount] = useState();
@@ -22,27 +27,24 @@ const ProfileInfo = () => {
   const [isFollow, setIsFollow] = useState();
 
   const { accountname, username, intro, image } = userInfo;
-  console.log(accountname);
 
   useEffect(() => {
-    const getUserData = async () => {
-      if (path.includes('myprofile')) {
-        const myProfileData = await getMyProfile();
-        setUserInfo(myProfileData);
-        setFollowerCount(myProfileData.followerCount);
-        setFollowingCount(myProfileData.followingCount);
-        setIsFollow(myProfileData.isfollow);
-      } else {
-        const formData = new FormData();
-        formData.append('id', 'token');
-        const yourProfileData = await getMyProfile(id);
-        setUserInfo(yourProfileData);
-        setFollowerCount(yourProfileData.followerCount);
-        setFollowingCount(yourProfileData.followingCount);
-        setIsFollow(yourProfileData.isfollow);
-      }
-    };
-    getUserData();
+    // const accountName = localStorage.getItem('accountname');
+    // const getMyProfile = async () => {
+    //   try {
+    //     const res = await accessInstance.get(
+    //       `/profile/${accountName}`,
+    //       formData,
+    //     );
+    //     console.log(res);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // getMyProfile();
+    getMyProfile(accountName).then((data) => {
+      console.log(data);
+    });
   }, []);
 
   return (

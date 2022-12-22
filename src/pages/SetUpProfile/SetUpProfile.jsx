@@ -1,3 +1,6 @@
+/* eslint-disable no-useless-return */
+/* eslint-disable no-else-return */
+/* eslint-disable no-shadow */
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -104,8 +107,7 @@ const SetUpProfile = () => {
     };
 
     postSignUp(userData)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         navigate('/emaillogin');
       })
       .catch((error) => {

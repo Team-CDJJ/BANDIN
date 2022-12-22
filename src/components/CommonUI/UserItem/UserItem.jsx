@@ -9,16 +9,16 @@ import {
 } from './styled';
 
 const UserItem = ({ image, username, accountname, keyValue, alt }) => {
-  const { accountName } = useParams();
+  // const { accountName } = useParams();
   const navigate = useNavigate();
 
   const handleToProfile = () => {
-    navigate(`/profile/${accountName}`);
+    navigate(`/profile/${accountname}`);
   };
 
   return (
     <UserList key={keyValue} onClick={handleToProfile}>
-      <ProfileLink href='#'>
+      <ProfileLink to={`/profile/${accountname}`}>
         <ProfileImg src={image} alt={alt} />
         <UserInfo>
           <UserName>{username}</UserName>

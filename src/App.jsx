@@ -1,7 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-// import { useRecoilState } from 'recoil';
-// import { useEffect } from 'react';
-// import { isLogin } from './atoms';
 
 import Home from './pages/Home/Home';
 import EmailLogin from './pages/EmailLogin/EmailLogin';
@@ -21,18 +18,6 @@ import MyProfile from './pages/MyProfile/MyProfile';
 import AddProduct from './pages/AddProduct/AddProduct';
 
 const App = () => {
-  // const accountname = localStorage.getItem('accountname');
-  // const navigate = useNavigate();
-  // const [isLoginState, setIsLoginState] = useRecoilState(isLogin);
-  // console.log(isLoginState);
-  // console.log(token);
-
-  // useEffect(() => {
-  //   setIsLoginState(() => {
-  //     return !!token;
-  //   });
-  // }, []);
-
   return (
     <Routes>
       <Route path='/' element={<Splash />} />
@@ -56,8 +41,8 @@ const App = () => {
       <Route path='/chatlist' element={<ChatList />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signup/setupprofile' element={<SetUpProfile />} />
-      <Route path='/myprofile/:accountnmae' element={<MyProfile />} />
-      <Route path='/profile/:accountname' element={<MyProfile />} />
+      {/* <Route path='/myprofile/:accountNmae' element={<MyProfile />} /> */}
+      <Route path='/profile/:accountName' element={<MyProfile />} />
       <Route path='/follower' element={<Follower />} />
       <Route path='/following' element={<Following />} />
       <Route path='/myprofile/addproduct' element={<AddProduct />} />

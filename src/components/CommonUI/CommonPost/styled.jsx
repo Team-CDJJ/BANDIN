@@ -18,7 +18,7 @@ export const CommonPostSection = styled.div`
   flex-direction: column;
   margin: 4px 0 0 12px;
 
-  .img-post {
+  > img {
     width: 304px;
     height: 228px;
   }

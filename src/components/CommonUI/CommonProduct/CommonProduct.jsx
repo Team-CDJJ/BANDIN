@@ -1,5 +1,5 @@
 import { ProductWrap, ProductTxt, ProductPrice } from './styled';
-import Product from '../../../assets/product.png';
+import Product from '../../../assets/post.png';
 
 const CommonProduct = () => {
   return (

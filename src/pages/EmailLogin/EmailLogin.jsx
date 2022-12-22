@@ -50,11 +50,12 @@ const Login = () => {
           /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         console.log(data);
         if (!emailReg.test(email)) {
-          setEmailError('올바른 이메일 형식이 아닙니다.');
+          setEmailError('* 올바른 이메일 형식이 아닙니다.');
         } else if (data.status === 422) {
-          setPwError(data.message);
+          setPwError(`* ${data.message}`);
         } else {
           localStorage.setItem('token', data.user.token);
+          localStorage.setItem('accountname', data.user.accountname);
           const userData = data.user;
           console.log(data);
           setIsLoginState(true);

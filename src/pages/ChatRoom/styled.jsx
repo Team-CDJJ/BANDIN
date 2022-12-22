@@ -9,7 +9,6 @@ export const TopContainer = styled.div`
   }}
 `;
 
-// 별개로 만든 버튼이라 atoms 활용 못했음
 export const ChatRoomMoreModal = styled.button`
   position: absolute;
   width: 24px;

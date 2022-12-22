@@ -1,7 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-// import { useRecoilState } from 'recoil';
-// import { useEffect } from 'react';
-// import { isLogin } from './atoms';
 
 import Home from './pages/Home/Home';
 import EmailLogin from './pages/EmailLogin/EmailLogin';
@@ -17,20 +14,10 @@ import ModifyProfile from './pages/ModifyProfile/ModifyProfile';
 import PrivateRotuer from './components/Router/PrivateRouter';
 import PrivateRotuerRev from './components/Router/PrivateRouterRev';
 import Splash from './pages/Splash/Splash';
+import MyProfile from './pages/MyProfile/MyProfile';
+import AddProduct from './pages/AddProduct/AddProduct';
 
 const App = () => {
-  // const token = localStorage.getItem('token');
-  // const navigate = useNavigate();
-  // const [isLoginState, setIsLoginState] = useRecoilState(isLogin);
-  // console.log(isLoginState);
-  // console.log(token);
-
-  // useEffect(() => {
-  //   setIsLoginState(() => {
-  //     return !!token;
-  //   });
-  // }, []);
-
   return (
     <Routes>
       <Route path='/' element={<Splash />} />
@@ -54,10 +41,14 @@ const App = () => {
       <Route path='/chatlist' element={<ChatList />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signup/setupprofile' element={<SetUpProfile />} />
+      <Route path='/profile/:accountName' element={<MyProfile />} />
+      {/* <Route path='/myprofile/:accountname' element={<MyProfile />} /> */}
       <Route path='/follower' element={<Follower />} />
       <Route path='/following' element={<Following />} />
+      <Route path='/myprofile/addproduct' element={<AddProduct />} />
       <Route path='/search' element={<UserSearch />} />
       <Route path='/modifyprofile' element={<ModifyProfile />} />
+      <Route path='/myprofile' element={<MyProfile />} />
       <Route path='/*' element={<NotFound />} />
     </Routes>
   );

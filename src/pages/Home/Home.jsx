@@ -59,7 +59,8 @@ const Home = () => {
           {/* <Link to='/login'>로그인</Link> */}
         </EmptyHomeWrap>
       )}
-      <TapNav />
+      {/* <TapNav /> */}
+      <TabMenu place='search' />
     </>
   );
 };

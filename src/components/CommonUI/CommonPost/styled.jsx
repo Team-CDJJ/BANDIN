@@ -29,7 +29,6 @@ export const UserName = styled.h1`
     return css`
       font-size: ${theme.fontSizes.md};
       line-height: 18px;
-      /* line-height: 18px; */
     `;
   }}
 `;

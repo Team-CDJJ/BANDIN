@@ -6,11 +6,9 @@ import InputBox from '../../components/atoms/InputBox/Input';
 import { SignUpWrapper, SignUpTitle } from './styled';
 
 const SignUp = () => {
-  // const [email, setEmail] = useState('');
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [emailError, setEmailError] = useState('');
 
-  // const [password, setPassword] = useState('');
   const [isPwValid, setIsPwValid] = useState(false);
   const [pwError, setPwError] = useState('');
 
@@ -20,6 +18,7 @@ const SignUp = () => {
     email: '',
     password: '',
   });
+
   const { email, password } = inputValue;
 
   const handleData = (event) => {
@@ -38,10 +37,10 @@ const SignUp = () => {
       const emailReg =
         /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
       const regResult = emailReg.test(email);
-      setEmailError(data.message);
+      setEmailError(`* ${data.message}`);
       if (!regResult) {
         setIsEmailValid(false);
-        setEmailError('올바른 이메일 형식이 아닙니다');
+        setEmailError('* 올바른 이메일 형식이 아닙니다');
       } else if (data.message === '사용 가능한 이메일 입니다.' && regResult) {
         setIsEmailValid(true);
       } else {
@@ -57,7 +56,7 @@ const SignUp = () => {
         setIsPwValid(true);
       } else {
         setIsPwValid(false);
-        setPwError('비밀번호는 6자리 이상이어야 합니다.');
+        setPwError('* 비밀번호는 6자리 이상이어야 합니다.');
       }
     };
     pwValidator();

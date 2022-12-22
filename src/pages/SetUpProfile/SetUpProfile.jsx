@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { accountNameValid } from '../../api/login/accountValid';
 import { profileImgSrc } from '../../atoms';
 
@@ -104,8 +104,7 @@ const SetUpProfile = () => {
     };
 
     postSignUp(userData)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         navigate('/emaillogin');
       })
       .catch((error) => {

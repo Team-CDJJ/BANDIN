@@ -5,7 +5,7 @@ import noneProfileImage from './assets/profile.png';
 const { persistAtom } = recoilPersist();
 
 export const accountNameValue = atom({
-  key: 'accountName',
+  key: 'accountname',
   default: '',
   effects_UNSTABLE: [persistAtom],
 });
@@ -29,7 +29,7 @@ export const isLogin = atom({
 });
 
 export const userNameValue = atom({
-  key: 'userName',
+  key: 'username',
   default: '',
   effects_UNSTABLE: [persistAtom],
 });

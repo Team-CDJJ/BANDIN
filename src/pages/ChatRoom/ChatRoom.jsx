@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import TopChatNav from '../../components/CommonUI/Nav/TopChatNav/TopChatNav';
 import Comment from '../../components/CommonUI/Comment/Comment';
-import PostModal from '../../components/CommonUI/PostModal/PostModal';
-import Button from '../../components/atoms/Button/Button';
+import PostChatModal from '../../components/CommonUI/PostModal/PostModal';
 
 import {
   TopContainer,
@@ -29,7 +28,7 @@ const ChatRoom = () => {
 
   return (
     <TopContainer>
-      <TopChatNav />
+      <TopChatNav title='베이스 기타 삽니다!!' />
       <ChatRoomMoreModal
         type='button'
         onClick={() => {
@@ -45,9 +44,8 @@ const ChatRoom = () => {
           <BoxAndTimeWrapper>
             <TheOtherPersonTextBox>
               <TalkingAbout>
-                옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여,
-                뿐이다. 이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할
-                넣는 풍부하게 뛰노는 인생의 힘있다.
+                안녕하세요!! 글 올려주신 거 관심 있어서 디엠 보내요~! 직거래
+                완전 가능합니당
               </TalkingAbout>
             </TheOtherPersonTextBox>
             <TheOtherPersonTime>12:39</TheOtherPersonTime>
@@ -57,7 +55,11 @@ const ChatRoom = () => {
           <ProfileImg src={profileImg} alt='채팅 상대방 프로필' />
           <BoxAndTimeWrapper>
             <TheOtherPersonTextBox>
-              <TalkingAbout>안녕하세요. 감귤 사고싶어요요요요요</TalkingAbout>
+              <TalkingAbout>
+                앰프 같이 팔아주시면 돈 더 드릴 수 있습니다! 대신 문제 없는 걸로
+                원해용 가방, 케이블, 스트랩은 무조건 있어야 하고 튜닝 환영합니다
+                ㅎㅎ..
+              </TalkingAbout>
             </TheOtherPersonTextBox>
             <TheOtherPersonTime>12:41</TheOtherPersonTime>
           </BoxAndTimeWrapper>
@@ -66,7 +68,7 @@ const ChatRoom = () => {
         <MyBoxAndTimeWrapper>
           <MyTime>12:50</MyTime>
           <MyTextBox>
-            <MyTalk>네 말씀하세요.</MyTalk>
+            <MyTalk>네 안녕하세요~ 디자인은 몇 번째 사진으로 원하세요?</MyTalk>
           </MyTextBox>
         </MyBoxAndTimeWrapper>
         <MyBoxAndTimeWrapper>
@@ -79,7 +81,7 @@ const ChatRoom = () => {
         whatPlaceholder='inputMessage'
         chatRoomClick='send'
       />
-      {modal === true ? <PostModal /> : null}
+      {modal === true ? <PostChatModal leaveChatRoom='채팅방 나가기' /> : null}
     </TopContainer>
   );
 };

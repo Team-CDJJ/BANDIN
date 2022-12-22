@@ -17,6 +17,8 @@ import messageTabFill from '../../../assets/icon-message-circle-fill.png';
 import userTabFill from '../../../assets/icon-user-fill.png';
 
 const TabMenu = ({ place }) => {
+  const accountname = localStorage.getItem('accountname');
+
   return (
     <TabMenuSection>
       <h1 className='ir'>하단 탭 메뉴바</h1>
@@ -33,7 +35,7 @@ const TabMenu = ({ place }) => {
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
-          <Link to='/'>
+          <Link to='/chatlist'>
             {place === 'chat' ? (
               <EachTabImg src={messageTabFill} alt='채팅 탭메뉴' />
             ) : (
@@ -43,13 +45,13 @@ const TabMenu = ({ place }) => {
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
-          <Link to='/'>
+          <Link to='/upload'>
             <EachTabImg src={editTab} alt='게시물 탭메뉴' />
             <EachTabSpan>게시물 작성</EachTabSpan>
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
-          <Link to='/'>
+          <Link to={`/profile/${accountname}`}>
             {place === 'profile' ? (
               <EachTabImg src={userTabFill} alt='프로필 탭메뉴' />
             ) : (

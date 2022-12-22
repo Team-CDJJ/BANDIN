@@ -1,15 +1,30 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+    from {
+      bottom: -5rem;
+      opacity: 0;
+    }
+    to {
+      bottom: 0rem;
+      opacity: 1;
+    }
+
+`;
 
 export const PostModalArticle = styled.article`
   ${({ theme }) => {
     return css`
       width: 100%;
-      height: 92px;
+      /* 최소 높이값 */
+      min-height: 92px;
       background-color: #fff;
-      position: absolute;
+      position: fixed;
       bottom: 0;
-      border: 1px solid ${theme.colors.greyDB};
+      padding-bottom: 24px;
+      outline: 1px solid ${theme.colors.greyDB};
       border-radius: ${theme.borderRadius.lv2} ${theme.borderRadius.lv2} 0 0;
+      animation: ${fadeIn} 0.5s;
     `;
   }}
 `;
@@ -29,8 +44,11 @@ export const GrayLine = styled.div`
   }}
 `;
 
-export const LeaveChatRoom = styled.p`
-  margin-top: 50px;
+export const ModalInnerText = styled.p`
+  &:first-child {
+    margin-top: 50px;
+  }
+  margin-top: 24px;
   margin-left: 26px;
   cursor: pointer;
   font-size: 14px;

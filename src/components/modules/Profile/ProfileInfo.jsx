@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import Img from '../../atoms/Img/img';
 
@@ -21,9 +21,10 @@ const ProfileInfo = () => {
   const [followerCount, setFollowerCount] = useState();
   const [followingCount, setFollowingCount] = useState();
   const [isFollow, setIsFollow] = useState();
-  console.log(isFollow);
 
   const { username, intro, image } = userInfo;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getMyProfile(accountName)
@@ -38,8 +39,18 @@ const ProfileInfo = () => {
       });
   }, [accountName]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('accountname');
+    localStorage.removeItem('recoil-persist');
+    navigate('/');
+  };
+
   return (
     <ProfileWrapper>
+      <button type='button' onClick={handleLogout}>
+        하이
+      </button>
       <FollowAndImgWrapper>
         <Link
           to={{

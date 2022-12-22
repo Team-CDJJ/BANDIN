@@ -17,7 +17,7 @@ import userTab from '../../../assets/icon-user.png';
 import userTabFill from '../../../assets/icon-user-fill.png';
 
 const TabMenu = ({ place }) => {
-  const accountname = localStorage.getItem('accountname');
+  const accountName = localStorage.getItem('accountname');
 
   return (
     <TabMenuSection>
@@ -48,7 +48,7 @@ const TabMenu = ({ place }) => {
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
-          <Link to={`/profile/${accountname}`}>
+          <Link to={`/profile/${accountName}`}>
             <TabImg
               src={place === 'myprofile' ? userTabFill : userTab}
               alt='내 프로필'

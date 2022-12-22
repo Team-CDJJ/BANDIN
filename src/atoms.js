@@ -56,3 +56,9 @@ export const userDataAtom = atom({
   key: 'userData',
   default: {},
 });
+
+export const productImgSrc = atom({
+  key: 'productImg',
+  default: noneProfileImage,
+  effects_UNSTABLE: [persistAtom],
+});

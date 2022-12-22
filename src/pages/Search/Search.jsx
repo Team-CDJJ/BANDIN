@@ -21,7 +21,6 @@ const Search = () => {
             formData,
           );
           setUserArr(res.data);
-          // return res.data;
         } catch (err) {
           console.error(err);
         }

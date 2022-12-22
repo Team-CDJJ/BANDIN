@@ -42,10 +42,9 @@ const App = () => {
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signup/setupprofile' element={<SetUpProfile />} />
       <Route path='/profile/:accountName' element={<MyProfile />} />
-      {/* <Route path='/myprofile/:accountname' element={<MyProfile />} /> */}
-      <Route path='/follower' element={<Follower />} />
-      <Route path='/following' element={<Following />} />
-      <Route path='/myprofile/addproduct' element={<AddProduct />} />
+      <Route path='/:accountName/follower' element={<Follower />} />
+      <Route path='/:accountName/following' element={<Following />} />
+      <Route path='/addproduct' element={<AddProduct />} />
       <Route path='/search' element={<UserSearch />} />
       <Route path='/modifyprofile' element={<ModifyProfile />} />
       <Route path='/myprofile' element={<MyProfile />} />

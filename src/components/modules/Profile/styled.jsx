@@ -23,24 +23,22 @@ export const FollowAndImgWrapper = styled.div`
       height: 110px;
       gap: 30px;
       margin-bottom: 16px;
-
-      > div {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        text-align: center;
-
-        .followNum {
-          font-size: ${theme.fontSizes.xl};
-          font-weight: 700;
-          line-height: 23px;
-          color: #000;
-        }
-        .followTxt {
-          font-size: ${theme.fontSizes.xs};
-          line-height: 10px;
-          color: ${theme.colors.grey76};
-        }
+      text-align: center;
+      .followNum {
+        display: block;
+        font-size: ${theme.fontSizes.xl};
+        font-weight: 700;
+        line-height: 23px;
+        margin-bottom: 6px;
+        color: #000;
+      }
+      .followTxt {
+        font-size: ${theme.fontSizes.xs};
+        line-height: 10px;
+        color: ${theme.colors.grey76};
+      }
+      .following {
+        color: ${theme.colors.grey76};
       }
     `;
   }}

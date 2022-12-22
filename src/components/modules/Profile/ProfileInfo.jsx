@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import Img from '../../atoms/Img/img';
 
@@ -9,19 +9,21 @@ import {
   ProfileWrapper,
   TextWrapper,
 } from './styled';
-import Button from '../../atoms/Button/Button';
 import getMyProfile from '../../../api/profile/getmyprofile';
+import MyProfileBtn from '../MyProfileBtn/MyProfileBtn';
+import YourProfileBtn from '../YourProfileBtn/YourProfileBtn';
 
 const ProfileInfo = () => {
-  const path = useLocation().pathname;
   const { accountName } = useParams();
+  const accountname = localStorage.getItem('accountname');
 
   const [userInfo, setUserInfo] = useState({});
   const [followerCount, setFollowerCount] = useState();
   const [followingCount, setFollowingCount] = useState();
   const [isFollow, setIsFollow] = useState();
+  console.log(isFollow);
 
-  const { accountname, username, intro, image } = userInfo;
+  const { username, intro, image } = userInfo;
 
   useEffect(() => {
     getMyProfile(accountName)
@@ -34,16 +36,20 @@ const ProfileInfo = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  console.log(isFollow);
+  }, [accountName]);
 
   return (
     <ProfileWrapper>
       <FollowAndImgWrapper>
-        <div>
+        <Link
+          to={{
+            pathname: `/${accountName}/follower`,
+            state: { accountName },
+          }}
+        >
           <strong className='followNum'>{followerCount}</strong>
           <p className='followTxt'>follower</p>
-        </div>
+        </Link>
         <Img
           width='110px'
           height='110px'
@@ -51,24 +57,27 @@ const ProfileInfo = () => {
           alt={`${username}님의 프로필 이미지`}
           src={image}
         />
-        <div>
-          <strong className='followNum'>{followingCount}</strong>
+        <Link
+          to={{
+            pathname: `/${accountName}/following`,
+            state: { accountName },
+          }}
+        >
+          <strong className='followNum following'>{followingCount}</strong>
           <p className='followTxt'>following</p>
-        </div>
+        </Link>
       </FollowAndImgWrapper>
       <TextWrapper>
         <strong className='user-name'>{username}</strong>
-        <p className='account-name'>@ {accountname}</p>
+        <p className='account-name'>@ {accountName}</p>
         <p className='intro'>{intro}</p>
       </TextWrapper>
       <BtnWrapper>
-        <Button
-          size='md'
-          type='button'
-          state='active'
-          tit='프로필 수정'
-        ></Button>
-        <Button size='md' type='button' state='active' tit='상품 등록'></Button>
+        {accountname === accountName ? (
+          <MyProfileBtn></MyProfileBtn>
+        ) : (
+          <YourProfileBtn isFollow={isFollow}></YourProfileBtn>
+        )}
       </BtnWrapper>
     </ProfileWrapper>
   );

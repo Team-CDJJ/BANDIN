@@ -7,7 +7,7 @@ const MyProfile = () => {
     <div>
       <TopBasicNav />
       <ProfileInfo />
-      <TabMenu />
+      <TabMenu place='myprofile' />
     </div>
   );
 };

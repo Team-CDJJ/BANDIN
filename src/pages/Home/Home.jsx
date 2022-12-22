@@ -30,7 +30,7 @@ const Home = () => {
         </EmptyHomeWrap>
       )}
       {/* <TapNav /> */}
-      <TabMenu />
+      <TabMenu place='search' />
     </>
   );
 };

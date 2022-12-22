@@ -24,6 +24,7 @@ const Following = () => {
       <FollowingTopSpan>Following</FollowingTopSpan>
       <FollowingMain>
         <FollowingMainUl>
+          {/* UserItem에 목록 추가하기 */}
           <UserItem />
           <FollowingBtn
             state={`${toggleColorAndBg}`}

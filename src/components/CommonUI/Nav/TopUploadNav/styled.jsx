@@ -22,3 +22,9 @@ export const TopUploadInnerWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
 `;
+
+export const PrevBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;

@@ -18,8 +18,8 @@ const ChatList = () => {
         {/* chatroom 경로 수정 필요 */}
         <ChatLink to='/chatroom'>
           <TextContainer>
-            <ChatName>애월읍 위니브 감귤농장</ChatName>
-            <ChatTxt>이번에 정정 언제하맨마씸?</ChatTxt>
+            <ChatName>베이스 기타 삽니다!!</ChatName>
+            <ChatTxt>[사진]</ChatTxt>
             <ChatDate>2020.10.25</ChatDate>
           </TextContainer>
         </ChatLink>
@@ -40,7 +40,7 @@ const ChatList = () => {
           </TextContainer>
         </ChatLink>
       </Section>
-      <TabMenu />
+      <TabMenu place='chat' />
     </>
   );
 };

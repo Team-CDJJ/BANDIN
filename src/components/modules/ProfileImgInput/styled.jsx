@@ -5,6 +5,9 @@ export const ProfileImgInputWrapper = styled.div`
   text-align: center;
   margin-bottom: 30px;
   position: relative;
+  width: 120px;
+  height: 110px;
+  margin: 0 auto;
 `;
 
 export const UploadBtn = styled.button`
@@ -15,5 +18,5 @@ export const UploadBtn = styled.button`
   border: none;
   position: absolute;
   bottom: 0;
-  right: 100px;
+  right: 0;
 `;

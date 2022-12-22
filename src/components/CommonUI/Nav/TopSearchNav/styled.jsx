@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const TopSearchNavSection = styled.section`
   ${({ theme }) => {
     return css`
-      width: 100vw;
+      width: 100%;
       height: 48px;
       padding: 8px 16px;
       display: flex;
@@ -23,6 +23,12 @@ export const TopSearchInnerWrapper = styled.div`
   > a {
     cursor: pointer;
   }
+`;
+
+export const PrevBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 `;
 
 export const TopSearchNavInput = styled.input`

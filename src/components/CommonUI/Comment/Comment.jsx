@@ -13,12 +13,11 @@ import commentProfile from '../../../assets/profile.png';
 import imgBtn from '../../../assets/img-button.png';
 
 const Comment = ({ whatImg, whatPlaceholder, chatRoomClick }) => {
-  const [inputText, setInputText] = useState('');
+  const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setInputText('');
-    // focus();
+    setInputValue('');
   };
 
   return (
@@ -38,25 +37,25 @@ const Comment = ({ whatImg, whatPlaceholder, chatRoomClick }) => {
             <CommentInput
               type='text'
               id='message'
-              value={inputText}
+              value={inputValue}
               placeholder='메시지 입력하기...'
-              onChange={(e) => setInputText(e.target.value)}
+              onChange={(e) => setInputValue(e.target.value)}
             />
           ) : (
             <CommentInput
               type='text'
               id='message'
-              value={inputText}
+              value={inputValue}
               placeholder='댓글 입력하기...'
-              onChange={(e) => setInputText(e.target.value)}
+              onChange={(e) => setInputValue(e.target.value)}
             />
           )}
           {chatRoomClick === 'send' ? (
-            <CommentBtn disabled={!inputText} onClick={handleSubmit}>
+            <CommentBtn disabled={!inputValue} onClick={handleSubmit}>
               전송
             </CommentBtn>
           ) : (
-            <CommentBtn disabled={!inputText} onClick={handleSubmit}>
+            <CommentBtn disabled={!inputValue} onClick={handleSubmit}>
               게시
             </CommentBtn>
           )}

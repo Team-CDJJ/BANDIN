@@ -22,6 +22,12 @@ export const InnerChatNav = styled.div`
   position: relative;
 `;
 
+export const PrevBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
 export const TopChatNavSpan = styled.span`
   ${({ theme }) => {
     return css`

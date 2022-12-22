@@ -1,19 +1,23 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import { TopUploadNavSection, TopUploadInnerWrapper } from './styled';
+import { TopUploadNavSection, TopUploadInnerWrapper, PrevBtn } from './styled';
 
 import arrowLeft from '../../../../assets/icon-arrow-left.png';
 import Button from '../../../atoms/Button/Button';
 
 const TopUploadNav = () => {
+  const navigate = useNavigate();
+  const handlePrev = () => {
+    navigate(-1);
+  };
+
   return (
     <TopUploadNavSection>
       <h1 className='ir'>업로드 상단바</h1>
       <TopUploadInnerWrapper>
-        {/* 경로 수정 필요 */}
-        <Link to='/'>
+        <PrevBtn onClick={handlePrev}>
           <img src={arrowLeft} alt='뒤로 가기' />
-        </Link>
+        </PrevBtn>
         <Button
           type='submit'
           size='sm'

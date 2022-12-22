@@ -23,6 +23,7 @@ const Follower = () => {
       <FollowerTopSpan>Followers</FollowerTopSpan>
       <FollowerMain>
         <FollowerMainUl>
+          {/* UserItem에 목록 추가하기 */}
           <UserItem />
           <FollowerBtn
             state={`${toggleColorAndBg}`}

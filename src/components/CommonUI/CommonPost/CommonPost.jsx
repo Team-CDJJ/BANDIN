@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Img from '../../atoms/Img/img';
+
 import {
   CommonPostWrap,
   CommonPostSection,
@@ -15,31 +19,44 @@ import {
 } from './styled';
 
 import Profile from '../../../assets/profile.png';
-import PostImg from '../../../assets/post.png';
 
-const CommonPost = () => {
+const CommonPost = ({ post }) => {
+  const [postData, setPostData] = useState([]);
+
+  const changeDateFormat = (date) => {
+    const year = date.slice(0, 4);
+    const month = date.slice(5, 7);
+    const day = date.slice(8, 10);
+
+    return `${year}년 ${month}월 ${day}일`;
+  };
+
+  console.log(post);
   return (
     <CommonPostWrap>
       <img src={Profile} alt='프로필 이미지' className='img-profile' />
       <CommonPostSection>
         <CommonHeaderSec>
-          <UserName>애월읍 위니브 감귤농장</UserName>
+          <UserName>{post.author.username}</UserName>
           <VerticalBtn type='button' />
         </CommonHeaderSec>
-        <UserID>@ weniv_Mandarin</UserID>
-        <PostTxt>
-          옷을 인생을 그러므로 없으면 것은 이상은 것은 우리의 위하여, 뿐이다.
-          이상의 청춘의 뼈 따뜻한 그들의 그와 약동하다. 대고, 못할 넣는 풍부하게
-          뛰노는 인생의 힘있다.
-        </PostTxt>
-        <img src={PostImg} alt='게시글 이미지' className='img-post' />
+        <UserID>@ {post.author.accountname}</UserID>
+        <PostTxt>{post.content}</PostTxt>
+        <Link to={`/post/${post.id}`}>
+          {post.image &&
+            post.image
+              .split(',')
+              .map((item) => (
+                <Img width='100%' src={item} alt='게시글 이미지' />
+              ))}
+        </Link>
         <IconGroup>
           <LikeBtn />
-          <LikeCount>58</LikeCount>
+          <LikeCount>{post.heartCount}</LikeCount>
           <ChatBtn />
-          <ChatCount>12</ChatCount>
+          <ChatCount>{post.commentCount}</ChatCount>
         </IconGroup>
-        <PostUploadTime>2020년 10월 21일</PostUploadTime>
+        <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>
       </CommonPostSection>
     </CommonPostWrap>
   );

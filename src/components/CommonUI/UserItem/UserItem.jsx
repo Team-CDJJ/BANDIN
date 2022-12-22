@@ -1,3 +1,4 @@
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   UserList,
   ProfileImg,
@@ -8,8 +9,15 @@ import {
 } from './styled';
 
 const UserItem = ({ image, username, accountname, keyValue, alt }) => {
+  const { accountName } = useParams();
+  const navigate = useNavigate();
+
+  const handleToProfile = () => {
+    navigate(`/profile/${accountName}`);
+  };
+
   return (
-    <UserList key={keyValue}>
+    <UserList key={keyValue} onClick={handleToProfile}>
       <ProfileLink href='#'>
         <ProfileImg src={image} alt={alt} />
         <UserInfo>

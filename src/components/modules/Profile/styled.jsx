@@ -52,12 +52,35 @@ export const TextWrapper = styled.div`
       display: flex;
       flex-direction: column;
       text-align: center;
+      margin-bottom: 24px;
+      .user-name {
+        font-size: ${theme.fontSizes.lg};
+        font-weight: 700;
+        line-height: 20px;
+        margin-bottom: 6px;
+      }
+
+      .account-name {
+        font-size: ${theme.fontSizes.sm};
+        line-height: 14px;
+        margin-bottom: 16px;
+        color: ${theme.colors.grey76};
+      }
+      .intro {
+        font-size: ${theme.fontSizes.md};
+        line-height: 18px;
+        color: ${theme.colors.grey76};
+      }
     `;
   }}
 `;
 
 export const BtnWrapper = styled.div`
   ${({ theme }) => {
-    return css``;
+    return css`
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    `;
   }}
 `;

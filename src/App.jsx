@@ -21,7 +21,7 @@ import MyProfile from './pages/MyProfile/MyProfile';
 import AddProduct from './pages/AddProduct/AddProduct';
 
 const App = () => {
-  // const token = localStorage.getItem('token');
+  // const accountname = localStorage.getItem('accountname');
   // const navigate = useNavigate();
   // const [isLoginState, setIsLoginState] = useRecoilState(isLogin);
   // console.log(isLoginState);
@@ -56,7 +56,8 @@ const App = () => {
       <Route path='/chatlist' element={<ChatList />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signup/setupprofile' element={<SetUpProfile />} />
-      <Route path='/myprofile' element={<MyProfile />} />
+      <Route path='/myprofile/:accountnmae' element={<MyProfile />} />
+      <Route path='/profile/:accountname' element={<MyProfile />} />
       <Route path='/follower' element={<Follower />} />
       <Route path='/following' element={<Following />} />
       <Route path='/myprofile/addproduct' element={<AddProduct />} />

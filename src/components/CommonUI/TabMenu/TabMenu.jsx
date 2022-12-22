@@ -17,6 +17,8 @@ import messageTabFill from '../../../assets/icon-message-circle-fill.png';
 import userTabFill from '../../../assets/icon-user-fill.png';
 
 const TabMenu = ({ place }) => {
+  const accountname = localStorage.getItem('accountname');
+
   return (
     <TabMenuSection>
       <h1 className='ir'>하단 탭 메뉴바</h1>
@@ -49,7 +51,7 @@ const TabMenu = ({ place }) => {
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
-          <Link to='/myprofile'>
+          <Link to={`/myprofile/${accountname}`}>
             {place === 'profile' ? (
               <EachTabImg src={userTabFill} alt='프로필 탭메뉴' />
             ) : (

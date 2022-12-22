@@ -1,9 +1,6 @@
-/* eslint-disable no-useless-return */
-/* eslint-disable no-else-return */
-/* eslint-disable no-shadow */
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { accountNameValid } from '../../api/login/accountValid';
 import { profileImgSrc } from '../../atoms';
 

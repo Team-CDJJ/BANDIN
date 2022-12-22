@@ -10,16 +10,11 @@ import {
   TextWrapper,
 } from './styled';
 import Button from '../../atoms/Button/Button';
-// import getMyProfile from '../../../api/profile/getmyprofile';
-// import { accessInstance } from '../../../api/api';
 import getMyProfile from '../../../api/profile/getmyprofile';
 
 const ProfileInfo = () => {
   const path = useLocation().pathname;
-  const accountName = path.split('/')[2];
-  console.log(accountName);
-  // const { accountName } = useParams();
-  // console.log(accountName);
+  const { accountName } = useParams();
 
   const [userInfo, setUserInfo] = useState({});
   const [followerCount, setFollowerCount] = useState();
@@ -29,23 +24,18 @@ const ProfileInfo = () => {
   const { accountname, username, intro, image } = userInfo;
 
   useEffect(() => {
-    // const accountName = localStorage.getItem('accountname');
-    // const getMyProfile = async () => {
-    //   try {
-    //     const res = await accessInstance.get(
-    //       `/profile/${accountName}`,
-    //       formData,
-    //     );
-    //     console.log(res);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };
-    // getMyProfile();
-    getMyProfile(accountName).then((data) => {
-      console.log(data);
-    });
+    getMyProfile(accountName)
+      .then((data) => {
+        setUserInfo(data);
+        setFollowerCount(data.followerCount);
+        setFollowingCount(data.followingCount);
+        setIsFollow(data.isfollow);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
+  console.log(isFollow);
 
   return (
     <ProfileWrapper>

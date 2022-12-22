@@ -41,8 +41,8 @@ const App = () => {
       <Route path='/chatlist' element={<ChatList />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signup/setupprofile' element={<SetUpProfile />} />
-      {/* <Route path='/myprofile/:accountNmae' element={<MyProfile />} /> */}
       <Route path='/profile/:accountName' element={<MyProfile />} />
+      {/* <Route path='/myprofile/:accountname' element={<MyProfile />} /> */}
       <Route path='/follower' element={<Follower />} />
       <Route path='/following' element={<Following />} />
       <Route path='/myprofile/addproduct' element={<AddProduct />} />

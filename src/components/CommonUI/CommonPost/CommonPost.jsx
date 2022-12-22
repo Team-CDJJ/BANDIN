@@ -21,8 +21,6 @@ import {
 import Profile from '../../../assets/profile.png';
 
 const CommonPost = ({ post }) => {
-  const [postData, setPostData] = useState([]);
-
   const changeDateFormat = (date) => {
     const year = date.slice(0, 4);
     const month = date.slice(5, 7);
@@ -52,7 +50,9 @@ const CommonPost = ({ post }) => {
         </Link>
         <IconGroup>
           <LikeBtn />
-          <LikeCount>{post.heartCount}</LikeCount>
+          <LikeCount id={post.id} hearted={post.hearted}>
+            {post.heartCount}
+          </LikeCount>
           <ChatBtn />
           <ChatCount>{post.commentCount}</ChatCount>
         </IconGroup>

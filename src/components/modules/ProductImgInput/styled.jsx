@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import uploadBtnImg from '../../../assets/img-button.png';
+import uploadBtnImg from '../../../assets/upload-img.png';
 
 export const ProductImgInputWrapper = styled.div`
+  width: 322px;
+  margin: 0 auto;
   text-align: center;
   margin-bottom: 30px;
   position: relative;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -18,7 +19,6 @@ const AddProduct = () => {
 
   const [isLinkValid, setIsLinkValid] = useState(false);
   const [linkError, setLinkError] = useState('');
-  const image = useRecoilValue(productImgSrc);
 
   const [inputValue, setInputValue] = useState({
     itemName: '',
@@ -28,8 +28,26 @@ const AddProduct = () => {
 
   const { itemName, price, link } = inputValue;
 
+  const priceFormat = (str) => {
+    // eslint-disable-next-line no-shadow
+    const comma = (str) => {
+      str = String(str);
+      return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    };
+    // eslint-disable-next-line no-shadow
+    const uncomma = (str) => {
+      str = String(str);
+      return str.replace(/[^\d]+/g, '');
+    };
+    return comma(uncomma(str));
+  };
+
+  inputValue.price = priceFormat(price);
+  console.log(typeof price);
   const navigate = useNavigate();
+
   const itemImage = useRecoilValue(productImgSrc);
+
   const handleData = (event) => {
     const { name, value } = event.target;
     setInputValue({ ...inputValue, [name]: value });
@@ -51,7 +69,7 @@ const AddProduct = () => {
   useEffect(() => {
     const priceValidator = () => {
       // eslint-disable-next-line no-restricted-globals
-      if (!isNaN(price)) {
+      if (!isNaN(price.replaceAll(',', ''))) {
         setIsPriceValid(true);
         setPriceError('');
         // eslint-disable-next-line no-restricted-globals
@@ -81,7 +99,7 @@ const AddProduct = () => {
     const userData = {
       product: {
         itemName,
-        price: parseInt(price, 10),
+        price: parseInt(price.replaceAll(',', ''), 10),
         link,
         itemImage,
       },
@@ -91,6 +109,7 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         navigate('/myprofile');
+        useSetRecoilState(productImgSrc);
       })
       .catch((error) => {
         if (error.response.status === 422) {

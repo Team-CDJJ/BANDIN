@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 import noneProfileImage from './assets/profile.png';
+import noneProductImage from './assets/product.png';
 
 const { persistAtom } = recoilPersist();
 
@@ -59,6 +60,6 @@ export const userDataAtom = atom({
 
 export const productImgSrc = atom({
   key: 'productImg',
-  default: noneProfileImage,
+  default: noneProductImage,
   effects_UNSTABLE: [persistAtom],
 });

@@ -12,17 +12,19 @@ import {
 import getMyProfile from '../../../api/profile/getmyprofile';
 import MyProfileBtn from '../MyProfileBtn/MyProfileBtn';
 import YourProfileBtn from '../YourProfileBtn/YourProfileBtn';
+import noneProfileImg from '../../../assets/profile.png';
 
 const ProfileInfo = () => {
   const { accountName } = useParams();
   const accountname = localStorage.getItem('accountname');
 
   const [userInfo, setUserInfo] = useState({});
+  const [image, setImage] = useState('');
   const [followerCount, setFollowerCount] = useState();
   const [followingCount, setFollowingCount] = useState();
   const [isFollow, setIsFollow] = useState();
 
-  const { username, intro, image } = userInfo;
+  const { username, intro } = userInfo;
 
   const navigate = useNavigate();
 
@@ -33,6 +35,7 @@ const ProfileInfo = () => {
         setFollowerCount(data.followerCount);
         setFollowingCount(data.followingCount);
         setIsFollow(data.isfollow);
+        setImage(data.image);
       })
       .catch((error) => {
         console.log(error);
@@ -66,7 +69,7 @@ const ProfileInfo = () => {
           height='110px'
           borderRadius='50%'
           alt={`${username}님의 프로필 이미지`}
-          src={image}
+          src={image.includes('Ellipse.png') ? noneProfileImg : image}
         />
         <Link
           to={{

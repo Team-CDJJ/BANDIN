@@ -7,10 +7,12 @@ import { AddProductSection, AddImageDesc, AddProductForm } from './styled';
 import InputBox from '../../components/atoms/InputBox/Input';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
 import { productImgSrc } from '../../atoms';
-
+import noneProductImage from '../../assets/product.png';
 import postProduct from '../../api/addproduct/addproduct';
 
 const AddProduct = () => {
+  const setProductImg = useSetRecoilState(productImgSrc);
+
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
 
@@ -43,7 +45,6 @@ const AddProduct = () => {
   };
 
   inputValue.price = priceFormat(price);
-  console.log(typeof price);
   const navigate = useNavigate();
 
   const itemImage = useRecoilValue(productImgSrc);
@@ -109,7 +110,7 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         navigate('/myprofile');
-        useSetRecoilState(productImgSrc);
+        setProductImg(noneProductImage);
       })
       .catch((error) => {
         if (error.response.status === 422) {

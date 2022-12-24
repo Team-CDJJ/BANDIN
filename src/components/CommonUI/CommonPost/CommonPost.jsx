@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
+import LikeBtnTest from '../../modules/LikeBtn/LikeBtn';
 
 import {
   CommonPostWrap,
   CommonPostSection,
-  CommonHeaderSec,
+  CommonUserInfo,
   UserName,
+  UserInfoCont,
   VerticalBtn,
   UserID,
   PostTxt,
   IconGroup,
-  LikeBtn,
   LikeCount,
   ChatBtn,
   ChatCount,
@@ -29,28 +30,43 @@ const CommonPost = ({ post }) => {
     return `${year}년 ${month}월 ${day}일`;
   };
 
-  console.log(post);
   return (
     <CommonPostWrap>
-      <img src={Profile} alt='프로필 이미지' className='img-profile' />
+      <Link
+        to={`/profile/${post.author.accountname}`}
+        style={{ textDecoration: 'none', color: '#767676' }}
+      >
+        <UserInfoCont>
+          <img src={Profile} alt='프로필 이미지' className='img-profile' />
+          <CommonUserInfo className='linkWrap'>
+            <UserName className='h1'>{post.author.username}</UserName>
+            <UserID>@ {post.author.accountname}</UserID>
+          </CommonUserInfo>
+        </UserInfoCont>
+      </Link>
+      <VerticalBtn type='button' />
       <CommonPostSection>
-        <CommonHeaderSec>
-          <UserName>{post.author.username}</UserName>
-          <VerticalBtn type='button' />
-        </CommonHeaderSec>
-        <UserID>@ {post.author.accountname}</UserID>
         <PostTxt>{post.content}</PostTxt>
         <Link to={`/post/${post.id}`}>
           {post.image &&
             post.image
               .split(',')
               .map((item) => (
-                <Img width='100%' src={item} alt='게시글 이미지' />
+                <Img
+                  key={post.id}
+                  width='100%'
+                  src={item}
+                  alt='게시글 이미지'
+                />
               ))}
         </Link>
         <IconGroup>
-          <LikeBtn />
-          <LikeCount id={post.id} hearted={post.hearted}>
+          <LikeBtnTest id={post.id} />
+          <LikeCount
+            heartCount={post.heartCount}
+            id={post.id}
+            hearted={post.hearted}
+          >
             {post.heartCount}
           </LikeCount>
           <ChatBtn />

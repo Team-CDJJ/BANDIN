@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -6,10 +7,12 @@ import { AddProductSection, AddImageDesc, AddProductForm } from './styled';
 import InputBox from '../../components/atoms/InputBox/Input';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
 import { productImgSrc } from '../../atoms';
-
+import noneProductImage from '../../assets/product.png';
 import postProduct from '../../api/addproduct/addproduct';
 
 const AddProduct = () => {
+  const setProductImg = useSetRecoilState(productImgSrc);
+
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
 
@@ -18,7 +21,6 @@ const AddProduct = () => {
 
   const [isLinkValid, setIsLinkValid] = useState(false);
   const [linkError, setLinkError] = useState('');
-  const image = useRecoilValue(productImgSrc);
 
   const [inputValue, setInputValue] = useState({
     itemName: '',
@@ -28,8 +30,25 @@ const AddProduct = () => {
 
   const { itemName, price, link } = inputValue;
 
+  const priceFormat = (str) => {
+    // eslint-disable-next-line no-shadow
+    const comma = (str) => {
+      str = String(str);
+      return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    };
+    // eslint-disable-next-line no-shadow
+    const uncomma = (str) => {
+      str = String(str);
+      return str.replace(/[^\d]+/g, '');
+    };
+    return comma(uncomma(str));
+  };
+
+  inputValue.price = priceFormat(price);
   const navigate = useNavigate();
+
   const itemImage = useRecoilValue(productImgSrc);
+
   const handleData = (event) => {
     const { name, value } = event.target;
     setInputValue({ ...inputValue, [name]: value });
@@ -51,7 +70,7 @@ const AddProduct = () => {
   useEffect(() => {
     const priceValidator = () => {
       // eslint-disable-next-line no-restricted-globals
-      if (!isNaN(price)) {
+      if (!isNaN(price.replaceAll(',', ''))) {
         setIsPriceValid(true);
         setPriceError('');
         // eslint-disable-next-line no-restricted-globals
@@ -81,7 +100,7 @@ const AddProduct = () => {
     const userData = {
       product: {
         itemName,
-        price: parseInt(price, 10),
+        price: parseInt(price.replaceAll(',', ''), 10),
         link,
         itemImage,
       },
@@ -91,6 +110,7 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         navigate('/myprofile');
+        setProductImg(noneProductImage);
       })
       .catch((error) => {
         if (error.response.status === 422) {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import Img from '../../atoms/Img/img';
+import { follow, unfollow } from '../../../api/profile/follow';
 
 import {
   BtnWrapper,
@@ -49,6 +50,16 @@ const ProfileInfo = () => {
     navigate('/');
   };
 
+  const handleFollow = () => {
+    follow(accountName);
+    setIsFollow((state) => true);
+  };
+
+  const handleUnFollow = () => {
+    unfollow(accountName);
+    setIsFollow((state) => false);
+  };
+
   return (
     <ProfileWrapper>
       <button type='button' onClick={handleLogout}>
@@ -90,7 +101,12 @@ const ProfileInfo = () => {
         {accountname === accountName ? (
           <MyProfileBtn></MyProfileBtn>
         ) : (
-          <YourProfileBtn isFollow={isFollow}></YourProfileBtn>
+          <YourProfileBtn
+            isFollow={isFollow}
+            accountName={accountName}
+            handleFollow={handleFollow}
+            handleUnFollow={handleUnFollow}
+          ></YourProfileBtn>
         )}
       </BtnWrapper>
     </ProfileWrapper>

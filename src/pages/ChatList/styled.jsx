@@ -12,7 +12,6 @@ export const ChatLink = styled(Link)`
       position: relative;
       display: flex;
       margin-bottom: 20px;
-      /* border: ; */
       cursor: pointer;
       &::before {
         content: '';

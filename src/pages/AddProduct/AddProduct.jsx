@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
@@ -8,7 +8,7 @@ import InputBox from '../../components/atoms/InputBox/Input';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
 import { productImgSrc } from '../../atoms';
 import noneProductImage from '../../assets/product.png';
-import postProduct from '../../api/addproduct/addproduct';
+import postAddProduct from '../../api/addproduct/postAddProduct';
 
 const AddProduct = () => {
   const setProductImg = useSetRecoilState(productImgSrc);
@@ -31,12 +31,10 @@ const AddProduct = () => {
   const { itemName, price, link } = inputValue;
 
   const priceFormat = (str) => {
-    // eslint-disable-next-line no-shadow
     const comma = (str) => {
       str = String(str);
       return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
     };
-    // eslint-disable-next-line no-shadow
     const uncomma = (str) => {
       str = String(str);
       return str.replace(/[^\d]+/g, '');
@@ -106,7 +104,7 @@ const AddProduct = () => {
       },
     };
 
-    postProduct(userData)
+    postAddProduct(userData)
       .then((data) => {
         console.log(data);
         navigate('/myprofile');

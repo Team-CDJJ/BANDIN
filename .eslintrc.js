@@ -54,6 +54,7 @@ module.exports = {
     'no-alert': 'off',
     'no-console': 'off',
     'no-param-reassign': 'off',
+    'no-shadow': 'off',
     'no-unused-vars': 'warn',
     'jsx-a11y/label-has-associated-control': [
       2,

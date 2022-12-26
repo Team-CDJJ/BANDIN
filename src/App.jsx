@@ -10,6 +10,7 @@ import Following from './pages/Following/Following';
 import NotFound from './pages/404/404';
 import UserSearch from './pages/Search/Search';
 import ChatList from './pages/ChatList/ChatList';
+import ChatRoom from './pages/ChatRoom/ChatRoom';
 import ModifyProfile from './pages/ModifyProfile/ModifyProfile';
 import PrivateRotuer from './components/Router/PrivateRouter';
 import PrivateRotuerRev from './components/Router/PrivateRouterRev';
@@ -40,6 +41,7 @@ const App = () => {
       />
       <Route path='/emaillogin' element={<EmailLogin />} />
       <Route path='/chatlist' element={<ChatList />} />
+      <Route path='/chatlist/chatroom' element={<ChatRoom />} />
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signup/setupprofile' element={<SetUpProfile />} />
       <Route path='/profile/:accountName' element={<MyProfile />} />

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const PostWrapper = styled.div`
+export const PostWrapper = styled.div`
   ${({ theme }) => {
     return css`
       margin-top: 68px;
@@ -10,4 +10,6 @@ const PostWrapper = styled.div`
   }}
 `;
 
-export default PostWrapper;
+export const CommentWrapper = styled.section`
+  padding: 18px 16px;
+`;

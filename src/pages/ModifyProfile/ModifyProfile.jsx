@@ -1,15 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ModifyProfileSection, ModifyProfileForm } from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
 import noneProfileImage from '../../assets/profile.png';
+import getMyProfile from '../../api/profile/getmyprofile';
 
 const ModifyProfile = () => {
+  // 왜 기존 프로필이미지가 불러와졌는지 의문
   const [image, setImage] = useState(noneProfileImage);
   const [userName, setUserName] = useState('');
-  const [accountName, setAccountName] = useState('');
+  const [accountName, setAccountName] = useState(
+    localStorage.getItem('accountname'),
+  );
   const [intro, setIntro] = useState('');
+
+  useEffect(() => {
+    getMyProfile(accountName).then((res) => {
+      console.log(res);
+      const getProfileData = res;
+      setUserName(getProfileData.username);
+      setIntro(getProfileData.intro);
+      // setImage(getProfileData.image);
+    });
+  }, []);
 
   const handleData = (event) => {
     if (event.target.id === 'userName') {

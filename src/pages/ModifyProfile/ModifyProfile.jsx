@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ModifyProfileSection, ModifyProfileForm, TasteBox } from './styled';
+import { ModifyProfileSection, ModifyProfileForm } from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
@@ -10,10 +10,6 @@ const ModifyProfile = () => {
   const [userName, setUserName] = useState('');
   const [accountName, setAccountName] = useState('');
   const [intro, setIntro] = useState('');
-  const [position, setPosition] = useState('');
-  const [year, setYear] = useState('');
-  const [genre, setGenre] = useState('');
-  const [location, setLocation] = useState('');
 
   const handleData = (event) => {
     if (event.target.id === 'userName') {
@@ -22,14 +18,6 @@ const ModifyProfile = () => {
       setAccountName(event.target.value);
     } else if (event.target.id === 'intro') {
       setIntro(event.target.value);
-    } else if (event.target.id === 'position') {
-      setPosition(event.target.value);
-    } else if (event.target.id === 'year') {
-      setYear(event.target.value);
-    } else if (event.target.id === 'genre') {
-      setGenre(event.target.value);
-    } else if (event.target.id === 'location') {
-      setLocation(event.target.value);
     }
   };
 
@@ -66,40 +54,6 @@ const ModifyProfile = () => {
             value={intro}
             onChange={handleData}
           />
-          <TasteBox>
-            <InputBox
-              label='포지션'
-              type='position'
-              id='position'
-              placeholder='예) 기타'
-              value={position}
-              onChange={handleData}
-            />
-            <InputBox
-              label='경력'
-              type='year'
-              id='year'
-              placeholder='예) 0년, 3년'
-              value={year}
-              onChange={handleData}
-            />
-            <InputBox
-              label='장르'
-              type='genre'
-              id='genre'
-              placeholder='예) 락'
-              value={genre}
-              onChange={handleData}
-            />
-            <InputBox
-              label='지역'
-              type='location'
-              id='location'
-              placeholder='예) 삼척'
-              value={location}
-              onChange={handleData}
-            />
-          </TasteBox>
         </ModifyProfileForm>
       </ModifyProfileSection>
     </>

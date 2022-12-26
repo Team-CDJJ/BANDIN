@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import uploadBtnImg from '../../../assets/upload-img.png';
 
-export const ProfileImgInputWrapper = styled.div`
+export const ProductImgInputWrapper = styled.div`
+  width: 322px;
+  margin: 0 auto;
   text-align: center;
   margin-bottom: 30px;
   position: relative;
-  width: 120px;
-  height: 110px;
-  margin: 0 auto;
 `;
 
 export const UploadBtn = styled.button`
@@ -17,6 +16,6 @@ export const UploadBtn = styled.button`
   border-radius: 50%;
   border: none;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 12px;
+  right: 12px;
 `;

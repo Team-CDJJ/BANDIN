@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import Img from '../../atoms/Img/img';
 
@@ -10,73 +10,88 @@ import {
   TextWrapper,
 } from './styled';
 import getMyProfile from '../../../api/profile/getmyprofile';
-import Button from '../../atoms/Button/Button';
+import MyProfileBtn from '../MyProfileBtn/MyProfileBtn';
+import YourProfileBtn from '../YourProfileBtn/YourProfileBtn';
+import noneProfileImg from '../../../assets/profile.png';
 
 const ProfileInfo = () => {
-  const path = useLocation().pathname;
-  const { id } = useParams();
+  const { accountName } = useParams();
+  const accountname = localStorage.getItem('accountname');
 
   const [userInfo, setUserInfo] = useState({});
+  const [image, setImage] = useState('');
   const [followerCount, setFollowerCount] = useState();
   const [followingCount, setFollowingCount] = useState();
   const [isFollow, setIsFollow] = useState();
 
-  const { accountname, username, intro, image } = userInfo;
-  console.log(accountname);
+  const { username, intro } = userInfo;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const getUserData = async () => {
-      if (path.includes('myprofile')) {
-        const myProfileData = await getMyProfile();
-        setUserInfo(myProfileData);
-        setFollowerCount(myProfileData.followerCount);
-        setFollowingCount(myProfileData.followingCount);
-        setIsFollow(myProfileData.isfollow);
-      } else {
-        const formData = new FormData();
-        formData.append('id', 'token');
-        const yourProfileData = await getMyProfile(id);
-        setUserInfo(yourProfileData);
-        setFollowerCount(yourProfileData.followerCount);
-        setFollowingCount(yourProfileData.followingCount);
-        setIsFollow(yourProfileData.isfollow);
-      }
-    };
-    getUserData();
-  }, []);
+    getMyProfile(accountName)
+      .then((data) => {
+        setUserInfo(data);
+        setFollowerCount(data.followerCount);
+        setFollowingCount(data.followingCount);
+        setIsFollow(data.isfollow);
+        setImage(data.image);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [accountName]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('accountname');
+    localStorage.removeItem('recoil-persist');
+    navigate('/');
+  };
 
   return (
     <ProfileWrapper>
+      <button type='button' onClick={handleLogout}>
+        하이
+      </button>
       <FollowAndImgWrapper>
-        <div>
+        <Link
+          to={{
+            pathname: `/${accountName}/follower`,
+            state: { accountName },
+          }}
+        >
           <strong className='followNum'>{followerCount}</strong>
           <p className='followTxt'>follower</p>
-        </div>
+        </Link>
         <Img
           width='110px'
           height='110px'
           borderRadius='50%'
           alt={`${username}님의 프로필 이미지`}
-          src={image}
+          src={image.includes('Ellipse.png') ? noneProfileImg : image}
         />
-        <div>
-          <strong className='followNum'>{followingCount}</strong>
+        <Link
+          to={{
+            pathname: `/${accountName}/following`,
+            state: { accountName },
+          }}
+        >
+          <strong className='followNum following'>{followingCount}</strong>
           <p className='followTxt'>following</p>
-        </div>
+        </Link>
       </FollowAndImgWrapper>
       <TextWrapper>
         <strong className='user-name'>{username}</strong>
-        <p className='account-name'>@ {accountname}</p>
+        <p className='account-name'>@ {accountName}</p>
         <p className='intro'>{intro}</p>
       </TextWrapper>
       <BtnWrapper>
-        <Button
-          size='md'
-          type='button'
-          state='active'
-          tit='프로필 수정'
-        ></Button>
-        <Button size='md' type='button' state='active' tit='상품 등록'></Button>
+        {accountname === accountName ? (
+          <MyProfileBtn></MyProfileBtn>
+        ) : (
+          <YourProfileBtn isFollow={isFollow}></YourProfileBtn>
+        )}
       </BtnWrapper>
     </ProfileWrapper>
   );

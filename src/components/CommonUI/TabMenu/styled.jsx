@@ -30,7 +30,7 @@ export const TabMenuEachInner = styled.li`
   }
 `;
 
-export const EachTabImg = styled.img`
+export const TabImg = styled.img`
   width: 24px;
 `;
 

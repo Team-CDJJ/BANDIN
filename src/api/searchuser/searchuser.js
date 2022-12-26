@@ -1,9 +1,8 @@
 import { accessInstance } from '../api';
 
-const searchUser = async (formData) => {
+const searchUser = async (userInput) => {
   const res = await accessInstance.get(
-    `/user/searchuser/?keyword=${''}`,
-    formData,
+    `/user/searchuser/?keyword=${userInput}`,
   );
   return res.data;
 };

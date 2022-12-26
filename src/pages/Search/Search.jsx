@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { accessInstance } from '../../api/api';
 
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import TopSearchNav from '../../components/CommonUI/Nav/TopSearchNav/TopSearchNav';
 import UserItem from '../../components/CommonUI/UserItem/UserItem';
 import NoneProfileImg from '../../assets/profile.png';
 import { UserUl, SearchMain } from './styled';
+import searchUser from '../../api/searchuser/searchuser';
 
 const Search = () => {
   const [userInput, setUserInput] = useState('');
@@ -13,20 +13,14 @@ const Search = () => {
 
   useEffect(() => {
     if (userInput) {
-      // eslint-disable-next-line consistent-return
-      const searchUser = async (formData) => {
-        try {
-          const res = await accessInstance.get(
-            `/user/searchuser/?keyword=${userInput}`,
-            formData,
-          );
-          setUserArr(res.data);
-          // return res.data;
-        } catch (err) {
-          console.error(err);
-        }
-      };
-      searchUser();
+      searchUser(userInput)
+        .then((data) => {
+          console.log(data);
+          setUserArr(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, [userInput]);
 

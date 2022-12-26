@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 import noneProfileImage from './assets/profile.png';
+import noneProductImage from './assets/product.png';
 
 const { persistAtom } = recoilPersist();
 
@@ -34,25 +35,13 @@ export const userNameValue = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const positionValue = atom({
-  key: 'position',
-  default: '',
-  effects_UNSTABLE: [persistAtom],
-});
-
-export const yearValue = atom({
-  key: 'year',
-  default: '',
-  effects_UNSTABLE: [persistAtom],
-});
-
-export const genreValue = atom({
-  key: 'genre',
-  default: '',
-  effects_UNSTABLE: [persistAtom],
-});
-
 export const userDataAtom = atom({
   key: 'userData',
   default: {},
+});
+
+export const productImgSrc = atom({
+  key: 'productImg',
+  default: noneProductImage,
+  effects_UNSTABLE: [persistAtom],
 });

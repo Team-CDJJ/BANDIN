@@ -8,6 +8,7 @@ const InputBox = ({
   id,
   name,
   min,
+  value,
   max,
   placeholder,
   onChange,
@@ -35,6 +36,7 @@ const InputBox = ({
         placeholder={placeholder}
         onChange={onChange}
         required={required}
+        value={value}
         onInput={putInputValue}
       />
       {inputValueState.length !== 0 && (

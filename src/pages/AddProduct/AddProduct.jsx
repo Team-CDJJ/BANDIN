@@ -1,56 +1,171 @@
-import { useState } from 'react';
+/* eslint-disable no-undef */
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import { AddProductSection, AddImageDesc, AddProductForm } from './styled';
-import AddProductInput from '../../components/modules/AddProductInput/AddProductInput';
 import InputBox from '../../components/atoms/InputBox/Input';
+import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
+import { productImgSrc } from '../../atoms';
+import noneProductImage from '../../assets/product.png';
+import postProduct from '../../api/addproduct/addproduct';
 
 const AddProduct = () => {
-  const [productImage, setProductImage] = useState('');
-  const [productName, setProductName] = useState('');
-  const [productPrice, setProductPrice] = useState('');
-  const [salesLink, setSalesLink] = useState('');
+  const setProductImg = useSetRecoilState(productImgSrc);
+
+  const [isNameValid, setIsNameValid] = useState(false);
+  const [nameError, setNameError] = useState('');
+
+  const [isPriceValid, setIsPriceValid] = useState(false);
+  const [priceError, setPriceError] = useState('');
+
+  const [isLinkValid, setIsLinkValid] = useState(false);
+  const [linkError, setLinkError] = useState('');
+
+  const [inputValue, setInputValue] = useState({
+    itemName: '',
+    price: '',
+    link: '',
+  });
+
+  const { itemName, price, link } = inputValue;
+
+  const priceFormat = (str) => {
+    // eslint-disable-next-line no-shadow
+    const comma = (str) => {
+      str = String(str);
+      return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    };
+    // eslint-disable-next-line no-shadow
+    const uncomma = (str) => {
+      str = String(str);
+      return str.replace(/[^\d]+/g, '');
+    };
+    return comma(uncomma(str));
+  };
+
+  inputValue.price = priceFormat(price);
+  const navigate = useNavigate();
+
+  const itemImage = useRecoilValue(productImgSrc);
 
   const handleData = (event) => {
-    if (event.target.id === 'productName') {
-      setProductName(event.target.value);
-    } else if (event.target.id === 'productPrice') {
-      setProductPrice(event.target.value);
-    } else if (event.target.id === 'salesLink') {
-      setSalesLink(event.target.value);
-    }
+    const { name, value } = event.target;
+    setInputValue({ ...inputValue, [name]: value });
   };
+
+  useEffect(() => {
+    const nameValidator = () => {
+      if (itemName.length >= 2 && itemName.length <= 15) {
+        setIsNameValid(true);
+        setNameError('');
+      } else {
+        setIsNameValid(false);
+        setNameError('* 2~15자 이내여야 합니다.');
+      }
+    };
+    nameValidator();
+  }, [itemName]);
+
+  useEffect(() => {
+    const priceValidator = () => {
+      // eslint-disable-next-line no-restricted-globals
+      if (!isNaN(price.replaceAll(',', ''))) {
+        setIsPriceValid(true);
+        setPriceError('');
+        // eslint-disable-next-line no-restricted-globals
+      } else {
+        setIsPriceValid(false);
+        setPriceError('* 숫자만 입력 가능합니다.');
+      }
+    };
+    priceValidator();
+  }, [price]);
+
+  useEffect(() => {
+    const linkValidator = () => {
+      if (link.length > 0) {
+        setIsLinkValid(true);
+        setLinkError('');
+      } else {
+        setIsLinkValid(false);
+        setLinkError('* URL을 입력해 주세요.');
+      }
+    };
+    linkValidator();
+  }, [link]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const userData = {
+      product: {
+        itemName,
+        price: parseInt(price.replaceAll(',', ''), 10),
+        link,
+        itemImage,
+      },
+    };
+
+    postProduct(userData)
+      .then((data) => {
+        console.log(data);
+        navigate('/myprofile');
+        setProductImg(noneProductImage);
+      })
+      .catch((error) => {
+        if (error.response.status === 422) {
+          console.log(error);
+          alert(`${error.response.data.message}`);
+        } else {
+          console.log(error);
+        }
+      });
+  };
+
   return (
     <>
-      <TopUploadNav />
+      <TopUploadNav
+        state={isNameValid && isPriceValid && isLinkValid ? null : 'disabled'}
+        disabled={
+          isNameValid && isPriceValid && isLinkValid ? null : 'disabled'
+        }
+        handlerSaveBtn={handleSubmit}
+      />
       <AddProductSection>
         <h1 className='ir'>상품 등록 페이지</h1>
-        <AddProductForm action=''>
+        <AddProductForm onSubmit={handleSubmit}>
           <AddImageDesc>이미지등록</AddImageDesc>
-          <AddProductInput />
+          <ProductImgInput />
           <InputBox
             label='상품명'
             type='text'
-            id='productName'
+            id='itemName'
+            name='itemName'
             placeholder='2~15자 이내여야 합니다.'
-            value={productName}
+            value={itemName}
+            errorMsg={nameError}
             onChange={handleData}
             required
           />
           <InputBox
             label='가격'
-            type='number'
-            id='productPrice'
+            type='text'
+            id='price'
+            name='price'
             placeholder='숫자만 입력 가능합니다.'
-            value={productPrice}
+            value={price}
+            errorMsg={priceError}
             onChange={handleData}
             required
           />
           <InputBox
             label='판매 링크'
             type='url'
-            id='salesLink'
+            id='link'
+            name='link'
             placeholder='URL을 입력해 주세요.'
-            value={salesLink}
+            value={link}
+            errorMsg={linkError}
             onChange={handleData}
             required
           />

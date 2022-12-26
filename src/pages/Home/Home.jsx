@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
 import TopMainNav from '../../components/CommonUI/Nav/TopMainNav/TopMainNav';
-import TapNav from '../../components/CommonUI/TabMenu/TabMenu';
 import { EmptyHomeWrap, HomeWrap, FeedTxt } from './styled';
-// import { Link } from 'react-router-dom';
-// import Splash from '../Splash/Splash';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import profileImg from '../../assets/profile.png';
 import Button from '../../components/atoms/Button/Button';
 import feedMatching from '../../api/home/feedMatching';
+import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 
 const Home = () => {
-  // const token = localStorage.getItem('token');
-
   const [post, setPost] = useState([]);
 
   const goSearch = () => {
@@ -22,7 +18,7 @@ const Home = () => {
     const getPost = () => {
       feedMatching()
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setPost(data.posts);
         })
         .catch((error) => {
@@ -31,7 +27,9 @@ const Home = () => {
     };
     getPost();
   }, []);
+
   console.log(post);
+
   return (
     <>
       <TopMainNav />
@@ -41,7 +39,17 @@ const Home = () => {
             return (
               // eslint-disable-next-line react/no-array-index-key
               <div key={id}>
-                <CommonPost post={item} />
+                <CommonPost
+                  image={item.author.image}
+                  username={item.author.username}
+                  accountname={item.author.accountname}
+                  content={item.content}
+                  heartCount={item.heartCount}
+                  commentCount={item.commentCount}
+                  imageSrc={item.image}
+                  id={item.id}
+                  createdAt={item.createdAt}
+                />
               </div>
             );
           })}
@@ -56,10 +64,10 @@ const Home = () => {
             tit='검색하기'
             onClick={goSearch}
           ></Button>
-          {/* <Link to='/login'>로그인</Link> */}
         </EmptyHomeWrap>
       )}
-      <TapNav />
+      {/* <TapNav /> */}
+      <TabMenu place='search' />
     </>
   );
 };

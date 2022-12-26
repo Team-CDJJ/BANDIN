@@ -4,59 +4,55 @@ import {
   TabMenuSection,
   TabMenuInner,
   TabMenuEachInner,
-  EachTabImg,
+  TabImg,
   EachTabSpan,
 } from './styled';
 
 import homeTab from '../../../assets/icon-home.png';
+import homeTabFill from '../../../assets/icon-home-fill.png';
 import messageTab from '../../../assets/icon-message-circle.png';
+import messageTabFill from '../../../assets/icon-message-circle-fill.png';
 import editTab from '../../../assets/icon-edit.png';
 import userTab from '../../../assets/icon-user.png';
-import homeTabFill from '../../../assets/icon-home-fill.png';
-import messageTabFill from '../../../assets/icon-message-circle-fill.png';
 import userTabFill from '../../../assets/icon-user-fill.png';
 
 const TabMenu = ({ place }) => {
-  const accountname = localStorage.getItem('accountname');
+  const accountName = localStorage.getItem('accountname');
 
   return (
     <TabMenuSection>
       <h1 className='ir'>하단 탭 메뉴바</h1>
       <TabMenuInner>
         <TabMenuEachInner>
-          {/* 경로 수정 필요 */}
           <Link to='/'>
-            {place === 'search' ? (
-              <EachTabImg src={homeTabFill} alt='홈 탭메뉴' />
-            ) : (
-              <EachTabImg src={homeTab} alt='홈 탭메뉴 누른 상태' />
-            )}
+            <TabImg
+              src={place === 'search' ? homeTabFill : homeTab}
+              alt='홈 피드'
+            />
             <EachTabSpan>홈</EachTabSpan>
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
           <Link to='/chatlist'>
-            {place === 'chat' ? (
-              <EachTabImg src={messageTabFill} alt='채팅 탭메뉴' />
-            ) : (
-              <EachTabImg src={messageTab} alt='채팅 탭메뉴 누른 상태' />
-            )}
+            <TabImg
+              src={place === 'chat' ? messageTabFill : messageTab}
+              alt='채팅'
+            />
             <EachTabSpan>채팅</EachTabSpan>
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
           <Link to='/upload'>
-            <EachTabImg src={editTab} alt='게시물 탭메뉴' />
+            <TabImg src={editTab} alt='게시물 작성' />
             <EachTabSpan>게시물 작성</EachTabSpan>
           </Link>
         </TabMenuEachInner>
         <TabMenuEachInner>
-          <Link to={`/myprofile/${accountname}`}>
-            {place === 'profile' ? (
-              <EachTabImg src={userTabFill} alt='프로필 탭메뉴' />
-            ) : (
-              <EachTabImg src={userTab} alt='프로필 탭메뉴 누른 상태' />
-            )}
+          <Link to={`/profile/${accountName}`}>
+            <TabImg
+              src={place === 'myprofile' ? userTabFill : userTab}
+              alt='내 프로필'
+            />
             <EachTabSpan>프로필</EachTabSpan>
           </Link>
         </TabMenuEachInner>

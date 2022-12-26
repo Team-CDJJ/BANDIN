@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const EmptyHomeWrap = styled.div`
+export const EmptyHomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,12 +12,12 @@ export const EmptyHomeWrap = styled.div`
   }
 `;
 
-export const HomeWrap = styled.div`
+export const FeedWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 88px 16px 90px;
-  gap: 10px;
+  margin: 68px 16px 90px;
+  gap: 14px;
 `;
 
 export const FeedTxt = styled.span`

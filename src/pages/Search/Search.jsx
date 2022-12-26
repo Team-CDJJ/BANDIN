@@ -37,6 +37,8 @@ const Search = () => {
           {userArr.slice(0, 100).map((item) => {
             return (
               <UserItem
+                width='50px'
+                height='50px'
                 image={
                   item.image.includes('Ellipse.png')
                     ? NoneProfileImg

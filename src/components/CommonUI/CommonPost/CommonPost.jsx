@@ -1,19 +1,15 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
-import UserItem from '../UserItem/UserItem';
+import PostUserInfo from '../../modules/PostUserInfo/PostUserInfo';
 
 import {
-  CommonPostWrap,
+  CommonPostWrapper,
   CommonPostSection,
-  CommonHeaderSec,
-  VerticalBtn,
   PostTxt,
   IconGroup,
   LikeBtn,
-  LikeCount,
+  Count,
   ChatBtn,
-  ChatCount,
   PostUploadTime,
 } from './styled';
 
@@ -37,34 +33,37 @@ const CommonPost = ({
   };
 
   return (
-    <CommonPostWrap>
+    <CommonPostWrapper>
+      <PostUserInfo
+        image={image}
+        username={username}
+        accountname={accountname}
+      />
       <CommonPostSection>
-        <CommonHeaderSec>
-          <UserItem
-            image={image}
-            username={username}
-            accountname={accountname}
-          />
-          <VerticalBtn type='button' />
-        </CommonHeaderSec>
         <PostTxt>{content}</PostTxt>
         <Link to={`/post/${id}`}>
           {imageSrc &&
             imageSrc
               .split(',')
               .map((item) => (
-                <Img width='100%' src={item} alt='게시글 이미지' />
+                <Img
+                  width='100%'
+                  height='100%'
+                  src={item}
+                  alt='게시글 이미지'
+                  borderRadius='10px'
+                />
               ))}
         </Link>
         <IconGroup>
           <LikeBtn />
-          <LikeCount>{heartCount}</LikeCount>
+          <Count>{heartCount}</Count>
           <ChatBtn />
-          <ChatCount>{commentCount}</ChatCount>
+          <Count>{commentCount}</Count>
         </IconGroup>
         <PostUploadTime>{changeDateFormat(createdAt)}</PostUploadTime>
       </CommonPostSection>
-    </CommonPostWrap>
+    </CommonPostWrapper>
   );
 };
 

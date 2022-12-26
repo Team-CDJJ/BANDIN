@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
+import UserItem from '../UserItem/UserItem';
 
 import {
   CommonPostWrap,
@@ -18,9 +19,20 @@ import {
   PostUploadTime,
 } from './styled';
 
-import Profile from '../../../assets/profile.png';
+// import Profile from '../../../assets/profile.png';
 
-const CommonPost = ({ post }) => {
+const CommonPost = ({
+  post,
+  image,
+  username,
+  imageSrc,
+  accountname,
+  content,
+  id,
+  heartCount,
+  commentCount,
+  createdAt,
+}) => {
   const [postData, setPostData] = useState([]);
 
   const changeDateFormat = (date) => {
@@ -31,20 +43,21 @@ const CommonPost = ({ post }) => {
     return `${year}년 ${month}월 ${day}일`;
   };
 
-  console.log(post);
   return (
     <CommonPostWrap>
-      <img src={Profile} alt='프로필 이미지' className='img-profile' />
       <CommonPostSection>
         <CommonHeaderSec>
-          <UserName>{post.author.username}</UserName>
+          <UserItem
+            image={image}
+            username={username}
+            accountname={accountname}
+          />
           <VerticalBtn type='button' />
         </CommonHeaderSec>
-        <UserID>@ {post.author.accountname}</UserID>
-        <PostTxt>{post.content}</PostTxt>
-        <Link to={`/post/${post.id}`}>
-          {post.image &&
-            post.image
+        <PostTxt>{content}</PostTxt>
+        <Link to={`/post/${id}`}>
+          {imageSrc &&
+            imageSrc
               .split(',')
               .map((item) => (
                 <Img width='100%' src={item} alt='게시글 이미지' />
@@ -52,11 +65,11 @@ const CommonPost = ({ post }) => {
         </Link>
         <IconGroup>
           <LikeBtn />
-          <LikeCount>{post.heartCount}</LikeCount>
+          <LikeCount>{heartCount}</LikeCount>
           <ChatBtn />
-          <ChatCount>{post.commentCount}</ChatCount>
+          <ChatCount>{commentCount}</ChatCount>
         </IconGroup>
-        <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>
+        <PostUploadTime>{changeDateFormat(createdAt)}</PostUploadTime>
       </CommonPostSection>
     </CommonPostWrap>
   );

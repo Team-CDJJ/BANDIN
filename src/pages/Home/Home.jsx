@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import TopMainNav from '../../components/CommonUI/Nav/TopMainNav/TopMainNav';
 import { EmptyHomeWrap, HomeWrap, FeedTxt } from './styled';
-import PostItem from '../../components/CommonUI/CommonPost/CommonPost';
+import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import profileImg from '../../assets/profile.png';
 import Button from '../../components/atoms/Button/Button';
 import feedMatching from '../../api/home/feedMatching';
@@ -18,7 +18,7 @@ const Home = () => {
     const getPost = () => {
       feedMatching()
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setPost(data.posts);
         })
         .catch((error) => {
@@ -27,7 +27,9 @@ const Home = () => {
     };
     getPost();
   }, []);
+
   console.log(post);
+
   return (
     <>
       <TopMainNav />
@@ -37,7 +39,17 @@ const Home = () => {
             return (
               // eslint-disable-next-line react/no-array-index-key
               <div key={id}>
-                <PostItem post={item} />
+                <CommonPost
+                  image={item.author.image}
+                  username={item.author.username}
+                  accountname={item.author.accountname}
+                  content={item.content}
+                  heartCount={item.heartCount}
+                  commentCount={item.commentCount}
+                  imageSrc={item.image}
+                  id={item.id}
+                  createdAt={item.createdAt}
+                />
               </div>
             );
           })}

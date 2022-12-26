@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const TopUploadNavSection = styled.section`
+export const TopUploadNavSection = styled.header`
   ${({ theme }) => {
     return css`
       width: 100vw;

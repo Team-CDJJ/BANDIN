@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import VerticalBg from '../../../assets/icon-more-vertical.png';
 
-export const UserList = styled.div`
+export const UserList = styled.section`
   width: 100%;
   height: 42px;
   display: flex;
@@ -10,6 +10,7 @@ export const UserList = styled.div`
 `;
 
 export const UserInfoLink = styled(Link)`
+  color: black;
   display: flex;
   .user-info {
     display: flex;

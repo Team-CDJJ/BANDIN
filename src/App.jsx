@@ -49,7 +49,7 @@ const App = () => {
       <Route path='/search' element={<UserSearch />} />
       <Route path='/modifyprofile' element={<ModifyProfile />} />
       <Route path='/myprofile' element={<MyProfile />} />
-      <Route path='/post/:post_id' element={<PostDetail />} />
+      <Route path='/post/:postId' element={<PostDetail />} />
       <Route path='/*' element={<NotFound />} />
     </Routes>
   );

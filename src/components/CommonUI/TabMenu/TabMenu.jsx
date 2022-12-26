@@ -26,7 +26,7 @@ const TabMenu = ({ place }) => {
         <TabMenuEachInner>
           <Link to='/'>
             <TabImg
-              src={place === 'search' ? homeTabFill : homeTab}
+              src={place === 'homefeed' ? homeTabFill : homeTab}
               alt='홈 피드'
             />
             <EachTabSpan>홈</EachTabSpan>

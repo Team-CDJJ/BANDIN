@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const TopSearchNavSection = styled.section`
+export const TopSearchNavSection = styled.header`
   ${({ theme }) => {
     return css`
       width: 100%;

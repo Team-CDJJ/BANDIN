@@ -1,13 +1,6 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
-import {
-  UserList,
-  ProfileImg,
-  UserInfo,
-  UserName,
-  UserId,
-  ProfileLink,
-} from './styled';
+import { UserList, UserInfo, UserName, UserId, ProfileLink } from './styled';
 
 const UserItem = ({
   width,

@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import getPost from '../../api/post/getPost';
+import getPostDetail from '../../api/post/getPostDetail';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import TopMainNav from '../../components/CommonUI/Nav/TopMainNav/TopMainNav';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
+import PostWrapper from './styled';
 
 const postDetail = () => {
-  const postId = useParams();
-  const [postData, setPostData] = useState({});
+  const { postId } = useParams();
+  const [postData, setPostData] = useState();
 
   useEffect(() => {
-    getPost(postId.post_id)
+    getPostDetail(postId)
       .then((data) => {
         setPostData(data.post);
       })
@@ -21,21 +22,11 @@ const postDetail = () => {
   console.log(postData);
 
   return (
-    <div>
+    <>
       <TopMainNav />
-      <CommonPost
-        image={postData.author.image}
-        username={postData.author.username}
-        accountname={postData.author.accountname}
-        content={postData.content}
-        heartCount={postData.heartCount}
-        commentCount={postData.commentCount}
-        imageSrc={postData.image}
-        id={postData.id}
-        createdAt={postData.createdAt}
-      />
-      <TabMenu />
-    </div>
+      <PostWrapper>{postData && <CommonPost post={postData} />}</PostWrapper>
+      <TabMenu place='homefeed' />
+    </>
   );
 };
 export default postDetail;

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import LikeIcon from '../../../assets/icon-heart.png';
 import ChatIcon from '../../../assets/icon-message-circle.png';
 
-export const CommonPostWrapper = styled.div`
+export const CommonPostWrapper = styled.article`
   width: 358px;
   margin: 0 auto;
 `;

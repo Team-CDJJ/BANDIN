@@ -13,17 +13,7 @@ import {
   PostUploadTime,
 } from './styled';
 
-const CommonPost = ({
-  image,
-  username,
-  imageSrc,
-  accountname,
-  content,
-  id,
-  heartCount,
-  commentCount,
-  createdAt,
-}) => {
+const CommonPost = ({ post }) => {
   const changeDateFormat = (date) => {
     const year = date.slice(0, 4);
     const month = date.slice(5, 7);
@@ -32,21 +22,23 @@ const CommonPost = ({
     return `${year}년 ${month}월 ${day}일`;
   };
 
+  console.log(post);
   return (
     <CommonPostWrapper>
       <PostUserInfo
-        image={image}
-        username={username}
-        accountname={accountname}
+        image={post.author.image}
+        username={post.author.username}
+        accountname={post.author.accountname}
       />
       <CommonPostSection>
-        <PostTxt>{content}</PostTxt>
-        <Link to={`/post/${id}`}>
-          {imageSrc &&
-            imageSrc
+        <PostTxt>{post.content}</PostTxt>
+        <Link to={`/post/${post.id}`}>
+          {post.image &&
+            post.image
               .split(',')
-              .map((item) => (
+              .map((item, idx) => (
                 <Img
+                  key={idx}
                   width='100%'
                   height='100%'
                   src={item}
@@ -57,11 +49,11 @@ const CommonPost = ({
         </Link>
         <IconGroup>
           <LikeBtn />
-          <Count>{heartCount}</Count>
+          <Count>{post.heartCount}</Count>
           <ChatBtn />
-          <Count>{commentCount}</Count>
+          <Count>{post.commentCount}</Count>
         </IconGroup>
-        <PostUploadTime>{changeDateFormat(createdAt)}</PostUploadTime>
+        <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>
       </CommonPostSection>
     </CommonPostWrapper>
   );

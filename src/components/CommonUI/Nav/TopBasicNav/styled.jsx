@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const TopBasicNavSection = styled.section`
+export const TopBasicNavSection = styled.header`
   ${({ theme }) => {
     return css`
       width: 100vw;

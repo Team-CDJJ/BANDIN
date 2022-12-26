@@ -1,7 +1,7 @@
 import { accessInstance } from '../api';
 
-const getFeedPost = async (formData) => {
-  const res = await accessInstance.get('/post/feed', formData);
+const getFeedPost = async () => {
+  const res = await accessInstance.get('/post/feed');
   return res.data;
 };
 

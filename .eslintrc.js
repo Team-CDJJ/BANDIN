@@ -39,6 +39,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/no-array-index-key': 'off',
     'object-shorthand': 'off',
     'prefer-destructuring': 'off',
     'prettier/prettier': [

@@ -12,7 +12,7 @@ export const EmptyHomeWrapper = styled.div`
   }
 `;
 
-export const FeedWrapper = styled.div`
+export const FeedWrapper = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;

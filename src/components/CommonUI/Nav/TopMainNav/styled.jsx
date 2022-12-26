@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const TopMainNavSection = styled.section`
+export const TopMainNavSection = styled.header`
   ${({ theme }) => {
     return css`
       padding: 10px 16px;

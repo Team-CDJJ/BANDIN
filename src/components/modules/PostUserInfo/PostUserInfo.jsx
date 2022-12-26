@@ -7,15 +7,9 @@ import {
   UserInfoLink,
 } from './styled';
 
-const PostUserInfo = ({ image, username, accountname, keyValue, alt }) => {
-  // const navigate = useNavigate();
-
-  // const handleToProfile = () => {
-  //   navigate(`/profile/${accountname}`);
-  // };
-
+const PostUserInfo = ({ image, username, accountname, alt }) => {
   return (
-    <UserList key={keyValue}>
+    <UserList>
       <UserInfoLink to={`/profile/${accountname}`}>
         <Img
           width='42px'

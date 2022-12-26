@@ -19,21 +19,13 @@ import {
   PostUploadTime,
 } from './styled';
 
-// import Profile from '../../../assets/profile.png';
+import Profile from '../../../assets/profile.png';
 
-const CommonPost = ({
-  post,
-  image,
-  username,
-  imageSrc,
-  accountname,
-  content,
-  id,
-  heartCount,
-  commentCount,
-  createdAt,
-}) => {
-  const [postData, setPostData] = useState([]);
+const CommonPost = ({ post }) => {
+  const navigate = useNavigate();
+  const onClickChat = () => {
+    navigate(`/post/${post.id}`);
+  };
 
   const changeDateFormat = (date) => {
     const year = date.slice(0, 4);
@@ -45,19 +37,24 @@ const CommonPost = ({
 
   return (
     <CommonPostWrap>
+      <Link
+        to={`/profile/${post.author.accountname}`}
+        style={{ textDecoration: 'none', color: '#000' }}
+      >
+        <UserInfoCont>
+          <img src={Profile} alt='프로필 이미지' className='img-profile' />
+          <CommonUserInfo className='linkWrap'>
+            <UserName className='h1'>{post.author.username}</UserName>
+            <UserID>@ {post.author.accountname}</UserID>
+          </CommonUserInfo>
+        </UserInfoCont>
+      </Link>
+      <VerticalBtn type='button' />
       <CommonPostSection>
-        <CommonHeaderSec>
-          <UserItem
-            image={image}
-            username={username}
-            accountname={accountname}
-          />
-          <VerticalBtn type='button' />
-        </CommonHeaderSec>
-        <PostTxt>{content}</PostTxt>
-        <Link to={`/post/${id}`}>
-          {imageSrc &&
-            imageSrc
+        <PostTxt>{post.content}</PostTxt>
+        <Link to={`/post/${post.id}`}>
+          {post.image &&
+            post.image
               .split(',')
               .map((item) => (
                 <Img
@@ -69,24 +66,12 @@ const CommonPost = ({
               ))}
         </Link>
         <IconGroup>
-          <LikeBtn id={post.id} />
-          <LikeCount
-            heartCount={post.heartCount}
-            id={post.id}
-            hearted={post.hearted}
-          >
-            {post.heartCount}
-          </LikeCount>
-          <button type='button' onClick={onClickChat}>
-            <ChatBtn />
-            <ChatCount>{post.commentCount}</ChatCount>
-          </button>
           <LikeBtn />
           <LikeCount>{heartCount}</LikeCount>
           <ChatBtn />
           <ChatCount>{commentCount}</ChatCount>
         </IconGroup>
-        <PostUploadTime>{changeDateFormat(createdAt)}</PostUploadTime>
+        <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>
       </CommonPostSection>
     </CommonPostWrap>
   );

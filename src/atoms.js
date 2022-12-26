@@ -35,24 +35,6 @@ export const userNameValue = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const positionValue = atom({
-  key: 'position',
-  default: '',
-  effects_UNSTABLE: [persistAtom],
-});
-
-export const yearValue = atom({
-  key: 'year',
-  default: '',
-  effects_UNSTABLE: [persistAtom],
-});
-
-export const genreValue = atom({
-  key: 'genre',
-  default: '',
-  effects_UNSTABLE: [persistAtom],
-});
-
 export const userDataAtom = atom({
   key: 'userData',
   default: {},

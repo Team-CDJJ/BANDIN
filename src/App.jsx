@@ -16,6 +16,7 @@ import PrivateRotuerRev from './components/Router/PrivateRouterRev';
 import Splash from './pages/Splash/Splash';
 import MyProfile from './pages/MyProfile/MyProfile';
 import AddProduct from './pages/AddProduct/AddProduct';
+import PostDetail from './pages/PostDetail/PostDetail';
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
       <Route path='/search' element={<UserSearch />} />
       <Route path='/modifyprofile' element={<ModifyProfile />} />
       <Route path='/myprofile' element={<MyProfile />} />
+      <Route path='/post/:post_id' element={<PostDetail />} />
       <Route path='/*' element={<NotFound />} />
     </Routes>
   );

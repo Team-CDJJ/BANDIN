@@ -15,10 +15,6 @@ export const CommonPostWrap = styled.div`
   }
 `;
 
-// export const Link = styled.`
-//   text-decoration: none;
-// `;
-
 export const CommonPostSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -92,6 +88,14 @@ export const IconGroup = styled.div`
   display: flex;
   flex-direction: row;
   margin: 12px 0 16px 0;
+
+  > button {
+    outline: none;
+    border: 0;
+    background: none;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export const LikeBtnStyle = styled.button`
@@ -131,7 +135,7 @@ export const ChatCount = styled.p`
     return css`
       font-size: ${theme.fontSizes.sm};
       color: ${theme.colors.grey76};
-      padding: 4px 0 0 6px;
+      padding-left: 6px;
     `;
   }}
 `;

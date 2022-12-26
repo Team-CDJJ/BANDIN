@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CountNum = styled.div`
+export const CountNum = styled.dd`
   font-size: 12px;
   line-height: 12px;
   font-weight: 400;
@@ -13,4 +13,8 @@ export const CountNum = styled.div`
 
 export const HeartBtn = styled.button`
   border: none;
+  outline: 0;
+  background: none;
+  display: flex;
+  align-items: center;
 `;

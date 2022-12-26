@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
-import LikeBtnTest from '../../modules/LikeBtn/LikeBtn';
+import LikeBtn from '../../modules/LikeBtn/LikeBtn';
 
 import {
   CommonPostWrap,
@@ -22,6 +21,11 @@ import {
 import Profile from '../../../assets/profile.png';
 
 const CommonPost = ({ post }) => {
+  const navigate = useNavigate();
+  const onClickChat = () => {
+    navigate(`/post/${post.id}`);
+  };
+
   const changeDateFormat = (date) => {
     const year = date.slice(0, 4);
     const month = date.slice(5, 7);
@@ -34,7 +38,7 @@ const CommonPost = ({ post }) => {
     <CommonPostWrap>
       <Link
         to={`/profile/${post.author.accountname}`}
-        style={{ textDecoration: 'none', color: '#767676' }}
+        style={{ textDecoration: 'none', color: '#000' }}
       >
         <UserInfoCont>
           <img src={Profile} alt='프로필 이미지' className='img-profile' />
@@ -61,7 +65,7 @@ const CommonPost = ({ post }) => {
               ))}
         </Link>
         <IconGroup>
-          <LikeBtnTest id={post.id} />
+          <LikeBtn id={post.id} />
           <LikeCount
             heartCount={post.heartCount}
             id={post.id}
@@ -69,8 +73,10 @@ const CommonPost = ({ post }) => {
           >
             {post.heartCount}
           </LikeCount>
-          <ChatBtn />
-          <ChatCount>{post.commentCount}</ChatCount>
+          <button type='button' onClick={onClickChat}>
+            <ChatBtn />
+            <ChatCount>{post.commentCount}</ChatCount>
+          </button>
         </IconGroup>
         <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>
       </CommonPostSection>

@@ -4,7 +4,7 @@ import TapNav from '../../components/CommonUI/TabMenu/TabMenu';
 import { EmptyHomeWrap, HomeWrap, FeedTxt } from './styled';
 // import { Link } from 'react-router-dom';
 // import Splash from '../Splash/Splash';
-import PostItem from '../../components/CommonUI/CommonPost/CommonPost';
+import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import profileImg from '../../assets/profile.png';
 import Button from '../../components/atoms/Button/Button';
 import feedMatching from '../../api/home/feedMatching';
@@ -41,7 +41,7 @@ const Home = () => {
             return (
               // eslint-disable-next-line react/no-array-index-key
               <div key={id}>
-                <PostItem post={item} />
+                <CommonPost post={item} />
               </div>
             );
           })}

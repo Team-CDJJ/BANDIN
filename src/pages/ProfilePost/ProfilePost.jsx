@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PostHeaderNav, ListIcon, AlbumIcon, PostUl, PostGrid } from './styled';
 import profilePost from '../../api/getProfilePost/getProfilePost';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';

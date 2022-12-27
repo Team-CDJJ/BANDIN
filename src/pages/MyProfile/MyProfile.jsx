@@ -6,19 +6,32 @@ import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import ProfilePost from '../ProfilePost/ProfilePost';
 import CommonProduct from '../../components/CommonUI/CommonProduct/CommonProduct';
 import getProductList from '../../api/getProductList/getProducList';
+import getProfilePost from '../../api/getProfilePost/getProfilePost';
 
 const MyProfile = () => {
   const { accountName } = useParams();
   const [productList, setProductList] = useState([]);
-
-  // console.log(accountName);
+  const [postList, setPostList] = useState([]);
 
   useEffect(() => {
-    console.log(accountName);
+    // 상품 목록
     getProductList(accountName)
       .then((data) => {
         setProductList(data.product);
         console.log(data.product);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // 게시글 목록
+    getProfilePost(accountName)
+      .then((data) => {
+        console.log(accountName);
+        console.log(data);
+        setPostList(data);
       })
       .catch((error) => {
         console.log(error);

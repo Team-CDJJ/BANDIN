@@ -1,8 +1,8 @@
 import { accessInstance } from '../api';
 
-const profilePost = async (accountName) => {
-  const res = await accessInstance.get(`/post/${accountName}/userpost`);
+const getProfilePost = async (accountname) => {
+  const res = await accessInstance.get(`/post/${accountname}/userpost`);
   return res.data;
 };
 
-export default profilePost;
+export default getProfilePost;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const TabMenuSection = styled.section`
+export const TabMenuSection = styled.footer`
   ${({ theme }) => {
     return css`
       padding: 0 6px;

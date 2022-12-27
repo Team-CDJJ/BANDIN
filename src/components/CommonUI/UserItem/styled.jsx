@@ -1,12 +1,11 @@
 import styled, { css } from 'styled-components';
 
 export const UserList = styled.li`
-  width: 358px;
+  width: 100%;
   list-style: none;
 `;
 
 export const ProfileLink = styled.a`
-  color: inherit;
   display: flex;
 `;
 

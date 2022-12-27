@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 import DownArrow from '../../../assets/down-arrow.png';
-import UpArrow from '../../../assets/up-arrow.png';
 
 export const TopContainer = styled.div`
   position: fixed;
@@ -49,7 +48,6 @@ export const SelectUl = styled.ul`
       overflow: hidden;
       font-size: ${theme.fontSizes.xl};
       max-height: ${(props) => (props.show ? 'none' : '0')};
-      /* display: ${(props) => (props.display ? 'block' : 'none')}; */
     `;
   }}
 `;

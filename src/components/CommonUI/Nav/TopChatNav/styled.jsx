@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const TopChatNavSection = styled.section`
+export const TopChatNavSection = styled.header`
   ${({ theme }) => {
     return css`
       width: 100vw;

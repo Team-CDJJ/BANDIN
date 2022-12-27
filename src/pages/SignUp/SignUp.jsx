@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { emailValid } from '../../api/login/accountValid';
+import { postEmailValid } from '../../api/login/postAccountValid';
 import Button from '../../components/atoms/Button/Button';
 import InputBox from '../../components/atoms/InputBox/Input';
 import { SignUpWrapper, SignUpTitle } from './styled';
@@ -28,7 +28,7 @@ const SignUp = () => {
 
   useEffect(() => {
     const emailValidator = async () => {
-      const data = await emailValid({
+      const data = await postEmailValid({
         user: {
           email,
         },

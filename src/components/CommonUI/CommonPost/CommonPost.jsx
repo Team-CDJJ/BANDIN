@@ -1,33 +1,19 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
-import UserItem from '../UserItem/UserItem';
+import PostUserInfo from '../../modules/PostUserInfo/PostUserInfo';
 
 import {
-  CommonPostWrap,
+  CommonPostWrapper,
   CommonPostSection,
-  CommonHeaderSec,
-  VerticalBtn,
   PostTxt,
   IconGroup,
   LikeBtn,
-  LikeCount,
+  Count,
   ChatBtn,
-  ChatCount,
   PostUploadTime,
 } from './styled';
 
-const CommonPost = ({
-  image,
-  username,
-  imageSrc,
-  accountname,
-  content,
-  id,
-  heartCount,
-  commentCount,
-  createdAt,
-}) => {
+const CommonPost = ({ post }) => {
   const changeDateFormat = (date) => {
     const year = date.slice(0, 4);
     const month = date.slice(5, 7);
@@ -36,35 +22,40 @@ const CommonPost = ({
     return `${year}년 ${month}월 ${day}일`;
   };
 
+  console.log(post);
   return (
-    <CommonPostWrap>
+    <CommonPostWrapper>
+      <PostUserInfo
+        image={post.author.image}
+        username={post.author.username}
+        accountname={post.author.accountname}
+      />
       <CommonPostSection>
-        <CommonHeaderSec>
-          <UserItem
-            image={image}
-            username={username}
-            accountname={accountname}
-          />
-          <VerticalBtn type='button' />
-        </CommonHeaderSec>
-        <PostTxt>{content}</PostTxt>
-        <Link to={`/post/${id}`}>
-          {imageSrc &&
-            imageSrc
+        <PostTxt>{post.content}</PostTxt>
+        <Link to={`/post/${post.id}`}>
+          {post.image &&
+            post.image
               .split(',')
-              .map((item) => (
-                <Img width='100%' src={item} alt='게시글 이미지' />
+              .map((item, idx) => (
+                <Img
+                  key={idx}
+                  width='100%'
+                  height='100%'
+                  src={item}
+                  alt='게시글 이미지'
+                  borderRadius='10px'
+                />
               ))}
         </Link>
         <IconGroup>
           <LikeBtn />
-          <LikeCount>{heartCount}</LikeCount>
+          <Count>{post.heartCount}</Count>
           <ChatBtn />
-          <ChatCount>{commentCount}</ChatCount>
+          <Count>{post.commentCount}</Count>
         </IconGroup>
-        <PostUploadTime>{changeDateFormat(createdAt)}</PostUploadTime>
+        <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>
       </CommonPostSection>
-    </CommonPostWrap>
+    </CommonPostWrapper>
   );
 };
 

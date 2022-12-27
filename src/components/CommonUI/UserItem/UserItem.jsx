@@ -1,15 +1,16 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import {
-  UserList,
-  ProfileImg,
-  UserInfo,
-  UserName,
-  UserId,
-  ProfileLink,
-} from './styled';
+import { useNavigate } from 'react-router-dom';
+import Img from '../../atoms/Img/img';
+import { UserList, UserInfo, UserName, UserId, ProfileLink } from './styled';
 
-const UserItem = ({ image, username, accountname, keyValue, alt }) => {
-  // const { accountName } = useParams();
+const UserItem = ({
+  width,
+  height,
+  image,
+  username,
+  accountname,
+  keyValue,
+  alt,
+}) => {
   const navigate = useNavigate();
 
   const handleToProfile = () => {
@@ -19,7 +20,13 @@ const UserItem = ({ image, username, accountname, keyValue, alt }) => {
   return (
     <UserList key={keyValue} onClick={handleToProfile}>
       <ProfileLink to={`/profile/${accountname}`}>
-        <ProfileImg src={image} alt={alt} />
+        <Img
+          width={width}
+          height={height}
+          src={image}
+          alt={alt}
+          borderRadius='50%'
+        />
         <UserInfo>
           <UserName>{username}</UserName>
           <UserId>@ {accountname}</UserId>

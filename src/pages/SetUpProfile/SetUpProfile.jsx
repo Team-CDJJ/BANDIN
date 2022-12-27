@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { accountNameValid } from '../../api/login/accountValid';
+import { postAccountNameValid } from '../../api/login/postAccountValid';
 import { profileImgSrc } from '../../atoms';
 
 import Button from '../../components/atoms/Button/Button';
@@ -56,7 +56,7 @@ const SetUpProfile = () => {
   useEffect(() => {
     const accountnameValidator = async () => {
       try {
-        accountNameValid({
+        postAccountNameValid({
           user: {
             accountname,
           },

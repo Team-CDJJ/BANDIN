@@ -1,7 +1,7 @@
 import { accessInstance } from '../api';
 
-const postProduct = async (formData) => {
+const postAddProduct = async (formData) => {
   const res = await accessInstance.post('/product', formData);
   return res.data;
 };
-export default postProduct;
+export default postAddProduct;

@@ -15,8 +15,7 @@ const ChatList = () => {
       <TopBasicNav />
       <Section>
         <h1 className='ir'>채팅 목록</h1>
-        {/* chatroom 경로 수정 필요 */}
-        <ChatLink to='/chatroom'>
+        <ChatLink to='/chatlist/chatroom'>
           <TextContainer>
             <ChatName>베이스 기타 삽니다!!</ChatName>
             <ChatTxt>[사진]</ChatTxt>
@@ -24,7 +23,7 @@ const ChatList = () => {
           </TextContainer>
         </ChatLink>
 
-        <ChatLink to='/chatroom'>
+        <ChatLink to='/chatlist/chatroom'>
           <TextContainer>
             <ChatName>제주감귤마을</ChatName>
             <ChatTxt>깊은 어둠의 존재감, 롤스로이스 뉴 블랙 배지...</ChatTxt>
@@ -32,7 +31,7 @@ const ChatList = () => {
           </TextContainer>
         </ChatLink>
 
-        <ChatLink to='/chatroom'>
+        <ChatLink to='/chatlist/chatroom'>
           <TextContainer>
             <ChatName>누구네 농장 친환경 한라봉</ChatName>
             <ChatTxt>내 차는 내가 평가한다. 오픈 이벤트에 참여 하...</ChatTxt>

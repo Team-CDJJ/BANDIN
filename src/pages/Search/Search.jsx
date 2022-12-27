@@ -5,7 +5,7 @@ import TopSearchNav from '../../components/CommonUI/Nav/TopSearchNav/TopSearchNa
 import UserItem from '../../components/CommonUI/UserItem/UserItem';
 import NoneProfileImg from '../../assets/profile.png';
 import { UserUl, SearchMain } from './styled';
-import searchUser from '../../api/searchuser/searchuser';
+import getSearchUser from '../../api/searchuser/getSearchUser';
 
 const Search = () => {
   const [userInput, setUserInput] = useState('');
@@ -13,7 +13,7 @@ const Search = () => {
 
   useEffect(() => {
     if (userInput) {
-      searchUser(userInput)
+      getSearchUser(userInput)
         .then((data) => {
           console.log(data);
           setUserArr(data);
@@ -37,6 +37,8 @@ const Search = () => {
           {userArr.slice(0, 100).map((item) => {
             return (
               <UserItem
+                width='50px'
+                height='50px'
                 image={
                   item.image.includes('Ellipse.png')
                     ? NoneProfileImg

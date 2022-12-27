@@ -1,8 +1,8 @@
 import { accessInstance } from '../api';
 
-const getPost = async (postId) => {
+const getPostDetail = async (postId) => {
   const res = await accessInstance.get(`/post/${postId}`);
   return res.data;
 };
 
-export default getPost;
+export default getPostDetail;

@@ -1,17 +1,13 @@
 import styled, { css } from 'styled-components';
 
 export const AlertWrapper = styled.div`
-  ${({ theme }) => {
-    return css`
-      width: 252px;
-      height: 110px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-    `;
-  }}
+  width: 252px;
+  height: 110px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 export const AlertTxt = styled.strong`

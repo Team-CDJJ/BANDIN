@@ -5,7 +5,7 @@ import { apiUrl } from '../../../api/api';
 import Img from '../../atoms/Img/img';
 
 import { ProfileImgInputWrapper, UploadBtn } from './styled';
-import postUploadImg from '../../../api/uploadImg/uploadImg';
+import postUploadImg from '../../../api/uploadImg/postUploadImg';
 
 const ProfileImgInput = () => {
   const [image, setImage] = useRecoilState(profileImgSrc);

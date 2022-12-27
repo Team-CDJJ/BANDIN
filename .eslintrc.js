@@ -39,6 +39,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/no-array-index-key': 'off',
     'object-shorthand': 'off',
     'prefer-destructuring': 'off',
     'prettier/prettier': [
@@ -53,6 +54,7 @@ module.exports = {
     'no-alert': 'off',
     'no-console': 'off',
     'no-param-reassign': 'off',
+    'no-shadow': 'off',
     'no-unused-vars': 'warn',
     'jsx-a11y/label-has-associated-control': [
       2,

@@ -1,11 +1,6 @@
-import styled, { css } from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import { PostHeaderNav, ListIcon, AlbumIcon, PostUl, PostGrid } from './styled';
-import ListIconOn from '../../assets/icon-post-list-on.png';
-import ListIconOff from '../../assets/icon-post-list-off.png';
-import AlbumIconOn from '../../assets/icon-post-album-on.png';
-import AlbumIconOff from '../../assets/icon-post-album-off.png';
-import profilePost from '../../api/GETprofilepost/GETprofilepost';
+import profilePost from '../../api/getProfilePost/getProfilePost';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import Img from '../../components/atoms/Img/img';
 
@@ -14,16 +9,17 @@ const ProfilePost = () => {
   const [listClicked, setListClicked] = useState(true);
   const [albumClicked, setAlbumClicked] = useState(false);
 
+  console.log(postList);
+
   const handleListBtn = () => {
     setListClicked(true);
     setAlbumClicked(false);
-    console.log(listClicked);
   };
 
   const handleAlbumBtn = () => {
     setListClicked(false);
     setAlbumClicked(true);
-    console.log(albumClicked);
+    // console.log(albumClicked);
   };
 
   useEffect(() => {
@@ -39,13 +35,15 @@ const ProfilePost = () => {
     getPost();
   }, []);
 
+  console.log(listClicked, albumClicked);
+
   return (
     <>
       <PostHeaderNav>
         <ListIcon onClick={handleListBtn} />
         <AlbumIcon onClick={handleAlbumBtn} />
       </PostHeaderNav>
-      {listClicked ? (
+      {listClicked && !albumClicked ? (
         <PostUl>
           {postList &&
             postList.map((item) => (
@@ -54,7 +52,6 @@ const ProfilePost = () => {
                 image={item.author.image}
                 username={item.author.username}
                 accountname={item.author.accountname}
-                // imageSrc={item.image}
                 imageSrc={
                   item.image &&
                   item.image

@@ -14,10 +14,11 @@ const MyProfile = () => {
   // console.log(accountName);
 
   useEffect(() => {
+    console.log(accountName);
     getProductList(accountName)
       .then((data) => {
-        console.log(data);
         setProductList(data.product);
+        console.log(data.product);
       })
       .catch((error) => {
         console.log(error);

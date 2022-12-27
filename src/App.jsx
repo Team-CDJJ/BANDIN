@@ -1,4 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { isLogin } from './atoms';
 
 import Home from './pages/Home/Home';
 import EmailLogin from './pages/EmailLogin/EmailLogin';
@@ -12,47 +14,38 @@ import UserSearch from './pages/Search/Search';
 import ChatList from './pages/ChatList/ChatList';
 import ChatRoom from './pages/ChatRoom/ChatRoom';
 import ModifyProfile from './pages/ModifyProfile/ModifyProfile';
-import PrivateRotuer from './components/Router/PrivateRouter';
-import PrivateRotuerRev from './components/Router/PrivateRouterRev';
 import Splash from './pages/Splash/Splash';
 import MyProfile from './pages/MyProfile/MyProfile';
 import AddProduct from './pages/AddProduct/AddProduct';
 import PostDetail from './pages/PostDetail/PostDetail';
+import PrivateRoutes from './components/Router/PrivateRoutes';
+import PrivateRoutesRev from './components/Router/PrivateRoutesRev';
 
 const App = () => {
+  const isLoginState = useRecoilValue(isLogin);
+
   return (
     <Routes>
       <Route path='/' element={<Splash />} />
-      <Route
-        path='/'
-        element={
-          <PrivateRotuer>
-            <Login />
-          </PrivateRotuer>
-        }
-      />
-      <Route
-        path='/home'
-        element={
-          <PrivateRotuerRev>
-            <Home />
-          </PrivateRotuerRev>
-        }
-      />
-      <Route path='/emaillogin' element={<EmailLogin />} />
-      <Route path='/chatlist' element={<ChatList />} />
-      <Route path='/chatlist/chatroom' element={<ChatRoom />} />
-      <Route path='/signup' element={<SignUp />} />
-      <Route path='/signup/setupprofile' element={<SetUpProfile />} />
-      <Route path='/profile/:accountName' element={<MyProfile />} />
-      <Route path='/:accountName/follower' element={<Follower />} />
-      <Route path='/:accountName/following' element={<Following />} />
-      <Route path='/addproduct' element={<AddProduct />} />
-      <Route path='/search' element={<UserSearch />} />
-      <Route path='/modifyprofile' element={<ModifyProfile />} />
-      <Route path='/myprofile' element={<MyProfile />} />
-      <Route path='/post/:postId' element={<PostDetail />} />
-      <Route path='/*' element={<NotFound />} />
+      <Route element={<PrivateRoutes authorization={isLoginState} />}>
+        <Route path='/emaillogin' element={<EmailLogin />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signup/setupprofile' element={<SetUpProfile />} />
+      </Route>
+      <Route element={<PrivateRoutesRev authorization={isLoginState} />}>
+        <Route path='/' element={<Login />} exact />
+        <Route path='/home' element={<Home />} exact />
+        <Route path='/chatlist' element={<ChatList />} />
+        <Route path='/addproduct' element={<AddProduct />} />
+        <Route path='/modifyprofile' element={<ModifyProfile />} />
+        <Route path='/chatlist/chatroom' element={<ChatRoom />} />
+        <Route path='/search' element={<UserSearch />} />
+        <Route path='/profile/:accountName' element={<MyProfile />} />
+        <Route path='/:accountName/follower' element={<Follower />} />
+        <Route path='/:accountName/following' element={<Following />} />
+        <Route path='/post/:postId' element={<PostDetail />} />
+        <Route path='/*' element={<NotFound />} />
+      </Route>
     </Routes>
   );
 };

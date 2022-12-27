@@ -48,7 +48,6 @@ const Login = () => {
       .then((data) => {
         const emailReg =
           /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        console.log(data);
         if (!emailReg.test(email)) {
           setEmailError('* 올바른 이메일 형식이 아닙니다.');
         } else if (data.status === 422) {
@@ -57,14 +56,12 @@ const Login = () => {
           localStorage.setItem('token', data.user.token);
           localStorage.setItem('accountname', data.user.accountname);
           const userData = data.user;
-          console.log(data);
           setIsLoginState(true);
           setUserData(userData);
           setAccountName(userData.accountname);
           setUserName(userData.username);
           setIntro(userData.intro);
           setProfileImage(userData.image);
-          console.log(userData.image);
           navigate('/home');
         }
       })
@@ -81,8 +78,6 @@ const Login = () => {
           label='이메일'
           type='email'
           name='email'
-          // id='emailId'
-          // value={email}
           onChange={handleData}
           errorMsg={emailError}
           required
@@ -91,9 +86,7 @@ const Login = () => {
           label='비밀번호'
           type='password'
           name='password'
-          // id='password'
           min='6'
-          // value={password}
           onChange={handleData}
           errorMsg={pwError}
           required

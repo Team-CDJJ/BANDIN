@@ -22,7 +22,6 @@ const CommonPost = ({ post }) => {
     return `${year}년 ${month}월 ${day}일`;
   };
 
-  console.log(post);
   return (
     <CommonPostWrapper>
       <PostUserInfo

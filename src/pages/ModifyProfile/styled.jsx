@@ -8,4 +8,7 @@ export const ModifyProfileSection = styled.section`
 `;
 export const ModifyProfileForm = styled.form`
   width: 100%;
+  > div:first-child {
+    margin-bottom: 30px;
+  }
 `;

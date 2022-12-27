@@ -1,27 +1,31 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import { ModifyProfileSection, ModifyProfileForm } from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
-import noneProfileImage from '../../assets/profile.png';
 import getMyProfile from '../../api/profile/getmyprofile';
+import putModifiedData from '../../api/modifyprofile/modifyprofile';
+import { profileImgSrc } from '../../atoms';
 
 const ModifyProfile = () => {
-  // 왜 기존 프로필이미지가 불러와졌는지 의문
-  const [image, setImage] = useState(noneProfileImage);
+  const [image, setImage] = useRecoilState(profileImgSrc);
   const [userName, setUserName] = useState('');
-  const [accountName, setAccountName] = useState(
-    localStorage.getItem('accountname'),
-  );
+  const [accountName, setAccountName] = useState('');
   const [intro, setIntro] = useState('');
 
+  const [profileData, setProfileData] = useState();
+
+  const accountname = localStorage.getItem('accountname');
+
   useEffect(() => {
-    getMyProfile(accountName).then((res) => {
-      console.log(res);
-      const getProfileData = res;
-      setUserName(getProfileData.username);
-      setIntro(getProfileData.intro);
-      // setImage(getProfileData.image);
+    getMyProfile(accountname).then((data) => {
+      console.log(data);
+      setProfileData(data);
+      setUserName(profileData.username);
+      setIntro(profileData.intro);
+      setImage(profileData.image);
     });
   }, []);
 
@@ -35,9 +39,38 @@ const ModifyProfile = () => {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const modifiedData = {
+      user: {
+        username: userName,
+        accountname: accountName,
+        intro: intro,
+        image: image,
+      },
+    };
+
+    await putModifiedData(modifiedData)
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem('accountname', accountName);
+        navigate(`/profile/${accountName}`);
+      })
+      .catch((error) => {
+        if (error.response.status === 422) {
+          console.log(error);
+          alert(`${error.response.data.message}`);
+        } else {
+          console.log(error);
+        }
+      });
+  };
+
   return (
     <>
-      <TopUploadNav />
+      <TopUploadNav handlerSaveBtn={handleSubmit} />
       <ModifyProfileSection>
         <h1 className='ir'>프로필 수정 페이지</h1>
         <ModifyProfileForm>

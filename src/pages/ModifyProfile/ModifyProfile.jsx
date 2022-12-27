@@ -16,6 +16,15 @@ const ModifyProfile = () => {
   const [intro, setIntro] = useState('');
 
   const [profileData, setProfileData] = useState();
+  // 유효성 검사
+  const [isNameValid, setIsNameValid] = useState(false);
+  const [nameError, setNameError] = useState('');
+
+  const [isAccountValid, setIsAccountValid] = useState(false);
+  const [accountError, setAccountError] = useState('');
+
+  const [isIntroValid, setIsIntroValid] = useState(false);
+  const [introError, setIntroError] = useState('');
 
   const accountname = localStorage.getItem('accountname');
 
@@ -38,6 +47,50 @@ const ModifyProfile = () => {
       setIntro(event.target.value);
     }
   };
+
+  // 이름 유효성검사
+  useEffect(() => {
+    const nameValidator = () => {
+      if (userName.length >= 2 && userName.length <= 10) {
+        setIsNameValid(true);
+        setNameError('');
+      } else {
+        setIsNameValid(false);
+        setNameError('* 2~10자 이내여야 합니다.');
+      }
+    };
+    nameValidator();
+  }, [userName]);
+
+  // 계정 유효성검사
+  useEffect(() => {
+    const accountValidator = () => {
+      const accountReg = /^[-._a-z0-9]+$/gi;
+
+      if (accountReg.test(accountName)) {
+        setIsAccountValid(true);
+        setAccountError('');
+      } else {
+        setIsAccountValid(false);
+        setAccountError('* 영문, 숫자, 특수문자(.),(_)만 사용 가능합니다.');
+      }
+    };
+    accountValidator();
+  }, [accountName]);
+
+  // 자기소개 유효성검사
+  useEffect(() => {
+    const introValidator = () => {
+      if (intro.length > 0) {
+        setIsIntroValid(true);
+        setIntroError('');
+      } else {
+        setIsIntroValid(false);
+        setIntroError('* 한 줄로 나를 표현해 보세요!');
+      }
+    };
+    introValidator();
+  }, [intro]);
 
   const navigate = useNavigate();
 
@@ -70,7 +123,15 @@ const ModifyProfile = () => {
 
   return (
     <>
-      <TopUploadNav handlerSaveBtn={handleSubmit} />
+      <TopUploadNav
+        state={
+          isNameValid && isAccountValid && isIntroValid ? null : 'disabled'
+        }
+        disabled={
+          isNameValid && isAccountValid && isIntroValid ? null : 'disabled'
+        }
+        handlerSaveBtn={handleSubmit}
+      />
       <ModifyProfileSection>
         <h1 className='ir'>프로필 수정 페이지</h1>
         <ModifyProfileForm>
@@ -82,6 +143,7 @@ const ModifyProfile = () => {
             placeholder='2~10자 이내여야 합니다.'
             value={userName}
             onChange={handleData}
+            errorMsg={nameError}
             required
           />
           <InputBox
@@ -91,6 +153,7 @@ const ModifyProfile = () => {
             placeholder='영문, 숫자, 특수문자(.), (_)만 사용 가능합니다.'
             value={accountName}
             onChange={handleData}
+            errorMsg={accountError}
             required
           />
           <InputBox
@@ -100,6 +163,8 @@ const ModifyProfile = () => {
             placeholder='한 줄로 나를 표현해 보세요!'
             value={intro}
             onChange={handleData}
+            errorMsg={introError}
+            required
           />
         </ModifyProfileForm>
       </ModifyProfileSection>

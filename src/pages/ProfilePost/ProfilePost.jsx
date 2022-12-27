@@ -9,18 +9,28 @@ import profilePost from '../../api/GETprofilepost/GETprofilepost';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import Img from '../../components/atoms/Img/img';
 
-// axios 불러주면 돼
-
 const ProfilePost = () => {
   const [postList, setPostList] = useState([]);
+  const [listClicked, setListClicked] = useState(true);
+  const [albumClicked, setAlbumClicked] = useState(false);
+
+  const handleListBtn = () => {
+    setListClicked(true);
+    setAlbumClicked(false);
+    console.log(listClicked);
+  };
+
+  const handleAlbumBtn = () => {
+    setListClicked(false);
+    setAlbumClicked(true);
+    console.log(albumClicked);
+  };
 
   useEffect(() => {
     const getPost = () => {
       profilePost()
         .then((data) => {
           setPostList(data.post);
-          console.log(postList);
-          console.log(data.post.image);
         })
         .catch((error) => {
           console.log(error);
@@ -32,37 +42,40 @@ const ProfilePost = () => {
   return (
     <>
       <PostHeaderNav>
-        <ListIcon />
-        <AlbumIcon />
+        <ListIcon onClick={handleListBtn} />
+        <AlbumIcon onClick={handleAlbumBtn} />
       </PostHeaderNav>
-      {/* <PostUl>
-        {postList.map((item) => {
-          return (
-            <CommonPost
-              key={item.id}
-              image={item.author.image}
-              username={item.author.username}
-              accountname={item.author.accountname}
-              imageSrc={item.image}
-              // imageSrc ={{item.image} && {item.image}.split(',').map((img) => (
-              //   <Img width='100%' src={img} alt='게시글 이미지' />
-              // ))}
-              content={item.content}
-              id={item.id}
-              heartCount={item.heartCount}
-              commentCount={item.commentCount}
-              createdAt={item.createdAt}
-            ></CommonPost>
-          );
-        })}
-      </PostUl> */}
-      <PostGrid>
-        {postList.map((item) => {
-          return item.image ? (
-            <img src={item.image} alt='게시글 이미지' key={item.id} />
-          ) : null;
-        })}
-      </PostGrid>
+      {listClicked ? (
+        <PostUl>
+          {postList.map((item) => {
+            return (
+              <CommonPost
+                key={item.id}
+                image={item.author.image}
+                username={item.author.username}
+                accountname={item.author.accountname}
+                imageSrc={item.image}
+                // imageSrc ={{item.image} && {item.image}.split(',').map((img) => (
+                //   <Img width='100%' src={img} alt='게시글 이미지' />
+                // ))}
+                content={item.content}
+                id={item.id}
+                heartCount={item.heartCount}
+                commentCount={item.commentCount}
+                createdAt={item.createdAt}
+              ></CommonPost>
+            );
+          })}
+        </PostUl>
+      ) : (
+        <PostGrid>
+          {postList.map((item) => {
+            return item.image ? (
+              <img src={item.image} alt='게시글 이미지' key={item.id} />
+            ) : null;
+          })}
+        </PostGrid>
+      )}
     </>
   );
 };
@@ -82,7 +95,9 @@ const PostHeaderNav = styled.div`
 const ListIcon = styled.button`
   outline: none;
   border: none;
-  background: no-repeat center url(${ListIconOn});
+  background: no-repeat center
+    ${(props) =>
+      props.listClicked ? `url(${ListIconOn})` : `url(${ListIconOff})`};
   background-size: 23px 23px;
   width: 26px;
   height: 26px;
@@ -91,7 +106,9 @@ const ListIcon = styled.button`
 const AlbumIcon = styled.button`
   outline: none;
   border: none;
-  background: no-repeat center url(${AlbumIconOff});
+  background: no-repeat center
+    ${(props) =>
+      props.albumClicked ? `url(${AlbumIconOff})` : `url(${AlbumIconOn})`};
   background-size: 23px 23px;
   width: 26px;
   height: 26px;

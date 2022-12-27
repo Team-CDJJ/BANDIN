@@ -19,11 +19,11 @@ import { follow, unfollow } from '../../api/profile/follow';
 import getProfile from '../../api/profile/getmyprofile';
 
 const Following = () => {
-  const myAccountName = useRecoilValue(accountNameValue);
+  const accountName = useRecoilValue(accountNameValue);
   const [followingList, setFollowingList] = useState([]);
 
   const getFollowingList = () => {
-    getFollowingListApi(myAccountName)
+    getFollowingListApi(accountName)
       .then((data) => {
         setFollowingList(data);
       })
@@ -33,17 +33,17 @@ const Following = () => {
   };
 
   useEffect(() => {
-    if (myAccountName) getFollowingList();
-  }, [myAccountName]);
+    if (accountName) getFollowingList();
+  }, [accountName]);
 
-  const handleFollowingBtn = async (targetName, isfollow) => {
+  const handleFollowingBtn = (targetName, isfollow) => {
     if (isfollow) {
-      await unfollow(targetName);
+      unfollow(targetName);
     } else {
-      await follow(targetName);
+      follow(targetName);
     }
 
-    const profile = await getProfile(targetName);
+    const profile = getProfile(targetName);
     setFollowingList((state) =>
       state.map((s) => {
         if (s.accountname !== targetName) return s;
@@ -67,7 +67,7 @@ const Following = () => {
               username={user.username}
               accountname={user.accountname}
             />
-            {myAccountName !== user.accountname && (
+            {accountName !== user.accountname && (
               <FollowingBtn
                 size='xs'
                 state={user.isfollow ? 'active' : ''}

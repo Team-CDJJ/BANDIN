@@ -13,7 +13,7 @@ import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import { accountNameValue } from '../../atoms';
 import getFollowerListApi from '../../api/profile/getfollower';
 import { follow, unfollow } from '../../api/profile/follow';
-import getProfile from '../../api/profile/getmyprofile';
+import getMyProfile from '../../api/profile/getMyProfile';
 
 const Follower = () => {
   const accountName = useRecoilValue(accountNameValue);
@@ -40,7 +40,7 @@ const Follower = () => {
       follow(targetName);
     }
 
-    const profile = getProfile(targetName);
+    const profile = getMyProfile(targetName);
     setFollowerList((state) =>
       state.map((s) => {
         if (s.accountname !== targetName) return s;
@@ -60,6 +60,8 @@ const Follower = () => {
         {followerList.map((follower) => (
           <FollowerUserItem key={follower.accountname}>
             <UserItem
+              width='50px'
+              height='50px'
               username={follower.username}
               accountname={follower.accountname}
               image={follower.image}

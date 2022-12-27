@@ -16,7 +16,7 @@ import getFollowingListApi from '../../api/profile/getfollowing';
 
 import { accountNameValue } from '../../atoms';
 import { follow, unfollow } from '../../api/profile/follow';
-import getProfile from '../../api/profile/getmyprofile';
+import getMyProfile from '../../api/profile/getMyProfile';
 
 const Following = () => {
   const accountName = useRecoilValue(accountNameValue);
@@ -43,7 +43,7 @@ const Following = () => {
       follow(targetName);
     }
 
-    const profile = getProfile(targetName);
+    const profile = getMyProfile(targetName);
     setFollowingList((state) =>
       state.map((s) => {
         if (s.accountname !== targetName) return s;

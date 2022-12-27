@@ -5,7 +5,7 @@ import { ModifyProfileSection, ModifyProfileForm } from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
-import getMyProfile from '../../api/profile/getmyprofile';
+import getMyProfile from '../../api/profile/getMyProfile';
 import putModifiedData from '../../api/modifyprofile/modifyprofile';
 import { profileImgSrc } from '../../atoms';
 
@@ -25,8 +25,8 @@ const ModifyProfile = () => {
 
   // 기존 프로필 정보 호출
   useEffect(() => {
-    const localAccountname = localStorage.getItem('accountname');
-    getMyProfile(localAccountname).then((data) => {
+    const accountname = localStorage.getItem('accountname');
+    getMyProfile(accountname).then((data) => {
       console.log('기존프로필 정보 확인', data);
       setProfileData(data);
     });

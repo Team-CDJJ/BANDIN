@@ -1,17 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import Button from '../../atoms/Button/Button';
 
-const YourProfileBtn = ({ isFollow }) => {
-  const navigate = useNavigate();
-  const handleFollow = () => {
-    navigate('/addproduct');
-  };
-
-  const handleUnFollow = () => {
-    navigate('/modifyprofile');
-  };
-  console.log(isFollow);
-
+const YourProfileBtn = ({ isFollow, handleFollow, handleUnFollow }) => {
   return isFollow === false ? (
     <Button
       size='md'

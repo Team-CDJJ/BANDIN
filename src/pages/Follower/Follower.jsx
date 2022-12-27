@@ -11,7 +11,7 @@ import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
 import UserItem from '../../components/CommonUI/UserItem/UserItem';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import { accountNameValue } from '../../atoms';
-import getFollowerListApi from '../../api/profile/getfollower';
+import getFollowerListApi from '../../api/profile/getFollowerList';
 import { follow, unfollow } from '../../api/profile/follow';
 import getMyProfile from '../../api/profile/getMyProfile';
 

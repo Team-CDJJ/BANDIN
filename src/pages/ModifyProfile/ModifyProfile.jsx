@@ -10,12 +10,12 @@ import putModifiedData from '../../api/modifyprofile/modifyprofile';
 import { profileImgSrc } from '../../atoms';
 
 const ModifyProfile = () => {
+  const [profileData, setProfileData] = useState({});
   const [image, setImage] = useRecoilState(profileImgSrc);
   const [userName, setUserName] = useState('');
   const [accountName, setAccountName] = useState('');
   const [intro, setIntro] = useState('');
-
-  const [profileData, setProfileData] = useState();
+  // 기존 프로필 데이터 변수
   // 프로필 정보 유효성 검사 및 에러메세지 변수
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
@@ -23,23 +23,22 @@ const ModifyProfile = () => {
   const [isAccountValid, setIsAccountValid] = useState(false);
   const [accountError, setAccountError] = useState('');
 
-  const [isIntroValid, setIsIntroValid] = useState(false);
-  const [introError, setIntroError] = useState('');
-
-  const loacalAccountname = localStorage.getItem('accountname');
-
   // 기존 프로필 정보 호출
   useEffect(() => {
-    getMyProfile(loacalAccountname).then((data) => {
-      console.log(data);
+    const localAccountname = localStorage.getItem('accountname');
+    getMyProfile(localAccountname).then((data) => {
+      console.log('기존프로필 정보 확인', data);
       setProfileData(data);
-
-      setUserName(profileData.username);
-      setAccountName(profileData.accountname);
-      setIntro(profileData.intro);
-      setImage(profileData.image);
     });
   }, []);
+
+  // 기존프로필정보 띄우기
+  useEffect(() => {
+    setImage(profileData.image);
+    setUserName(profileData.username);
+    setAccountName(profileData.accountname);
+    setIntro(profileData.intro);
+  }, [profileData]);
 
   const handleData = (event) => {
     if (event.target.id === 'userName') {
@@ -54,7 +53,7 @@ const ModifyProfile = () => {
   // 이름 유효성검사
   useEffect(() => {
     const nameValidator = () => {
-      if (userName.length >= 2 && userName.length <= 10) {
+      if (userName?.length >= 2 && userName?.length <= 10) {
         setIsNameValid(true);
         setNameError('');
       } else {
@@ -80,20 +79,6 @@ const ModifyProfile = () => {
     };
     accountValidator();
   }, [accountName]);
-
-  // 자기소개 유효성검사
-  useEffect(() => {
-    const introValidator = () => {
-      if (intro.length === 0) {
-        setIsIntroValid(false);
-        setIntroError('* 한 줄로 나를 표현해 보세요!');
-      } else {
-        setIsIntroValid(true);
-        setIntroError('');
-      }
-    };
-    introValidator();
-  }, [intro]);
 
   const navigate = useNavigate();
 
@@ -127,12 +112,8 @@ const ModifyProfile = () => {
   return (
     <>
       <TopUploadNav
-        state={
-          isNameValid && isAccountValid && isIntroValid ? null : 'disabled'
-        }
-        disabled={
-          isNameValid && isAccountValid && isIntroValid ? null : 'disabled'
-        }
+        state={isNameValid && isAccountValid ? null : 'disabled'}
+        disabled={isNameValid && isAccountValid ? null : 'disabled'}
         handlerSaveBtn={handleSubmit}
       />
       <ModifyProfileSection>
@@ -145,7 +126,7 @@ const ModifyProfile = () => {
             id='userName'
             name='userName'
             placeholder='2~10자 이내여야 합니다.'
-            value={userName}
+            value={userName || ''}
             onChange={handleData}
             errorMsg={nameError}
             required
@@ -156,7 +137,7 @@ const ModifyProfile = () => {
             id='accountName'
             name='accountName'
             placeholder='영문, 숫자, 특수문자(.), (_)만 사용 가능합니다.'
-            value={accountName}
+            value={accountName || ''}
             onChange={handleData}
             errorMsg={accountError}
             required
@@ -167,10 +148,8 @@ const ModifyProfile = () => {
             id='intro'
             name='intro'
             placeholder='한 줄로 나를 표현해 보세요!'
-            value={intro}
+            value={intro || ''}
             onChange={handleData}
-            errorMsg={introError}
-            required
           />
         </ModifyProfileForm>
       </ModifyProfileSection>

@@ -16,7 +16,7 @@ const ModifyProfile = () => {
   const [intro, setIntro] = useState('');
 
   const [profileData, setProfileData] = useState();
-  // 유효성 검사
+  // 프로필 정보 유효성 검사 및 에러메세지 변수
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
 
@@ -26,13 +26,16 @@ const ModifyProfile = () => {
   const [isIntroValid, setIsIntroValid] = useState(false);
   const [introError, setIntroError] = useState('');
 
-  const accountname = localStorage.getItem('accountname');
+  const loacalAccountname = localStorage.getItem('accountname');
 
+  // 기존 프로필 정보 호출
   useEffect(() => {
-    getMyProfile(accountname).then((data) => {
+    getMyProfile(loacalAccountname).then((data) => {
       console.log(data);
       setProfileData(data);
+
       setUserName(profileData.username);
+      setAccountName(profileData.accountname);
       setIntro(profileData.intro);
       setImage(profileData.image);
     });
@@ -81,12 +84,12 @@ const ModifyProfile = () => {
   // 자기소개 유효성검사
   useEffect(() => {
     const introValidator = () => {
-      if (intro.length > 0) {
-        setIsIntroValid(true);
-        setIntroError('');
-      } else {
+      if (intro.length === 0) {
         setIsIntroValid(false);
         setIntroError('* 한 줄로 나를 표현해 보세요!');
+      } else {
+        setIsIntroValid(true);
+        setIntroError('');
       }
     };
     introValidator();
@@ -140,6 +143,7 @@ const ModifyProfile = () => {
             label='사용자 이름'
             type='userName'
             id='userName'
+            name='userName'
             placeholder='2~10자 이내여야 합니다.'
             value={userName}
             onChange={handleData}
@@ -150,6 +154,7 @@ const ModifyProfile = () => {
             label='계정 ID'
             type='accountName'
             id='accountName'
+            name='accountName'
             placeholder='영문, 숫자, 특수문자(.), (_)만 사용 가능합니다.'
             value={accountName}
             onChange={handleData}
@@ -160,6 +165,7 @@ const ModifyProfile = () => {
             label='자기소개'
             type='intro'
             id='intro'
+            name='intro'
             placeholder='한 줄로 나를 표현해 보세요!'
             value={intro}
             onChange={handleData}

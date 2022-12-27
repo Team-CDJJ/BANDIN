@@ -9,7 +9,7 @@ import {
   ProfileWrapper,
   TextWrapper,
 } from './styled';
-import getMyProfile from '../../../api/profile/getMyProfile';
+import getMyProfile from '../../../api/profile/getmyprofile';
 import MyProfileBtn from '../MyProfileBtn/MyProfileBtn';
 import YourProfileBtn from '../YourProfileBtn/YourProfileBtn';
 import noneProfileImg from '../../../assets/profile.png';

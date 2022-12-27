@@ -1,13 +1,37 @@
 import styled, { css } from 'styled-components';
 
-export const ProductWrap = styled.div`
-  width: 140px;
+export const ProductWrapper = styled.div`
+  padding: 20px 0 20px 16px;
+
+  .productOnsale {
+    ${({ theme }) => {
+      return css`
+        font-size: ${theme.fontSizes.lg};
+        color: #000000;
+        line-height: 20px;
+        font-weight: 700;
+        padding-bottom: 16px;
+      `;
+    }}
+  }
+`;
+
+export const ProductSection = styled.article`
   display: flex;
-  flex-direction: column;
+  overflow: scroll;
+  overflow-y: hidden;
+  padding-bottom: 10px;
 
   .img-product {
     height: 90px;
+    width: 140px;
+    border: 0.5px solid #c4c4c4;
+    border-radius: 8px;
   }
+`;
+
+export const ProductCont = styled.div`
+  padding-right: 10px;
 `;
 
 export const ProductTxt = styled.p`

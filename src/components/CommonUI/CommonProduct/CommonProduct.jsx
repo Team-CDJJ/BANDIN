@@ -1,13 +1,36 @@
-import { ProductWrap, ProductTxt, ProductPrice } from './styled';
-import Product from '../../../assets/post.png';
+import {
+  ProductWrapper,
+  ProductSection,
+  ProductTxt,
+  ProductPrice,
+  ProductCont,
+} from './styled';
 
-const CommonProduct = () => {
+const CommonProduct = ({ data }) => {
+  console.log(data);
   return (
-    <ProductWrap>
-      <img src={Product} alt='게시글 이미지' className='img-product' />
-      <ProductTxt>애월읍 노지 감귤</ProductTxt>
-      <ProductPrice>35,000원</ProductPrice>
-    </ProductWrap>
+    <ProductWrapper>
+      {data && data.length > 0 ? (
+        <h1 className='productOnsale'>판매 중인 상품</h1>
+      ) : null}
+      <ProductSection>
+        {data &&
+          data.map((item) => (
+            <ProductCont key={item.id}>
+              <img
+                src={item.itemImage}
+                alt='게시글 이미지'
+                className='img-product'
+              />
+              <ProductTxt>{item.itemName}</ProductTxt>
+              <ProductPrice>
+                {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+              </ProductPrice>
+            </ProductCont>
+          ))}
+        ;
+      </ProductSection>
+    </ProductWrapper>
   );
 };
 

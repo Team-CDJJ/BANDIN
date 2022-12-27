@@ -28,7 +28,6 @@ const CommonProduct = ({ data }) => {
               </ProductPrice>
             </ProductCont>
           ))}
-        ;
       </ProductSection>
     </ProductWrapper>
   );

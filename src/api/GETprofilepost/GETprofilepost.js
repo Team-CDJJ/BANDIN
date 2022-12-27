@@ -1,17 +1,8 @@
 import { accessInstance } from '../api';
 
-const profilePost = async (formData) => {
-  const userAccountname = localStorage.getItem('accountname');
-  try {
-    const res = await accessInstance.get(
-      `/post/${userAccountname}/userpost`,
-      formData,
-    );
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    return '';
-  }
+const getProfilePost = async (accountname) => {
+  const res = await accessInstance.get(`/post/${accountname}/userpost`);
+  return res.data;
 };
 
-export default profilePost;
+export default getProfilePost;

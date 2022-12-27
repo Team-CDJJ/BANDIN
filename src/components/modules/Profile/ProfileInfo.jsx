@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import Img from '../../atoms/Img/img';
+import { follow, unfollow } from '../../../api/profile/follow';
 
 import {
   BtnWrapper,
@@ -9,7 +10,7 @@ import {
   ProfileWrapper,
   TextWrapper,
 } from './styled';
-import getMyProfile from '../../../api/profile/getmyprofile';
+import getMyProfile from '../../../api/profile/getMyProfile';
 import MyProfileBtn from '../MyProfileBtn/MyProfileBtn';
 import YourProfileBtn from '../YourProfileBtn/YourProfileBtn';
 import noneProfileImg from '../../../assets/profile.png';
@@ -47,6 +48,16 @@ const ProfileInfo = () => {
     localStorage.removeItem('accountname');
     localStorage.removeItem('recoil-persist');
     navigate('/');
+  };
+
+  const handleFollow = () => {
+    follow(accountName);
+    setIsFollow((state) => true);
+  };
+
+  const handleUnFollow = () => {
+    unfollow(accountName);
+    setIsFollow((state) => false);
   };
 
   return (
@@ -90,7 +101,12 @@ const ProfileInfo = () => {
         {accountname === accountName ? (
           <MyProfileBtn></MyProfileBtn>
         ) : (
-          <YourProfileBtn isFollow={isFollow}></YourProfileBtn>
+          <YourProfileBtn
+            isFollow={isFollow}
+            accountName={accountName}
+            handleFollow={handleFollow}
+            handleUnFollow={handleUnFollow}
+          ></YourProfileBtn>
         )}
       </BtnWrapper>
     </ProfileWrapper>

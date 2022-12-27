@@ -24,8 +24,6 @@ const MyProfile = () => {
       });
   }, []);
 
-  // console.log(productList);
-
   return (
     <>
       <TopBasicNav />

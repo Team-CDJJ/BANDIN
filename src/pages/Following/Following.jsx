@@ -63,6 +63,8 @@ const Following = () => {
         {followingList.map((user) => (
           <FollowingUserItem key={user.accountname}>
             <UserItem
+              width='50px'
+              height='50px'
               image={user.image}
               username={user.username}
               accountname={user.accountname}

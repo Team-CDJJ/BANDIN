@@ -114,7 +114,7 @@ const ModifyProfile = () => {
       <TopUploadNav
         state={isNameValid && isAccountValid ? null : 'disabled'}
         disabled={isNameValid && isAccountValid ? null : 'disabled'}
-        handlerSaveBtn={handleSubmit}
+        onClick={handleSubmit}
       />
       <ModifyProfileSection>
         <h1 className='ir'>프로필 수정 페이지</h1>

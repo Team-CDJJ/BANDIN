@@ -7,7 +7,6 @@ import {
 } from './styled';
 
 const CommonProduct = ({ data }) => {
-  console.log(data);
   return (
     <ProductWrapper>
       {data && data.length > 0 ? (

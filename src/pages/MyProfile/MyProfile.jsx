@@ -18,7 +18,6 @@ const MyProfile = () => {
     getProductList(accountName)
       .then((data) => {
         setProductList(data.product);
-        console.log(data.product);
       })
       .catch((error) => {
         console.log(error);
@@ -29,9 +28,7 @@ const MyProfile = () => {
     // 게시글 목록
     getProfilePost(accountName)
       .then((data) => {
-        console.log(accountName);
-        console.log(data);
-        setPostList(data);
+        setPostList(data.post);
       })
       .catch((error) => {
         console.log(error);
@@ -42,10 +39,9 @@ const MyProfile = () => {
     <>
       <TopBasicNav />
       <ProfileInfo />
-      {/* <CommonProduct data={productList} /> */}
       {productList && <CommonProduct data={productList} />}
-      <ProfilePost />
-      <TabMenu place='myprsofile' />
+      <ProfilePost postList={postList} />
+      <TabMenu place='myprofile' />
     </>
   );
 };

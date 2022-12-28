@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   PostWrapper,
   PostHeaderNav,
@@ -10,7 +11,6 @@ import {
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 
 const ProfilePost = ({ data }) => {
-  const [postList, setPostList] = useState(data);
   const [listClicked, setListClicked] = useState(true);
   const [albumClicked, setAlbumClicked] = useState(false);
 
@@ -23,6 +23,8 @@ const ProfilePost = ({ data }) => {
     setListClicked(false);
     setAlbumClicked(true);
   };
+
+  const navigate = useNavigate();
 
   return (
     <PostWrapper>
@@ -40,7 +42,13 @@ const ProfilePost = ({ data }) => {
         <PostGrid>
           {data.post?.map((item) => {
             return item.image ? (
-              <img src={item.image} alt='게시글 이미지' key={item.id} />
+              // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+              <img
+                src={item.image.split(',')[0]}
+                alt='게시글 이미지'
+                key={item.id}
+                onClick={() => navigate(`/post/${item.id}`)}
+              />
             ) : null;
           })}
         </PostGrid>

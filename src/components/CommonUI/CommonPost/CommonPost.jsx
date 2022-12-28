@@ -11,6 +11,7 @@ import {
   Count,
   ChatBtn,
   PostUploadTime,
+  PostImg,
 } from './styled';
 
 const CommonPost = ({ post }) => {
@@ -22,7 +23,10 @@ const CommonPost = ({ post }) => {
     return `${year}년 ${month}월 ${day}일`;
   };
 
-  console.log(post);
+  const handlePostDetail = () => {
+    window.location.href = `/post/${post.id}`;
+  };
+
   return (
     <CommonPostWrapper>
       <PostUserInfo
@@ -32,21 +36,21 @@ const CommonPost = ({ post }) => {
       />
       <CommonPostSection>
         <PostTxt>{post.content}</PostTxt>
-        <Link to={`/post/${post.id}`}>
+        <PostImg onClick={handlePostDetail}>
           {post.image &&
             post.image
               .split(',')
               .map((item, idx) => (
                 <Img
                   key={idx}
-                  width='100%'
-                  height='100%'
+                  width='304px'
+                  height='228px'
                   src={item}
                   alt='게시글 이미지'
                   borderRadius='10px'
                 />
               ))}
-        </Link>
+        </PostImg>
         <IconGroup>
           <LikeBtn />
           <Count>{post.heartCount}</Count>

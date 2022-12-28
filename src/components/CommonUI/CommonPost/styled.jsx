@@ -5,18 +5,24 @@ import ChatIcon from '../../../assets/icon-message-circle.png';
 export const CommonPostWrapper = styled.article`
   width: 358px;
   margin: 0 auto;
+  margin-bottom: 10px;
 `;
 
 export const CommonPostSection = styled.div`
   width: 304px;
   margin-left: auto;
+`;
 
-  > a {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow-x: scroll;
-    gap: 8px;
+export const PostImg = styled.div`
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  > img {
+    display: inline-block;
+    width: 304px;
+    height: 228px;
+    margin-right: 8px;
+    /* object-fit: cover; */
   }
 `;
 

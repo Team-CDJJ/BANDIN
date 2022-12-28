@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TopChatNav from '../../components/CommonUI/Nav/TopChatNav/TopChatNav';
 import Comment from '../../components/CommonUI/Comment/Comment';
-import PostChatModal from '../../components/CommonUI/PostModal/PostModal';
+import { PostChatModal } from '../../components/CommonUI/PostModal/PostModal';
 
 import {
   TopContainer,

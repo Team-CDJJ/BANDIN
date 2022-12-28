@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import uploadBtnImg from '../../../assets/upload-img.png';
 
-const StyledUploadBtn = styled.button`
+const UploadBtnLabel = styled.label`
   width: 50px;
   height: 50px;
   background: url(${uploadBtnImg}) no-repeat center/ 50px 50px;
@@ -12,4 +12,4 @@ const StyledUploadBtn = styled.button`
   right: 0;
 `;
 
-export default StyledUploadBtn;
+export default UploadBtnLabel;

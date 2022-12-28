@@ -12,11 +12,16 @@ export const CommonPostSection = styled.div`
   margin-left: auto;
 
   > a {
-    display: flex;
-    width: 100%;
-    height: 100%;
+    display: inline-block;
     overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
     gap: 8px;
+    width: 100%;
+    height: 228px;
+    > img {
+      object-fit: cover;
+    }
   }
 `;
 

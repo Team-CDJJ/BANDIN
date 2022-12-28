@@ -1,20 +1,17 @@
-import StyledUploadBtn from './styled';
+import UploadBtnLabel from './styled';
 
-const UploadBtn = ({ onChange, onClick }) => {
+const UploadBtn = ({ onChange }) => {
   return (
-    <>
-      <label htmlFor='upload'>
-        <p className='ir'>이미지 파일 업로드</p>
-      </label>
-      <StyledUploadBtn onClick={onClick} />
+    <UploadBtnLabel>
+      <p className='ir'>이미지 파일 업로드</p>
       <input
         type='file'
-        id='upload'
+        multiple='multiple'
         accept='image/*'
         onChange={onChange}
         className='ir'
       />
-    </>
+    </UploadBtnLabel>
   );
 };
 

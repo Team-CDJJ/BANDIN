@@ -115,6 +115,7 @@ const ModifyProfile = () => {
         state={isNameValid && isAccountValid ? null : 'disabled'}
         disabled={isNameValid && isAccountValid ? null : 'disabled'}
         onClick={handleSubmit}
+        tit='저장'
       />
       <ModifyProfileSection>
         <h1 className='ir'>프로필 수정 페이지</h1>

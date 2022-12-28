@@ -19,10 +19,13 @@ const ProfileImgInput = () => {
   const handleProfileImgInputOnchange = (event) => {
     const formData = new FormData();
     formData.append('image', event.target.files[0]);
-    postUploadImg(formData).then((data) => {
-      setImage(`${apiUrl}/${data}`);
-    });
-    console.log(formData);
+    postUploadImg(formData)
+      .then((data) => {
+        setImage(`${apiUrl}/${data}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

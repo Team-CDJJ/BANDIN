@@ -9,6 +9,10 @@ import {
   PostGrid,
 } from './styled';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
+import postListOn from '../../assets/icon-post-list-on.png';
+import postListOff from '../../assets/icon-post-list-off.png';
+import postAlbumOn from '../../assets/icon-post-album-on.png';
+import postAlbumOff from '../../assets/icon-post-album-off.png';
 
 const ProfilePost = ({ data }) => {
   const [listClicked, setListClicked] = useState(true);
@@ -29,8 +33,20 @@ const ProfilePost = ({ data }) => {
   return (
     <PostWrapper>
       <PostHeaderNav>
-        <ListIcon onClick={handleListBtn} />
-        <AlbumIcon onClick={handleAlbumBtn} />
+        <ListIcon onClick={handleListBtn}>
+          {listClicked === false ? (
+            <img src={postListOff} alt=''></img>
+          ) : (
+            <img src={postListOn} alt=''></img>
+          )}
+        </ListIcon>
+        <AlbumIcon onClick={handleAlbumBtn}>
+          {albumClicked === false ? (
+            <img src={postAlbumOff} alt=''></img>
+          ) : (
+            <img src={postAlbumOn} alt=''></img>
+          )}
+        </AlbumIcon>
       </PostHeaderNav>
       {listClicked && !albumClicked ? (
         <PostUl>

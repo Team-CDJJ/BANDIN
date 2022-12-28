@@ -48,6 +48,7 @@ const ProfileInfo = () => {
     localStorage.removeItem('accountname');
     localStorage.removeItem('recoil-persist');
     navigate('/');
+    window.location.reload();
   };
 
   const handleFollow = () => {

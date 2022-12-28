@@ -27,7 +27,7 @@ const Home = () => {
       {postData.length !== 0 ? (
         <FeedWrapper>
           <h2 className='ir'>홈 피드</h2>
-          {postData?.map((post, idx) => {
+          {postData.map((post, idx) => {
             return <CommonPost key={idx} post={post} />;
           })}
         </FeedWrapper>

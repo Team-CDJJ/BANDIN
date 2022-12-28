@@ -6,7 +6,7 @@ import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import ProfilePost from '../ProfilePost/ProfilePost';
 import CommonProduct from '../../components/CommonUI/CommonProduct/CommonProduct';
 import getProductList from '../../api/getProductList/getProducList';
-import getProfilePost from '../../api/getProfilePost/getProfilePost';
+import getProfilePost from '../../api/post/getProfilePost';
 
 const MyProfile = () => {
   const { accountName } = useParams();

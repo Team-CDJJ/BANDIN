@@ -45,3 +45,8 @@ export const productImgSrc = atom({
   default: noneProductImage,
   effects_UNSTABLE: [persistAtom],
 });
+
+export const uploadImgArr = atom({
+  key: 'uploadImg',
+  default: [],
+});

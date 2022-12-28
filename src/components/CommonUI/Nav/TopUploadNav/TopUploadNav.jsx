@@ -5,7 +5,7 @@ import { TopUploadNavSection, TopUploadInnerWrapper, PrevBtn } from './styled';
 import arrowLeft from '../../../../assets/icon-arrow-left.png';
 import Button from '../../../atoms/Button/Button';
 
-const TopUploadNav = ({ state, disabled, handlerSaveBtn }) => {
+const TopUploadNav = ({ state, disabled, onClick, tit }) => {
   const navigate = useNavigate();
   const handlePrev = () => {
     navigate(-1);
@@ -23,8 +23,8 @@ const TopUploadNav = ({ state, disabled, handlerSaveBtn }) => {
           size='sm'
           state={state}
           disabled={disabled}
-          tit='저장'
-          onClick={handlerSaveBtn}
+          tit={tit}
+          onClick={onClick}
         ></Button>
       </TopUploadInnerWrapper>
     </TopUploadNavSection>

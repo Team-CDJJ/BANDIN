@@ -11,9 +11,13 @@ import ProductModal from '../ProductModal/ProductModal';
 const CommonProduct = ({ data }) => {
   console.log(data);
   const [onModal, setModal] = useState(false);
-  const ModalOpen = () => {
+  const [productId, setProductId] = useState(null);
+
+  const ModalOpen = (id) => {
     setModal(!onModal);
+    setProductId(id);
   };
+
   return (
     <>
       <ProductWrapper>
@@ -23,7 +27,12 @@ const CommonProduct = ({ data }) => {
         <ProductSection>
           {data &&
             data.map((item) => (
-              <ProductCont key={item.id} onClick={ModalOpen}>
+              <ProductCont
+                key={item.id}
+                onClick={() => {
+                  ModalOpen(item.id);
+                }}
+              >
                 <img
                   src={item.itemImage}
                   alt='게시글 이미지'
@@ -38,7 +47,7 @@ const CommonProduct = ({ data }) => {
             ))}
         </ProductSection>
       </ProductWrapper>
-      {onModal && data.map((item) => <ProductModal productId={item.id} />)}
+      {onModal && <ProductModal productId={productId} />}
     </>
   );
 };

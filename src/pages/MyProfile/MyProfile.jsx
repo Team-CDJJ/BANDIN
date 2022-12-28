@@ -29,7 +29,6 @@ const MyProfile = () => {
     // 게시글 목록
     getProfilePost(accountName)
       .then((data) => {
-        console.log(accountName);
         console.log(data);
         setPostList(data);
       })

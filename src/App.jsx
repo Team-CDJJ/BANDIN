@@ -20,6 +20,7 @@ import AddProduct from './pages/AddProduct/AddProduct';
 import PostDetail from './pages/PostDetail/PostDetail';
 import PrivateRoutes from './components/Router/PrivateRoutes';
 import PrivateRoutesRev from './components/Router/PrivateRoutesRev';
+import ModifyProduct from './pages/ModifyProduct/ModifyProduct';
 
 const App = () => {
   const isLoginState = useRecoilValue(isLogin);
@@ -37,6 +38,7 @@ const App = () => {
         <Route path='/home' element={<Home />} exact />
         <Route path='/chatlist' element={<ChatList />} />
         <Route path='/addproduct' element={<AddProduct />} />
+        <Route path='/product/:productId/modify' element={<ModifyProduct />} />
         <Route path='/modifyprofile' element={<ModifyProfile />} />
         <Route path='/chatlist/chatroom' element={<ChatRoom />} />
         <Route path='/search' element={<UserSearch />} />

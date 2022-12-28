@@ -11,7 +11,7 @@ import PostComment from '../../components/modules/PostComment/PostComment';
 const postDetail = () => {
   const { postId } = useParams();
   const [postData, setPostData] = useState();
-  const [commentData, setCommentData] = useState();
+  const [commentData, setCommentData] = useState([]);
   const [comment, setComment] = useState('');
   const [hasInput, setHasInput] = useState(false);
 
@@ -35,7 +35,8 @@ const postDetail = () => {
         console.log(error);
       });
   }, [hasInput, commentData]);
-  console.log(postData);
+
+  // console.log(postData);
 
   return (
     <>

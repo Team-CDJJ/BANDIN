@@ -25,6 +25,7 @@ const ModifyProduct = () => {
 
   const [isLinkValid, setIsLinkValid] = useState(false);
   const [linkError, setLinkError] = useState('');
+  const accountname = localStorage.getItem('accountname');
 
   // 기존 상품 정보 호출
   useEffect(() => {
@@ -129,7 +130,7 @@ const ModifyProduct = () => {
     putModifiedData(productId, modifiedData)
       .then((data) => {
         console.log(data);
-        navigate('/');
+        window.location = `/profile/${accountname}`;
       })
       .catch((error) => {
         if (error.response.status === 422) {

@@ -12,6 +12,7 @@ import postAddProduct from '../../api/addproduct/postAddProduct';
 
 const AddProduct = () => {
   const setProductImg = useSetRecoilState(productImgSrc);
+  const accountname = localStorage.getItem('accountname');
 
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
@@ -107,7 +108,7 @@ const AddProduct = () => {
     postAddProduct(userData)
       .then((data) => {
         console.log(data);
-        navigate('/myprofile');
+        window.location = `/profile/${accountname}`;
         setProductImg(noneProductImage);
       })
       .catch((error) => {

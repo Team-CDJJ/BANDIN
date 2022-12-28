@@ -47,7 +47,13 @@ const CommonProduct = ({ data }) => {
             ))}
         </ProductSection>
       </ProductWrapper>
-      {onModal && <ProductModal productId={productId} />}
+      {onModal && (
+        <ProductModal
+          productId={productId}
+          setModal={setModal}
+          onModal={onModal}
+        />
+      )}
     </>
   );
 };

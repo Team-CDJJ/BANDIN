@@ -23,11 +23,6 @@ export const ProductModalArticle = styled.article`
       outline: 1px solid ${theme.colors.greyDB};
       border-radius: ${theme.borderRadius.lv2} ${theme.borderRadius.lv2} 0 0;
       animation: ${fadeIn} 0.5s;
-      p {
-        &:nth-child(3) {
-          margin-top: 50px;
-        }
-      }
       z-index: 10;
     `;
   }}
@@ -57,6 +52,17 @@ export const ModalInnerText = styled.p`
       margin-left: 26px;
       cursor: pointer;
       color: #000;
+    `;
+  }}
+`;
+export const ModalBtnWrap = styled.div`
+  ${({ theme }) => {
+    return css`
+      > p {
+        &:nth-child(1) {
+          margin-top: 50px;
+        }
+      }
     `;
   }}
 `;

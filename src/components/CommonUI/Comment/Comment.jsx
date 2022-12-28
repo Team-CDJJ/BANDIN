@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { useState } from 'react';
 import {
@@ -9,15 +9,32 @@ import {
   CommentBtn,
 } from './styled';
 
+import postComments from '../../../api/post/postComments';
 import commentProfile from '../../../assets/profile.png';
 import imgBtn from '../../../assets/img-button.png';
 
-const Comment = ({ whatImg, whatPlaceholder, chatRoomClick }) => {
+const Comment = ({
+  setHasInput,
+  hasInput,
+  setComment,
+  whatImg,
+  whatPlaceholder,
+  chatRoomClick,
+}) => {
   const [inputValue, setInputValue] = useState('');
-
-  const handleSubmit = (e) => {
+  const { postId } = useParams();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = await postComments(postId, inputValue)
+      .then((data) => {
+        console.log(111, data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setComment(inputValue);
     setInputValue('');
+    setHasInput(!hasInput);
   };
 
   return (

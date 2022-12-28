@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
 import PostUserInfo from '../../modules/PostUserInfo/PostUserInfo';
 
@@ -14,6 +14,7 @@ import {
 } from './styled';
 
 const CommonPost = ({ post }) => {
+  const navigate = useNavigate();
   const changeDateFormat = (date) => {
     const year = date.slice(0, 4);
     const month = date.slice(5, 7);
@@ -21,7 +22,9 @@ const CommonPost = ({ post }) => {
 
     return `${year}년 ${month}월 ${day}일`;
   };
-
+  const onClickComment = () => {
+    navigate(`/post/${post.id}`);
+  };
   return (
     <CommonPostWrapper>
       <PostUserInfo
@@ -49,7 +52,7 @@ const CommonPost = ({ post }) => {
         <IconGroup>
           <LikeBtn />
           <Count>{post.heartCount}</Count>
-          <ChatBtn />
+          <ChatBtn onClick={onClickComment} />
           <Count>{post.commentCount}</Count>
         </IconGroup>
         <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>

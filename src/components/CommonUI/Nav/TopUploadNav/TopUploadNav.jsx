@@ -13,7 +13,7 @@ const TopUploadNav = ({ state, disabled, onClick, tit }) => {
 
   return (
     <TopUploadNavSection>
-      <h1 className='ir'>업로드 상단바</h1>
+      <h1 className='ir'>우측에 제출 버튼이 있는 상단바</h1>
       <TopUploadInnerWrapper>
         <PrevBtn onClick={handlePrev}>
           <img src={arrowLeft} alt='뒤로 가기' />

@@ -15,7 +15,6 @@ const CommonProduct = ({ data }) => {
   const [productLink, setProductLink] = useState(null);
 
   const ModalOpen = (item) => {
-    console.log(item, '되니??!!');
     setModal(!onModal);
     setProductId(item.id);
     setProductLink(item.link);
@@ -31,12 +30,7 @@ const CommonProduct = ({ data }) => {
         <ProductSection>
           {data &&
             data.map((item) => (
-              <ProductCont
-                key={item.id}
-                onClick={() => {
-                  ModalOpen(item);
-                }}
-              >
+              <ProductCont key={item.id} onClick={ModalOpen}>
                 <img
                   src={item.itemImage}
                   alt='게시글 이미지'
@@ -44,8 +38,7 @@ const CommonProduct = ({ data }) => {
                 />
                 <ProductTxt>{item.itemName}</ProductTxt>
                 <ProductPrice>
-                  {item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  원
+                  {`${item.price.toLocaleString()}원`}
                 </ProductPrice>
               </ProductCont>
             ))}

@@ -27,4 +27,7 @@ export const PrevBtn = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  > img {
+    display: block;
+  }
 `;

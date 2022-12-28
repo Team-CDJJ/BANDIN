@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
 import PostUserInfo from '../../modules/PostUserInfo/PostUserInfo';
-
+import LikeBtn from '../../modules/LikeBtn/LikeBtn';
 import {
   CommonPostWrapper,
   CommonPostSection,
   PostTxt,
   IconGroup,
-  LikeBtn,
   Count,
   ChatBtn,
   PostUploadTime,
@@ -47,8 +46,11 @@ const CommonPost = ({ post }) => {
               ))}
         </Link>
         <IconGroup>
-          <LikeBtn />
-          <Count>{post.heartCount}</Count>
+          <LikeBtn
+            heartCount={post.heartCount}
+            id={post.id}
+            heartedBool={post.hearted}
+          />
           <ChatBtn />
           <Count>{post.commentCount}</Count>
         </IconGroup>

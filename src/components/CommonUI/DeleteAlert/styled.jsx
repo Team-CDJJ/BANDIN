@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const AlertWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 252px;
   height: 110px;
   border-radius: 10px;
@@ -8,6 +12,7 @@ export const AlertWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  background-color: #fff;
 `;
 
 export const AlertTxt = styled.strong`

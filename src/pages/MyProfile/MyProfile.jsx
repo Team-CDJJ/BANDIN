@@ -45,7 +45,7 @@ const MyProfile = () => {
       {/* <CommonProduct data={productList} /> */}
       {productList && <CommonProduct data={productList} />}
       <ProfilePost />
-      <TabMenu place='myprsofile' />
+      <TabMenu place='myprofile' />
     </>
   );
 };

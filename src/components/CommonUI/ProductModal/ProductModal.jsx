@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import {
   ProductModalArticle,
@@ -8,7 +8,8 @@ import {
 } from './styled';
 import DeleteAlert from '../DeleteAlert/DeleteAlert';
 
-const ProductModal = ({ productId, setModal, onModal }) => {
+const ProductModal = ({ productId, setModal, onModal, productLink }) => {
+  const navigate = useNavigate();
   const [onAlert, setOnAlert] = useState(false);
   const AlertOpen = () => {
     setOnAlert(!onAlert);
@@ -31,7 +32,9 @@ const ProductModal = ({ productId, setModal, onModal }) => {
           <Link to={`/product/${productId}/modify`}>
             <ModalInnerText>수정</ModalInnerText>
           </Link>
-          <ModalInnerText>웹사이트에서 상품 보기</ModalInnerText>
+          <a href={productLink} target='_blank' rel='noopener noreferrer'>
+            <ModalInnerText>웹사이트에서 상품 보기</ModalInnerText>
+          </a>
         </ModalBtnWrap>
       </ProductModalArticle>
       {onAlert && (

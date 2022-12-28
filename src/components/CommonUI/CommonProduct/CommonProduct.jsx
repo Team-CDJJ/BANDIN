@@ -12,11 +12,15 @@ const CommonProduct = ({ data }) => {
   console.log(data);
   const [onModal, setModal] = useState(false);
   const [productId, setProductId] = useState(null);
+  const [productLink, setProductLink] = useState(null);
 
-  const ModalOpen = (id) => {
+  const ModalOpen = (item) => {
+    console.log(item, '되니??!!');
     setModal(!onModal);
-    setProductId(id);
+    setProductId(item.id);
+    setProductLink(item.link);
   };
+  console.log(productLink);
 
   return (
     <>
@@ -30,7 +34,7 @@ const CommonProduct = ({ data }) => {
               <ProductCont
                 key={item.id}
                 onClick={() => {
-                  ModalOpen(item.id);
+                  ModalOpen(item);
                 }}
               >
                 <img
@@ -52,6 +56,7 @@ const CommonProduct = ({ data }) => {
           productId={productId}
           setModal={setModal}
           onModal={onModal}
+          productLink={productLink}
         />
       )}
     </>

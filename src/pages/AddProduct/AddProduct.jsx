@@ -109,8 +109,10 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         window.location = `/profile/${accountname}`;
-        setProductImg(noneProductImage);
       })
+      // .then(() => {
+      //   setProductImg(noneProductImage);
+      // })
       .catch((error) => {
         if (error.response.status === 422) {
           console.log(error);
@@ -119,6 +121,7 @@ const AddProduct = () => {
           console.log(error);
         }
       });
+    setProductImg(noneProductImage);
   };
 
   return (

@@ -40,6 +40,8 @@ export const ProductTxt = styled.p`
       font-size: ${theme.fontSizes.md};
       line-height: 18px;
       margin: 6px 2px 4px 2px;
+      /* word-break: break-all;
+      white-space: normal; */
     `;
   }}
 `;

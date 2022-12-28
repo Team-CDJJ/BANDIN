@@ -4,6 +4,10 @@ import ListIconOff from '../../assets/icon-post-list-off.png';
 import AlbumIconOn from '../../assets/icon-post-album-on.png';
 import AlbumIconOff from '../../assets/icon-post-album-off.png';
 
+export const PostWrapper = styled.div`
+  margin-bottom: 78px;
+`;
+
 export const PostHeaderNav = styled.div`
   height: 44px;
   width: 100%;

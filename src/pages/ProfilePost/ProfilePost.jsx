@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
-import { PostHeaderNav, ListIcon, AlbumIcon, PostUl, PostGrid } from './styled';
+import {
+  PostWrapper,
+  PostHeaderNav,
+  ListIcon,
+  AlbumIcon,
+  PostUl,
+  PostGrid,
+} from './styled';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 
 const ProfilePost = ({ data }) => {
-  // const [postList, setPostList] = useState([]);
-  // console.log(postList);
   const [postList, setPostList] = useState(data);
   const [listClicked, setListClicked] = useState(true);
   const [albumClicked, setAlbumClicked] = useState(false);
-  // console.log(postList);
+
   const handleListBtn = () => {
     setListClicked(true);
     setAlbumClicked(false);
@@ -20,7 +25,7 @@ const ProfilePost = ({ data }) => {
   };
 
   return (
-    <>
+    <PostWrapper>
       <PostHeaderNav>
         <ListIcon onClick={handleListBtn} />
         <AlbumIcon onClick={handleAlbumBtn} />
@@ -40,7 +45,7 @@ const ProfilePost = ({ data }) => {
           })}
         </PostGrid>
       )}
-    </>
+    </PostWrapper>
   );
 };
 export default ProfilePost;

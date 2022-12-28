@@ -43,7 +43,7 @@ const MyProfile = () => {
       <ProfileInfo />
       {productList && <CommonProduct data={productList} />}
       <ProfilePost data={postList} />
-      <TabMenu place='myprsofile' />
+      <TabMenu place='myprofile' />
     </>
   );
 };

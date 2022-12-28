@@ -26,6 +26,8 @@ export const PostTxt = styled.p`
       margin: 16px 0;
       line-height: 18px;
       font-size: ${theme.fontSizes.md};
+      word-break: break-all;
+      white-space: normal;
     `;
   }}
 `;

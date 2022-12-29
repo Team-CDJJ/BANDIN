@@ -50,8 +50,8 @@ const ProfilePost = ({ data }) => {
       </PostHeaderNav>
       {listClicked && !albumClicked ? (
         <PostUl>
-          {data.post?.map((item) => (
-            <CommonPost post={item}></CommonPost>
+          {data.post?.map((item, idx) => (
+            <CommonPost post={item} key={idx}></CommonPost>
           ))}
         </PostUl>
       ) : (

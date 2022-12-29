@@ -10,13 +10,15 @@ import { apiUrl } from '../../api/api';
 import deleteIcon from '../../assets/icon-delete.png';
 import getPostDetail from '../../api/post/getPostDetail';
 import putEditPost from '../../api/post/putEditPost';
+import NotFound from '../404/404';
 
 const UploadPost = () => {
   const [profileImg, setProfileImg] = useState('');
   const [text, setText] = useState('');
   const [imgSrc, setImgSrc] = useState([]);
   const { postId } = useParams();
-  console.log(postId);
+  const isSameAccount = false;
+
   // const accountname = useRecoilValue(accountNameValue);
   const accountname = localStorage.getItem('accountname');
 
@@ -79,20 +81,16 @@ const UploadPost = () => {
       alert('이미지는 3장까지 업로드 할 수 있습니다.');
     }
 
-    console.log(imgInput);
     formData.append('image', imgInput);
 
     postUploadImgs(formData)
       .then((data) => {
-        console.log(data);
         setImgSrc([...imgSrc, `${apiUrl}/${data[0].filename}`]);
-        console.log(imgSrc);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  console.log(imgSrc);
 
   const handleDeleteImg = (event) => {
     const idx = event.target.parentElement.id;
@@ -101,57 +99,63 @@ const UploadPost = () => {
   };
 
   return (
-    <>
-      <TopUploadNav
-        onClick={handleUpload}
-        tit='업로드'
-        state={text.length || imgSrc.length ? null : 'disabled'}
-        disabled={text.length || imgSrc.length ? null : 'disabled'}
-      />
-      <UploadWrapper>
-        <Img
-          width='42px'
-          height='42px'
-          src={profileImg}
-          alt=''
-          borderRadius='50%'
-        />
-        <form className='upload-form'>
-          <StyledTextArea
-            className='text-input'
-            placeholder='게시글 입력하기...'
-            cols='30'
-            rows='5'
-            onChange={handleSetText}
-            value={text}
+    <div>
+      {isSameAccount ? (
+        <>
+          <TopUploadNav
+            onClick={handleUpload}
+            tit='업로드'
+            state={text.length || imgSrc.length ? null : 'disabled'}
+            disabled={text.length || imgSrc.length ? null : 'disabled'}
           />
-          <ImgBox>
-            {imgSrc?.map((img, idx) => {
-              return (
-                <li className='img-list' key={idx} id={idx}>
-                  <Img
-                    src={img}
-                    width='168px'
-                    height='126px'
-                    alt=''
-                    borderRadius='10px'
-                  />
-                  <button
-                    className='delete-btn'
-                    type='button'
-                    onClick={handleDeleteImg}
-                    id={img}
-                  >
-                    <img src={deleteIcon} alt='사진 삭제 버튼' />
-                  </button>
-                </li>
-              );
-            })}
-          </ImgBox>
-        </form>
-        <UploadBtn onChange={handleUploadImgs} />
-      </UploadWrapper>
-    </>
+          <UploadWrapper>
+            <Img
+              width='42px'
+              height='42px'
+              src={profileImg}
+              alt=''
+              borderRadius='50%'
+            />
+            <form className='upload-form'>
+              <StyledTextArea
+                className='text-input'
+                placeholder='게시글 입력하기...'
+                cols='30'
+                rows='5'
+                onChange={handleSetText}
+                value={text}
+              />
+              <ImgBox>
+                {imgSrc?.map((img, idx) => {
+                  return (
+                    <li className='img-list' key={idx} id={idx}>
+                      <Img
+                        src={img}
+                        width='168px'
+                        height='126px'
+                        alt=''
+                        borderRadius='10px'
+                      />
+                      <button
+                        className='delete-btn'
+                        type='button'
+                        onClick={handleDeleteImg}
+                        id={img}
+                      >
+                        <img src={deleteIcon} alt='사진 삭제 버튼' />
+                      </button>
+                    </li>
+                  );
+                })}
+              </ImgBox>
+            </form>
+            <UploadBtn onChange={handleUploadImgs} />
+          </UploadWrapper>
+        </>
+      ) : (
+        <NotFound />
+      )}
+    </div>
   );
 };
 

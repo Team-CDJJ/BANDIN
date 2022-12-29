@@ -149,6 +149,7 @@ const ModifyProduct = () => {
           isNameValid && isPriceValid && isLinkValid ? null : 'disabled'
         }
         handlerSaveBtn={handleSubmit}
+        tit='저장'
       />
       <ModiProductSection>
         <h1 className='ir'>상품 수정 페이지</h1>

@@ -132,6 +132,7 @@ const AddProduct = () => {
           isNameValid && isPriceValid && isLinkValid ? null : 'disabled'
         }
         handlerSaveBtn={handleSubmit}
+        tit='저장'
       />
       <AddProductSection>
         <h1 className='ir'>상품 등록 페이지</h1>

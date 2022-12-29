@@ -35,8 +35,8 @@ const App = () => {
         <Route path='/signup/setupprofile' element={<SetUpProfile />} />
       </Route>
       <Route element={<PrivateRoutesRev authorization={isLoginState} />}>
-        <Route path='/' element={<Login />} exact />
-        <Route path='/home' element={<Home />} exact />
+        <Route path='/' element={<Login />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/upload' element={<UploadPost />} />
         <Route path='/chatlist' element={<ChatList />} />
         <Route path='/addproduct' element={<AddProduct />} />

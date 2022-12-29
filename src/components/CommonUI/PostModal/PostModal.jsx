@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom';
-import { PostModalArticle, GrayLine, ModalInnerText } from './styled';
+import {
+  PostModalArticle,
+  GrayLine,
+  ModalInnerText,
+  CommentModalContainer,
+  CommentModalText,
+} from './styled';
 
 const PostChatModal = ({ leaveChatRoom }) => {
   // 채팅방 나가기
@@ -14,7 +20,17 @@ const PostChatModal = ({ leaveChatRoom }) => {
   );
 };
 
-export default PostChatModal;
+const CommentModal = ({ content, onClickDelete }) => {
+  return (
+    <CommentModalContainer>
+      <h1 className='ir'>모달창</h1>
+      <GrayLine />
+      <CommentModalText onClick={onClickDelete}>{content}</CommentModalText>
+    </CommentModalContainer>
+  );
+};
+
+export { PostChatModal, CommentModal };
 
 // export const YourProfileModal = () => {
 //   return (

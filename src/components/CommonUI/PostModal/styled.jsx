@@ -48,9 +48,16 @@ export const ModalInnerText = styled.p`
   &:first-child {
     margin-top: 50px;
   }
-  margin-top: 24px;
+  margin-top: 34px;
   margin-left: 26px;
   cursor: pointer;
   font-size: 14px;
   color: #000;
 `;
+
+export const CommentModalContainer = styled(PostModalArticle)`
+  left: 0;
+  z-index: 99;
+`;
+
+export const CommentModalText = styled(ModalInnerText)``;

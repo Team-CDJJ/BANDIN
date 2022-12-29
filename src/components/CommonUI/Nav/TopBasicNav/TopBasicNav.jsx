@@ -18,7 +18,7 @@ const TopBasicNav = ({ moreBtn }) => {
 
   return (
     <TopBasicNavSection>
-      <h1 className='ir'>기본 상단바</h1>
+      <h1 className='ir'>상단바</h1>
       <InnerBasicNav>
         <PrevBtn onClick={handlePrev}>
           <img src={arrowLeft} alt='뒤로 가기' />

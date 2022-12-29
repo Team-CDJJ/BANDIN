@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const ProductWrapper = styled.div`
-  padding: 20px 0 20px 16px;
+  padding: 20px 16px;
 
   .productOnsale {
     ${({ theme }) => {
@@ -10,36 +10,43 @@ export const ProductWrapper = styled.div`
         color: #000000;
         line-height: 20px;
         font-weight: 700;
-        padding-bottom: 16px;
+        margin-bottom: 16px;
       `;
     }}
   }
 `;
 
-export const ProductSection = styled.article`
+export const ProductSection = styled.div`
   display: flex;
-  overflow: scroll;
-  overflow-y: hidden;
+  overflow-x: scroll;
   padding-bottom: 10px;
-
-  .img-product {
-    height: 90px;
-    width: 140px;
-    border: 0.5px solid #c4c4c4;
-    border-radius: 8px;
-  }
 `;
 
 export const ProductCont = styled.div`
-  padding-right: 10px;
+  width: 140px;
+  margin-right: 10px;
+
+  .img-product {
+    width: 140px;
+    height: 90px;
+    border: 0.5px solid #dbdbdb;
+    border-radius: 8px;
+  }
 `;
 
 export const ProductTxt = styled.p`
   ${({ theme }) => {
     return css`
+      display: block;
+      width: 95%;
       font-size: ${theme.fontSizes.md};
+      font-weight: 400;
       line-height: 18px;
-      margin: 6px 2px 4px 2px;
+      margin: 6px 2px 4px;
+      word-break: break-all;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     `;
   }}
 `;

@@ -14,6 +14,7 @@ export const EmptyHomeWrapper = styled.div`
 
 export const FeedWrapper = styled.main`
   display: flex;
+  height: 100vh;
   flex-direction: column;
   align-items: center;
   margin: 68px 16px 90px;

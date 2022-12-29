@@ -12,6 +12,7 @@ import postAddProduct from '../../api/addproduct/postAddProduct';
 
 const AddProduct = () => {
   const setProductImg = useSetRecoilState(productImgSrc);
+  const accountname = localStorage.getItem('accountname');
 
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
@@ -107,9 +108,11 @@ const AddProduct = () => {
     postAddProduct(userData)
       .then((data) => {
         console.log(data);
-        navigate('/myprofile');
-        setProductImg(noneProductImage);
+        window.location = `/profile/${accountname}`;
       })
+      // .then(() => {
+      //   setProductImg(noneProductImage);
+      // })
       .catch((error) => {
         if (error.response.status === 422) {
           console.log(error);
@@ -118,6 +121,7 @@ const AddProduct = () => {
           console.log(error);
         }
       });
+    setProductImg(noneProductImage);
   };
 
   return (
@@ -128,6 +132,7 @@ const AddProduct = () => {
           isNameValid && isPriceValid && isLinkValid ? null : 'disabled'
         }
         handlerSaveBtn={handleSubmit}
+        tit='저장'
       />
       <AddProductSection>
         <h1 className='ir'>상품 등록 페이지</h1>

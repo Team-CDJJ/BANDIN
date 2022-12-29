@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useParams } from 'react-router-dom';
 import {
   FollowerTopSpan,
   FollowerMain,
@@ -10,15 +10,14 @@ import FollowerBtn from '../../components/atoms/Button/Button';
 import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
 import UserItem from '../../components/CommonUI/UserItem/UserItem';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
-import { accountNameValue } from '../../atoms';
 import getFollowerListApi from '../../api/profile/getFollowerList';
 import { follow, unfollow } from '../../api/profile/follow';
 import getMyProfile from '../../api/profile/getMyProfile';
 
 const Follower = () => {
-  const accountName = useRecoilValue(accountNameValue);
+  const { accountName } = useParams();
   const [followerList, setFollowerList] = useState([]);
-
+  console.log(11111, followerList);
   const getFollowerList = () => {
     getFollowerListApi(accountName)
       .then((data) => {

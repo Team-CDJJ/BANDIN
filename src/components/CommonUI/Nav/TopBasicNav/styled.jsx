@@ -6,8 +6,9 @@ export const TopBasicNavSection = styled.header`
       width: 100vw;
       padding: 12px 12px 12px 16px;
       height: 48px;
+      display: flex;
+      align-items: center;
       position: fixed;
-      z-index: 100;
       top: 0;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
       background-color: #fff;
@@ -17,6 +18,7 @@ export const TopBasicNavSection = styled.header`
 
 export const InnerBasicNav = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 `;
@@ -25,6 +27,9 @@ export const PrevBtn = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  > img {
+    display: block;
+  }
 `;
 
 export const TopBasicNavBtn = styled.div`

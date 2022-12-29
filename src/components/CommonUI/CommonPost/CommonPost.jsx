@@ -1,16 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
 import PostUserInfo from '../../modules/PostUserInfo/PostUserInfo';
-
+import LikeBtn from '../../modules/LikeBtn/LikeBtn';
 import {
   CommonPostWrapper,
   CommonPostSection,
   PostTxt,
   IconGroup,
-  LikeBtn,
   Count,
   ChatBtn,
   PostUploadTime,
+  PostImg,
 } from './styled';
 
 const CommonPost = ({ post }) => {
@@ -22,9 +22,15 @@ const CommonPost = ({ post }) => {
 
     return `${year}년 ${month}월 ${day}일`;
   };
+
+  const handlePostDetail = () => {
+    window.location.href = `/post/${post.id}`;
+  };
+
   const onClickComment = () => {
     navigate(`/post/${post.id}`);
   };
+
   return (
     <CommonPostWrapper>
       <PostUserInfo
@@ -34,24 +40,27 @@ const CommonPost = ({ post }) => {
       />
       <CommonPostSection>
         <PostTxt>{post.content}</PostTxt>
-        <Link to={`/post/${post.id}`}>
+        <PostImg onClick={handlePostDetail}>
           {post.image &&
             post.image
               .split(',')
               .map((item, idx) => (
                 <Img
                   key={idx}
-                  width='100%'
-                  height='100%'
+                  width='304px'
+                  height='228px'
                   src={item}
                   alt='게시글 이미지'
                   borderRadius='10px'
                 />
               ))}
-        </Link>
+        </PostImg>
         <IconGroup>
-          <LikeBtn />
-          <Count>{post.heartCount}</Count>
+          <LikeBtn
+            heartCount={post.heartCount}
+            id={post.id}
+            heartedBool={post.hearted}
+          />
           <ChatBtn onClick={onClickComment} />
           <Count>{post.commentCount}</Count>
         </IconGroup>

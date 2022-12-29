@@ -74,11 +74,7 @@ export const TextWrapper = styled.div`
 `;
 
 export const BtnWrapper = styled.div`
-  ${({ theme }) => {
-    return css`
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-    `;
-  }}
+  display: flex;
+  justify-content: center;
+  gap: 12px;
 `;

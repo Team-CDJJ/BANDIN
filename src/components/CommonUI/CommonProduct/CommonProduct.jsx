@@ -6,7 +6,7 @@ import {
   ProductPrice,
   ProductCont,
 } from './styled';
-import { ProductModal } from '../PostModal/PostModal';
+import { ProductModal, WebLinkModal } from '../PostModal/PostModal';
 
 const CommonProduct = ({ data }) => {
   console.log(data);
@@ -52,14 +52,22 @@ const CommonProduct = ({ data }) => {
             ))}
         </ProductSection>
       </ProductWrapper>
-      {onModal && accountName === productAuthor && (
-        <ProductModal
-          productId={productId}
-          setModal={setModal}
-          onModal={onModal}
-          productLink={productLink}
-        />
-      )}
+      {onModal &&
+        (accountName === productAuthor ? (
+          <ProductModal
+            productId={productId}
+            setModal={setModal}
+            onModal={onModal}
+            productLink={productLink}
+          />
+        ) : (
+          <WebLinkModal
+            productId={productId}
+            setModal={setModal}
+            onModal={onModal}
+            productLink={productLink}
+          />
+        ))}
     </>
   );
 };

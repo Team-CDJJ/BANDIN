@@ -12,6 +12,17 @@ const fadeIn = keyframes`
 
 `;
 
+export const ModalBackGround = styled.div`
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  z-index: 998;
+`;
+
 export const PostModalArticle = styled.article`
   ${({ theme }) => {
     return css`
@@ -24,6 +35,8 @@ export const PostModalArticle = styled.article`
       padding-bottom: 24px;
       outline: 1px solid ${theme.colors.greyDB};
       border-radius: ${theme.borderRadius.lv2} ${theme.borderRadius.lv2} 0 0;
+      z-index: 999;
+      left: 0;
       animation: ${fadeIn} 0.5s;
     `;
   }}

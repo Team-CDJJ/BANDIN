@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Img from '../../atoms/Img/img';
 import {
   UserList,
@@ -6,8 +7,15 @@ import {
   VerticalBtn,
   UserInfoLink,
 } from './styled';
+import { PostVerticalModal } from '../../CommonUI/PostModal/PostModal';
 
 const PostUserInfo = ({ image, username, accountname, alt }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const showModal = () => {
+    setModalOpen(true);
+  };
+
   return (
     <UserList>
       <UserInfoLink to={`/profile/${accountname}`}>
@@ -23,7 +31,8 @@ const PostUserInfo = ({ image, username, accountname, alt }) => {
           <UserId>@ {accountname}</UserId>
         </div>
       </UserInfoLink>
-      <VerticalBtn type='button' />
+      <VerticalBtn type='button' onClick={showModal} />
+      {modalOpen && <PostVerticalModal setModalOpen={setModalOpen} />}
     </UserList>
   );
 };

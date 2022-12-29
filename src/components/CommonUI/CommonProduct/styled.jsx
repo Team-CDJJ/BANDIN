@@ -25,6 +25,7 @@ export const ProductSection = styled.div`
 export const ProductCont = styled.div`
   width: 140px;
   margin-right: 10px;
+  cursor: pointer;
 
   .img-product {
     width: 140px;

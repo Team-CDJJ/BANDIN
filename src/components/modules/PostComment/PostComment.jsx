@@ -1,6 +1,5 @@
-// import 'moment/locale/ko';
 import { useState, useRef, useEffect } from 'react';
-// import moment from 'moment/moment';
+import TimeAgo from '../TimeAgo/TimeAgo';
 import Img from '../../atoms/Img/img';
 import { VerticalBtn } from '../PostUserInfo/styled';
 import { CommentModal } from '../../CommonUI/PostModal/PostModal';
@@ -74,7 +73,7 @@ const PostComment = ({
           alt={alt}
         />
         <UserName>{username}</UserName>
-        {/* <CreatedTime>{moment(createdAt).fromNow()}</CreatedTime> */}
+        <CreatedTime>{TimeAgo(new Date(createdAt))}</CreatedTime>
         <VerticalBtn onClick={onClickModal} />
       </UserInfo>
       <CommentContent>{comment}</CommentContent>

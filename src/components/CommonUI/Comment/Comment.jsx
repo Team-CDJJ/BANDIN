@@ -23,15 +23,11 @@ const Comment = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const { postId } = useParams();
+
+  // async 안주면 실시간 업데이트 안 되는 문제..
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await postComments(postId, inputValue)
-      .then((data) => {
-        console.log(111, data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    await postComments(postId, inputValue);
     setComment(inputValue);
     setInputValue('');
     setHasInput(!hasInput);

@@ -22,6 +22,7 @@ import PrivateRoutes from './components/Router/PrivateRoutes';
 import PrivateRoutesRev from './components/Router/PrivateRoutesRev';
 import ModifyProduct from './pages/ModifyProduct/ModifyProduct';
 import UploadPost from './pages/UploadPost/UploadPost';
+import EditPost from './pages/EditPost/EditPost';
 
 const App = () => {
   const isLoginState = useRecoilValue(isLogin);
@@ -38,6 +39,7 @@ const App = () => {
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} />
         <Route path='/upload' element={<UploadPost />} />
+        <Route path='/editpost/:postId' element={<EditPost />} />
         <Route path='/chatlist' element={<ChatList />} />
         <Route path='/addproduct' element={<AddProduct />} />
         <Route path='/product/:productId/modify' element={<ModifyProduct />} />

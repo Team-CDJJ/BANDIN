@@ -1,22 +1,23 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TimeAgo from '../TimeAgo/TimeAgo';
 import Img from '../../atoms/Img/img';
 import { VerticalBtn } from '../PostUserInfo/styled';
 import { CommentModal } from '../../CommonUI/PostModal/PostModal';
 import {
   ModalBg,
-  CommentWrapper,
   UserInfo,
   UserName,
   CreatedTime,
   CommentContent,
+  CommentHeader,
 } from './styled';
 import deleteComment from '../../../api/comment/deleteComment';
 import getPostComments from '../../../api/post/getPostComments';
 import reportComment from '../../../api/comment/reportComment';
 
 const PostComment = ({
-  image,
+  accountname,
   alt,
   username,
   comment,
@@ -28,31 +29,34 @@ const PostComment = ({
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState('');
-  const currentUserName = localStorage.getItem('username');
   const [isDelete, setIsDelete] = useState(false);
+  const curAccountName = localStorage.getItem('accountname');
   const outside = useRef();
+  const navigate = useNavigate();
+
   const onClickModal = () => {
-    if (username === currentUserName) {
+    if (accountname === curAccountName) {
       setModalContent('삭제');
     } else {
       setModalContent('신고');
     }
     setOpenModal(true);
   };
-  const onClickDelete = async () => {
-    const deleteCall = await deleteComment(postId, commentId).then((res) => {
-      console.log(res);
+
+  const onClickDelete = () => {
+    deleteComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
       setOpenModal(false);
     });
   };
-  const onClickReport = async () => {
-    const report = await reportComment(postId, commentId).then((res) => {
-      console.log(res);
+
+  const onClickReport = () => {
+    reportComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
       setOpenModal(false);
     });
   };
+
   useEffect(() => {
     getPostComments(postId)
       .then((data) => {
@@ -62,20 +66,28 @@ const PostComment = ({
         console.log(error);
       });
   }, [isDelete]);
+
+  const handleToProfile = () => {
+    navigate(`/profile/${accountname}`);
+  };
+
   return (
-    <CommentWrapper>
-      <UserInfo>
-        <Img
-          width='36px'
-          height='36px'
-          borderRadius='50%'
-          src={thumbnail}
-          alt={alt}
-        />
-        <UserName>{username}</UserName>
+    <div>
+      <CommentHeader>
+        <UserInfo onClick={handleToProfile}>
+          <Img
+            width='36px'
+            height='36px'
+            borderRadius='50%'
+            src={thumbnail}
+            alt={alt}
+          />
+          <UserName>{username}</UserName>
+        </UserInfo>
         <CreatedTime>{TimeAgo(new Date(createdAt))}</CreatedTime>
         <VerticalBtn onClick={onClickModal} />
-      </UserInfo>
+      </CommentHeader>
+
       <CommentContent>{comment}</CommentContent>
       {openModal && (
         <ModalBg
@@ -93,7 +105,7 @@ const PostComment = ({
           />
         </ModalBg>
       )}
-    </CommentWrapper>
+    </div>
   );
 };
 

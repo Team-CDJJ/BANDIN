@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   PostModalArticle,
   GrayLine,
@@ -7,6 +7,10 @@ import {
   CommentModalContainer,
   CommentModalText,
   ModalBackGround,
+  AlertWrapper,
+  AlertTxt,
+  BtnsWrapper,
+  ModalBtn,
 } from './styled';
 
 export const PostChatModal = ({ leaveChatRoom }) => {
@@ -33,9 +37,10 @@ export const CommentModal = ({ content, onClickDelete }) => {
 };
 
 export const PostVerticalModal = ({ setModalOpen }) => {
-  // const closeModal = () => {
-  //   setModalOpen(false);
-  // };
+  const [onAlert, setOnAlert] = useState(false);
+  const AlertOpen = () => {
+    setOnAlert(!onAlert);
+  };
 
   // 모달 외부 클릭 시 끄기 처리
   const modalRef = useRef(null);
@@ -60,9 +65,22 @@ export const PostVerticalModal = ({ setModalOpen }) => {
       <PostModalArticle ref={modalRef}>
         <h2 className='ir'>모달창</h2>
         <GrayLine />
-        <CommentModalText>삭제</CommentModalText>
+        <CommentModalText onClick={AlertOpen}>삭제</CommentModalText>
         <CommentModalText>수정</CommentModalText>
       </PostModalArticle>
+      {onAlert && <DeleteAlert />}
     </ModalBackGround>
+  );
+};
+
+export const DeleteAlert = () => {
+  return (
+    <AlertWrapper>
+      <AlertTxt>상품을 삭제할까요?</AlertTxt>
+      <BtnsWrapper>
+        <ModalBtn type='button'>취소</ModalBtn>
+        <ModalBtn type='button'>삭제</ModalBtn>
+      </BtnsWrapper>
+    </AlertWrapper>
   );
 };

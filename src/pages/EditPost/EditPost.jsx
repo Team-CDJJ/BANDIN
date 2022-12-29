@@ -14,10 +14,11 @@ import NotFound from '../404/404';
 
 const UploadPost = () => {
   const [profileImg, setProfileImg] = useState('');
+  const [postAccountName, setPostAccountName] = useState('');
+  const [isSameAccount, setIsSameAccount] = useState(false);
   const [text, setText] = useState('');
   const [imgSrc, setImgSrc] = useState([]);
   const { postId } = useParams();
-  const isSameAccount = false;
 
   // const accountname = useRecoilValue(accountNameValue);
   const accountname = localStorage.getItem('accountname');
@@ -50,6 +51,7 @@ const UploadPost = () => {
       .then((data) => {
         console.log(data);
         const originPost = data.post;
+        setPostAccountName(originPost.author.accountname);
         setText(originPost.content);
         if (originPost.image) {
           setImgSrc(originPost.image.split(','));
@@ -59,6 +61,12 @@ const UploadPost = () => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    if (accountname === postAccountName) {
+      setIsSameAccount(true);
+    }
+  }, [postAccountName]);
 
   const handleUpload = () => {
     console.log('click');

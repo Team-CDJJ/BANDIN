@@ -131,7 +131,7 @@ const AddProduct = () => {
         disabled={
           isNameValid && isPriceValid && isLinkValid ? null : 'disabled'
         }
-        handlerSaveBtn={handleSubmit}
+        onClick={handleSubmit}
         tit='저장'
       />
       <AddProductSection>

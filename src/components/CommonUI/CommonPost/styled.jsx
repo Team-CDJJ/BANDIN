@@ -6,6 +6,9 @@ export const CommonPostWrapper = styled.article`
   width: 358px;
   margin: 0 auto;
   margin-bottom: 10px;
+  .post-footer {
+    margin-left: 54px;
+  }
 `;
 
 export const CommonPostSection = styled.div`
@@ -22,7 +25,6 @@ export const PostImg = styled.div`
     width: 304px;
     height: 228px;
     margin-right: 8px;
-    /* object-fit: cover; */
   }
 `;
 

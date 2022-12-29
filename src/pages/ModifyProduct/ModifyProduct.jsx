@@ -54,7 +54,6 @@ const ModifyProduct = () => {
     };
     return comma(uncomma(str));
   };
-  // price = priceFormat(price);
 
   const navigate = useNavigate();
 
@@ -148,7 +147,7 @@ const ModifyProduct = () => {
         disabled={
           isNameValid && isPriceValid && isLinkValid ? null : 'disabled'
         }
-        handlerSaveBtn={handleSubmit}
+        onClick={handleSubmit}
         tit='저장'
       />
       <ModiProductSection>

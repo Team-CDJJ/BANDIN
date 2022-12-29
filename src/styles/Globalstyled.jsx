@@ -30,6 +30,12 @@ const GlobalStyled = createGlobalStyle`
     a {
         text-decoration: none;
     }
+
+    button {
+        border: none;
+        cursor: pointer;
+        background-color: transparent;
+    }
 `;
 
 export default GlobalStyled;

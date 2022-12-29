@@ -6,7 +6,8 @@ import {
   ProductPrice,
   ProductCont,
 } from './styled';
-import ProductModal from '../ProductModal/ProductModal';
+// import ProductModal from '../ProductModal/ProductModal';
+import { ProductModal } from '../PostModal/PostModal';
 
 const CommonProduct = ({ data }) => {
   console.log(data);

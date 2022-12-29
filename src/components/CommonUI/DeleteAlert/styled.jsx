@@ -45,6 +45,7 @@ export const ModalBtn = styled.button`
         border-left: 1px solid ${theme.colors.greyDB};
         font-weight: 500;
       }
+      cursor: pointer;
     `;
   }}
 `;

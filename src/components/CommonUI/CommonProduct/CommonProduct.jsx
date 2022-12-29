@@ -6,7 +6,7 @@ import {
   ProductPrice,
   ProductCont,
 } from './styled';
-import ProductModal from '../ProductModal/ProductModal';
+import { ProductModal } from '../PostModal/PostModal';
 
 const CommonProduct = ({ data }) => {
   console.log(data);
@@ -30,7 +30,12 @@ const CommonProduct = ({ data }) => {
         <ProductSection>
           {data &&
             data.map((item) => (
-              <ProductCont key={item.id} onClick={ModalOpen}>
+              <ProductCont
+                key={item.id}
+                onClick={() => {
+                  ModalOpen(item);
+                }}
+              >
                 <img
                   src={item.itemImage}
                   alt='게시글 이미지'

@@ -11,5 +11,12 @@ export const PostWrapper = styled.div`
 `;
 
 export const CommentWrapper = styled.section`
+  top: 502px;
+  width: 390px;
+  margin: 0 auto;
   padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 61px;
 `;

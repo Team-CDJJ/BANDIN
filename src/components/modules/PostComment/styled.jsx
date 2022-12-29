@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ModalBg = styled.div`
   position: fixed;
@@ -9,26 +9,43 @@ export const ModalBg = styled.div`
   background-color: transparent;
   z-index: 99;
 `;
-export const CommentWrapper = styled.div`
-  margin-bottom: 20px;
+
+export const CommentHeader = styled.div`
+  display: flex;
+  align-items: center;
 `;
+
 export const UserInfo = styled.div`
   display: flex;
   align-items: center;
 `;
 
 export const UserName = styled.strong`
-  font-weight: 800;
-  font-size: 15px;
-  margin-left: 10px;
-  margin-right: 12px;
+  ${({ theme }) => {
+    return css`
+      font-weight: 500;
+      font-size: ${theme.fontSizes.md};
+      margin: 0 5px 0 10px;
+    `;
+  }}
 `;
 
 export const CreatedTime = styled.p`
-  font-size: 10px;
+  ${({ theme }) => {
+    return css`
+      font-size: ${theme.fontSizes.xs};
+      color: ${theme.colors.grey76};
+    `;
+  }}
 `;
 
 export const CommentContent = styled.p`
-  margin-left: 46px;
-  margin-top: 10px;
+  ${({ theme }) => {
+    return css`
+      font-size: ${theme.fontSizes.md};
+      margin-left: 46px;
+      margin-top: 4px;
+      font-weight: 400;
+    `;
+  }}
 `;

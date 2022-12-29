@@ -19,12 +19,11 @@ const postDetail = () => {
     getPostComments(postId)
       .then((data) => {
         setCommentData(data.comments);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [comment, hasInput]);
+  }, [comment]);
 
   useEffect(() => {
     getPostDetail(postId)
@@ -36,20 +35,18 @@ const postDetail = () => {
       });
   }, [hasInput, commentData]);
 
-  // console.log(postData);
-
   return (
     <>
       <TopMainNav />
       <PostWrapper>{postData && <CommonPost post={postData} />}</PostWrapper>
       <CommentWrapper>
         <h2 className='ir'>댓글</h2>
-        {/* commentData map 돌려서 띄워주시면 됩니다. */}
-        {/* <PostComment></PostComment> */}
-        {commentData.map((comment) => {
+        {commentData.map((comment, idx) => {
           const { author, content, createdAt, id } = comment;
           return (
             <PostComment
+              key={idx}
+              accountname={author.accountname}
               username={author.username}
               comment={content}
               createdAt={createdAt}
@@ -61,7 +58,6 @@ const postDetail = () => {
           );
         })}
       </CommentWrapper>
-      {/* input에 입력 후 게시 버튼 클릭 시 실시간으로 댓글 정보 업데이트 되게 해 주세요 */}
       <Comment
         comment={comment}
         setComment={setComment}

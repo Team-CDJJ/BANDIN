@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
 import PostUserInfo from '../../modules/PostUserInfo/PostUserInfo';
 import LikeBtn from '../../modules/LikeBtn/LikeBtn';
@@ -38,9 +38,9 @@ const CommonPost = ({ post }) => {
         username={post.author.username}
         accountname={post.author.accountname}
       />
-      <CommonPostSection>
+      <CommonPostSection onClick={handlePostDetail}>
         <PostTxt>{post.content}</PostTxt>
-        <PostImg onClick={handlePostDetail}>
+        <PostImg>
           {post.image &&
             post.image
               .split(',')
@@ -55,6 +55,8 @@ const CommonPost = ({ post }) => {
                 />
               ))}
         </PostImg>
+      </CommonPostSection>
+      <div className='post-footer'>
         <IconGroup>
           <LikeBtn
             heartCount={post.heartCount}
@@ -65,7 +67,7 @@ const CommonPost = ({ post }) => {
           <Count>{post.commentCount}</Count>
         </IconGroup>
         <PostUploadTime>{changeDateFormat(post.createdAt)}</PostUploadTime>
-      </CommonPostSection>
+      </div>
     </CommonPostWrapper>
   );
 };

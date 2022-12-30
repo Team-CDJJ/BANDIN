@@ -1,6 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
-import { UserList, UserInfo, UserName, UserId, ProfileLink } from './styled';
+import {
+  UserList,
+  UserInfo,
+  UserName,
+  UserId,
+  ProfileLink,
+  Keyword,
+} from './styled';
 
 const UserItem = ({
   width,
@@ -35,4 +42,51 @@ const UserItem = ({
     </UserList>
   );
 };
-export default UserItem;
+
+const SearchUserItem = ({
+  width,
+  height,
+  image,
+  accountname,
+  keyValue,
+  alt,
+  keywordName,
+  keywordId,
+  firstUserName,
+  lastUserName,
+  firstUserId,
+  lastUserId,
+}) => {
+  const navigate = useNavigate();
+
+  const handleToProfile = () => {
+    navigate(`/profile/${accountname}`);
+  };
+
+  return (
+    <UserList key={keyValue} onClick={handleToProfile}>
+      <ProfileLink to={`/profile/${accountname}`}>
+        <Img
+          width={width}
+          height={height}
+          src={image}
+          alt={alt}
+          borderRadius='50%'
+        />
+        <UserInfo>
+          <UserName>
+            {firstUserName}
+            <Keyword>{keywordName}</Keyword>
+            {lastUserName}
+          </UserName>
+          <UserId>
+            @ {firstUserId}
+            <Keyword>{keywordId}</Keyword>
+            {lastUserId}
+          </UserId>
+        </UserInfo>
+      </ProfileLink>
+    </UserList>
+  );
+};
+export { UserItem, SearchUserItem };

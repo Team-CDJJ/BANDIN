@@ -9,7 +9,7 @@ import {
 import FollowingBtn from '../../components/atoms/Button/Button';
 
 import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
-import UserItem from '../../components/CommonUI/UserItem/UserItem';
+import { UserItem } from '../../components/CommonUI/UserItem/UserItem';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import getFollowingListApi from '../../api/profile/getFollowingList';
 

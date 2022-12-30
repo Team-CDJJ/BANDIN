@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import TopSearchNav from '../../components/CommonUI/Nav/TopSearchNav/TopSearchNav';
-import UserItem from '../../components/CommonUI/UserItem/UserItem';
+import { SearchUserItem } from '../../components/CommonUI/UserItem/UserItem';
 import NoneProfileImg from '../../assets/profile.png';
 import { UserUl, SearchMain } from './styled';
 import getSearchUser from '../../api/searchuser/getSearchUser';
 
 const Search = () => {
-  const [userInput, setUserInput] = useState('');
+  const [userInput, setUserInput] = useState(null);
   const [userArr, setUserArr] = useState([]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Search = () => {
         <UserUl>
           {userArr.slice(0, 100).map((item) => {
             return (
-              <UserItem
+              <SearchUserItem
                 width='50px'
                 height='50px'
                 image={
@@ -47,8 +47,31 @@ const Search = () => {
                 alt={`${item.username}님의 프로필 이미지`}
                 // eslint-disable-next-line no-underscore-dangle
                 key={item._id}
-                username={item.username}
                 accountname={item.accountname}
+                keywordName={item.username.includes(userInput) ? userInput : ''}
+                keywordId={
+                  item.accountname.includes(userInput) ? userInput : ''
+                }
+                firstUserName={
+                  item.username.includes(userInput)
+                    ? item.username.split(userInput)[0]
+                    : item.username
+                }
+                lastUserName={
+                  item.username.includes(userInput)
+                    ? item.username.split(userInput)[1]
+                    : ''
+                }
+                firstUserId={
+                  item.accountname.includes(userInput)
+                    ? item.accountname.split(userInput)[0]
+                    : item.accountname
+                }
+                lastUserId={
+                  item.accountname.includes(userInput)
+                    ? item.accountname.split(userInput)[1]
+                    : ''
+                }
               />
             );
           })}

@@ -11,6 +11,7 @@ import { PostVerticalModal } from '../../CommonUI/PostModal/PostModal';
 
 const PostUserInfo = ({ image, username, accountname, alt }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [isMyPost, setIsMyPost] = useState(false);
 
   const showModal = () => {
     setModalOpen(true);
@@ -32,7 +33,9 @@ const PostUserInfo = ({ image, username, accountname, alt }) => {
         </div>
       </UserInfoLink>
       <VerticalBtn type='button' onClick={showModal} />
-      {modalOpen && <PostVerticalModal setModalOpen={setModalOpen} />}
+      {modalOpen && (
+        <PostVerticalModal isMyPost={isMyPost} setModalOpen={setModalOpen} />
+      )}
     </UserList>
   );
 };

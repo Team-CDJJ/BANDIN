@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import getPostDetail from '../../api/post/getPostDetail';
 import getPostComments from '../../api/post/getPostComments';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
-import TopMainNav from '../../components/CommonUI/Nav/TopMainNav/TopMainNav';
+import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
 import Comment from '../../components/CommonUI/Comment/Comment';
 import { CommentWrapper, PostWrapper } from './styled';
 import PostComment from '../../components/modules/PostComment/PostComment';
@@ -37,7 +37,7 @@ const postDetail = () => {
 
   return (
     <>
-      <TopMainNav />
+      <TopBasicNav />
       <PostWrapper>{postData && <CommonPost post={postData} />}</PostWrapper>
       <CommentWrapper>
         <h2 className='ir'>댓글</h2>

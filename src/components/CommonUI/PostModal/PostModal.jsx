@@ -14,6 +14,7 @@ import {
   ProductModalArticle,
   ProductModalText,
   WebModalArticle,
+  ModalBtnWrapper,
 } from './styled';
 import DeleteAlert from '../DeleteAlert/DeleteAlert';
 
@@ -41,7 +42,7 @@ export const CommentModal = ({ content, onClickDelete }) => {
 };
 
 // 상품수정 모달
-const ProductModal = ({ productId, setModal, onModal, productLink }) => {
+export const ProductModal = ({ productId, setModal, onModal, productLink }) => {
   const [onAlert, setOnAlert] = useState(false);
   const AlertOpen = () => {
     setOnAlert(!onAlert);
@@ -76,7 +77,7 @@ const ProductModal = ({ productId, setModal, onModal, productLink }) => {
   );
 };
 // 웹사이트로 다른유저 상품 보는 모달
-const WebLinkModal = ({ setModal, productLink }) => {
+export const WebLinkModal = ({ setModal, productLink }) => {
   const handleCloseModal = () => {
     setModal(false);
   };
@@ -182,4 +183,3 @@ export const NavVerticalModal = ({ setModalOpen }) => {
     </ModalBackGround>
   );
 };
-export { PostChatModal, CommentModal, ProductModal, WebLinkModal };

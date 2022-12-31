@@ -6,7 +6,7 @@ export const TopMainNavSection = styled.header`
       padding: 10px 16px;
       height: 48px;
       width: 100%;
-      position: relative;
+      position: fixed;
       top: 0;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
       background: #fff;

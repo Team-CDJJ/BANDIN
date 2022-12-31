@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -9,11 +10,18 @@ import {
 
 import arrowLeft from '../../../../assets/icon-arrow-left.png';
 import moreVertical from '../../../../assets/icon-more-vertical.png';
+import { NavVerticalModal } from '../../PostModal/PostModal';
 
 const TopBasicNav = ({ moreBtn }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   const navigate = useNavigate();
   const handlePrev = () => {
     navigate(-1);
+  };
+
+  const showModal = () => {
+    setModalOpen(true);
   };
 
   return (
@@ -25,11 +33,12 @@ const TopBasicNav = ({ moreBtn }) => {
         </PrevBtn>
         {/* 기존에 있던 moreVertical 이미지 following과 follower에서 감추기 위함 */}
         {moreBtn ? null : (
-          <TopBasicNavBtn>
+          <TopBasicNavBtn onClick={showModal}>
             <img src={moreVertical} alt='더보기' />
           </TopBasicNavBtn>
         )}
       </InnerBasicNav>
+      {modalOpen && <NavVerticalModal setModalOpen={setModalOpen} />}
     </TopBasicNavSection>
   );
 };

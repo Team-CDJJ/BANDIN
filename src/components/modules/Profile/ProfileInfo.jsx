@@ -43,14 +43,6 @@ const ProfileInfo = () => {
       });
   }, [accountName]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('accountname');
-    localStorage.removeItem('recoil-persist');
-    navigate('/');
-    window.location.reload();
-  };
-
   const handleFollow = () => {
     follow(accountName);
     setIsFollow((state) => true);
@@ -63,9 +55,6 @@ const ProfileInfo = () => {
 
   return (
     <ProfileWrapper>
-      <button type='button' onClick={handleLogout}>
-        하이
-      </button>
       <FollowAndImgWrapper>
         <Link
           to={{

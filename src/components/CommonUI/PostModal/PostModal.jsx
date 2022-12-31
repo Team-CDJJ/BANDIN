@@ -8,30 +8,7 @@ import {
 } from '../../modal/styled';
 import DeletePost from '../../modal/PostModal/PostAlert';
 
-export const PostChatModal = ({ leaveChatRoom }) => {
-  // 채팅방 나가기
-  return (
-    <PostModalArticle>
-      <h1 className='ir'>모달창</h1>
-      <GrayLine />
-      <Link to='/chatlist'>
-        <ModalInnerText>{leaveChatRoom}</ModalInnerText>
-      </Link>
-    </PostModalArticle>
-  );
-};
-
-export const CommentModal = ({ content, onClickDelete }) => {
-  return (
-    <PostModalArticle>
-      <h1 className='ir'>모달창</h1>
-      <GrayLine />
-      <ModalInnerText onClick={onClickDelete}>{content}</ModalInnerText>
-    </PostModalArticle>
-  );
-};
-
-export const NavVerticalModal = ({ setModalOpen }) => {
+const NavVerticalModal = ({ setModalOpen }) => {
   const [onAlert, setOnAlert] = useState(false);
   const navigate = useNavigate();
 
@@ -73,3 +50,5 @@ export const NavVerticalModal = ({ setModalOpen }) => {
     </ModalBackGround>
   );
 };
+
+export default NavVerticalModal;

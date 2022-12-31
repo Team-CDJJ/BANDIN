@@ -18,9 +18,7 @@ const MyProfile = () => {
   const [isMyPost, setIsMyPost] = useState(false);
 
   useEffect(() => {
-    if (accountName === accountname) {
-      setIsMyPost(true);
-    }
+    setIsMyPost(accountName === accountname);
   }, []);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ const MyProfile = () => {
     getProductList(accountName)
       .then((data) => {
         setProductList(data.product);
-        // console.log(data.product);
       })
       .catch((error) => {
         console.log(error);

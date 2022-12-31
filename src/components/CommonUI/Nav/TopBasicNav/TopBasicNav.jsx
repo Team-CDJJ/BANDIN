@@ -10,7 +10,7 @@ import {
 
 import arrowLeft from '../../../../assets/icon-arrow-left.png';
 import moreVertical from '../../../../assets/icon-more-vertical.png';
-import { NavVerticalModal } from '../../PostModal/PostModal';
+import NavVerticalModal from '../../PostModal/PostModal';
 
 const TopBasicNav = ({ moreBtn }) => {
   const [modalOpen, setModalOpen] = useState(false);

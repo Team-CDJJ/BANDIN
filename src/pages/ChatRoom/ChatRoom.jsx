@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import TopChatNav from '../../components/CommonUI/Nav/TopChatNav/TopChatNav';
 import Comment from '../../components/CommonUI/Comment/Comment';
-import { PostChatModal } from '../../components/CommonUI/PostModal/PostModal';
 
 import {
   TopContainer,
@@ -22,6 +21,7 @@ import {
 import profileImg from '../../assets/profile.png';
 import animalImg from '../../assets/dog.png';
 import moreBtn from '../../assets/icon-more-vertical.png';
+import ChatRoomModal from '../../components/modal/ChatModal/ChatModal';
 
 const ChatRoom = () => {
   const [modal, setModal] = useState(false);
@@ -64,7 +64,6 @@ const ChatRoom = () => {
             <TheOtherPersonTime>12:41</TheOtherPersonTime>
           </BoxAndTimeWrapper>
         </EachPersonWrapper>
-        {/* 나 */}
         <MyBoxAndTimeWrapper>
           <MyTime>12:50</MyTime>
           <MyTextBox>
@@ -81,7 +80,7 @@ const ChatRoom = () => {
         whatPlaceholder='inputMessage'
         chatRoomClick='send'
       />
-      {modal === true ? <PostChatModal leaveChatRoom='채팅방 나가기' /> : null}
+      {modal === true ? <ChatRoomModal leaveChatRoom='채팅방 나가기' /> : null}
     </TopContainer>
   );
 };

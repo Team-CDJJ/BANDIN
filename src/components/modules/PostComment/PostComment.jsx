@@ -1,11 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TimeAgo from '../TimeAgo/TimeAgo';
 import Img from '../../atoms/Img/img';
 import { VerticalBtn } from '../PostUserInfo/styled';
-import { CommentModal } from '../../CommonUI/PostModal/PostModal';
 import {
-  ModalBg,
   UserInfo,
   UserName,
   CreatedTime,
@@ -15,6 +13,7 @@ import {
 import deleteComment from '../../../api/comment/deleteComment';
 import getPostComments from '../../../api/post/getPostComments';
 import reportComment from '../../../api/comment/reportComment';
+import CommentModal from '../../modal/CommentModal/CommentModal';
 
 const PostComment = ({
   accountname,
@@ -27,11 +26,10 @@ const PostComment = ({
   commentId,
   thumbnail,
 }) => {
-  const [openModal, setOpenModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [isDelete, setIsDelete] = useState(false);
   const curAccountName = localStorage.getItem('accountname');
-  const outside = useRef();
   const navigate = useNavigate();
 
   const onClickModal = () => {
@@ -40,20 +38,20 @@ const PostComment = ({
     } else {
       setModalContent('신고');
     }
-    setOpenModal(true);
+    setIsModalOpen(true);
   };
 
   const onClickDelete = () => {
     deleteComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
-      setOpenModal(false);
+      setIsModalOpen(false);
     });
   };
 
   const onClickReport = () => {
     reportComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
-      setOpenModal(false);
+      setIsModalOpen(false);
     });
   };
 
@@ -89,21 +87,14 @@ const PostComment = ({
       </CommentHeader>
 
       <CommentContent>{comment}</CommentContent>
-      {openModal && (
-        <ModalBg
-          // 모달창 바깥을 찍으면 모달창이 꺼지게 하는 효과
-          ref={outside}
-          onClick={(e) => {
-            if (e.target === outside.current) setOpenModal(false);
-          }}
-        >
-          <CommentModal
-            onClickDelete={
-              modalContent === '삭제' ? onClickDelete : onClickReport
-            }
-            content={modalContent}
-          />
-        </ModalBg>
+      {isModalOpen && (
+        <CommentModal
+          onClickDelete={
+            modalContent === '삭제' ? onClickDelete : onClickReport
+          }
+          content={modalContent}
+          setIsModalOpen={setIsModalOpen}
+        />
       )}
     </div>
   );

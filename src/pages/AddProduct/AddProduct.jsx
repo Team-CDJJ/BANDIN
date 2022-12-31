@@ -12,6 +12,12 @@ import postAddProduct from '../../api/addproduct/postAddProduct';
 
 const AddProduct = () => {
   const setProductImg = useSetRecoilState(productImgSrc);
+  // 초기 상품등록이미지 화면
+  useEffect(() => {
+    setProductImg(noneProductImage);
+  }, []);
+
+  const itemImage = useRecoilValue(productImgSrc);
   const accountname = localStorage.getItem('accountname');
 
   const [isNameValid, setIsNameValid] = useState(false);
@@ -45,8 +51,6 @@ const AddProduct = () => {
 
   inputValue.price = priceFormat(price);
   const navigate = useNavigate();
-
-  const itemImage = useRecoilValue(productImgSrc);
 
   const handleData = (event) => {
     const { name, value } = event.target;
@@ -110,9 +114,7 @@ const AddProduct = () => {
         console.log(data);
         window.location = `/profile/${accountname}`;
       })
-      // .then(() => {
-      //   setProductImg(noneProductImage);
-      // })
+
       .catch((error) => {
         if (error.response.status === 422) {
           console.log(error);

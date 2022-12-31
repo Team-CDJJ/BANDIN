@@ -6,18 +6,21 @@ import {
   ProductPrice,
   ProductCont,
 } from './styled';
-import { ProductModal } from '../PostModal/PostModal';
+import { ProductModal, WebLinkModal } from '../PostModal/PostModal';
 
 const CommonProduct = ({ data }) => {
   console.log(data);
+  const accountName = localStorage.getItem('accountname');
   const [onModal, setModal] = useState(false);
   const [productId, setProductId] = useState(null);
   const [productLink, setProductLink] = useState(null);
+  const [productAuthor, setProductAuthor] = useState(null);
 
   const ModalOpen = (item) => {
     setModal(!onModal);
     setProductId(item.id);
     setProductLink(item.link);
+    setProductAuthor(item.author.accountname);
   };
   console.log(productLink);
 
@@ -49,14 +52,22 @@ const CommonProduct = ({ data }) => {
             ))}
         </ProductSection>
       </ProductWrapper>
-      {onModal && (
-        <ProductModal
-          productId={productId}
-          setModal={setModal}
-          onModal={onModal}
-          productLink={productLink}
-        />
-      )}
+      {onModal &&
+        (accountName === productAuthor ? (
+          <ProductModal
+            productId={productId}
+            setModal={setModal}
+            onModal={onModal}
+            productLink={productLink}
+          />
+        ) : (
+          <WebLinkModal
+            productId={productId}
+            setModal={setModal}
+            onModal={onModal}
+            productLink={productLink}
+          />
+        ))}
     </>
   );
 };

@@ -66,7 +66,7 @@ const Following = () => {
               username={user.username}
               accountname={user.accountname}
             />
-            {accountName !== user.accountname && (
+            {localStorage.getItem('accountname') !== user.accountname && (
               <FollowingBtn
                 size='xs'
                 state={user.isfollow ? 'active' : ''}

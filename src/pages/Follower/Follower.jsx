@@ -65,7 +65,7 @@ const Follower = () => {
               accountname={follower.accountname}
               image={follower.image}
             />
-            {accountName !== follower.accountname && (
+            {follower.accountname !== localStorage.getItem('accountname') ? (
               <FollowerBtn
                 size='xs'
                 state={follower.isfollow ? 'active' : ''}
@@ -74,7 +74,7 @@ const Follower = () => {
                   handleFollowBtn(follower.accountname, follower.isfollow)
                 }
               ></FollowerBtn>
-            )}
+            ) : null}
           </FollowerUserItem>
         ))}
       </FollowerMain>

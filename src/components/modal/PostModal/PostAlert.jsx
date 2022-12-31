@@ -1,5 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import deletePost from '../../../api/post/deletePost';
+import postReportPost from '../../../api/post/postReportPost';
 import { accountNameValue } from '../../../atoms';
 import { AlertWrapper, AlertTxt, BtnsWrapper, ModalBtn } from '../styled';
 
@@ -18,7 +19,14 @@ const PostAlert = ({ id, isMyPost, handleAlertColse }) => {
   };
 
   const handleReportPost = () => {
-    console.log('신고');
+    postReportPost(id)
+      .then(() => {
+        alert('게시물이 신고되었습니다!');
+        window.location = '/home';
+      })
+      .error((error) => {
+        console.log(error);
+      });
   };
 
   return (

@@ -8,12 +8,10 @@ import {
   TopBasicNavBtn,
 } from './styled';
 
-import arrowLeft from '../../../../assets/icon-arrow-left.png';
-import moreVertical from '../../../../assets/icon-more-vertical.png';
-import NavVerticalModal from '../../PostModal/PostModal';
+import ProfileModal from '../../../modal/ProfileModal/ProfileModal';
 
 const TopBasicNav = ({ moreBtn }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const navigate = useNavigate();
   const handlePrev = () => {
@@ -21,23 +19,17 @@ const TopBasicNav = ({ moreBtn }) => {
   };
 
   const showModal = () => {
-    setModalOpen(true);
+    setIsModalOpen(true);
   };
 
   return (
     <TopBasicNavSection>
       <h1 className='ir'>상단바</h1>
       <InnerBasicNav>
-        <PrevBtn onClick={handlePrev}>
-          <img src={arrowLeft} alt='뒤로 가기' />
-        </PrevBtn>
-        {moreBtn ? null : (
-          <TopBasicNavBtn onClick={showModal}>
-            <img src={moreVertical} alt='더보기' />
-          </TopBasicNavBtn>
-        )}
+        <PrevBtn onClick={handlePrev}></PrevBtn>
+        {moreBtn ? null : <TopBasicNavBtn onClick={showModal}></TopBasicNavBtn>}
       </InnerBasicNav>
-      {modalOpen && <NavVerticalModal setModalOpen={setModalOpen} />}
+      {isModalOpen && <ProfileModal setIsModalOpen={setIsModalOpen} />}
     </TopBasicNavSection>
   );
 };

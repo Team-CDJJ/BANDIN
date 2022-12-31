@@ -9,7 +9,6 @@ import {
 } from './styled';
 
 const CommonProduct = ({ data }) => {
-  const accountName = localStorage.getItem('accountname');
   const [onModal, setModal] = useState(false);
   const [productId, setProductId] = useState(null);
   const [productLink, setProductLink] = useState(null);

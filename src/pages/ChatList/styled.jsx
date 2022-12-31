@@ -66,6 +66,7 @@ export const ChatTxt = styled.p`
       color: ${theme.colors.grey76};
       line-height: 15px;
       text-align: left;
+      display: inline-block;
     `;
   }}
 `;
@@ -74,10 +75,11 @@ export const ChatDate = styled.span`
   ${({ theme }) => {
     return css`
       float: right;
-      font-size: ${theme.fontSizes.sm};
+      font-size: ${theme.fontSizes.xs};
       color: ${theme.colors.greyDB};
-      line-height: 15px;
+      line-height: 13px;
       text-align: right;
+      padding-top: 2px;
     `;
   }}
 `;

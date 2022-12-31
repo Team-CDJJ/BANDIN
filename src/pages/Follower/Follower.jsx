@@ -8,7 +8,7 @@ import {
 import FollowerBtn from '../../components/atoms/Button/Button';
 
 import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
-import UserItem from '../../components/CommonUI/UserItem/UserItem';
+import { UserItem } from '../../components/CommonUI/UserItem/UserItem';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import getFollowerListApi from '../../api/profile/getFollowerList';
 import { follow, unfollow } from '../../api/profile/follow';

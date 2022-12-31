@@ -13,7 +13,7 @@ import {
   PostImg,
 } from './styled';
 
-const CommonPost = ({ post }) => {
+const CommonPost = ({ post, isMyPost }) => {
   const navigate = useNavigate();
   const changeDateFormat = (date) => {
     const year = date.slice(0, 4);
@@ -37,6 +37,8 @@ const CommonPost = ({ post }) => {
         image={post.author.image}
         username={post.author.username}
         accountname={post.author.accountname}
+        id={post.id}
+        isMyPost={isMyPost}
       />
       <CommonPostSection onClick={handlePostDetail}>
         <PostTxt>{post.content}</PostTxt>

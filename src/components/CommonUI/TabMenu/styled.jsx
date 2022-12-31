@@ -3,10 +3,11 @@ import styled, { css } from 'styled-components';
 export const TabMenuSection = styled.footer`
   ${({ theme }) => {
     return css`
-      padding: 0 6px;
+      width: 100%;
       position: fixed;
       bottom: 0;
-      width: 100%;
+      padding: 0 6px;
+      /* z-index: 10; */
       border-top: 0.5px solid ${theme.colors.greyDB};
       background-color: #fff;
     `;

@@ -1,8 +1,7 @@
-import { AlertWrapper, AlertTxt, BtnsWrapper, ModalBtn } from './styled';
+import { AlertWrapper, AlertTxt, BtnsWrapper, ModalBtn } from '../styled';
 import deleteProductData from '../../../api/modifyProduct/deleteProductData';
-import { accountNameValue } from '../../../atoms';
 
-const DeleteAlert = ({ productId, handleCancel }) => {
+const ProductAlert = ({ productId, handleCancel }) => {
   const accountname = localStorage.getItem('accountname');
 
   const deleteProduct = (event) => {
@@ -32,4 +31,4 @@ const DeleteAlert = ({ productId, handleCancel }) => {
   );
 };
 
-export default DeleteAlert;
+export default ProductAlert;

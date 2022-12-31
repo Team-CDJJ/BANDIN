@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ProductModal from '../../modal/ProductModal/ProductModal';
 import {
   ProductWrapper,
   ProductSection,
@@ -6,10 +7,8 @@ import {
   ProductPrice,
   ProductCont,
 } from './styled';
-import { ProductModal, WebLinkModal } from '../PostModal/PostModal';
 
 const CommonProduct = ({ data }) => {
-  console.log(data);
   const accountName = localStorage.getItem('accountname');
   const [onModal, setModal] = useState(false);
   const [productId, setProductId] = useState(null);
@@ -22,7 +21,6 @@ const CommonProduct = ({ data }) => {
     setProductLink(item.link);
     setProductAuthor(item.author.accountname);
   };
-  console.log(productLink);
 
   return (
     <>
@@ -52,22 +50,14 @@ const CommonProduct = ({ data }) => {
             ))}
         </ProductSection>
       </ProductWrapper>
-      {onModal &&
-        (accountName === productAuthor ? (
-          <ProductModal
-            productId={productId}
-            setModal={setModal}
-            onModal={onModal}
-            productLink={productLink}
-          />
-        ) : (
-          <WebLinkModal
-            productId={productId}
-            setModal={setModal}
-            onModal={onModal}
-            productLink={productLink}
-          />
-        ))}
+      {onModal && (
+        <ProductModal
+          productId={productId}
+          setModal={setModal}
+          onModal={onModal}
+          productLink={productLink}
+        />
+      )}
     </>
   );
 };

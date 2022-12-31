@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import Img from '../../atoms/Img/img';
 import { follow, unfollow } from '../../../api/profile/follow';
@@ -27,8 +27,6 @@ const ProfileInfo = () => {
 
   const { username, intro } = userInfo;
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     getMyProfile(accountName)
       .then((data) => {
@@ -45,12 +43,12 @@ const ProfileInfo = () => {
 
   const handleFollow = () => {
     follow(accountName);
-    setIsFollow((state) => true);
+    setIsFollow(true);
   };
 
   const handleUnFollow = () => {
     unfollow(accountName);
-    setIsFollow((state) => false);
+    setIsFollow(false);
   };
 
   return (

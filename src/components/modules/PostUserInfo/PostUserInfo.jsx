@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Img from '../../atoms/Img/img';
+import PostModal from '../../modal/PostModal/PostModal';
 import {
   UserList,
   UserName,
@@ -7,13 +8,12 @@ import {
   VerticalBtn,
   UserInfoLink,
 } from './styled';
-import { PostVerticalModal } from '../../CommonUI/PostModal/PostModal';
 
-const PostUserInfo = ({ image, username, accountname, alt }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+const PostUserInfo = ({ image, username, accountname, alt, id, isMyPost }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
-    setModalOpen(true);
+    setIsModalOpen(true);
   };
 
   return (
@@ -32,7 +32,13 @@ const PostUserInfo = ({ image, username, accountname, alt }) => {
         </div>
       </UserInfoLink>
       <VerticalBtn type='button' onClick={showModal} />
-      {modalOpen && <PostVerticalModal setModalOpen={setModalOpen} />}
+      {isModalOpen && (
+        <PostModal
+          id={id}
+          isMyPost={isMyPost}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
     </UserList>
   );
 };

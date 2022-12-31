@@ -14,7 +14,7 @@ import postListOff from '../../assets/icon-post-list-off.png';
 import postAlbumOn from '../../assets/icon-post-album-on.png';
 import postAlbumOff from '../../assets/icon-post-album-off.png';
 
-const ProfilePost = ({ data }) => {
+const ProfilePost = ({ data, isMyPost }) => {
   const [listClicked, setListClicked] = useState(true);
   const [albumClicked, setAlbumClicked] = useState(false);
 
@@ -51,7 +51,7 @@ const ProfilePost = ({ data }) => {
       {listClicked && !albumClicked ? (
         <PostUl>
           {data.post?.map((item, idx) => (
-            <CommonPost post={item} key={idx}></CommonPost>
+            <CommonPost post={item} key={idx} isMyPost={isMyPost}></CommonPost>
           ))}
         </PostUl>
       ) : (

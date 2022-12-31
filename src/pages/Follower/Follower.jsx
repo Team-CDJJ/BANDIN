@@ -8,7 +8,7 @@ import {
 import FollowerBtn from '../../components/atoms/Button/Button';
 
 import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
-import UserItem from '../../components/CommonUI/UserItem/UserItem';
+import { UserItem } from '../../components/CommonUI/UserItem/UserItem';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import getFollowerListApi from '../../api/profile/getFollowerList';
 import { follow, unfollow } from '../../api/profile/follow';
@@ -65,7 +65,7 @@ const Follower = () => {
               accountname={follower.accountname}
               image={follower.image}
             />
-            {accountName !== follower.accountname && (
+            {follower.accountname !== localStorage.getItem('accountname') ? (
               <FollowerBtn
                 size='xs'
                 state={follower.isfollow ? 'active' : ''}
@@ -74,7 +74,7 @@ const Follower = () => {
                   handleFollowBtn(follower.accountname, follower.isfollow)
                 }
               ></FollowerBtn>
-            )}
+            ) : null}
           </FollowerUserItem>
         ))}
       </FollowerMain>

@@ -46,3 +46,11 @@ export const UserId = styled.strong`
     `;
   }}
 `;
+
+export const Keyword = styled.span`
+  ${({ theme }) => {
+    return css`
+      color: ${theme.colors.mainColor};
+    `;
+  }}
+`;

@@ -13,7 +13,7 @@ import {
   ModalBtn,
   ProductModalArticle,
   ProductModalText,
-  ModalBtnWrapper,
+  WebModalArticle,
 } from './styled';
 import DeleteAlert from '../DeleteAlert/DeleteAlert';
 
@@ -40,7 +40,8 @@ export const CommentModal = ({ content, onClickDelete }) => {
   );
 };
 
-export const ProductModal = ({ productId, setModal, productLink }) => {
+// 상품수정 모달
+const ProductModal = ({ productId, setModal, onModal, productLink }) => {
   const [onAlert, setOnAlert] = useState(false);
   const AlertOpen = () => {
     setOnAlert(!onAlert);
@@ -72,6 +73,21 @@ export const ProductModal = ({ productId, setModal, productLink }) => {
         <DeleteAlert productId={productId} handleCancel={handleCancel} />
       )}
     </>
+  );
+};
+// 웹사이트로 다른유저 상품 보는 모달
+const WebLinkModal = ({ setModal, productLink }) => {
+  const handleCloseModal = () => {
+    setModal(false);
+  };
+  return (
+    <WebModalArticle onClick={handleCloseModal}>
+      <h2 className='ir'>모달창</h2>
+      <GrayLine />
+      <a href={productLink} target='_blank' rel='noopener noreferrer'>
+        <ProductModalText>웹사이트에서 상품 보기</ProductModalText>
+      </a>
+    </WebModalArticle>
   );
 };
 
@@ -166,3 +182,4 @@ export const NavVerticalModal = ({ setModalOpen }) => {
     </ModalBackGround>
   );
 };
+export { PostChatModal, CommentModal, ProductModal, WebLinkModal };

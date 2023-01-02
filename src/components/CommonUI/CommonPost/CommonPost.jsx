@@ -41,6 +41,7 @@ const CommonPost = ({ post, isMyPost }) => {
         accountname={post.author.accountname}
         id={post.id}
         isMyPost={isMyPost}
+        createdAt={post.createdAt}
       />
       <CommonPostSection onClick={handlePostDetail}>
         <PostTxt dangerouslySetInnerHTML={{ __html: text }}></PostTxt>

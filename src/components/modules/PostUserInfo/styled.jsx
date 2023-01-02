@@ -18,6 +18,10 @@ export const UserInfoLink = styled(Link)`
     margin-left: 12px;
     justify-content: center;
     gap: 2px;
+    .user-info-flex {
+      display: flex;
+      align-items: center;
+    }
   }
 `;
 
@@ -51,4 +55,13 @@ export const VerticalBtn = styled.button`
   background: url(${VerticalBg}) no-repeat;
   background-size: 18px 18px;
   cursor: pointer;
+`;
+
+export const CreatedTime = styled.p`
+  ${({ theme }) => {
+    return css`
+      font-size: ${theme.fontSizes.xs};
+      color: ${theme.colors.grey76};
+    `;
+  }}
 `;

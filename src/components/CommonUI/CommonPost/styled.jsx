@@ -28,14 +28,14 @@ export const PostImg = styled.div`
   }
 `;
 
-export const PostTxt = styled.p`
+export const PostTxt = styled.div`
   ${({ theme }) => {
     return css`
       margin: 16px 0;
       line-height: 18px;
       font-size: ${theme.fontSizes.md};
       word-break: break-all;
-      white-space: normal;
+      /* white-space: pre; */
     `;
   }}
 `;

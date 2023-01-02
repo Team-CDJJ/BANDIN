@@ -31,6 +31,8 @@ const CommonPost = ({ post, isMyPost }) => {
     navigate(`/post/${post.id}`);
   };
 
+  const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
+
   return (
     <CommonPostWrapper>
       <PostUserInfo
@@ -41,7 +43,7 @@ const CommonPost = ({ post, isMyPost }) => {
         isMyPost={isMyPost}
       />
       <CommonPostSection onClick={handlePostDetail}>
-        <PostTxt>{post.content}</PostTxt>
+        <PostTxt dangerouslySetInnerHTML={{ __html: text }}></PostTxt>
         <PostImg>
           {post.image &&
             post.image

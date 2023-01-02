@@ -8,6 +8,7 @@ export const FollowingTopSpan = styled.span`
       left: 48px;
       font-size: ${theme.fontSizes.md};
       font-weight: 500;
+      z-index: 100;
     `;
   }}
 `;

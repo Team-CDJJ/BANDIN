@@ -112,23 +112,3 @@ export const ModalBtn = styled.button`
     `;
   }}
 `;
-
-// export const WebModalArticle = styled.article`
-//   ${({ theme }) => {
-//     return css`
-//       width: 100%;
-//       height: 92px;
-//       background-color: #fff;
-//       position: fixed;
-//       bottom: 0;
-//       padding-bottom: 24px;
-//       outline: 1px solid ${theme.colors.greyDB};
-//       border-radius: ${theme.borderRadius.lv2} ${theme.borderRadius.lv2} 0 0;
-//       animation: ${fadeIn} 0.5s;
-//       z-index: 100;
-//       p {
-//         margin-top: 50px;
-//       }
-//     `;
-//   }}
-// `;

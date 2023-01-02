@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import getPostDetail from '../../api/post/getPostDetail';
 import getPostComments from '../../api/post/getPostComments';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
@@ -7,6 +8,7 @@ import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
 import Comment from '../../components/CommonUI/Comment/Comment';
 import { CommentWrapper, PostWrapper } from './styled';
 import PostComment from '../../components/modules/PostComment/PostComment';
+import { accountNameValue } from '../../atoms';
 
 const postDetail = () => {
   const { postId } = useParams();
@@ -14,6 +16,13 @@ const postDetail = () => {
   const [commentData, setCommentData] = useState([]);
   const [comment, setComment] = useState('');
   const [hasInput, setHasInput] = useState(false);
+  const [isMyPost, setIsMyPost] = useState(false);
+  const [author, setAuthor] = useState('');
+  const accountname = useRecoilValue(accountNameValue);
+
+  useEffect(() => {
+    setIsMyPost(accountname === author);
+  }, [author]);
 
   useEffect(() => {
     getPostComments(postId)
@@ -28,7 +37,9 @@ const postDetail = () => {
   useEffect(() => {
     getPostDetail(postId)
       .then((data) => {
+        console.log(data);
         setPostData(data.post);
+        setAuthor(data.post.author.accountname);
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +49,9 @@ const postDetail = () => {
   return (
     <>
       <TopBasicNav />
-      <PostWrapper>{postData && <CommonPost post={postData} />}</PostWrapper>
+      <PostWrapper>
+        {postData && <CommonPost post={postData} isMyPost={isMyPost} />}
+      </PostWrapper>
       <CommentWrapper>
         <h2 className='ir'>댓글</h2>
         {commentData.map((comment, idx) => {

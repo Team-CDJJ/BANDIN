@@ -12,7 +12,7 @@ export const TopBasicNavSection = styled.header`
       align-items: center;
       position: fixed;
       top: 0;
-      z-index: 100;
+      z-index: 99;
       border-bottom: 0.5px solid ${theme.colors.greyDB};
       background-color: #fff;
     `;

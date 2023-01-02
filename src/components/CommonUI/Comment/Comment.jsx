@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
 import { useState } from 'react';
 import {
@@ -10,8 +11,9 @@ import {
 } from './styled';
 
 import postComments from '../../../api/post/postComments';
-import commentProfile from '../../../assets/profile.png';
 import imgBtn from '../../../assets/img-button.png';
+import { profileImgSrc } from '../../../atoms';
+import Img from '../../atoms/Img/img';
 
 const Comment = ({
   setHasInput,
@@ -23,6 +25,7 @@ const Comment = ({
 }) => {
   const [inputValue, setInputValue] = useState('');
   const { postId } = useParams();
+  const profileImg = useRecoilValue(profileImgSrc);
 
   // async 안주면 실시간 업데이트 안 되는 문제..
   const handleSubmit = async (e) => {
@@ -42,7 +45,11 @@ const Comment = ({
           <img src={imgBtn} alt='이미지 버튼' />
         ) : (
           <Link to='/'>
-            <img src={commentProfile} alt='댓글 입력할 사람의 프로필' />
+            <Img
+              borderRadius='50%'
+              src={profileImg}
+              alt='댓글 입력할 사람의 프로필'
+            />
           </Link>
         )}
         <CommentForm onSubmit={handleSubmit}>

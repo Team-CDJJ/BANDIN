@@ -59,12 +59,13 @@ const ProfilePost = ({ data, isMyPost }) => {
           {data.post?.map((item) => {
             return item.image ? (
               // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
-              <img
-                src={item.image.split(',')[0]}
-                alt='게시글 이미지'
-                key={item.id}
+              <li
+                className='img-cont'
                 onClick={() => navigate(`/post/${item.id}`)}
-              />
+                key={item.id}
+              >
+                <img src={item.image.split(',')[0]} alt='게시글 이미지' />
+              </li>
             ) : null;
           })}
         </PostGrid>

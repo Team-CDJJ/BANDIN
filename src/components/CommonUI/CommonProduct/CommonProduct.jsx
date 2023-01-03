@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Img from '../../atoms/Img/img';
 import ProductModal from '../../modal/ProductModal/ProductModal';
 import {
   ProductWrapper,
@@ -12,13 +13,11 @@ const CommonProduct = ({ data, isMyPost }) => {
   const [onModal, setModal] = useState(false);
   const [productId, setProductId] = useState(null);
   const [productLink, setProductLink] = useState(null);
-  // const [productAuthor, setProductAuthor] = useState(null);
 
   const ModalOpen = (item) => {
     setModal(!onModal);
     setProductId(item.id);
     setProductLink(item.link);
-    // setProductAuthor(item.author.accountname);
   };
 
   return (
@@ -36,11 +35,15 @@ const CommonProduct = ({ data, isMyPost }) => {
                   ModalOpen(item);
                 }}
               >
-                <img
-                  src={item.itemImage}
-                  alt='게시글 이미지'
-                  className='img-product'
-                />
+                <div className='img-cont'>
+                  <Img
+                    width='100%'
+                    height='100%'
+                    src={item.itemImage}
+                    alt='게시글 이미지'
+                    className='img-product'
+                  />
+                </div>
                 <ProductTxt>{item.itemName}</ProductTxt>
                 <ProductPrice>
                   {`${item.price.toLocaleString()}원`}

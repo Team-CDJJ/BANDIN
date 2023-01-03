@@ -53,8 +53,15 @@ export const PostGrid = styled.ul`
   padding: 16px;
   margin-bottom: 30px;
 
-  & img {
+  .img-cont {
     width: 114px;
     height: 114px;
+    overflow: hidden;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;

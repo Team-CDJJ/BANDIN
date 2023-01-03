@@ -64,9 +64,11 @@ const Home = () => {
       {postData.length !== 0 ? (
         <FeedWrapper>
           <h2 className='ir'>홈 피드</h2>
-          {postData.map((post, idx) =>
-            postData.length - 1 === idx ? (
-              <div key={post.id} ref={ref} />
+          {postData.map((post, i) =>
+            postData.length - 1 === i ? (
+              <div key={post.id} ref={ref}>
+                <CommonPost post={post} />
+              </div>
             ) : (
               <div key={post.id}>
                 <CommonPost post={post} />

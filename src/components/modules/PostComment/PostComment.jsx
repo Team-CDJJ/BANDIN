@@ -45,6 +45,7 @@ const PostComment = ({
     deleteComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
       setIsModalOpen(false);
+      alert('댓글이 삭제되었습니다!');
     });
   };
 
@@ -52,6 +53,7 @@ const PostComment = ({
     reportComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
       setIsModalOpen(false);
+      alert('댓글이 신고되었습니다!');
     });
   };
 

@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import TopBasicNav from '../../components/CommonUI/Nav/TopBasicNav/TopBasicNav';
 import ProfileInfo from '../../components/modules/Profile/ProfileInfo';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
-import ProfilePost from '../ProfilePost/ProfilePost';
+import ProfilePost from '../../components/modules/ProfilePost/ProfilePost';
 import CommonProduct from '../../components/CommonUI/CommonProduct/CommonProduct';
 import getProductList from '../../api/getProductList/getProducList';
 import getProfilePost from '../../api/post/getProfilePost';
@@ -47,7 +47,7 @@ const MyProfile = () => {
     <>
       <TopBasicNav />
       <ProfileInfo />
-      {productList && <CommonProduct data={productList} />}
+      {productList && <CommonProduct data={productList} isMyPost={isMyPost} />}
       <ProfilePost data={postList} isMyPost={isMyPost} />
       <TabMenu place='myprofile' />
     </>

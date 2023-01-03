@@ -20,7 +20,6 @@ const postDetail = () => {
   const [author, setAuthor] = useState('');
   const accountname = useRecoilValue(accountNameValue);
 
-  console.log(comment);
   useEffect(() => {
     setIsMyPost(accountname === author);
   }, [author]);

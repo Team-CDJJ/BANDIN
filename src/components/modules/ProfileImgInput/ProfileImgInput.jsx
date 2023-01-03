@@ -46,7 +46,7 @@ const ProfileImgInput = ({ setNewImage }) => {
         <Img
           width='110px'
           height='110px'
-          src={image || noneProfileImg}
+          src={image.includes('Ellipse.png') ? noneProfileImg : image}
           alt='프로필 이미지'
           borderRadius='50%'
         />

@@ -10,6 +10,7 @@ import UploadBtn from '../../components/atoms/UploadBtn/UploadBtn';
 import getMyInfo from '../../api/profile/getMyInfo';
 import { apiUrl } from '../../api/api';
 import deleteIcon from '../../assets/icon-delete.png';
+import noneProfileImg from '../../assets/profile.png';
 import { accountNameValue } from '../../atoms';
 
 const UploadPost = () => {
@@ -105,7 +106,7 @@ const UploadPost = () => {
         <Img
           width='42px'
           height='42px'
-          src={profileImg}
+          src={profileImg.includes('Ellipse.png') ? noneProfileImg : profileImg}
           alt=''
           borderRadius='50%'
         />

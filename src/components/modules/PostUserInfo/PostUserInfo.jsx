@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Img from '../../atoms/Img/img';
 import PostModal from '../../modal/PostModal/PostModal';
 import TimeAgo from '../TimeAgo/TimeAgo';
+import noneProfileImge from '../../../assets/profile.png';
 import {
   UserList,
   UserName,
@@ -32,7 +33,7 @@ const PostUserInfo = ({
         <Img
           width='42px'
           height='42px'
-          src={image}
+          src={image.includes('Ellipse.png') ? noneProfileImge : image}
           alt={alt}
           borderRadius='50%'
         />

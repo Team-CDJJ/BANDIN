@@ -1,6 +1,4 @@
-import { useRef } from 'react';
-import { useRecoilState } from 'recoil';
-import { productImgSrc } from '../../../atoms';
+import { useRef, useState } from 'react';
 import { apiUrl } from '../../../api/api';
 import Img from '../../atoms/Img/img';
 
@@ -8,7 +6,7 @@ import { ProductImgInputWrapper, UploadBtn } from './styled';
 import postUploadImg from '../../../api/uploadImg/postUploadImg';
 
 const ProductImgInput = () => {
-  const [image, setImage] = useRecoilState(productImgSrc);
+  const [image, setImage] = useState('');
   const fileInput = useRef(null);
 
   const handleUploadBtnClick = (event) => {

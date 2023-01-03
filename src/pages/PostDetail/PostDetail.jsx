@@ -20,6 +20,7 @@ const postDetail = () => {
   const [author, setAuthor] = useState('');
   const accountname = useRecoilValue(accountNameValue);
 
+  console.log(comment);
   useEffect(() => {
     setIsMyPost(accountname === author);
   }, [author]);
@@ -37,14 +38,13 @@ const postDetail = () => {
   useEffect(() => {
     getPostDetail(postId)
       .then((data) => {
-        console.log(data);
         setPostData(data.post);
         setAuthor(data.post.author.accountname);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [hasInput, commentData]);
+  }, []);
 
   return (
     <>

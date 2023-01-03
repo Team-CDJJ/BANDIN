@@ -27,6 +27,12 @@ import EditPost from './pages/EditPost/EditPost';
 const App = () => {
   const isLoginState = useRecoilValue(isLogin);
 
+  // window.addEventListener('unload', () => {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('accountname');
+  //   localStorage.removeItem('recoil-persist');
+  // });
+
   return (
     <Routes>
       <Route path='/' element={<Splash />} />

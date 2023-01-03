@@ -33,23 +33,33 @@ const ProfileInfo = () => {
     getMyProfile(accountName)
       .then((data) => {
         setUserInfo(data);
-        setFollowerCount(data.followerCount);
-        setFollowingCount(data.followingCount);
         setIsFollow(data.isfollow);
         setImage(data.image);
+        setFollowingCount(data.followingCount);
+        setFollowerCount(data.followerCount);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [accountName]);
 
+  // useEffect(() => {
+
+  // }, [isFollow]);
+
   const handleFollow = () => {
-    follow(accountName);
+    follow(accountName).then((data) => {
+      console.log(data);
+      setFollowerCount(data.profile.followerCount);
+    });
     setIsFollow(true);
   };
 
   const handleUnFollow = () => {
-    unfollow(accountName);
+    unfollow(accountName).then((data) => {
+      console.log(data);
+      setFollowerCount(data.profile.followerCount);
+    });
     setIsFollow(false);
   };
 

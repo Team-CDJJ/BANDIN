@@ -30,7 +30,7 @@ const MyProfile = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [accountName]);
 
   useEffect(() => {
     // 게시글 목록
@@ -41,7 +41,7 @@ const MyProfile = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [accountName]);
 
   return (
     <>

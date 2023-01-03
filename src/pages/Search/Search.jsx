@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import TopSearchNav from '../../components/CommonUI/Nav/TopSearchNav/TopSearchNav';
-import { SearchUserItem } from '../../components/CommonUI/UserItem/UserItem';
 import NoneProfileImg from '../../assets/profile.png';
 import { UserUl, SearchMain } from './styled';
 import getSearchUser from '../../api/searchuser/getSearchUser';
+import UserItem from '../../components/CommonUI/UserItem/UserItem';
 
 const Search = () => {
   const [userInput, setUserInput] = useState(null);
@@ -15,7 +15,6 @@ const Search = () => {
     if (userInput) {
       getSearchUser(userInput)
         .then((data) => {
-          console.log(data);
           setUserArr(data);
         })
         .catch((error) => {
@@ -37,7 +36,7 @@ const Search = () => {
           {userInput
             ? userArr.slice(0, 100).map((item) => {
                 return (
-                  <SearchUserItem
+                  <UserItem
                     width='50px'
                     height='50px'
                     image={

@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
 import {
   UserList,
@@ -15,39 +16,7 @@ const UserItem = ({
   image,
   username,
   accountname,
-  keyValue,
-  alt,
-}) => {
-  const navigate = useNavigate();
-
-  const handleToProfile = () => {
-    navigate(`/profile/${accountname}`);
-  };
-
-  return (
-    <UserList key={keyValue} onClick={handleToProfile}>
-      <ProfileLink to={`/profile/${accountname}`}>
-        <Img
-          width={width}
-          height={height}
-          src={image}
-          alt={alt}
-          borderRadius='50%'
-        />
-        <UserInfo>
-          <UserName>{username}</UserName>
-          <UserId>@ {accountname}</UserId>
-        </UserInfo>
-      </ProfileLink>
-    </UserList>
-  );
-};
-
-const SearchUserItem = ({
-  width,
-  height,
-  image,
-  accountname,
+  intro,
   keyValue,
   alt,
   keywordName,
@@ -58,6 +27,7 @@ const SearchUserItem = ({
   lastUserId,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleToProfile = () => {
     navigate(`/profile/${accountname}`);
@@ -74,19 +44,28 @@ const SearchUserItem = ({
           borderRadius='50%'
         />
         <UserInfo>
-          <UserName>
-            {firstUserName}
-            <Keyword>{keywordName}</Keyword>
-            {lastUserName}
-          </UserName>
-          <UserId>
-            @ {firstUserId}
-            <Keyword>{keywordId}</Keyword>
-            {lastUserId}
-          </UserId>
+          {location.pathname.includes('follow') ? (
+            <>
+              <UserName>{username}</UserName>
+              <UserId>{intro}</UserId>
+            </>
+          ) : (
+            <>
+              <UserName>
+                {firstUserName}
+                <Keyword>{keywordName}</Keyword>
+                {lastUserName}
+              </UserName>
+              <UserId>
+                @ {firstUserId}
+                <Keyword>{keywordId}</Keyword>
+                {lastUserId}
+              </UserId>
+            </>
+          )}
         </UserInfo>
       </ProfileLink>
     </UserList>
   );
 };
-export { UserItem, SearchUserItem };
+export default UserItem;

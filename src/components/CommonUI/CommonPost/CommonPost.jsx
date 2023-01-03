@@ -44,15 +44,16 @@ const CommonPost = ({ post, isMyPost }) => {
       />
       <CommonPostSection onClick={handlePostDetail}>
         <PostTxt dangerouslySetInnerHTML={{ __html: text }}></PostTxt>
-        <PostImg>
+        <PostImg className='img-cont'>
           {post.image &&
             post.image
               .split(',')
               .map((item, idx) => (
                 <Img
+                  className='img-cell'
                   key={idx}
-                  width='304px'
-                  height='228px'
+                  width='100%'
+                  height='100%'
                   src={item}
                   alt='게시글 이미지'
                   borderRadius='10px'

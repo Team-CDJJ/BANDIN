@@ -14,15 +14,14 @@ export const FollowerTopSpan = styled.span`
 `;
 
 export const FollowerMain = styled.main`
-  padding: 0 16px;
-  margin-top: 72px;
+  padding: 72px 16px 84px;
 `;
 
 export const FollowerMainUl = styled.ul`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
   justify-content: space-between;
-  margin-bottom: 16px;
 `;
 
 export const FollowerBtn = styled.button`

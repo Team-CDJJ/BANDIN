@@ -4,51 +4,54 @@ import ModifyProfileSection from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
-import getMyProfile from '../../api/profile/getMyProfile';
 import putModifiedData from '../../api/modifyprofile/modifyprofile';
+import getMyInfo from '../../api/profile/getMyInfo';
 
 const ModifyProfile = () => {
   const [profileData, setProfileData] = useState({});
   const [image, setImage] = useState('');
   const [newImage, setNewImage] = useState('');
-  const [userName, setUserName] = useState('');
-  const [accountName, setAccountName] = useState('');
-  const [intro, setIntro] = useState('');
-  // 기존 프로필 데이터 변수
-  // 프로필 정보 유효성 검사 및 에러메세지 변수
+
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
 
   const [isAccountValid, setIsAccountValid] = useState(false);
   const [accountError, setAccountError] = useState('');
 
-  // 기존 프로필 정보 호출
   useEffect(() => {
-    const accountname = localStorage.getItem('accountname');
-    getMyProfile(accountname).then((data) => {
-      console.log('기존프로필 정보 확인', data);
-      setProfileData(data);
-    });
+    const getInfo = async () => {
+      await getMyInfo()
+        .then((data) => {
+          setProfileData(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    getInfo();
   }, []);
-  console.log(image);
 
-  // 기존프로필정보 띄우기
+  const [inputValue, setInputValue] = useState({
+    userName: '',
+    accountName: '',
+    intro: '',
+  });
+
+  const handleData = (e) => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
+
+  const { userName, accountName, intro } = inputValue;
+
   useEffect(() => {
     setImage(profileData.image);
-    setUserName(profileData.username);
-    setAccountName(profileData.accountname);
-    setIntro(profileData.intro);
+    setInputValue({
+      userName: profileData.username,
+      accountName: profileData.accountname,
+      intro: profileData.intro,
+    });
   }, [profileData]);
-
-  const handleData = (event) => {
-    if (event.target.id === 'userName') {
-      setUserName(event.target.value);
-    } else if (event.target.id === 'accountName') {
-      setAccountName(event.target.value);
-    } else if (event.target.id === 'intro') {
-      setIntro(event.target.value);
-    }
-  };
 
   // 이름 유효성검사
   useEffect(() => {
@@ -120,7 +123,11 @@ const ModifyProfile = () => {
       <ModifyProfileSection>
         <h1 className='ir'>프로필 수정 페이지</h1>
         <form>
-          <ProfileImgInput setNewImage={setNewImage} />
+          <ProfileImgInput
+            setNewImage={setNewImage}
+            newImage={newImage}
+            image={image}
+          />
           <InputBox
             label='사용자 이름'
             type='userName'

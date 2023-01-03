@@ -1,44 +1,34 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { apiUrl } from '../../../api/api';
 import Img from '../../atoms/Img/img';
 
 import { ProfileImgInputWrapper, UploadBtn } from './styled';
 import postUploadImg from '../../../api/uploadImg/postUploadImg';
-import getMyInfo from '../../../api/profile/getMyInfo';
 import noneProfileImg from '../../../assets/profile.png';
 
-const ProfileImgInput = ({ setNewImage }) => {
-  const [image, setImage] = useState('');
+const ProfileImgInput = ({ newImage, setNewImage, image }) => {
   const fileInput = useRef(null);
+  const location = useLocation();
 
-  useEffect(() => {
-    getMyInfo()
-      .then((data) => {
-        setImage(data.image);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const handleUploadBtnClick = (event) => {
-    event.preventDefault();
+  const handleUploadBtnClick = (e) => {
+    e.preventDefault();
     fileInput.current.click();
   };
 
-  const handleProfileImgInputOnchange = (event) => {
+  const handleProfileImgInputOnchange = (e) => {
     const formData = new FormData();
-    formData.append('image', event.target.files[0]);
+    formData.append('image', e.target.files[0]);
     postUploadImg(formData)
       .then((data) => {
         console.log(data);
         setNewImage(`${apiUrl}/${data}`);
-        setImage(`${apiUrl}/${data}`);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  console.log(newImage);
 
   return (
     <ProfileImgInputWrapper>
@@ -46,7 +36,15 @@ const ProfileImgInput = ({ setNewImage }) => {
         <Img
           width='110px'
           height='110px'
-          src={image.includes('Ellipse.png') ? noneProfileImg : image}
+          src={
+            // eslint-disable-next-line no-nested-ternary
+            location.pathname.includes('/modifyprofile') && image
+              ? newImage || image
+              : newImage ||
+                (location.pathname.includes('/setupprofile') && image)
+              ? image
+              : noneProfileImg
+          }
           alt='프로필 이미지'
           borderRadius='50%'
         />

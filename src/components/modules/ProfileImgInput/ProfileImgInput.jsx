@@ -36,7 +36,7 @@ const ProfileImgInput = ({ newImage, setNewImage, image }) => {
           width='110px'
           height='110px'
           src={
-            location.pathname.includes('/modifyprofile') && image
+            location.pathname.includes('/editprofile') && image
               ? newImage || image
               : newImage ||
                 (location.pathname.includes('/setupprofile') && image)

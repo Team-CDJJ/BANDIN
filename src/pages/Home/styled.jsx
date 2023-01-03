@@ -34,10 +34,10 @@ export const FeedTxt = styled.span`
 
 export const TopBtn = styled.div`
   position: fixed;
-  bottom: 70px;
-  right: 21px;
-  width: 20px;
-  height: 20px;
+  bottom: 75px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
   img {
     width: 100%;
     cursor: pointer;

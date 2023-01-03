@@ -1,12 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import {
-  accountNameValue,
-  isLogin,
-  profileImgSrc,
-  userNameValue,
-} from '../../atoms';
+import { accountNameValue, isLogin } from '../../atoms';
 
 import { LoginWrapper, LoginTitle } from './styled';
 import Button from '../../components/atoms/Button/Button';
@@ -18,9 +13,7 @@ const Login = () => {
   const [pwError, setPwError] = useState('');
   const navigate = useNavigate();
   const setIsLoginState = useSetRecoilState(isLogin);
-  const setUserName = useSetRecoilState(userNameValue);
   const setAccountName = useSetRecoilState(accountNameValue);
-  const setProfileImage = useSetRecoilState(profileImgSrc);
 
   const [inputValue, setInputValue] = useState({
     email: '',
@@ -54,8 +47,6 @@ const Login = () => {
           const userData = data.user;
           setIsLoginState(true);
           setAccountName(userData.accountname);
-          setUserName(userData.username);
-          setProfileImage(userData.image);
           navigate('/home');
         }
       })

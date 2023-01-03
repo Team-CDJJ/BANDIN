@@ -35,7 +35,7 @@ const ProductImgInput = ({ setNewItemImage, itemImage, newItemImage }) => {
           width='322px'
           height='204px'
           src={
-            location.pathname.includes('modify') && itemImage
+            location.pathname.includes('edit') && itemImage
               ? newItemImage || itemImage
               : newItemImage ||
                 (location.pathname.includes('addproduct') && itemImage)

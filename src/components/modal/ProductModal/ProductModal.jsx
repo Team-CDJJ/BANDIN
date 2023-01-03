@@ -30,7 +30,7 @@ const ProductModal = ({ productId, setModal, productLink, isMyPost }) => {
           <h2 className='ir'>모달창</h2>
           <GrayLine />
           <ModalInnerText onClick={handleAlertOpen}>삭제</ModalInnerText>
-          <Link to={`/product/${productId}/modify`}>
+          <Link to={`/product/${productId}/edit`}>
             <ModalInnerText>수정</ModalInnerText>
           </Link>
           <a href={productLink} target='_blank' rel='noopener noreferrer'>

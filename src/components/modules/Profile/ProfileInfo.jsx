@@ -43,10 +43,6 @@ const ProfileInfo = () => {
       });
   }, [accountName]);
 
-  // useEffect(() => {
-
-  // }, [isFollow]);
-
   const handleFollow = () => {
     follow(accountName).then((data) => {
       console.log(data);

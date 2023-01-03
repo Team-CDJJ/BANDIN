@@ -4,10 +4,10 @@ import ModifyProfileSection from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
-import putModifiedData from '../../api/modifyprofile/modifyprofile';
+import putModifiedData from '../../api/editProfile/putEditProfile';
 import getMyInfo from '../../api/profile/getMyInfo';
 
-const ModifyProfile = () => {
+const EditProfile = () => {
   const [profileData, setProfileData] = useState({});
   const [image, setImage] = useState('');
   const [newImage, setNewImage] = useState('');
@@ -165,4 +165,4 @@ const ModifyProfile = () => {
   );
 };
 
-export default ModifyProfile;
+export default EditProfile;

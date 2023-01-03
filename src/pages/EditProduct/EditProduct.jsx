@@ -4,11 +4,10 @@ import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNa
 import { ModiProductSection, ModiProductForm, ModiImageDesc } from './styled';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
-import noneProductImage from '../../assets/product.png';
-import getProductData from '../../api/modifyProduct/getProductData';
-import putModifiedData from '../../api/modifyProduct/putModifiedData';
+import getProductData from '../../api/editProduct/getProductData';
+import putModifiedData from '../../api/editProduct/putModifiedData';
 
-const ModifyProduct = () => {
+const EditProduct = () => {
   const { productId } = useParams();
   const [price, setPrice] = useState('');
   const [itemImage, setItemImage] = useState('');
@@ -201,4 +200,4 @@ const ModifyProduct = () => {
   );
 };
 
-export default ModifyProduct;
+export default EditProduct;

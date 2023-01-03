@@ -10,7 +10,6 @@ import topImg from '../../assets/top-btn.png';
 import Button from '../../components/atoms/Button/Button';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
 import { apiUrl } from '../../api/api';
-import getFeedPost from '../../api/post/getFeedPost';
 import Img from '../../components/atoms/Img/img';
 
 const Home = () => {

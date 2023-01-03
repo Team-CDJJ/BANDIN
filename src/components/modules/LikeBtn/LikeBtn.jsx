@@ -5,7 +5,7 @@ import heartIcon from '../../../assets/icon-heart.png';
 import activeHeartIcon from '../../../assets/icon-heart-active.png';
 import { CountNum, HeartBtn } from './styled';
 
-import { likeAxios, unlikeAxios } from '../../../api/LikeAxios/LikeAxios';
+import { likeAxios, unlikeAxios } from '../../../api/Like/postLike';
 
 const LikeBtn = ({ heartCount, id, heartedBool }) => {
   const [hearted, setHearted] = useState(heartedBool);

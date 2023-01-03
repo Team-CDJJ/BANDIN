@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
+import axios from 'axios';
 import TopMainNav from '../../components/CommonUI/Nav/TopMainNav/TopMainNav';
 import { EmptyHomeWrapper, FeedWrapper, FeedTxt, TopBtn } from './styled';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
@@ -7,21 +9,51 @@ import profileImg from '../../assets/profile.png';
 import topImg from '../../assets/top-btn.png';
 import Button from '../../components/atoms/Button/Button';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
+import { apiUrl } from '../../api/api';
 import getFeedPost from '../../api/post/getFeedPost';
 import Img from '../../components/atoms/Img/img';
 
 const Home = () => {
   const [postData, setPostData] = useState([]);
+  const userToken = localStorage.getItem('token');
+  const [numFeed, setNumFeed] = useState(0);
+  const [done, setDone] = useState(false);
+  const [ref, inView] = useInView();
+
+  const getFeedPost = useCallback(async () => {
+    const option = {
+      url: `${apiUrl}/post/feed/?limit=10&skip=${numFeed}`,
+      method: `GET`,
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+        'Content-type': 'application/json',
+      },
+    };
+
+    await axios(option)
+      .then((res) => {
+        setPostData(postData.concat(res.data.posts));
+
+        if (res.data.posts.length < 10) {
+          setDone(true);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [numFeed]);
 
   useEffect(() => {
-    getFeedPost()
-      .then((data) => {
-        setPostData(data.posts);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (!done) {
+      getFeedPost();
+    }
+  }, [numFeed]);
+
+  useEffect(() => {
+    if (inView === true) {
+      setNumFeed((current) => current + 10);
+    }
+  }, [inView]);
 
   return (
     <>
@@ -29,9 +61,18 @@ const Home = () => {
       {postData.length !== 0 ? (
         <FeedWrapper>
           <h2 className='ir'>홈 피드</h2>
-          {postData.map((post, idx) => {
-            return <CommonPost key={idx} post={post} />;
-          })}
+          {postData.map((post, i) =>
+            postData.length - 1 === i ? (
+              <div key={post.id} ref={ref}>
+                <CommonPost post={post} />
+              </div>
+            ) : (
+              <div key={post.id}>
+                <CommonPost post={post} />
+              </div>
+            ),
+          )}
+
           <TopBtn>
             <a href='#top'>
               <Img src={topImg} alt='위 방향 화살표' />

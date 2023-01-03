@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 import { postAccountNameValid } from '../../api/login/postAccountValid';
-import { profileImgSrc } from '../../atoms';
 
 import Button from '../../components/atoms/Button/Button';
 import {
@@ -28,7 +26,7 @@ const SetUpProfile = () => {
   const [accountnameError, setAccountnameError] = useState('');
   const [accountnameValid, setAccountnameValid] = useState(false);
 
-  const image = useRecoilValue(profileImgSrc);
+  const [image, setImage] = useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,7 +59,6 @@ const SetUpProfile = () => {
             accountname,
           },
         }).then((data) => {
-          // console.log(data);
           const accountReg = /^[-._a-z0-9]+$/gi;
 
           if (!accountReg.test(accountname)) {
@@ -123,7 +120,7 @@ const SetUpProfile = () => {
         나중에 언제든지 변경할 수 있습니다.
       </SetUpProfileSubTitle>
       <form onSubmit={handleSubmit}>
-        <ProfileImgInput />
+        <ProfileImgInput setNewImage={setImage} />
         <InputBox
           label='사용자 이름'
           type='username'
@@ -131,7 +128,6 @@ const SetUpProfile = () => {
           min='2'
           max='10'
           placeholder='2~10자 이내여야 합니다.'
-          // value={username}
           name='username'
           onChange={handleData}
           errorMsg={usernameError}
@@ -143,7 +139,6 @@ const SetUpProfile = () => {
           type='accountname'
           id='accountname'
           placeholder='영문, 숫자, 특수문자(.), (_)만 사용 가능합니다.'
-          // value={accountname}
           name='accountname'
           onChange={handleData}
           errorMsg={accountnameError}
@@ -154,7 +149,6 @@ const SetUpProfile = () => {
           label='자기소개'
           type='intro'
           id='intro'
-          // value={intro}
           name='intro'
           placeholder='한 줄로 나를 표현해 보세요!'
           onChange={handleData}

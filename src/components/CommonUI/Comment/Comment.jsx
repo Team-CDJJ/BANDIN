@@ -1,7 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   CommentSection,
   CommentInner,
@@ -12,8 +11,8 @@ import {
 
 import postComments from '../../../api/post/postComments';
 import imgBtn from '../../../assets/img-button.png';
-import { profileImgSrc } from '../../../atoms';
 import Img from '../../atoms/Img/img';
+import getMyInfo from '../../../api/profile/getMyInfo';
 
 const Comment = ({
   setHasInput,
@@ -23,9 +22,19 @@ const Comment = ({
   whatPlaceholder,
   chatRoomClick,
 }) => {
-  const [inputValue, setInputValue] = useState('');
   const { postId } = useParams();
-  const profileImg = useRecoilValue(profileImgSrc);
+  const [inputValue, setInputValue] = useState('');
+  const [image, setImage] = useState('');
+
+  useEffect(() => {
+    getMyInfo()
+      .then((data) => {
+        setImage(data.image);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   // async 안주면 실시간 업데이트 안 되는 문제..
   const handleSubmit = async (e) => {
@@ -47,7 +56,7 @@ const Comment = ({
           <Link to='/'>
             <Img
               borderRadius='50%'
-              src={profileImg}
+              src={image}
               alt='댓글 입력할 사람의 프로필'
             />
           </Link>

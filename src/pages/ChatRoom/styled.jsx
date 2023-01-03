@@ -86,6 +86,10 @@ export const MyBoxAndTimeWrapper = styled.div`
   align-items: flex-end;
   justify-content: right;
   margin-bottom: 10px;
+  > img {
+    width: 240px;
+    border-radius: 10px;
+  }
 `;
 
 export const MyTime = styled.p`

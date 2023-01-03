@@ -37,14 +37,13 @@ const postDetail = () => {
   useEffect(() => {
     getPostDetail(postId)
       .then((data) => {
-        console.log(data);
         setPostData(data.post);
         setAuthor(data.post.author.accountname);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [hasInput, commentData]);
+  }, []);
 
   return (
     <>

@@ -19,23 +19,25 @@ export const CommonPostSection = styled.div`
 export const PostImg = styled.div`
   white-space: nowrap;
   overflow-x: scroll;
+  overflow-y: hidden;
+  width: 304px;
+  height: 228px;
 
-  > img {
-    display: inline-block;
-    width: 304px;
-    height: 228px;
-    margin-right: 8px;
+  .img-cell {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-right: 10px;
   }
 `;
 
-export const PostTxt = styled.p`
+export const PostTxt = styled.div`
   ${({ theme }) => {
     return css`
       margin: 16px 0;
       line-height: 18px;
       font-size: ${theme.fontSizes.md};
       word-break: break-all;
-      white-space: normal;
     `;
   }}
 `;

@@ -8,20 +8,20 @@ export const FollowerTopSpan = styled.span`
       left: 48px;
       font-size: ${theme.fontSizes.md};
       font-weight: 500;
+      z-index: 100;
     `;
   }}
 `;
 
 export const FollowerMain = styled.main`
-  padding: 0 16px;
-  margin-top: 72px;
+  padding: 72px 16px 84px;
 `;
 
 export const FollowerMainUl = styled.ul`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 16px;
   justify-content: space-between;
-  margin-bottom: 16px;
 `;
 
 export const FollowerBtn = styled.button`

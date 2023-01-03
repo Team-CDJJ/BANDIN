@@ -3,11 +3,11 @@ import uploadBtnImg from '../../../assets/upload-img.png';
 
 export const ProfileImgInputWrapper = styled.div`
   text-align: center;
-  margin-bottom: 30px;
   position: relative;
   width: 120px;
   height: 110px;
   margin: 0 auto;
+  margin-bottom: 30px;
 `;
 
 export const UploadBtn = styled.button`

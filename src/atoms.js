@@ -11,12 +11,6 @@ export const accountNameValue = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
-export const introValue = atom({
-  key: 'intro',
-  default: '',
-  effects_UNSTABLE: [persistAtom],
-});
-
 export const profileImgSrc = atom({
   key: 'profileImg',
   default: noneProfileImage,
@@ -33,11 +27,6 @@ export const userNameValue = atom({
   key: 'username',
   default: '',
   effects_UNSTABLE: [persistAtom],
-});
-
-export const userDataAtom = atom({
-  key: 'userData',
-  default: {},
 });
 
 export const productImgSrc = atom({

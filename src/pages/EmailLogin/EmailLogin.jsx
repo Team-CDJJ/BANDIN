@@ -3,10 +3,8 @@ import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import {
   accountNameValue,
-  introValue,
   isLogin,
   profileImgSrc,
-  userDataAtom,
   userNameValue,
 } from '../../atoms';
 
@@ -20,10 +18,8 @@ const Login = () => {
   const [pwError, setPwError] = useState('');
   const navigate = useNavigate();
   const setIsLoginState = useSetRecoilState(isLogin);
-  const setUserData = useSetRecoilState(userDataAtom);
   const setUserName = useSetRecoilState(userNameValue);
   const setAccountName = useSetRecoilState(accountNameValue);
-  const setIntro = useSetRecoilState(introValue);
   const setProfileImage = useSetRecoilState(profileImgSrc);
 
   const [inputValue, setInputValue] = useState({
@@ -57,10 +53,8 @@ const Login = () => {
           localStorage.setItem('accountname', data.user.accountname);
           const userData = data.user;
           setIsLoginState(true);
-          setUserData(userData);
           setAccountName(userData.accountname);
           setUserName(userData.username);
-          setIntro(userData.intro);
           setProfileImage(userData.image);
           navigate('/home');
         }

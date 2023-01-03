@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
-import { ModifyProfileSection, ModifyProfileForm } from './styled';
+import ModifyProfileSection from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
 import getMyProfile from '../../api/profile/getMyProfile';
 import putModifiedData from '../../api/modifyprofile/modifyprofile';
-import { profileImgSrc } from '../../atoms';
 
 const ModifyProfile = () => {
   const [profileData, setProfileData] = useState({});
-  const [image, setImage] = useRecoilState(profileImgSrc);
+  const [image, setImage] = useState('');
+  const [newImage, setNewImage] = useState('');
   const [userName, setUserName] = useState('');
   const [accountName, setAccountName] = useState('');
   const [intro, setIntro] = useState('');
@@ -31,6 +30,7 @@ const ModifyProfile = () => {
       setProfileData(data);
     });
   }, []);
+  console.log(image);
 
   // 기존프로필정보 띄우기
   useEffect(() => {
@@ -82,18 +82,18 @@ const ModifyProfile = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const modifiedData = {
       user: {
         username: userName,
         accountname: accountName,
         intro: intro,
-        image: image,
+        image: newImage,
       },
     };
 
-    await putModifiedData(modifiedData)
+    putModifiedData(modifiedData)
       .then((data) => {
         console.log(data);
         localStorage.setItem('accountname', accountName);
@@ -119,8 +119,8 @@ const ModifyProfile = () => {
       />
       <ModifyProfileSection>
         <h1 className='ir'>프로필 수정 페이지</h1>
-        <ModifyProfileForm>
-          <ProfileImgInput />
+        <form>
+          <ProfileImgInput setNewImage={setNewImage} />
           <InputBox
             label='사용자 이름'
             type='userName'
@@ -152,7 +152,7 @@ const ModifyProfile = () => {
             value={intro || ''}
             onChange={handleData}
           />
-        </ModifyProfileForm>
+        </form>
       </ModifyProfileSection>
     </>
   );

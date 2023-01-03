@@ -1,15 +1,25 @@
 import { useState } from 'react';
 import Img from '../../atoms/Img/img';
 import PostModal from '../../modal/PostModal/PostModal';
+import TimeAgo from '../TimeAgo/TimeAgo';
 import {
   UserList,
   UserName,
   UserId,
   VerticalBtn,
   UserInfoLink,
+  CreatedTime,
 } from './styled';
 
-const PostUserInfo = ({ image, username, accountname, alt, id, isMyPost }) => {
+const PostUserInfo = ({
+  image,
+  username,
+  accountname,
+  alt,
+  id,
+  isMyPost,
+  createdAt,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -27,7 +37,10 @@ const PostUserInfo = ({ image, username, accountname, alt, id, isMyPost }) => {
           borderRadius='50%'
         />
         <div className='user-info'>
-          <UserName>{username}</UserName>
+          <div className='user-info-flex'>
+            <UserName>{username}</UserName>
+            <CreatedTime>{TimeAgo(new Date(createdAt))}</CreatedTime>
+          </div>
           <UserId>@ {accountname}</UserId>
         </div>
       </UserInfoLink>

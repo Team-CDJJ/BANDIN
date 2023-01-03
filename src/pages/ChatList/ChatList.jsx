@@ -19,28 +19,47 @@ const ChatList = () => {
           <TextContainer>
             <ChatName>베이스 기타 삽니다!!</ChatName>
             <div>
-              <ChatTxt>[사진]</ChatTxt>
-              <ChatDate>2020.10.25</ChatDate>
+              <ChatTxt>네 맞습니다! 튜닝 되어 있을까요?</ChatTxt>
+              <ChatDate>2023.01.03</ChatDate>
             </div>
           </TextContainer>
         </ChatLink>
 
         <ChatLink to='/chatlist/chatroom'>
           <TextContainer>
-            <ChatName>제주감귤마을</ChatName>
+            <ChatName>밴드음악조아</ChatName>
             <div>
-              <ChatTxt>깊은 어둠의 존재감, 롤스로이스 뉴 블랙 배지...</ChatTxt>
-              <ChatDate>2020.10.25</ChatDate>
+              <ChatTxt>Jackson Dinky Arch Top 7현 이미 팔렸나요?</ChatTxt>
+              <ChatDate>2023.01.02</ChatDate>
             </div>
           </TextContainer>
         </ChatLink>
 
         <ChatLink to='/chatlist/chatroom'>
           <TextContainer>
-            <ChatName>누구네 농장 친환경 한라봉</ChatName>
+            <ChatName>브래멘음악대</ChatName>
             <div>
-              <ChatTxt>내 차는 내가 평가한다. 오픈 이벤트에 참여 하...</ChatTxt>
-              <ChatDate>2020.10.25</ChatDate>
+              <ChatTxt>제가 학생이라서 5만원 네고 안되나요?</ChatTxt>
+              <ChatDate>2023.01.02</ChatDate>
+            </div>
+          </TextContainer>
+        </ChatLink>
+        <ChatLink to='/chatlist/chatroom'>
+          <TextContainer>
+            <ChatName>올해꼭내한간다</ChatName>
+            <div>
+              <ChatTxt>앰프 2개 준비되어 있습니다 :)</ChatTxt>
+              <ChatDate>2023.01.01</ChatDate>
+            </div>
+          </TextContainer>
+        </ChatLink>
+
+        <ChatLink to='/chatlist/chatroom'>
+          <TextContainer>
+            <ChatName>두둥탁</ChatName>
+            <div>
+              <ChatTxt>홍대역 5분거리에 합주실이 있습니다.</ChatTxt>
+              <ChatDate>2023.01.01</ChatDate>
             </div>
           </TextContainer>
         </ChatLink>

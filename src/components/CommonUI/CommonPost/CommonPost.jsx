@@ -31,6 +31,8 @@ const CommonPost = ({ post, isMyPost }) => {
     navigate(`/post/${post.id}`);
   };
 
+  const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
+
   return (
     <CommonPostWrapper>
       <PostUserInfo
@@ -39,24 +41,25 @@ const CommonPost = ({ post, isMyPost }) => {
         accountname={post.author.accountname}
         id={post.id}
         isMyPost={isMyPost}
+        createdAt={post.createdAt}
       />
       <CommonPostSection onClick={handlePostDetail}>
-        <PostTxt>{post.content}</PostTxt>
-        <PostImg>
-          {post.image &&
-            post.image
-              .split(',')
-              .map((item, idx) => (
-                <Img
-                  key={idx}
-                  width='304px'
-                  height='228px'
-                  src={item}
-                  alt='게시글 이미지'
-                  borderRadius='10px'
-                />
-              ))}
-        </PostImg>
+        <PostTxt dangerouslySetInnerHTML={{ __html: text }}></PostTxt>
+        {post.image ? (
+          <PostImg className='img-cont'>
+            {post.image.split(',').map((item, idx) => (
+              <Img
+                className='img-cell'
+                key={idx}
+                width='100%'
+                height='100%'
+                src={item}
+                alt='게시글 이미지'
+                borderRadius='10px'
+              />
+            ))}
+          </PostImg>
+        ) : null}
       </CommonPostSection>
       <div className='post-footer'>
         <IconGroup>

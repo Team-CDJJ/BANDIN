@@ -41,10 +41,8 @@ const UploadPost = () => {
   };
 
   const handleUpload = () => {
-    console.log('click');
     postUpload(postData)
-      .then((data) => {
-        console.log(data);
+      .then(() => {
         navigate(`/profile/${accountname}`);
       })
       .catch((error) => {
@@ -55,30 +53,24 @@ const UploadPost = () => {
   const handleUploadImgs = (event) => {
     const formData = new FormData();
     const imgInput = event.target.files[0];
-    console.log(imgInput);
 
     if (imgSrc.length > 2) {
       alert('이미지는 3장까지 업로드 할 수 있습니다.');
     }
 
-    console.log(imgInput);
     formData.append('image', imgInput);
 
     postUploadImgs(formData)
       .then((data) => {
-        console.log(data);
         setImgSrc([...imgSrc, `${apiUrl}/${data[0].filename}`]);
-        console.log(imgSrc);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  console.log(imgSrc);
 
   const handleDeleteImg = (event) => {
     const idx = event.target.parentElement.id;
-    console.log(idx);
     setImgSrc(imgSrc.filter((item) => item !== idx));
   };
 

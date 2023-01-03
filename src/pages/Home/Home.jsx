@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import axios from 'axios';
 import TopMainNav from '../../components/CommonUI/Nav/TopMainNav/TopMainNav';
-import { EmptyHomeWrapper, FeedWrapper, FeedTxt } from './styled';
+import { EmptyHomeWrapper, FeedWrapper, FeedTxt, TopBtn } from './styled';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import profileImg from '../../assets/profile.png';
+import topImg from '../../assets/top-btn.png';
 import Button from '../../components/atoms/Button/Button';
 import TabMenu from '../../components/CommonUI/TabMenu/TabMenu';
-// import getFeedPost from '../../api/post/getFeedPost';
 import { apiUrl } from '../../api/api';
+import getFeedPost from '../../api/post/getFeedPost';
+import Img from '../../components/atoms/Img/img';
 
 const Home = () => {
   const [postData, setPostData] = useState([]);
@@ -55,7 +57,7 @@ const Home = () => {
 
   return (
     <>
-      <TopMainNav />
+      <TopMainNav id='top' />
       {postData.length !== 0 ? (
         <FeedWrapper>
           <h2 className='ir'>홈 피드</h2>
@@ -70,6 +72,12 @@ const Home = () => {
               </div>
             ),
           )}
+
+          <TopBtn>
+            <a href='#top'>
+              <Img src={topImg} alt='위 방향 화살표' />
+            </a>
+          </TopBtn>
         </FeedWrapper>
       ) : (
         <EmptyHomeWrapper>

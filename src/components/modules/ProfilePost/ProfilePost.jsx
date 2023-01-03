@@ -8,11 +8,11 @@ import {
   PostUl,
   PostGrid,
 } from './styled';
-import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
-import postListOn from '../../assets/icon-post-list-on.png';
-import postListOff from '../../assets/icon-post-list-off.png';
-import postAlbumOn from '../../assets/icon-post-album-on.png';
-import postAlbumOff from '../../assets/icon-post-album-off.png';
+import CommonPost from '../../CommonUI/CommonPost/CommonPost';
+import postListOn from '../../../assets/icon-post-list-on.png';
+import postListOff from '../../../assets/icon-post-list-off.png';
+import postAlbumOn from '../../../assets/icon-post-album-on.png';
+import postAlbumOff from '../../../assets/icon-post-album-off.png';
 
 const ProfilePost = ({ data, isMyPost }) => {
   const [listClicked, setListClicked] = useState(true);

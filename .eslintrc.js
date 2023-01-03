@@ -53,6 +53,7 @@ module.exports = {
     ],
     'no-alert': 'off',
     'no-console': 'off',
+    'no-nested-ternary': 'off',
     'no-param-reassign': 'off',
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',

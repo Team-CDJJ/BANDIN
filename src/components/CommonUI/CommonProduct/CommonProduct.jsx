@@ -8,17 +8,17 @@ import {
   ProductCont,
 } from './styled';
 
-const CommonProduct = ({ data }) => {
+const CommonProduct = ({ data, isMyPost }) => {
   const [onModal, setModal] = useState(false);
   const [productId, setProductId] = useState(null);
   const [productLink, setProductLink] = useState(null);
-  const [productAuthor, setProductAuthor] = useState(null);
+  // const [productAuthor, setProductAuthor] = useState(null);
 
   const ModalOpen = (item) => {
     setModal(!onModal);
     setProductId(item.id);
     setProductLink(item.link);
-    setProductAuthor(item.author.accountname);
+    // setProductAuthor(item.author.accountname);
   };
 
   return (
@@ -54,6 +54,7 @@ const CommonProduct = ({ data }) => {
           productId={productId}
           setModal={setModal}
           onModal={onModal}
+          isMyPost={isMyPost}
           productLink={productLink}
         />
       )}

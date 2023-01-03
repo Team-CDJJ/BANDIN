@@ -120,7 +120,7 @@ const SetUpProfile = () => {
         나중에 언제든지 변경할 수 있습니다.
       </SetUpProfileSubTitle>
       <form onSubmit={handleSubmit}>
-        <ProfileImgInput setNewImage={setImage} />
+        <ProfileImgInput setNewImage={setImage} image={image} />
         <InputBox
           label='사용자 이름'
           type='username'

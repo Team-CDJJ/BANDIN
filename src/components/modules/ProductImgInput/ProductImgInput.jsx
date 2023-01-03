@@ -1,25 +1,31 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { apiUrl } from '../../../api/api';
 import Img from '../../atoms/Img/img';
 
 import { ProductImgInputWrapper, UploadBtn } from './styled';
 import postUploadImg from '../../../api/uploadImg/postUploadImg';
+import noneProductImage from '../../../assets/product.png';
 
-const ProductImgInput = () => {
-  const [image, setImage] = useState('');
+const ProductImgInput = ({ setNewItemImage, itemImage, newItemImage }) => {
   const fileInput = useRef(null);
+  const location = useLocation();
 
-  const handleUploadBtnClick = (event) => {
-    event.preventDefault();
+  const handleUploadBtnClick = (e) => {
+    e.preventDefault();
     fileInput.current.click();
   };
 
   const handleProductImgInputOnchange = (event) => {
     const formData = new FormData();
     formData.append('image', event.target.files[0]);
-    postUploadImg(formData).then((data) => {
-      setImage(`${apiUrl}/${data}`);
-    });
+    postUploadImg(formData)
+      .then((data) => {
+        setNewItemImage(`${apiUrl}/${data}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -28,7 +34,14 @@ const ProductImgInput = () => {
         <Img
           width='322px'
           height='204px'
-          src={image}
+          src={
+            location.pathname.includes('modify') && itemImage
+              ? newItemImage || itemImage
+              : newItemImage ||
+                (location.pathname.includes('addproduct') && itemImage)
+              ? newItemImage
+              : noneProductImage
+          }
           alt='프로필 이미지'
           borderRadius='10px'
         />

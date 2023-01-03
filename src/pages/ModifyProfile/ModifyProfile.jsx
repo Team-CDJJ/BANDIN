@@ -89,7 +89,7 @@ const ModifyProfile = () => {
         username: userName,
         accountname: accountName,
         intro: intro,
-        image: newImage,
+        image: newImage === '' ? image : newImage,
       },
     };
 

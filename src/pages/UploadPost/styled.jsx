@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import deleteIcon from '../../assets/icon-delete.png';
 
 export const UploadWrapper = styled.main`
   margin-top: 44px;
@@ -25,7 +24,7 @@ export const UploadWrapper = styled.main`
 export const StyledTextArea = styled.textarea`
   ${({ theme }) => {
     return css`
-      width: 100%;
+      width: 95%;
       border: none;
       resize: none;
       margin: 12px;
@@ -65,11 +64,6 @@ export const ImgBox = styled.ul`
             width: 22px;
             height: 22px;
           }
-          /* width: 22px;
-          height: 22px;
-          top: 6px;
-          right: 6px;
-          background: url(${deleteIcon}) no-repeat center / 22px 22px; */
         }
       }
     `;

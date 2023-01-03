@@ -14,7 +14,7 @@ import Img from '../../components/atoms/Img/img';
 
 const Home = () => {
   const [postData, setPostData] = useState([]);
-  const userToken = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const [numFeed, setNumFeed] = useState(0);
   const [done, setDone] = useState(false);
   const [ref, inView] = useInView();
@@ -24,7 +24,7 @@ const Home = () => {
       url: `${apiUrl}/post/feed/?limit=10&skip=${numFeed}`,
       method: `GET`,
       headers: {
-        Authorization: `Bearer ${userToken}`,
+        Authorization: `Bearer ${token}`,
         'Content-type': 'application/json',
       },
     };

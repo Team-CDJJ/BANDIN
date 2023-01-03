@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import { ModiProductSection, ModiProductForm, ModiImageDesc } from './styled';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
 import getProductData from '../../api/editProduct/getProductData';
 import putModifiedData from '../../api/editProduct/putModifiedData';
+import { accountNameValue } from '../../atoms';
 
 const EditProduct = () => {
   const { productId } = useParams();
@@ -21,7 +23,8 @@ const EditProduct = () => {
 
   const [isLinkValid, setIsLinkValid] = useState(false);
   const [linkError, setLinkError] = useState('');
-  const accountname = localStorage.getItem('accountname');
+  // const accountname = localStorage.getItem('accountname');
+  const accountname = useRecoilValue(accountNameValue);
 
   const [inputValue, setInputValue] = useState({
     itemName: '',

@@ -61,7 +61,7 @@ const SignUp = () => {
       }
     };
     pwValidator();
-  });
+  }, [password]);
 
   const handleNextPage = () => {
     navigate('/signup/setupprofile', {

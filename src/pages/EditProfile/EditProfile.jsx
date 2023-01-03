@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import ModifyProfileSection from './styled';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import ProfileImgInput from '../../components/modules/ProfileImgInput/ProfileImgInput';
 import InputBox from '../../components/atoms/InputBox/Input';
 import putModifiedData from '../../api/editProfile/putEditProfile';
 import getMyInfo from '../../api/profile/getMyInfo';
+import { accountNameValue } from '../../atoms';
 
 const EditProfile = () => {
   const [profileData, setProfileData] = useState({});
@@ -17,6 +19,7 @@ const EditProfile = () => {
 
   const [isAccountValid, setIsAccountValid] = useState(false);
   const [accountError, setAccountError] = useState('');
+  const setAccountValue = useSetRecoilState(accountNameValue);
 
   useEffect(() => {
     const getInfo = async () => {
@@ -100,6 +103,7 @@ const EditProfile = () => {
       .then((data) => {
         console.log(data);
         localStorage.setItem('accountname', accountName);
+        setAccountValue(accountName);
         navigate(`/profile/${accountName}`);
       })
       .catch((error) => {

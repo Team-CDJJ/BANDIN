@@ -24,7 +24,7 @@ import moreBtn from '../../assets/icon-more-vertical.png';
 import ChatRoomModal from '../../components/modal/ChatModal/ChatModal';
 
 const ChatRoom = () => {
-  const [modal, setModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <TopContainer>
@@ -32,7 +32,7 @@ const ChatRoom = () => {
       <ChatRoomMoreModal
         type='button'
         onClick={() => {
-          setModal(!modal);
+          setIsModalOpen(!isModalOpen);
         }}
       >
         <img src={moreBtn} alt='더보기 모달' />
@@ -88,7 +88,12 @@ const ChatRoom = () => {
         whatPlaceholder='inputMessage'
         chatRoomClick='send'
       />
-      {modal === true ? <ChatRoomModal leaveChatRoom='채팅방 나가기' /> : null}
+      {isModalOpen === true ? (
+        <ChatRoomModal
+          leaveChatRoom='채팅방 나가기'
+          setIsModalOpen={setIsModalOpen}
+        />
+      ) : null}
     </TopContainer>
   );
 };

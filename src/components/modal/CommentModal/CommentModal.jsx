@@ -17,8 +17,8 @@ const CommentModal = ({ content, setIsModalOpen, onClickDelete }) => {
   };
 
   return (
-    <ModalBackGround>
-      <PostModalArticle>
+    <ModalBackGround onClick={handleModalClose}>
+      <PostModalArticle onClick={(e) => e.stopPropagation()}>
         <h1 className='ir'>모달창</h1>
         <GrayLine />
         <ModalInnerText onClick={onClickButton}>{content}</ModalInnerText>

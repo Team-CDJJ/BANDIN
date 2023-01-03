@@ -1,13 +1,16 @@
 /* eslint-disable no-undef */
 import { useState, useEffect } from 'react';
+import { useRecoilValue } from 'recoil';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import { AddProductSection, AddImageDesc, AddProductForm } from './styled';
 import InputBox from '../../components/atoms/InputBox/Input';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
 import postAddProduct from '../../api/addproduct/postAddProduct';
+import { accountNameValue } from '../../atoms';
 
 const AddProduct = () => {
-  const accountname = localStorage.getItem('accountname');
+  // const accountname = localStorage.getItem('accountname');
+  const accountname = useRecoilValue(accountNameValue);
 
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');

@@ -7,7 +7,6 @@ export const TabMenuSection = styled.footer`
       position: fixed;
       bottom: 0;
       padding: 0 6px;
-      /* z-index: 10; */
       border-top: 0.5px solid ${theme.colors.greyDB};
       background-color: #fff;
     `;

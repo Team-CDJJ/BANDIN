@@ -6,11 +6,14 @@ import {
   ModalBackGround,
 } from '../styled';
 
-const ChatRoomModal = ({ leaveChatRoom }) => {
-  // 채팅방 나가기
+const ChatRoomModal = ({ leaveChatRoom, setIsModalOpen }) => {
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <ModalBackGround>
-      <PostModalArticle>
+    <ModalBackGround onClick={handleModalClose}>
+      <PostModalArticle onClick={(e) => e.stopPropagation()}>
         <h1 className='ir'>모달창</h1>
         <GrayLine />
         <Link to='/chatlist'>

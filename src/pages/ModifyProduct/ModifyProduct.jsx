@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import { ModiProductSection, ModiProductForm, ModiImageDesc } from './styled';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
@@ -10,11 +10,9 @@ import putModifiedData from '../../api/modifyProduct/putModifiedData';
 
 const ModifyProduct = () => {
   const { productId } = useParams();
-  const [itemName, setItemName] = useState('');
+  const [price, setPrice] = useState('');
   const [itemImage, setItemImage] = useState('');
   const [newItemImage, setNewItemImage] = useState('');
-  const [price, setPrice] = useState('');
-  const [link, setLink] = useState('');
 
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
@@ -26,20 +24,17 @@ const ModifyProduct = () => {
   const [linkError, setLinkError] = useState('');
   const accountname = localStorage.getItem('accountname');
 
-  // 기존 상품 정보 호출
-  useEffect(() => {
-    getProductData(productId)
-      .then((data) => {
-        console.log('기존 상품정보 확인', data);
-        setItemImage(data.product.itemImage);
-        setItemName(data.product.itemName);
-        setPrice(String(data.product.price));
-        setLink(data.product.link);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [productId]);
+  const [inputValue, setInputValue] = useState({
+    itemName: '',
+    link: '',
+  });
+
+  const handleData = (e) => {
+    const { name, value } = e.target;
+    setInputValue({ ...inputValue, [name]: value });
+  };
+
+  const { itemName, link } = inputValue;
 
   // 가격형식
   const priceFormat = (str) => {
@@ -54,16 +49,27 @@ const ModifyProduct = () => {
     return comma(uncomma(str));
   };
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    getProductData(productId)
+      .then((data) => {
+        console.log('기존 상품정보 확인', data.product.itemImage);
+        setItemImage(data.product.itemImage);
+        setPrice(String(data.product.price));
+        setInputValue({
+          itemName: data.product.itemName,
+          link: data.product.link,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  console.log(itemImage);
 
   // 상품명,가격,판매 링크 입력시 화면에 반영
-  const handleData = (event) => {
-    if (event.target.id === 'itemName') {
-      setItemName(event.target.value);
-    } else if (event.target.id === 'price') {
+  const handlePrice = (event) => {
+    if (event.target.id === 'price') {
       setPrice(priceFormat(event.target.value));
-    } else if (event.target.id === 'link') {
-      setLink(event.target.value);
     }
   };
 
@@ -137,6 +143,7 @@ const ModifyProduct = () => {
         }
       });
   };
+
   return (
     <>
       <TopUploadNav
@@ -153,6 +160,7 @@ const ModifyProduct = () => {
         <ModiImageDesc>이미지수정</ModiImageDesc>
         <ProductImgInput
           setNewItemImage={setNewItemImage}
+          newItemImage={newItemImage}
           itemImage={itemImage}
         />
         <InputBox
@@ -174,7 +182,7 @@ const ModifyProduct = () => {
           placeholder='숫자만 입력 가능합니다.'
           value={price || ''}
           errorMsg={priceError}
-          onChange={handleData}
+          onChange={handlePrice}
           required
         />
         <InputBox

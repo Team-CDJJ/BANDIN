@@ -102,7 +102,7 @@ const AddProduct = () => {
     postAddProduct(userData)
       .then((data) => {
         console.log(data);
-        setItemImage(productImg);
+        setItemImage(newItemImage);
         window.location = `/profile/${accountname}`;
       })
       .catch((error) => {
@@ -129,7 +129,11 @@ const AddProduct = () => {
         <h1 className='ir'>상품 등록 페이지</h1>
         <AddProductForm onSubmit={handleSubmit}>
           <AddImageDesc>이미지등록</AddImageDesc>
-          <ProductImgInput setNewItemImage={setNewItemImage} />
+          <ProductImgInput
+            setNewItemImage={setNewItemImage}
+            newItemImage={newItemImage}
+            itemImage={itemImage}
+          />
           <InputBox
             label='상품명'
             type='text'

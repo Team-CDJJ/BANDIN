@@ -21,7 +21,6 @@ const ProfileImgInput = ({ newImage, setNewImage, image }) => {
     formData.append('image', e.target.files[0]);
     postUploadImg(formData)
       .then((data) => {
-        console.log(data);
         setNewImage(`${apiUrl}/${data}`);
       })
       .catch((error) => {
@@ -37,7 +36,6 @@ const ProfileImgInput = ({ newImage, setNewImage, image }) => {
           width='110px'
           height='110px'
           src={
-            // eslint-disable-next-line no-nested-ternary
             location.pathname.includes('/modifyprofile') && image
               ? newImage || image
               : newImage ||

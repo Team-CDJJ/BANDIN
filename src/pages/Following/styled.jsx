@@ -23,18 +23,3 @@ export const FollowingMainUl = styled.ul`
   gap: 16px;
   justify-content: space-between;
 `;
-
-export const FollowingBtn = styled.button`
-  ${({ theme }) => {
-    return css`
-      display: inline-block;
-      float: right;
-      cursor: pointer;
-      &:active{
-        background-color: '#fff';
-        color: ${theme.colors.grey76};
-      }
-      background-color: &{theme.colors.mainColor};
-    `;
-  }}
-`;

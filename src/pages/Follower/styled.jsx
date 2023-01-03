@@ -14,27 +14,14 @@ export const FollowerTopSpan = styled.span`
 `;
 
 export const FollowerMain = styled.main`
+  width: 100%;
   padding: 72px 16px 84px;
 `;
 
 export const FollowerMainUl = styled.ul`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: space-between;
-`;
-
-export const FollowerBtn = styled.button`
-  ${({ theme }) => {
-    return css`
-      display: inline-block;
-      float: right;
-      cursor: pointer;
-      &:active{
-        background-color: '#fff';
-        color: ${theme.colors.grey76};
-      }
-      background-color: &{theme.colors.mainColor};
-    `;
-  }}
 `;

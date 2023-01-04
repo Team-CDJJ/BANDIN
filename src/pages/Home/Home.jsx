@@ -51,7 +51,7 @@ const Home = () => {
             alt='프로필 이미지'
             className='profile-img loading-img'
           />
-          <LoadingTxt>로딩중!!!</LoadingTxt>
+          <LoadingTxt>빠르게 로딩중!!</LoadingTxt>
         </EmptyHomeWrapper>
       )}
       <TabMenu place='homefeed' />

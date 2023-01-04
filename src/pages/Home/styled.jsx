@@ -38,6 +38,7 @@ export const LoadingTxt = styled(FeedTxt)`
   ${({ theme }) => {
     return css`
       font-size: ${theme.fontSizes.xl};
+      font-weight: 500;
     `;
   }}
 `;

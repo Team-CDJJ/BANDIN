@@ -86,34 +86,35 @@ test pw: 123123
 - ### 홈 
 |                     스플래쉬                    |               회원가입                   |                      로그인                      |
 | :---------------------------------------------: | :--------------------------------------: | :---------------------------------------------: |
-|   ![스플래쉬](https://user-images.githubusercontent.com/104756433/210384894-043705f6-11aa-4c9f-b567-ba4f20bbdad9.gif)   |     ![회원가입](https://user-images.githubusercontent.com/104756433/210385031-dd8a7675-b5f7-4048-afb6-1d8b0604219b.gif)  |    ![로그인](https://user-images.githubusercontent.com/104756433/210385090-a68d8f8d-5418-421b-bfcb-b1588c08f2d5.gif) |
+|   <img src="https://user-images.githubusercontent.com/104756433/210384894-043705f6-11aa-4c9f-b567-ba4f20bbdad9.gif" width="299" height="650"/>   |     ![회원가입](https://user-images.githubusercontent.com/104756433/210385031-dd8a7675-b5f7-4048-afb6-1d8b0604219b.gif)  |    ![로그인](https://user-images.githubusercontent.com/104756433/210385090-a68d8f8d-5418-421b-bfcb-b1588c08f2d5.gif) |
 
-|                  홈 화면 (무한스크롤, 최상단 이동 버튼, 로딩 화면)             |                  계정 검색                |
+|      홈 화면      |                  계정 검색                |
 | :---------------------------------------------: | :--------------------------------------: |
-|                                             |   <img src="https://user-images.githubusercontent.com/104756433/210387204-de837d6a-7978-44ff-b469-945092b0f295.gif" width="299" height="650"/> | 
+|    <img src="https://user-images.githubusercontent.com/104756433/210620572-f639f97e-b4ef-4125-ae7c-8eb478f3fd92.gif" width="299" height="650"/>  |   <img src="https://user-images.githubusercontent.com/104756433/210387204-de837d6a-7978-44ff-b469-945092b0f295.gif" width="299" height="650"/> | 
 
 - ### 게시물 
 |                 게시물 작성                   |     게시물 상세 (이미지 슬라이드) & 좋아요     |                게시물 수정, 삭제                 |
 | :------------------------------------------: | :-----------------------------------------: | :---------------------------------------------: |
-|  ![게시글 작성](https://user-images.githubusercontent.com/104756433/210388827-e6e4e911-1943-4c18-928b-b3a7a736fa09.gif)|  ![게시글 상세   좋아요-min](https://user-images.githubusercontent.com/104756433/210389836-625fc3ca-d730-4fe9-bb91-49f69c4b8b7b.gif)  |        ![게시글 수정   삭제-min](https://user-images.githubusercontent.com/104756433/210389854-751ce10e-1819-4e18-8605-ae7944ad5fae.gif)  |
+|  <img src="https://user-images.githubusercontent.com/104756433/210388827-e6e4e911-1943-4c18-928b-b3a7a736fa09.gif" width="299" height="650"/>|  <img src="https://user-images.githubusercontent.com/104756433/210389836-625fc3ca-d730-4fe9-bb91-49f69c4b8b7b.gif" width="299" height="650"/>  |        <img src="https://user-images.githubusercontent.com/104756433/210389854-751ce10e-1819-4e18-8605-ae7944ad5fae.gif" width="299" height="650"/>  |
 
-|               게시물 및 댓글 신고              |                댓글 작성 & 삭제             |
+|               게시물, 댓글 신고                    |                댓글 작성 & 삭제             |
 | :------------------------------------------: | :-----------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210392015-df07aceb-bd67-4d76-868f-1237468b2b73.gif" width="299" height="650"/> |     <img src="https://user-images.githubusercontent.com/104756433/210392232-b2710d43-ff64-4894-b5a0-47c63577542e.gif" width="299" height="650"/>         |
+|  <img src="https://user-images.githubusercontent.com/104756433/210628380-534f4a06-a94c-4661-9cea-031e7e8432d4.gif" width="299" height="650"/>   |     <img src="https://user-images.githubusercontent.com/104756433/210619309-0e2fdbc4-67dc-43c4-9822-1984c517c2ff.gif" width="299" height="650"/>   |
 
 - ### 프로필   
 |                마이 프로필                     |                유저 프로필                 |                  팔로워 팔로잉 목록                  |
 | :------------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
 |    ![마이프로필-min](https://user-images.githubusercontent.com/104756433/210473751-051578fc-c1c1-4afb-bdc9-14e4c5fc08ee.gif)   |  ![유저 프로필-min](https://user-images.githubusercontent.com/104756433/210393607-28f76256-1a22-423f-85aa-13d6707f7e87.gif) |     ![팔로워   팔로잉-min](https://user-images.githubusercontent.com/104756433/210393753-8119cef0-b61b-4a95-8f0a-371aadad7af6.gif) |
 
-|                팔로우 언팔로우                  |                  프로필 수정               |                       로그아웃                      |
+|                팔로우 언팔로우                  |                  프로필 수정               |                       로그아웃                 |
 | :------------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
 |   ![팔로우 언팔로우-min](https://user-images.githubusercontent.com/104756433/210393882-b1374e52-3418-4e1a-91a2-6d0d0c3019f3.gif)  |  ![프로필 수정](https://user-images.githubusercontent.com/104756433/210393931-d5b08dab-71a5-4383-9c91-e7af4e5cad98.gif) |       ![로그아웃-min](https://user-images.githubusercontent.com/104756433/210394074-0a8d329c-56a0-41b8-8b46-b654b8f74f4f.gif) |
 
 - ### 등록 물품 
-|          마이 프로필 (상품등록, 웹사이트 이동)     |         마이 프로필 (상품 수정, 삭제)         |               유저 프로필               |
+|          마이 프로필 (상품등록, 웹사이트 이동)     |         마이 프로필 (상품 수정, 삭제)         |              유저 프로필               |
 | :------------------------------------------: | :----------------------------------------: | :----------------------------------------: |
-|  ![상품등록웹사이트이동-min](https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif)  |  ![상품수정삭제-min](https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif) |      |
+|  ![상품등록웹사이트이동-min](https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif)  |  ![상품수정삭제-min](https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif) |   ![유저프로필웹사이트수정본-min](https://user-images.githubusercontent.com/104756433/210628713-61544001-60a7-4846-b85b-8a19e27f3cc0.gif)
+   |
 
 - ### 채팅, 404 페이지
 |                채팅 목록, 채팅방               |          404 페이지         |
@@ -121,12 +122,7 @@ test pw: 123123
 |  <img src="https://user-images.githubusercontent.com/104756433/210474597-430f1947-8233-4b4f-b954-aa33bb25dea1.gif" width="299" height="650"/>  |    <img src="https://user-images.githubusercontent.com/104756433/210397962-d28cfeda-6d2d-4e85-9303-fa25277d3f33.gif" width="299" height="650"/>  | 
 
 
-## 4. 프로젝트 구조
-
-폴더트리
-
-
-## 5. 트러블 슈팅
+## 4. 트러블 슈팅
     Uncaught TypeError: Cannot read properties of undefined (reading 'map')
 <img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/104756433/210578011-62dade1b-557a-4151-b55f-05e727164f48.png">
 
@@ -148,7 +144,7 @@ test pw: 123123
     <br/>- key각 요소의 키에 고유한 값을 제공하거나 인덱스 매개변수를 사용하여 해결
 
 
-## 6. 프로젝트를 진행하며 느낀점
+## 5. 프로젝트를 진행하며 느낀점
 
 | 이름 | 느낀 점                                    |
 | :------: | ---------------------------------------------- |

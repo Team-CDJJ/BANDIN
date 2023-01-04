@@ -86,39 +86,39 @@ test pw: 123123
 - ### 홈 
 |                     스플래쉬                    |               회원가입                   |                      로그인                      |
 | :---------------------------------------------: | :--------------------------------------: | :---------------------------------------------: |
-|   <img src="https://user-images.githubusercontent.com/104756433/210384894-043705f6-11aa-4c9f-b567-ba4f20bbdad9.gif" width="299" height="650"/>   |     <img src="https://user-images.githubusercontent.com/104756433/210385031-dd8a7675-b5f7-4048-afb6-1d8b0604219b.gif" width="299" height="650"/>  |     <img src="https://user-images.githubusercontent.com/104756433/210385090-a68d8f8d-5418-421b-bfcb-b1588c08f2d5.gif" width="299" height="650"/> |
+|   <img src="https://user-images.githubusercontent.com/104756433/210384894-043705f6-11aa-4c9f-b567-ba4f20bbdad9.gif" width="280" height="580"/>   |     <img src="https://user-images.githubusercontent.com/104756433/210385031-dd8a7675-b5f7-4048-afb6-1d8b0604219b.gif" width="280" height="580"/>  |     <img src="https://user-images.githubusercontent.com/104756433/210385090-a68d8f8d-5418-421b-bfcb-b1588c08f2d5.gif" width="280" height="580"/> |
 
 |      홈 화면      |                  계정 검색                |
 | :---------------------------------------------: | :--------------------------------------: |
-|    <img src="https://user-images.githubusercontent.com/104756433/210620572-f639f97e-b4ef-4125-ae7c-8eb478f3fd92.gif" width="299" height="650"/>  |   <img src="https://user-images.githubusercontent.com/104756433/210387204-de837d6a-7978-44ff-b469-945092b0f295.gif" width="299" height="650"/> | 
+|    <img src="https://user-images.githubusercontent.com/104756433/210620572-f639f97e-b4ef-4125-ae7c-8eb478f3fd92.gif" width="280" height="580"/>  |   <img src="https://user-images.githubusercontent.com/104756433/210387204-de837d6a-7978-44ff-b469-945092b0f295.gif" width="280" height="580"/> | 
 
 - ### 게시물 
 |                 게시물 작성                   |     게시물 상세 (이미지 슬라이드) & 좋아요     |                게시물 수정, 삭제                 |
 | :------------------------------------------: | :-----------------------------------------: | :---------------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210388827-e6e4e911-1943-4c18-928b-b3a7a736fa09.gif" width="299" height="650"/>|  <img src="https://user-images.githubusercontent.com/104756433/210389836-625fc3ca-d730-4fe9-bb91-49f69c4b8b7b.gif" width="299" height="650"/>  |        <img src="https://user-images.githubusercontent.com/104756433/210389854-751ce10e-1819-4e18-8605-ae7944ad5fae.gif" width="299" height="650"/>  |
+|  <img src="https://user-images.githubusercontent.com/104756433/210388827-e6e4e911-1943-4c18-928b-b3a7a736fa09.gif" width="280" height="580"/>|  <img src="https://user-images.githubusercontent.com/104756433/210389836-625fc3ca-d730-4fe9-bb91-49f69c4b8b7b.gif" width="280" height="580"/>  |        <img src="https://user-images.githubusercontent.com/104756433/210389854-751ce10e-1819-4e18-8605-ae7944ad5fae.gif" width="280" height="580"/>  |
 
 |               게시물, 댓글 신고                    |                댓글 작성 & 삭제             |
 | :------------------------------------------: | :-----------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210628380-534f4a06-a94c-4661-9cea-031e7e8432d4.gif" width="299" height="650"/>   |     <img src="https://user-images.githubusercontent.com/104756433/210619309-0e2fdbc4-67dc-43c4-9822-1984c517c2ff.gif" width="299" height="650"/>   |
+|  <img src="https://user-images.githubusercontent.com/104756433/210628380-534f4a06-a94c-4661-9cea-031e7e8432d4.gif" width="280" height="580"/>   |     <img src="https://user-images.githubusercontent.com/104756433/210619309-0e2fdbc4-67dc-43c4-9822-1984c517c2ff.gif" width="280" height="580"/>   |
 
 - ### 프로필   
 |                마이 프로필                     |                유저 프로필                 |                  팔로워 팔로잉 목록                  |
 | :------------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
-|    <img src="https://user-images.githubusercontent.com/104756433/210473751-051578fc-c1c1-4afb-bdc9-14e4c5fc08ee.gif" width="299" height="650"/>   |  <img src="https://user-images.githubusercontent.com/104756433/210393607-28f76256-1a22-423f-85aa-13d6707f7e87.gif" width="299" height="650"/> |     <img src="https://user-images.githubusercontent.com/104756433/210393753-8119cef0-b61b-4a95-8f0a-371aadad7af6.gif" width="299" height="650"/> |
+|    <img src="https://user-images.githubusercontent.com/104756433/210473751-051578fc-c1c1-4afb-bdc9-14e4c5fc08ee.gif" width="280" height="580"/>   |  <img src="https://user-images.githubusercontent.com/104756433/210393607-28f76256-1a22-423f-85aa-13d6707f7e87.gif" width="280" height="580"/> |     <img src="https://user-images.githubusercontent.com/104756433/210393753-8119cef0-b61b-4a95-8f0a-371aadad7af6.gif" width="280" height="580"/> |
 
 |                팔로우 언팔로우                  |                  프로필 수정               |                       로그아웃                 |
 | :------------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
-|   <img src="https://user-images.githubusercontent.com/104756433/210393882-b1374e52-3418-4e1a-91a2-6d0d0c3019f3.gif" width="299" height="650"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210393931-d5b08dab-71a5-4383-9c91-e7af4e5cad98.gif" width="299" height="650"/> |       <img src="https://user-images.githubusercontent.com/104756433/210394074-0a8d329c-56a0-41b8-8b46-b654b8f74f4f.gif" width="299" height="650"/> |
+|   <img src="https://user-images.githubusercontent.com/104756433/210393882-b1374e52-3418-4e1a-91a2-6d0d0c3019f3.gif" width="280" height="580"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210393931-d5b08dab-71a5-4383-9c91-e7af4e5cad98.gif" width="280" height="580"/> |       <img src="https://user-images.githubusercontent.com/104756433/210394074-0a8d329c-56a0-41b8-8b46-b654b8f74f4f.gif" width="280" height="580"/> |
 
 - ### 등록 물품 
 |          마이 프로필 (상품등록, 웹사이트 이동)     |         마이 프로필 (상품 수정, 삭제)         |              유저 프로필               |
 | :------------------------------------------: | :----------------------------------------: | :----------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif" width="299" height="650"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif" width="299" height="650"/> |   <img src="https://user-images.githubusercontent.com/104756433/210628713-61544001-60a7-4846-b85b-8a19e27f3cc0.gif" width="299" height="650"/> |
+|  <img src="https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif" width="280" height="580"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif" width="280" height="580"/> |   <img src="https://user-images.githubusercontent.com/104756433/210628713-61544001-60a7-4846-b85b-8a19e27f3cc0.gif" width="280" height="580"/> |
 
 - ### 채팅, 404 페이지
 |                채팅 목록, 채팅방               |          404 페이지         |
 | :------------------------------------------: | :----------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210474597-430f1947-8233-4b4f-b954-aa33bb25dea1.gif" width="299" height="650"/>  |    <img src="https://user-images.githubusercontent.com/104756433/210397962-d28cfeda-6d2d-4e85-9303-fa25277d3f33.gif" width="299" height="650"/>  | 
+|  <img src="https://user-images.githubusercontent.com/104756433/210474597-430f1947-8233-4b4f-b954-aa33bb25dea1.gif" width="280" height="580"/>  |    <img src="https://user-images.githubusercontent.com/104756433/210397962-d28cfeda-6d2d-4e85-9303-fa25277d3f33.gif" width="280" height="580"/>  | 
 
 
 ## 4. 트러블 슈팅

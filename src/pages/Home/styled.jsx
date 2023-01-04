@@ -10,9 +10,6 @@ export const EmptyHomeWrapper = styled.div`
     width: 110px;
     height: 110px;
   }
-  .loading-img {
-    margin-top: 100px;
-  }
 `;
 
 export const FeedWrapper = styled.main`
@@ -27,21 +24,13 @@ export const FeedWrapper = styled.main`
 export const FeedTxt = styled.span`
   ${({ theme }) => {
     return css`
-      font-size: ${theme.fontSizes.md};
+      font-size: ${theme.fontSizes.smd};
       color: ${theme.colors.grey76};
       line-height: 14px;
       margin: 20px 0;
     `;
   }}
 `;
-
-export const LoadingTxt = styled(FeedTxt)`
-  ${({ theme }) => {
-    return css`
-      font-size: ${theme.fontSizes.xl};
-      font-weight: 500;
-    `;
-  }}
 
 export const TopBtn = styled.div`
   position: fixed;

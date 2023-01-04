@@ -9,9 +9,6 @@ import CommonProduct from '../../components/CommonUI/CommonProduct/CommonProduct
 import getProductList from '../../api/getProductList/getProducList';
 import getProfilePost from '../../api/post/getProfilePost';
 import { accountNameValue } from '../../atoms';
-import profileImg from '../../assets/profile.png';
-import Img from '../../components/atoms/Img/img';
-import { LoadingWrapper, LoadingTxt } from './styled';
 
 const MyProfile = () => {
   const { accountName } = useParams();
@@ -19,7 +16,6 @@ const MyProfile = () => {
   const [productList, setProductList] = useState([]);
   const [postList, setPostList] = useState([]);
   const [isMyPost, setIsMyPost] = useState(false);
-  const [view, setView] = useState('pending');
 
   useEffect(() => {
     setIsMyPost(accountName === accountname);
@@ -30,11 +26,9 @@ const MyProfile = () => {
     getProductList(accountName)
       .then((data) => {
         setProductList(data.product);
-        setView('fulfilled');
       })
       .catch((error) => {
         console.log(error);
-        setView('rejected');
       });
   }, [accountName]);
 
@@ -52,19 +46,10 @@ const MyProfile = () => {
   return (
     <>
       <TopBasicNav />
-      {view === 'fulfilled' ? (
-        <>
-          <ProfileInfo />
-          {productList && <CommonProduct data={productList} />}
-          <ProfilePost data={postList} isMyPost={isMyPost} />
-          <TabMenu place='myprofile' />
-        </>
-      ) : (
-        <LoadingWrapper>
-          <Img src={profileImg} alt='프로필 이미지' className='loading-img' />
-          <LoadingTxt>빠르게 로딩중!!</LoadingTxt>
-        </LoadingWrapper>
-      )}
+      <ProfileInfo />
+      {productList && <CommonProduct data={productList} isMyPost={isMyPost} />}
+      <ProfilePost data={postList} isMyPost={isMyPost} />
+      <TabMenu place='myprofile' />
     </>
   );
 };

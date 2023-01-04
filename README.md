@@ -1,7 +1,7 @@
 # 소리로 잇다, BANDIN
 ![목업이미지](https://user-images.githubusercontent.com/104756433/210401057-41d52de6-c220-43e7-9b00-7c21e8520f3d.png)
 
-**배포 URL: https://~~
+**배포 URL: <https://github.com>**
 ```
 test id: test16-1@test.com
 test pw: 123123
@@ -80,7 +80,7 @@ test pw: 123123
 
 ### 3.2 페이지 시연
 - ### 홈 
-|                     스플래쉬(                     |               회원가입                   |                      로그인                      |
+|                     스플래쉬                    |               회원가입                   |                      로그인                      |
 | :---------------------------------------------: | :--------------------------------------: | :---------------------------------------------: |
 |   ![스플래쉬](https://user-images.githubusercontent.com/104756433/210384894-043705f6-11aa-4c9f-b567-ba4f20bbdad9.gif)   |     ![회원가입](https://user-images.githubusercontent.com/104756433/210385031-dd8a7675-b5f7-4048-afb6-1d8b0604219b.gif)  |    ![로그인](https://user-images.githubusercontent.com/104756433/210385090-a68d8f8d-5418-421b-bfcb-b1588c08f2d5.gif) |
 

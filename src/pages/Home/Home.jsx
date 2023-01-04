@@ -54,9 +54,15 @@ const Home = () => {
     }
   }, [inView]);
 
+  const scrollToTop = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <>
-      <TopMainNav id='top' />
       {postData.length !== 0 ? (
         <FeedWrapper>
           <h2 className='ir'>홈 피드</h2>
@@ -73,9 +79,11 @@ const Home = () => {
           )}
 
           <TopBtn>
-            <a href='#top'>
-              <Img src={topImg} alt='위 방향 화살표' />
-            </a>
+            <div>
+              <button onClick={scrollToTop}>
+                <Img src={topImg} alt='위 방향 화살표' />
+              </button>
+            </div>
           </TopBtn>
         </FeedWrapper>
       ) : (

@@ -86,7 +86,7 @@ test pw: 123123
 - ### 홈 
 |                     스플래쉬                    |               회원가입                   |                      로그인                      |
 | :---------------------------------------------: | :--------------------------------------: | :---------------------------------------------: |
-|   <img src="https://user-images.githubusercontent.com/104756433/210384894-043705f6-11aa-4c9f-b567-ba4f20bbdad9.gif" width="299" height="650"/>   |     ![회원가입](https://user-images.githubusercontent.com/104756433/210385031-dd8a7675-b5f7-4048-afb6-1d8b0604219b.gif)  |    ![로그인](https://user-images.githubusercontent.com/104756433/210385090-a68d8f8d-5418-421b-bfcb-b1588c08f2d5.gif) |
+|   <img src="https://user-images.githubusercontent.com/104756433/210384894-043705f6-11aa-4c9f-b567-ba4f20bbdad9.gif" width="299" height="650"/>   |     <img src="https://user-images.githubusercontent.com/104756433/210385031-dd8a7675-b5f7-4048-afb6-1d8b0604219b.gif" width="299" height="650"/>  |     <img src="https://user-images.githubusercontent.com/104756433/210385090-a68d8f8d-5418-421b-bfcb-b1588c08f2d5.gif" width="299" height="650"/> |
 
 |      홈 화면      |                  계정 검색                |
 | :---------------------------------------------: | :--------------------------------------: |
@@ -104,17 +104,16 @@ test pw: 123123
 - ### 프로필   
 |                마이 프로필                     |                유저 프로필                 |                  팔로워 팔로잉 목록                  |
 | :------------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
-|    ![마이프로필-min](https://user-images.githubusercontent.com/104756433/210473751-051578fc-c1c1-4afb-bdc9-14e4c5fc08ee.gif)   |  ![유저 프로필-min](https://user-images.githubusercontent.com/104756433/210393607-28f76256-1a22-423f-85aa-13d6707f7e87.gif) |     ![팔로워   팔로잉-min](https://user-images.githubusercontent.com/104756433/210393753-8119cef0-b61b-4a95-8f0a-371aadad7af6.gif) |
+|    <img src="https://user-images.githubusercontent.com/104756433/210473751-051578fc-c1c1-4afb-bdc9-14e4c5fc08ee.gif" width="299" height="650"/>   |  <img src="https://user-images.githubusercontent.com/104756433/210393607-28f76256-1a22-423f-85aa-13d6707f7e87.gif" width="299" height="650"/> |     <img src="https://user-images.githubusercontent.com/104756433/210393753-8119cef0-b61b-4a95-8f0a-371aadad7af6.gif" width="299" height="650"/> |
 
 |                팔로우 언팔로우                  |                  프로필 수정               |                       로그아웃                 |
 | :------------------------------------------: | :----------------------------------------: | :-------------------------------------------------: |
-|   ![팔로우 언팔로우-min](https://user-images.githubusercontent.com/104756433/210393882-b1374e52-3418-4e1a-91a2-6d0d0c3019f3.gif)  |  ![프로필 수정](https://user-images.githubusercontent.com/104756433/210393931-d5b08dab-71a5-4383-9c91-e7af4e5cad98.gif) |       ![로그아웃-min](https://user-images.githubusercontent.com/104756433/210394074-0a8d329c-56a0-41b8-8b46-b654b8f74f4f.gif) |
+|   <img src="https://user-images.githubusercontent.com/104756433/210393882-b1374e52-3418-4e1a-91a2-6d0d0c3019f3.gif" width="299" height="650"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210393931-d5b08dab-71a5-4383-9c91-e7af4e5cad98.gif" width="299" height="650"/> |       <img src="https://user-images.githubusercontent.com/104756433/210394074-0a8d329c-56a0-41b8-8b46-b654b8f74f4f.gif" width="299" height="650"/> |
 
 - ### 등록 물품 
 |          마이 프로필 (상품등록, 웹사이트 이동)     |         마이 프로필 (상품 수정, 삭제)         |              유저 프로필               |
 | :------------------------------------------: | :----------------------------------------: | :----------------------------------------: |
-|  ![상품등록웹사이트이동-min](https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif)  |  ![상품수정삭제-min](https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif) |   ![유저프로필웹사이트수정본-min](https://user-images.githubusercontent.com/104756433/210628713-61544001-60a7-4846-b85b-8a19e27f3cc0.gif)
-   |
+|  <img src="https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif" width="299" height="650"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif" width="299" height="650"/> |   <img src="https://user-images.githubusercontent.com/104756433/210628713-61544001-60a7-4846-b85b-8a19e27f3cc0.gif" width="299" height="650"/> |
 
 - ### 채팅, 404 페이지
 |                채팅 목록, 채팅방               |          404 페이지         |

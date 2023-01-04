@@ -25,8 +25,6 @@ test pw: 123123
 
 ```
 
-
-
 ### 1.1 개발 환경
 
 **[개발 기간]**
@@ -50,21 +48,29 @@ test pw: 123123
 
 ### 1.3 개발 방법 선택 이유
 
-- React를 선택한 이유
+- **React를 선택한 이유**
     - Component를 사용하여 재사용과 유지보수가 용이하다는 점과 Virtual DOM으로 인해 리렌더링 될 때 컨텐츠를 좀 더 빠르고 효율적으로 변경할 수 있다고 생각했습니다.
     
     
-- 브랜치 전략으로 github-flow를 선택한 이유
+- **브랜치 전략으로 github-flow를 선택한 이유**
     - 팀원 모두 협업 자체에 낯선 편이었고, 개발 환경에 익숙해지는 것이 먼저라고 생각했기 때문에 브랜치 전략 중 상대적으로 간단한 github flow를 사용하기로 했습니다.
     - default로 이용한 dev 브랜치에는 코드 리뷰를 받은 배포될 파일을 merge시켰는데, 충돌을 고려하여 이 부분은 팀장님이 진행해 주셨습니다.
     - 브랜치명은 FEAT/브랜치이름과 같이 작성했습니다.
     
     
-- styled-components를 선택한 이유?
-    - 스타일 재사용성이 높습니다.
-    - React의 Props와 함께 사용이 용이하고, 조건부 스타일링도 가능합니다.
+- **styled-components를 선택한 이유**
+    - React의 Props와 함께 사용이 용이하고, 조건부 스타일링도 가능하며 스타일 재사용성이 높습니다.
     - className을 지정해줘야 하는 번거로움을 피할 수 있습니다.
-    - 컴포넌트에 적은 스타일은 html 페이지의 `<style>` 태그에 넣어줘서 페이지 로딩 시간이 단축됩니다.
+    - 컴포넌트에 적은 스타일은 html 페이지의 <style> 태그에 넣어줘서 페이지 로딩 시간이 단축됩니다.
+
+
+### 1.4 커밋 컨벤션 규칙
+
+- 기능 단위의 커밋합니다.
+- 커밋 타입은 영어 소문자로 시작합니다.
+- feat, fix, refactor, style, design, docs, chore와 같은 타입을 사용합니다.
+- 주제는 최대한 자세하게 변경 사항을 알아보기 편하도록 작성합니다.
+
 
 ## 2. 팀원 소개
 
@@ -72,12 +78,11 @@ test pw: 123123
 | :--------: | :--------: | :------: | :-----: |
 | [김대운] | [서윤정] | [이혜진] | [최영준] |
 
-- 리드미에서 태그하기
 - (역할분담 이미지)
 
 ## 3. 기능 구현 
 
-### [3.1 UI이미지, 페이지 시연](https://github.com/Team-CDJJ/BANDIN/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B8%B0%EB%8A%A5-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85)
+### 🎸[기능 상세 설명으로 이동](https://github.com/Team-CDJJ/BANDIN/wiki/%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B8%B0%EB%8A%A5-%EC%83%81%EC%84%B8-%EC%84%A4%EB%AA%85)🥁
 - ### 홈 
 |                     스플래쉬                    |               회원가입                   |                      로그인                      |
 | :---------------------------------------------: | :--------------------------------------: | :---------------------------------------------: |
@@ -85,7 +90,7 @@ test pw: 123123
 
 |                  홈 화면 (무한스크롤, 최상단 이동 버튼, 로딩 화면)             |                  계정 검색                |
 | :---------------------------------------------: | :--------------------------------------: |
-|                                             |   <img src="https://user-images.githubusercontent.com/104756433/210387204-de837d6a-7978-44ff-b469-945092b0f295.gif" width="309" height="674"/> | 
+|                                             |   <img src="https://user-images.githubusercontent.com/104756433/210387204-de837d6a-7978-44ff-b469-945092b0f295.gif" width="299" height="650"/> | 
 
 - ### 게시물 
 |                 게시물 작성                   |     게시물 상세 (이미지 슬라이드) & 좋아요     |                게시물 수정, 삭제                 |
@@ -94,7 +99,7 @@ test pw: 123123
 
 |               게시물 및 댓글 신고              |                댓글 작성 & 삭제             |
 | :------------------------------------------: | :-----------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210392015-df07aceb-bd67-4d76-868f-1237468b2b73.gif" width="309" height="674"/> |     <img src="https://user-images.githubusercontent.com/104756433/210392232-b2710d43-ff64-4894-b5a0-47c63577542e.gif" width="309" height="674"/>         |
+|  <img src="https://user-images.githubusercontent.com/104756433/210392015-df07aceb-bd67-4d76-868f-1237468b2b73.gif" width="299" height="650"/> |     <img src="https://user-images.githubusercontent.com/104756433/210392232-b2710d43-ff64-4894-b5a0-47c63577542e.gif" width="299" height="650"/>         |
 
 - ### 프로필   
 |                마이 프로필                     |                유저 프로필                 |                  팔로워 팔로잉 목록                  |
@@ -110,22 +115,37 @@ test pw: 123123
 | :------------------------------------------: | :----------------------------------------: | :----------------------------------------: |
 |  ![상품등록웹사이트이동-min](https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif)  |  ![상품수정삭제-min](https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif) |      |
 
-- ### 채팅
-|                채팅 목록, 채팅방               |
-| :------------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210474597-430f1947-8233-4b4f-b954-aa33bb25dea1.gif" width="309" height="674"/>  |
+- ### 채팅, 404 페이지
+|                채팅 목록, 채팅방               |          404 페이지         |
+| :------------------------------------------: | :----------------------------------------: |
+|  <img src="https://user-images.githubusercontent.com/104756433/210474597-430f1947-8233-4b4f-b954-aa33bb25dea1.gif" width="299" height="650"/>  |    <img src="https://user-images.githubusercontent.com/104756433/210397962-d28cfeda-6d2d-4e85-9303-fa25277d3f33.gif" width="299" height="650"/>  | 
 
-- ### 404 페이지 
-|                404 페이지               |
-| :------------------------------------: |
-|  <img src="https://user-images.githubusercontent.com/104756433/210397962-d28cfeda-6d2d-4e85-9303-fa25277d3f33.gif" width="309" height="674"/> |
 
 ## 4. 프로젝트 구조
 
 폴더트리
 
-## 5. 트러블 슈팅
 
+## 5. 트러블 슈팅
+    Uncaught TypeError: Cannot read properties of undefined (reading 'map')
+<img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/104756433/210578011-62dade1b-557a-4151-b55f-05e727164f48.png">
+
+**문제**
+    <br/>- react에서 컴포넌트 간의 life cycle 차이로 인해 undefined에 관한 에러가 자주 생김
+    <br/>- map을 돌리거나 ref 걸어 current.style에 접근할 때 자주 마주침
+    <br/><br/>
+**해결법**
+    <br/>- 조건부렌더링으로 해결(&& 연산자나 ?를 사용)
+<br/><br/>
+    
+    Encountered two children with the same key, ~~~ . Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted - the behavior is unsupported and could change in a future version.
+<img width="658" src="https://user-images.githubusercontent.com/104756433/210584149-29c867be-0482-4ee1-8e63-146232b28ba8.png">
+
+**문제**
+    <br/>- map()메서드에서 반환하는 두 개 이상의 요소가 동일한 key 소품 을 가질 때 React 오류 "동일한 키를 가진 두 개의 자식이 발생했습니다"가 발생
+    <br/><br/>
+**해결법**
+    <br/>- key각 요소의 키에 고유한 값을 제공하거나 인덱스 매개변수를 사용하여 해결
 
 
 ## 6. 프로젝트를 진행하며 느낀점

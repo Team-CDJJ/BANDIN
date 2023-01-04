@@ -2,7 +2,7 @@ const timeAgo = (time) => {
   const ms = new Date() - time;
   const seconds = ms / 1000;
 
-  if (seconds < 60) return `방금 전`;
+  if (seconds < 60) return `・ 방금 전`;
 
   const minutes = seconds / 60;
   if (minutes < 60) return `・ ${Math.floor(minutes)}분 전`;

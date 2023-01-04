@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import axios from 'axios';
 import TopMainNav from '../../components/CommonUI/Nav/TopMainNav/TopMainNav';
-import { EmptyHomeWrapper, FeedWrapper, FeedTxt, TopBtn } from './styled';
+import { EmptyHomeWrapper, FeedWrapper, FeedTxt, TopBtn, LoadingTxt } from './styled';
 import CommonPost from '../../components/CommonUI/CommonPost/CommonPost';
 import profileImg from '../../assets/profile.png';
 import topImg from '../../assets/top-btn.png';
@@ -14,6 +14,17 @@ import Img from '../../components/atoms/Img/img';
 
 const Home = () => {
   const [postData, setPostData] = useState([]);
+  const [view, setView] = useState('pending');
+
+  useEffect(() => {
+    getFeedPost()
+      .then((data) => {
+        setPostData(data.posts);
+        setView('fulfilled');
+      })
+      .catch((error) => {
+        console.log(error);
+        setView('rejected');
   const token = localStorage.getItem('token');
   const [numFeed, setNumFeed] = useState(0);
   const [done, setDone] = useState(false);
@@ -63,7 +74,8 @@ const Home = () => {
 
   return (
     <>
-      {postData.length !== 0 ? (
+      <TopMainNav />
+      {view === 'fulfilled' && postData.length !== 0 ? (
         <FeedWrapper>
           <h2 className='ir'>홈 피드</h2>
           {postData.map((post, i) =>
@@ -86,7 +98,7 @@ const Home = () => {
             </div>
           </TopBtn>
         </FeedWrapper>
-      ) : (
+      ) : view === 'fulfilled' && postData.length === 0 ? (
         <EmptyHomeWrapper>
           <h2 className='ir'>홈 피드</h2>
           <img src={profileImg} alt='프로필 이미지' className='profile-img' />
@@ -94,6 +106,15 @@ const Home = () => {
           <Link to='/search'>
             <Button type='button' size='md, lg' tit='검색하기'></Button>
           </Link>
+        </EmptyHomeWrapper>
+      ) : (
+        <EmptyHomeWrapper>
+          <img
+            src={profileImg}
+            alt='프로필 이미지'
+            className='profile-img loading-img'
+          />
+          <LoadingTxt>빠르게 로딩중!!</LoadingTxt>
         </EmptyHomeWrapper>
       )}
       <TabMenu place='homefeed' />

@@ -1,14 +1,6 @@
-import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Img from '../../atoms/Img/img';
-import {
-  UserList,
-  UserInfo,
-  UserName,
-  UserId,
-  ProfileLink,
-  Keyword,
-} from './styled';
+import { UserList, UserInfo, UserName, UserId, Keyword } from './styled';
 
 const UserItem = ({
   width,
@@ -35,36 +27,34 @@ const UserItem = ({
 
   return (
     <UserList key={keyValue} onClick={handleToProfile}>
-      <ProfileLink to={`/profile/${accountname}`}>
-        <Img
-          width={width}
-          height={height}
-          src={image}
-          alt={alt}
-          borderRadius='50%'
-        />
-        <UserInfo>
-          {location.pathname.includes('follow') ? (
-            <>
-              <UserName>{username}</UserName>
-              <UserId>{intro}</UserId>
-            </>
-          ) : (
-            <>
-              <UserName>
-                {firstUserName}
-                <Keyword>{keywordName}</Keyword>
-                {lastUserName}
-              </UserName>
-              <UserId>
-                @ {firstUserId}
-                <Keyword>{keywordId}</Keyword>
-                {lastUserId}
-              </UserId>
-            </>
-          )}
-        </UserInfo>
-      </ProfileLink>
+      <Img
+        width={width}
+        height={height}
+        src={image}
+        alt={alt}
+        borderRadius='50%'
+      />
+      <UserInfo>
+        {location.pathname.includes('follow') ? (
+          <>
+            <UserName>{username}</UserName>
+            <UserId>{intro}</UserId>
+          </>
+        ) : (
+          <>
+            <UserName>
+              {firstUserName}
+              <Keyword>{keywordName}</Keyword>
+              {lastUserName}
+            </UserName>
+            <UserId>
+              @ {firstUserId}
+              <Keyword>{keywordId}</Keyword>
+              {lastUserId}
+            </UserId>
+          </>
+        )}
+      </UserInfo>
     </UserList>
   );
 };

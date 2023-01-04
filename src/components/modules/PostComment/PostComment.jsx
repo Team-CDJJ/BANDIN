@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import TimeAgo from '../TimeAgo/TimeAgo';
 import Img from '../../atoms/Img/img';
 import { VerticalBtn } from '../PostUserInfo/styled';
@@ -14,6 +15,7 @@ import deleteComment from '../../../api/comment/deleteComment';
 import getPostComments from '../../../api/post/getPostComments';
 import reportComment from '../../../api/comment/reportComment';
 import CommentModal from '../../modal/CommentModal/CommentModal';
+import { accountNameValue } from '../../../atoms';
 
 const PostComment = ({
   accountname,
@@ -29,7 +31,8 @@ const PostComment = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [isDelete, setIsDelete] = useState(false);
-  const curAccountName = localStorage.getItem('accountname');
+  // const curAccountName = localStorage.getItem('accountname');
+  const curAccountName = useRecoilValue(accountNameValue);
   const navigate = useNavigate();
 
   const onClickModal = () => {
@@ -45,6 +48,7 @@ const PostComment = ({
     deleteComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
       setIsModalOpen(false);
+      alert('댓글이 삭제되었습니다!');
     });
   };
 
@@ -52,6 +56,7 @@ const PostComment = ({
     reportComment(postId, commentId).then(() => {
       setIsDelete(!isDelete);
       setIsModalOpen(false);
+      alert('댓글이 신고되었습니다!');
     });
   };
 

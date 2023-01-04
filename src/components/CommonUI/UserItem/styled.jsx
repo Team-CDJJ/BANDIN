@@ -1,11 +1,7 @@
 import styled, { css } from 'styled-components';
 
-export const UserList = styled.li`
-  width: 100%;
-  list-style: none;
-`;
-
-export const ProfileLink = styled.a`
+export const UserList = styled.div`
+  width: 70%;
   display: flex;
 `;
 
@@ -21,6 +17,7 @@ export const ProfileImg = styled.img`
 `;
 
 export const UserInfo = styled.div`
+  width: 100%;
   margin-left: 12px;
 `;
 
@@ -36,13 +33,18 @@ export const UserName = styled.strong`
   }}
 `;
 
-export const UserId = styled.strong`
+export const UserId = styled.p`
   ${({ theme }) => {
     return css`
+      width: 85%;
       font-size: ${theme.fontSizes.sm};
       color: ${theme.colors.grey76};
       font-weight: 400;
       line-height: 15px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-break: break-all;
+      overflow: hidden;
     `;
   }}
 `;

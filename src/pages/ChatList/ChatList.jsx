@@ -15,7 +15,7 @@ const ChatList = () => {
       <TopBasicNav />
       <Section>
         <h1 className='ir'>채팅 목록</h1>
-        <ChatLink to='/chatlist/chatroom'>
+        <ChatLink to='/chatlist/chatroom' className='firstUser'>
           <TextContainer>
             <ChatName>베이스 기타 삽니다!!</ChatName>
             <div>
@@ -25,7 +25,7 @@ const ChatList = () => {
           </TextContainer>
         </ChatLink>
 
-        <ChatLink to='/chatlist/chatroom'>
+        <ChatLink to='/chatlist/chatroom' className='secondUser'>
           <TextContainer>
             <ChatName>밴드음악조아</ChatName>
             <div>
@@ -35,7 +35,7 @@ const ChatList = () => {
           </TextContainer>
         </ChatLink>
 
-        <ChatLink to='/chatlist/chatroom'>
+        <ChatLink to='/chatlist/chatroom' className='thirdUser'>
           <TextContainer>
             <ChatName>브래멘음악대</ChatName>
             <div>
@@ -44,7 +44,7 @@ const ChatList = () => {
             </div>
           </TextContainer>
         </ChatLink>
-        <ChatLink to='/chatlist/chatroom'>
+        <ChatLink to='/chatlist/chatroom' className='fourthUser'>
           <TextContainer>
             <ChatName>올해꼭내한간다</ChatName>
             <div>
@@ -54,7 +54,7 @@ const ChatList = () => {
           </TextContainer>
         </ChatLink>
 
-        <ChatLink to='/chatlist/chatroom'>
+        <ChatLink to='/chatlist/chatroom' className='fifthUser'>
           <TextContainer>
             <ChatName>두둥탁</ChatName>
             <div>

@@ -1,5 +1,5 @@
 import { AlertWrapper, AlertTxt, BtnsWrapper, ModalBtn } from '../styled';
-import deleteProductData from '../../../api/modifyProduct/deleteProductData';
+import deleteProductData from '../../../api/editProduct/deleteProductData';
 
 const ProductAlert = ({ productId, handleCancel }) => {
   const accountname = localStorage.getItem('accountname');

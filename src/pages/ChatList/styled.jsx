@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import ProfileImg from '../../assets/profile.png';
+import FirstUser from '../../assets/guitar-buyer.jpg';
+import SecondUser from '../../assets/chat-user1.jpg';
+import ThirdUser from '../../assets/chat-user2.jpg';
+import FourthUser from '../../assets/chat-user3.jpg';
+import FifththUser from '../../assets/chat-user4.jpg';
 
 export const Section = styled.section`
   margin: 70px 16px 0 16px;
@@ -13,6 +18,7 @@ export const ChatLink = styled(Link)`
       display: flex;
       margin-bottom: 20px;
       cursor: pointer;
+
       &::before {
         content: '';
         display: inline-block;
@@ -26,6 +32,23 @@ export const ChatLink = styled(Link)`
         box-sizing: border-box;
         border: 0.5px solid ${theme.colors.greyDB};
       }
+
+      .firstUser&::before {
+        background-image: url(${FirstUser});
+      }
+      .secondUser&::before {
+        background-image: url(${SecondUser});
+      }
+      .thirdUser&::before {
+        background-image: url(${ThirdUser});
+      }
+      .fourthUser&::before {
+        background-image: url(${FourthUser});
+      }
+      .fifthUser&::before {
+        background-image: url(${FifththUser});
+      }
+
       &:not(:last-child)::after {
         content: '';
         position: absolute;

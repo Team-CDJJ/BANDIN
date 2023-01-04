@@ -52,38 +52,35 @@ const SetUpProfile = () => {
   });
 
   useEffect(() => {
-    const accountnameValidator = async () => {
-      try {
-        postAccountNameValid({
-          user: {
-            accountname,
-          },
-        }).then((data) => {
-          const accountReg = /^[-._a-z0-9]+$/gi;
+    postAccountNameValid({
+      user: {
+        accountname,
+      },
+    })
+      .then((data) => {
+        const accountReg = /^[-._a-z0-9]+$/gi;
 
-          if (!accountReg.test(accountname)) {
-            setAccountnameError(
-              '* 영문, 숫자, 밑줄, 마침표만 사용할 수 있습니다.',
-            );
-            setAccountnameValid(false);
-          } else if (data.message === '이미 가입된 계정ID 입니다.') {
-            setAccountnameError(`* ${data.message}`);
-            setAccountnameValid(false);
-          } else if (data.message === '사용 가능한 계정ID 입니다.') {
-            setAccountnameError(`* ${data.message}`);
-            setAccountnameValid(true);
-          } else if (accountname.length === 0) {
-            setAccountnameError('* 계정ID는 필수 입력사항 입니다.');
-            setAccountnameValid(false);
-          } else {
-            setAccountnameValid(false);
-          }
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    accountnameValidator();
+        if (!accountReg.test(accountname)) {
+          setAccountnameError(
+            '* 영문, 숫자, 밑줄, 마침표만 사용할 수 있습니다.',
+          );
+          setAccountnameValid(false);
+        } else if (data.message === '이미 가입된 계정ID 입니다.') {
+          setAccountnameError(`* ${data.message}`);
+          setAccountnameValid(false);
+        } else if (data.message === '사용 가능한 계정ID 입니다.') {
+          setAccountnameError(`* ${data.message}`);
+          setAccountnameValid(true);
+        } else if (accountname.length === 0) {
+          setAccountnameError('* 계정ID는 필수 입력사항 입니다.');
+          setAccountnameValid(false);
+        } else {
+          setAccountnameValid(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [accountname]);
 
   const handleSubmit = async (event) => {
@@ -120,7 +117,7 @@ const SetUpProfile = () => {
         나중에 언제든지 변경할 수 있습니다.
       </SetUpProfileSubTitle>
       <form onSubmit={handleSubmit}>
-        <ProfileImgInput setNewImage={setImage} />
+        <ProfileImgInput setNewImage={setImage} image={image} />
         <InputBox
           label='사용자 이름'
           type='username'

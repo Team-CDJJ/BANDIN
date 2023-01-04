@@ -5,8 +5,9 @@ export const SearchMain = styled.main`
   padding: 20px 16px;
   height: 760px;
 `;
+
 export const UserUl = styled.ul`
-  li ~ li {
-    margin-top: 16px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 `;

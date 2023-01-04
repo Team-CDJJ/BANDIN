@@ -27,11 +27,16 @@ export const ProductCont = styled.div`
   margin-right: 10px;
   cursor: pointer;
 
-  .img-product {
+  .img-cont {
     width: 140px;
     height: 90px;
+    overflow: hidden;
+  }
+
+  .img-product {
     border: 0.5px solid #dbdbdb;
     border-radius: 8px;
+    object-fit: cover;
   }
 `;
 

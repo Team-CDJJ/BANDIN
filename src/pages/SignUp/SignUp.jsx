@@ -27,27 +27,28 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    const emailValidator = async () => {
-      const data = await postEmailValid({
-        user: {
-          email,
-        },
+    postEmailValid({
+      user: {
+        email,
+      },
+    })
+      .then((data) => {
+        const emailReg =
+          /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        const regResult = emailReg.test(email);
+        setEmailError(`* ${data.message}`);
+        if (!regResult) {
+          setIsEmailValid(false);
+          setEmailError('* 올바른 이메일 형식이 아닙니다');
+        } else if (data.message === '사용 가능한 이메일 입니다.' && regResult) {
+          setIsEmailValid(true);
+        } else {
+          setIsEmailValid(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      // console.log(data);
-      const emailReg =
-        /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-      const regResult = emailReg.test(email);
-      setEmailError(`* ${data.message}`);
-      if (!regResult) {
-        setIsEmailValid(false);
-        setEmailError('* 올바른 이메일 형식이 아닙니다');
-      } else if (data.message === '사용 가능한 이메일 입니다.' && regResult) {
-        setIsEmailValid(true);
-      } else {
-        setIsEmailValid(false);
-      }
-    };
-    emailValidator();
   }, [email]);
 
   useEffect(() => {
@@ -60,7 +61,7 @@ const SignUp = () => {
       }
     };
     pwValidator();
-  });
+  }, [password]);
 
   const handleNextPage = () => {
     navigate('/signup/setupprofile', {

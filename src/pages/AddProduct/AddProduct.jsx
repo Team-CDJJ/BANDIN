@@ -1,24 +1,16 @@
 /* eslint-disable no-undef */
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import TopUploadNav from '../../components/CommonUI/Nav/TopUploadNav/TopUploadNav';
 import { AddProductSection, AddImageDesc, AddProductForm } from './styled';
 import InputBox from '../../components/atoms/InputBox/Input';
 import ProductImgInput from '../../components/modules/ProductImgInput/ProductImgInput';
-import { productImgSrc } from '../../atoms';
-import noneProductImage from '../../assets/product.png';
 import postAddProduct from '../../api/addproduct/postAddProduct';
+import { accountNameValue } from '../../atoms';
 
 const AddProduct = () => {
-  const setProductImg = useSetRecoilState(productImgSrc);
-  // 초기 상품등록이미지 화면
-  useEffect(() => {
-    setProductImg(noneProductImage);
-  }, []);
-
-  const itemImage = useRecoilValue(productImgSrc);
-  const accountname = localStorage.getItem('accountname');
+  // const accountname = localStorage.getItem('accountname');
+  const accountname = useRecoilValue(accountNameValue);
 
   const [isNameValid, setIsNameValid] = useState(false);
   const [nameError, setNameError] = useState('');
@@ -29,6 +21,8 @@ const AddProduct = () => {
   const [isLinkValid, setIsLinkValid] = useState(false);
   const [linkError, setLinkError] = useState('');
 
+  const [itemImage, setItemImage] = useState('');
+  const [newItemImage, setNewItemImage] = useState('');
   const [inputValue, setInputValue] = useState({
     itemName: '',
     price: '',
@@ -50,7 +44,6 @@ const AddProduct = () => {
   };
 
   inputValue.price = priceFormat(price);
-  const navigate = useNavigate();
 
   const handleData = (event) => {
     const { name, value } = event.target;
@@ -105,16 +98,16 @@ const AddProduct = () => {
         itemName,
         price: parseInt(price.replaceAll(',', ''), 10),
         link,
-        itemImage,
+        itemImage: newItemImage === '' ? itemImage : newItemImage,
       },
     };
 
     postAddProduct(userData)
       .then((data) => {
         console.log(data);
+        setItemImage(newItemImage);
         window.location = `/profile/${accountname}`;
       })
-
       .catch((error) => {
         if (error.response.status === 422) {
           console.log(error);
@@ -123,7 +116,6 @@ const AddProduct = () => {
           console.log(error);
         }
       });
-    setProductImg(noneProductImage);
   };
 
   return (
@@ -140,7 +132,11 @@ const AddProduct = () => {
         <h1 className='ir'>상품 등록 페이지</h1>
         <AddProductForm onSubmit={handleSubmit}>
           <AddImageDesc>이미지등록</AddImageDesc>
-          <ProductImgInput />
+          <ProductImgInput
+            setNewItemImage={setNewItemImage}
+            newItemImage={newItemImage}
+            itemImage={itemImage}
+          />
           <InputBox
             label='상품명'
             type='text'

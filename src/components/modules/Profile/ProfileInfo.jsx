@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
 import Img from '../../atoms/Img/img';
 import { follow, unfollow } from '../../../api/profile/follow';
@@ -14,10 +15,11 @@ import getMyProfile from '../../../api/profile/getMyProfile';
 import MyProfileBtn from '../MyProfileBtn/MyProfileBtn';
 import YourProfileBtn from '../YourProfileBtn/YourProfileBtn';
 import noneProfileImg from '../../../assets/profile.png';
+import { accountNameValue } from '../../../atoms';
 
 const ProfileInfo = () => {
   const { accountName } = useParams();
-  const accountname = localStorage.getItem('accountname');
+  const accountname = useRecoilValue(accountNameValue);
 
   const [userInfo, setUserInfo] = useState({});
   const [image, setImage] = useState('');
@@ -31,10 +33,10 @@ const ProfileInfo = () => {
     getMyProfile(accountName)
       .then((data) => {
         setUserInfo(data);
-        setFollowerCount(data.followerCount);
-        setFollowingCount(data.followingCount);
         setIsFollow(data.isfollow);
         setImage(data.image);
+        setFollowingCount(data.followingCount);
+        setFollowerCount(data.followerCount);
       })
       .catch((error) => {
         console.log(error);
@@ -42,12 +44,18 @@ const ProfileInfo = () => {
   }, [accountName]);
 
   const handleFollow = () => {
-    follow(accountName);
+    follow(accountName).then((data) => {
+      console.log(data);
+      setFollowerCount(data.profile.followerCount);
+    });
     setIsFollow(true);
   };
 
   const handleUnFollow = () => {
-    unfollow(accountName);
+    unfollow(accountName).then((data) => {
+      console.log(data);
+      setFollowerCount(data.profile.followerCount);
+    });
     setIsFollow(false);
   };
 

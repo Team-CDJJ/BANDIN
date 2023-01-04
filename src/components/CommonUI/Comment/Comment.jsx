@@ -9,10 +9,11 @@ import {
   CommentBtn,
 } from './styled';
 
-import postComments from '../../../api/post/postComments';
-import imgBtn from '../../../assets/img-button.png';
 import Img from '../../atoms/Img/img';
 import getMyInfo from '../../../api/profile/getMyInfo';
+import postComments from '../../../api/post/postComments';
+import imgBtn from '../../../assets/img-button.png';
+import noneProfileImg from '../../../assets/profile.png';
 
 const Comment = ({
   setHasInput,
@@ -56,7 +57,7 @@ const Comment = ({
           <Link to='/'>
             <Img
               borderRadius='50%'
-              src={image}
+              src={image.includes('Ellipse.png') ? noneProfileImg : image}
               alt='댓글 입력할 사람의 프로필'
             />
           </Link>

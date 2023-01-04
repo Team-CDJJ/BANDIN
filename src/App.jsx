@@ -13,14 +13,14 @@ import NotFound from './pages/404/404';
 import UserSearch from './pages/Search/Search';
 import ChatList from './pages/ChatList/ChatList';
 import ChatRoom from './pages/ChatRoom/ChatRoom';
-import ModifyProfile from './pages/ModifyProfile/ModifyProfile';
+import EditProfile from './pages/EditProfile/EditProfile';
 import Splash from './pages/Splash/Splash';
 import MyProfile from './pages/MyProfile/MyProfile';
 import AddProduct from './pages/AddProduct/AddProduct';
 import PostDetail from './pages/PostDetail/PostDetail';
 import PrivateRoutes from './components/Router/PrivateRoutes';
 import PrivateRoutesRev from './components/Router/PrivateRoutesRev';
-import ModifyProduct from './pages/ModifyProduct/ModifyProduct';
+import EditProduct from './pages/EditProduct/EditProduct';
 import UploadPost from './pages/UploadPost/UploadPost';
 import EditPost from './pages/EditPost/EditPost';
 
@@ -44,14 +44,14 @@ const App = () => {
       <Route element={<PrivateRoutesRev authorization={isLoginState} />}>
         <Route path='/' element={<Login />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/search' element={<UserSearch />} />
         <Route path='/upload' element={<UploadPost />} />
         <Route path='/editpost/:postId' element={<EditPost />} />
         <Route path='/chatlist' element={<ChatList />} />
-        <Route path='/addproduct' element={<AddProduct />} />
-        <Route path='/product/:productId/modify' element={<ModifyProduct />} />
-        <Route path='/modifyprofile' element={<ModifyProfile />} />
         <Route path='/chatlist/chatroom' element={<ChatRoom />} />
-        <Route path='/search' element={<UserSearch />} />
+        <Route path='/addproduct' element={<AddProduct />} />
+        <Route path='/product/:productId/edit' element={<EditProduct />} />
+        <Route path='/editprofile' element={<EditProfile />} />
         <Route path='/profile/:accountName' element={<MyProfile />} />
         <Route path='/:accountName/follower' element={<Follower />} />
         <Route path='/:accountName/following' element={<Following />} />

@@ -34,6 +34,7 @@ export const FeedTxt = styled.span`
     `;
   }}
 `;
+
 export const LoadingTxt = styled(FeedTxt)`
   ${({ theme }) => {
     return css`
@@ -41,4 +42,15 @@ export const LoadingTxt = styled(FeedTxt)`
       font-weight: 500;
     `;
   }}
+
+export const TopBtn = styled.div`
+  position: fixed;
+  bottom: 75px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  img {
+    width: 100%;
+    cursor: pointer;
+  }
 `;

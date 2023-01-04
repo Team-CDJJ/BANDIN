@@ -8,7 +8,7 @@ const MyProfileBtn = () => {
   };
 
   const modifyProfile = () => {
-    navigate('/modifyprofile');
+    navigate('/editprofile');
   };
 
   return (

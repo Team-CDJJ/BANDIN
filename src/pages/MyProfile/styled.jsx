@@ -5,7 +5,6 @@ export const LoadingWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 310px auto 0;
-
   .loading-img {
     width: 110px;
     height: 110px;

@@ -26,7 +26,6 @@ const MyProfile = () => {
   }, []);
 
   useEffect(() => {
-    // 상품 목록
     getProductList(accountName)
       .then((data) => {
         setProductList(data.product);
@@ -39,7 +38,6 @@ const MyProfile = () => {
   }, [accountName]);
 
   useEffect(() => {
-    // 게시글 목록
     getProfilePost(accountName)
       .then((data) => {
         setPostList(data);

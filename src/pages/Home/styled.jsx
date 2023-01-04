@@ -35,14 +35,6 @@ export const FeedTxt = styled.span`
   }}
 `;
 
-export const LoadingTxt = styled(FeedTxt)`
-  ${({ theme }) => {
-    return css`
-      font-size: ${theme.fontSizes.xl};
-      font-weight: 500;
-    `;
-  }}
-
 export const TopBtn = styled.div`
   position: fixed;
   bottom: 75px;

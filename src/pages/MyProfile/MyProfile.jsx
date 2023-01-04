@@ -53,7 +53,9 @@ const MyProfile = () => {
       {view === 'fulfilled' ? (
         <>
           <ProfileInfo />
-          {productList && <CommonProduct data={productList} />}
+          {productList && (
+            <CommonProduct data={productList} isMyPost={isMyPost} />
+          )}
           <ProfilePost data={postList} isMyPost={isMyPost} />
           <TabMenu place='myprofile' />
         </>

@@ -59,9 +59,9 @@ test pw: 123123
     
     
 - **styled-components를 선택한 이유**
-    - React의 Props와 함께 사용이 용이하고, 조건부 스타일링도 가능하며 스타일 재사용성이 높습니다.
-    - className을 지정해줘야 하는 번거로움을 피할 수 있습니다.
-    - 컴포넌트에 적은 스타일은 html 페이지의 <style> 태그에 넣어줘서 페이지 로딩 시간이 단축됩니다.
+    - React의 Props와 함께 사용이 용이하고, 조건부 스타일링도 가능하며 스타일 재사용성이 높기 때문입니다.
+    - className을 지정해줘야 하는 번거로움을 피할 수 있어 작업효율이 높이고자 하였습니다.
+    - 컴포넌트에 기재한 스타일은 html 페이지의 <style> 태그에 넣음으로써 페이지 로딩 시간을 단축할 수 있기 때문입니다.
 
 
 ### 1.4 커밋 컨벤션 규칙
@@ -140,7 +140,7 @@ const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
 <PostTxt dangerouslySetInnerHTML={{ __html: text }}></PostTxt>
 ```
 ---
-    
+### Life cycle로 인한 undefined 에러
     Uncaught TypeError: Cannot read properties of undefined (reading 'map')
 <img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/104756433/210578011-62dade1b-557a-4151-b55f-05e727164f48.png">
 
@@ -151,7 +151,7 @@ const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
 **해결법**
     <br/>- 조건부렌더링으로 해결(&& 연산자나 ?를 사용)
 <br/><br/>
-    
+### map()메서드 사용시 고유한 key값 사용
     Encountered two children with the same key, ~~~ . Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted - the behavior is unsupported and could change in a future version.
 <img width="658" src="https://user-images.githubusercontent.com/104756433/210584149-29c867be-0482-4ee1-8e63-146232b28ba8.png">
 
@@ -161,13 +161,32 @@ const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
 **해결법**
     <br/>- key각 요소의 키에 고유한 값을 제공하거나 인덱스 매개변수를 사용하여 해결
 
-
+<br/><br/>
+### POST 422 (Unprocessable Entity) 에러 
+    POST https://mandarin.api.weniv.co.kr/product 422
+**문제**
+    <br/>-상품 등록 기능 구현 중 필수 입력사항을 input 입력란에 기재 한 후, 
+    <br/>저장 버튼을 눌렀을 때 아래와 같은 경고창과 에러 메세지 발생.
+    <br/><br/>
+    <img width="658" alt="POST 422 에러 이미지" src="https://user-images.githubusercontent.com/100075245/210625217-e953475b-ff82-4c55-96b9-efad223bb3eb.png">
+    <br/><br/>
+**해결법**
+    <br/>-콘솔 창의 AxiosError 토글 버튼을 통하여 response 내용 확인.<br/>
+    ```response: "{\"message\":\"가격은 숫자로 입력하셔야 합니다.\",\"status\":\"422\"}```
+    <br/>-가격정보가 숫자로 전달되지 않는 상태인 것을 확인 후 number type의 input은 데이터 유형이 텍스트인 것을 파악.
+    <br/>-422 (Unprocessable Entity) 에러는 '처리할 수 없는 개체'일 때 발생하는 것으로 요청은 잘 만들어졌지만,
+    <br/> 문법 오류로 인하여 따를 수 없는 경우에 생성되는 것으로 파악.
+    <br/>-parseInt()를 이용하여 서버에 가격정보 전달 할 때 숫자형태로 전달하여 오류 해결.
+    <br/>```price: parseInt(price, 10)```
+    <br/><br/>
+    <img width="658" alt="POST 422 에러 이미지" src="https://user-images.githubusercontent.com/100075245/210626901-57552f8d-8a86-44e5-91b1-7238daddc100.png">
+    <br/>성공적인 데이터 전송으로 인한 자동 페이지 이동 및 console창을 통해 확인 가능한 상품 정보
 ## 5. 프로젝트를 진행하며 느낀점
 
 | 이름 | 느낀 점                                    |
 | :------: | ---------------------------------------------- |
 | 김대운 |1️⃣ **전역상태관리의 어려움**<br/>감귤마켓 프로젝트는 recoil이나 redux와 같은 전역상태관리 라이브러리를 설치하지 않아도 구현할 수 있는 프로젝트였지만, 프로젝트의 규모가 커짐에 따라 전역상태관리는 필수적이겠다는 생각이 들었다. recoil을 적용해 전역 상태관리를 해보려 했으나, recoil-persist로 localStorage에 값을 저장하는 방식이 보안 위험이 있다는 사실을 늦게 알아서, accountname과 isLogin 상태만을 남겨 해결하는 방식을 채택하게 되었다. 전역상태관리를 위한 나만의 무기를 장착해야겠다!<br/><br/>2️⃣ **설계 단계의 중요성**<br/>폴더구조와 디자인패턴을 프로젝트 초기에 탄탄히 설계하지 못했다. 주먹구구식으로 타 팀들과 전 기수의 레포를 참고하다 보니 점점 복잡해지다 중반부가 지날 때 쯤 관리에 많은 어려움을 겪었다. 설계 단계에서 많은 시간과 정성을 쏟는 것이 결국 코드 작성과 같은 이후 프로젝트에 속도를 내게 해 줄 수 있다는 것을 깨달았다.<br/><br/>3️⃣ **구글링하되, 꼭 이해하자!**<br/>코드를 구글링 하고 이해하는 데 많은 시간이 들었다. 초반에는 구현한 내용들을 팀원들에게 설명해 줄 시간이 있었지만, 뒤로 갈수록 나조차도 이해하는 데 시간이 오래걸려서 그럴 수가 없었다. 구글링으로 얻어온 코드가 돌아가는 것에서 그치지 말고, 반드시 이해해서 내 것으로 만드는 시간을 가지자.<br/><br/>4️⃣ **데이터와 친해지자**<br/>어쩌면 서버에서 데이터를 받아와서 앞단에 뿌려주는 것은, 어쩌면 프론트엔드 개발자의 숙명과도 같은 일이라는 생각이 들었다. 데이터 송수신 성공 여부에 따라 프로젝트 진행의 속도가 많은 차이가 났다. 향후 서버가 있는 프로젝트를 진행한다면 필수적인 일일테니, 데이터와 친해지는 연습을 많이 하려 한다.|
-| 서윤정 |                  |
+| 서윤정 |1️⃣리액트 / 스타일 컴포넌트를 통해 코드를 재사용하고 활용해보았는데 작업효율이 높았습니다.<br/> 추후 리액트 외 다른 앵귤러, 뷰 라이브러리도 사용하여 리액트와 비교하고 싶습니다.<br/>2️⃣프로그래밍 하기에 앞서 폴더구조, 컴포넌트 단위 등을 구성하는 사전기획단계가 직접 코딩하는단계보다 협업에 있어 중요하다는 것을 알게 되었습니다. 사전에 함께 공통 컴포넌트를 분류하고 의견을 공유하는 시간을 통해 의사소통이 원활해질 수 있고 이로인해 협업 능률이 높아지기 때문입니다.<br/>3️⃣첫 프로젝트였지만 리액트에 익숙해지고 목표한 기한안에 완성하게 되어 기쁩니다!                  |
 | 이혜진 |                  |
 | 최영준 |                  |
 

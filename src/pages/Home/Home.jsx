@@ -79,11 +79,11 @@ const Home = () => {
             <h2 className='ir'>홈 피드</h2>
             {postData.map((post, i) =>
               postData.length - 1 === i ? (
-                <div key={post.id} ref={ref}>
+                <div key={i} ref={ref}>
                   <CommonPost post={post} />
                 </div>
               ) : (
-                <div key={post.id}>
+                <div key={i}>
                   <CommonPost post={post} />
                 </div>
               ),

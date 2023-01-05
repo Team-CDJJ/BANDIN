@@ -113,7 +113,7 @@ test pw: 123123
 |   <img src="https://user-images.githubusercontent.com/104756433/210393882-b1374e52-3418-4e1a-91a2-6d0d0c3019f3.gif" width="247" height="550"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210393931-d5b08dab-71a5-4383-9c91-e7af4e5cad98.gif" width="247" height="550"/> |       <img src="https://user-images.githubusercontent.com/104756433/210394074-0a8d329c-56a0-41b8-8b46-b654b8f74f4f.gif" width="247" height="550"/> |
 
 - ### 등록 물품 
-|          마이 프로필 (상품등록, 웹사이트 이동)     |         마이 프로필 (상품 수정, 삭제)         |              유저 프로필               |
+|          상품등록, 웹사이트 이동     |         상품 수정, 삭제       |              유저 프로필               |
 | :------------------------------------------: | :----------------------------------------: | :----------------------------------------: |
 |  <img src="https://user-images.githubusercontent.com/104756433/210474059-795ac44f-b7ce-4882-bae9-3d4b191f6f21.gif" width="247" height="550"/>  |  <img src="https://user-images.githubusercontent.com/104756433/210474334-b0c9c343-d0a1-4c62-a646-0a7f1c20618d.gif" width="247" height="550"/> |   <img src="https://user-images.githubusercontent.com/104756433/210628713-61544001-60a7-4846-b85b-8a19e27f3cc0.gif" width="247" height="550"/> |
 

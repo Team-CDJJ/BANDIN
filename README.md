@@ -181,12 +181,10 @@ const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
 
  
 ### 영준
-### Life cycle로 인한 undefined 에러
-    Uncaught TypeError: Cannot read properties of undefined (reading 'map')
+### Uncaught TypeError: Cannot read properties of undefined (reading 'map')
 <img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/104756433/210578011-62dade1b-557a-4151-b55f-05e727164f48.png">
 
 **문제**
-    <br/>- react에서 컴포넌트 간의 life cycle 차이로 인해 undefined에 관한 에러가 자주 생김
     <br/>- map을 돌리거나 ref 걸어 current.style에 접근할 때 자주 마주침
     <br/><br/>
 **해결법**

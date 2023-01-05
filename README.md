@@ -1,7 +1,7 @@
 # 소리로 잇다, BANDIN
 ![목업이미지](https://user-images.githubusercontent.com/104756433/210401057-41d52de6-c220-43e7-9b00-7c21e8520f3d.png)
 
-**배포 URL: <https://github.com>**
+**배포 URL: <https://cerulean-kleicha-e954a1.netlify.app/>**
 ```
 test id: test16-1@test.com
 test pw: 123123
@@ -66,10 +66,10 @@ test pw: 123123
 
 ### 1.4 커밋 컨벤션 규칙
 
-- 기능 단위의 커밋합니다.
-- 커밋 타입은 영어 소문자로 시작합니다.
-- feat, fix, refactor, style, design, docs, chore와 같은 타입을 사용합니다.
-- 주제는 최대한 자세하게 변경 사항을 알아보기 편하도록 작성합니다.
+- 기능 별로 코드관리를 하기 위하여 기능단위로 커밋하였습니다.
+- 커밋 타입은 영어 소문자로 시작하였습니다.
+- feat, fix, refactor, style, design, docs, chore와 같이 일반적으로 통용되는 타입을 사용하였습니다.
+- 주제는 최대한 자세하게 변경 사항을 알아보기 편하도록 작성하였습니다. 
 
 
 ## 2. 팀원 소개
@@ -78,7 +78,7 @@ test pw: 123123
 | :--------: | :--------: | :------: | :-----: |
 | [김대운] | [서윤정] | [이혜진] | [최영준] |
 
-- (역할분담 이미지)
+<img src="https://user-images.githubusercontent.com/104756433/210641974-5eb086cb-2a7b-4705-b9ff-e28833fe3a24.png" width="1000" height="550"/>
 
 ## 3. 기능 구현 
 
@@ -93,7 +93,7 @@ test pw: 123123
 |    <img src="https://user-images.githubusercontent.com/104756433/210620572-f639f97e-b4ef-4125-ae7c-8eb478f3fd92.gif" width="247" height="550"/>  |   <img src="https://user-images.githubusercontent.com/104756433/210387204-de837d6a-7978-44ff-b469-945092b0f295.gif" width="247" height="550"/> | 
 
 - ### 게시물 
-|                 게시물 작성                   |     게시물 상세 (이미지 슬라이드) & 좋아요     |                게시물 수정, 삭제                 |
+|                 게시물 작성                   |     게시물 상세 & 좋아요     |                게시물 수정, 삭제                 |
 | :------------------------------------------: | :-----------------------------------------: | :---------------------------------------------: |
 |  <img src="https://user-images.githubusercontent.com/104756433/210388827-e6e4e911-1943-4c18-928b-b3a7a736fa09.gif" width="247" height="550"/>|  <img src="https://user-images.githubusercontent.com/104756433/210389836-625fc3ca-d730-4fe9-bb91-49f69c4b8b7b.gif" width="247" height="550"/>  |        <img src="https://user-images.githubusercontent.com/104756433/210389854-751ce10e-1819-4e18-8605-ae7944ad5fae.gif" width="247" height="550"/>  |
 
@@ -139,7 +139,46 @@ const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
 
 <PostTxt dangerouslySetInnerHTML={{ __html: text }}></PostTxt>
 ```
----
+<br/><br/>
+
+### 윤정
+### POST 422 (Unprocessable Entity) 에러 
+    POST https://mandarin.api.weniv.co.kr/product 422
+**문제**
+    <br/>-상품 등록 기능 구현 중 필수 입력사항을 input 입력란에 기재 한 후, 
+    <br/>저장 버튼을 눌렀을 때 아래와 같은 경고창과 에러 메세지 발생.
+    <br/><br/>
+    <img width="658" alt="POST 422 에러 이미지" src="https://user-images.githubusercontent.com/100075245/210625217-e953475b-ff82-4c55-96b9-efad223bb3eb.png">
+    <br/><br/>
+**해결법**
+    <br/>-콘솔 창의 AxiosError 토글 버튼을 통하여 response 내용 확인.<br/>
+    ```response: "{\"message\":\"가격은 숫자로 입력하셔야 합니다.\",\"status\":\"422\"}```
+    <br/>-가격정보가 숫자로 전달되지 않는 상태인 것을 확인 후 number type의 input은 데이터 유형이 텍스트인 것을 파악.
+    <br/>-422 (Unprocessable Entity) 에러는 '처리할 수 없는 개체'일 때 발생하는 것으로 요청은 잘 만들어졌지만,
+    <br/> 문법 오류로 인하여 따를 수 없는 경우에 생성되는 것으로 파악.
+    <br/>-parseInt()를 이용하여 서버에 가격정보 전달 할 때 숫자형태로 전달하여 오류 해결.
+    <br/>```price: parseInt(price, 10)```
+    <br/><br/>
+    <img width="658" alt="POST 422 에러 이미지" src="https://user-images.githubusercontent.com/100075245/210626901-57552f8d-8a86-44e5-91b1-7238daddc100.png">
+    <br/>성공적인 데이터 전송으로 인한 자동 페이지 이동 및 console창을 통해 확인 가능한 상품 정보
+    
+<br/><br/>
+
+### 혜진
+### Missing an explicit type attribute for button  react/button-has-type
+<img src="https://user-images.githubusercontent.com/104756433/210662479-5f8eb24f-2e74-40ac-8a35-300bebf106e0.png" width="658"/>
+
+**문제**
+    <br/>- 화면 최상단으로 이동하는 기능을 수정하던 도중 버튼 태그로 변경했더니 eslint error가 나타난 상황
+    <br/>- button의 기본 값은 submit이기 때문에 type을 아무것도 지정해 주지 않은 타입 명시가 없는 버튼은 submit 형태를 가진다는 점을 간과
+    <br/><br/>   
+**해결법**
+    <br/>- button에 type=’button’을 달아줬더니 해결
+    
+<br/><br/>
+
+ 
+### 영준
 ### Life cycle로 인한 undefined 에러
     Uncaught TypeError: Cannot read properties of undefined (reading 'map')
 <img width="658" alt="Untitled" src="https://user-images.githubusercontent.com/104756433/210578011-62dade1b-557a-4151-b55f-05e727164f48.png">
@@ -160,34 +199,14 @@ const text = post.content.replaceAll(/\n|\r\n/g, '<br/>');
     <br/><br/>
 **해결법**
     <br/>- key각 요소의 키에 고유한 값을 제공하거나 인덱스 매개변수를 사용하여 해결
-
-<br/><br/>
-### POST 422 (Unprocessable Entity) 에러 
-    POST https://mandarin.api.weniv.co.kr/product 422
-**문제**
-    <br/>-상품 등록 기능 구현 중 필수 입력사항을 input 입력란에 기재 한 후, 
-    <br/>저장 버튼을 눌렀을 때 아래와 같은 경고창과 에러 메세지 발생.
     <br/><br/>
-    <img width="658" alt="POST 422 에러 이미지" src="https://user-images.githubusercontent.com/100075245/210625217-e953475b-ff82-4c55-96b9-efad223bb3eb.png">
-    <br/><br/>
-**해결법**
-    <br/>-콘솔 창의 AxiosError 토글 버튼을 통하여 response 내용 확인.<br/>
-    ```response: "{\"message\":\"가격은 숫자로 입력하셔야 합니다.\",\"status\":\"422\"}```
-    <br/>-가격정보가 숫자로 전달되지 않는 상태인 것을 확인 후 number type의 input은 데이터 유형이 텍스트인 것을 파악.
-    <br/>-422 (Unprocessable Entity) 에러는 '처리할 수 없는 개체'일 때 발생하는 것으로 요청은 잘 만들어졌지만,
-    <br/> 문법 오류로 인하여 따를 수 없는 경우에 생성되는 것으로 파악.
-    <br/>-parseInt()를 이용하여 서버에 가격정보 전달 할 때 숫자형태로 전달하여 오류 해결.
-    <br/>```price: parseInt(price, 10)```
-    <br/><br/>
-    <img width="658" alt="POST 422 에러 이미지" src="https://user-images.githubusercontent.com/100075245/210626901-57552f8d-8a86-44e5-91b1-7238daddc100.png">
-    <br/>성공적인 데이터 전송으로 인한 자동 페이지 이동 및 console창을 통해 확인 가능한 상품 정보
 ## 5. 프로젝트를 진행하며 느낀점
 
 | 이름 | 느낀 점                                    |
 | :------: | ---------------------------------------------- |
 | 김대운 |1️⃣ **전역상태관리의 어려움**<br/>감귤마켓 프로젝트는 recoil이나 redux와 같은 전역상태관리 라이브러리를 설치하지 않아도 구현할 수 있는 프로젝트였지만, 프로젝트의 규모가 커짐에 따라 전역상태관리는 필수적이겠다는 생각이 들었다. recoil을 적용해 전역 상태관리를 해보려 했으나, recoil-persist로 localStorage에 값을 저장하는 방식이 보안 위험이 있다는 사실을 늦게 알아서, accountname과 isLogin 상태만을 남겨 해결하는 방식을 채택하게 되었다. 전역상태관리를 위한 나만의 무기를 장착해야겠다!<br/><br/>2️⃣ **설계 단계의 중요성**<br/>폴더구조와 디자인패턴을 프로젝트 초기에 탄탄히 설계하지 못했다. 주먹구구식으로 타 팀들과 전 기수의 레포를 참고하다 보니 점점 복잡해지다 중반부가 지날 때 쯤 관리에 많은 어려움을 겪었다. 설계 단계에서 많은 시간과 정성을 쏟는 것이 결국 코드 작성과 같은 이후 프로젝트에 속도를 내게 해 줄 수 있다는 것을 깨달았다.<br/><br/>3️⃣ **구글링하되, 꼭 이해하자!**<br/>코드를 구글링 하고 이해하는 데 많은 시간이 들었다. 초반에는 구현한 내용들을 팀원들에게 설명해 줄 시간이 있었지만, 뒤로 갈수록 나조차도 이해하는 데 시간이 오래걸려서 그럴 수가 없었다. 구글링으로 얻어온 코드가 돌아가는 것에서 그치지 말고, 반드시 이해해서 내 것으로 만드는 시간을 가지자.<br/><br/>4️⃣ **데이터와 친해지자**<br/>어쩌면 서버에서 데이터를 받아와서 앞단에 뿌려주는 것은, 어쩌면 프론트엔드 개발자의 숙명과도 같은 일이라는 생각이 들었다. 데이터 송수신 성공 여부에 따라 프로젝트 진행의 속도가 많은 차이가 났다. 향후 서버가 있는 프로젝트를 진행한다면 필수적인 일일테니, 데이터와 친해지는 연습을 많이 하려 한다.|
 | 서윤정 |1️⃣리액트 / 스타일 컴포넌트를 통해 코드를 재사용하고 활용해보았는데 작업효율이 높았습니다.<br/> 추후 리액트 외 다른 앵귤러, 뷰 라이브러리도 사용하여 리액트와 비교하고 싶습니다.<br/>2️⃣프로그래밍 하기에 앞서 폴더구조, 컴포넌트 단위 등을 구성하는 사전기획단계가 직접 코딩하는단계보다 협업에 있어 중요하다는 것을 알게 되었습니다. 사전에 함께 공통 컴포넌트를 분류하고 의견을 공유하는 시간을 통해 의사소통이 원활해질 수 있고 이로인해 협업 능률이 높아지기 때문입니다.<br/>3️⃣첫 프로젝트였지만 리액트에 익숙해지고 목표한 기한안에 완성하게 되어 기쁩니다!                  |
-| 이혜진 |                  |
+| 이혜진 |️1️⃣폴더 구조를 짜는 것이 생각보다 더 중요한 작업이라는 점을 알게 되었습니다. 시간이 오래 걸리더라도 초반에 기준을 확실히 잡고 간다면 파일이 많아질수록 필요한 자료를 찾고 활용하는 데 좀 더 효율적일 것이라고 느꼈습니다.<br/>2️⃣처음 시작은 어디서부터 어떻게 해야 할지도 모르겠는 상황에서 하게 되어 일단은 형태가 만들어지기만 해도 다행이겠다는 생각을 했었습니다. 그래서 혼자 삐걱거리기도 많이 했지만 그만큼 다른 분들의 도움도 받으면서 성장할 수 있는 좋은 기회였습니다.           |
 | 최영준 |1️⃣ 협업도 처음, 리액트로 코드 짜보기도 처음이라서 정말 많이 헤매고 어려웠습니다😭 다른 분들의 코드를 그냥베껴오는 수준에서 이해하고 저희 프로젝트의 방식으로 적용하는 수준으로 성장할 수 있어 힘들었지만, 단기간에 성장할 수 있던 계기가 된 것 같습니다. <br/>2️⃣협업을 위한 템플릿, 규칙,소통 부재, 자바스크립트 기초 부실 등 시행착오를 거치며 미숙한 부분을 보완해나갈 수 있었고 혼자 했으면 절대 이뤄내지 못했을 프로젝트를 팀원들과 고생하며 배포까지 해보게 되어 너무나 감격스럽습니다. 기술적으로나 협업 능력적으로나 크게 성장할 수 있어 감사한 시간이었습니다.                   |
 
 ---

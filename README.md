@@ -45,6 +45,8 @@ test pw: 123123
     - 제공된 API 사용
 - Design
     - Figma, Illustrator
+- ETC
+    - ESLint, Prettier
 
 ### 1.3 개발 방법 선택 이유
 

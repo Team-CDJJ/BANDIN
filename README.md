@@ -1,7 +1,7 @@
 # 소리로 잇다, BANDIN
 ![목업이미지](https://user-images.githubusercontent.com/104756433/210401057-41d52de6-c220-43e7-9b00-7c21e8520f3d.png)
 
-**배포 URL: <https://cerulean-kleicha-e954a1.netlify.app/>**
+## [BANDIN으로 접속하기!👆](https://cerulean-kleicha-e954a1.netlify.app/)
 ```
 test id: test16-1@test.com
 test pw: 123123
